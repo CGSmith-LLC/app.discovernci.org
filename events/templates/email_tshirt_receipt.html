@@ -1,0 +1,20 @@
+{% extends "base_email.html" %}
+
+{% block title %}Your Order Summary{% endblock title %}
+
+{% block body %}
+
+  <p>Thank you for your support and business! We hope you enjoy the the shirt{{ tshirt_order|pluralize }}.</p>
+
+  <ul>
+    <li>Tshirts: {{ tshirt_order|length }}
+      <ul>
+        {% for tshirt in tshirt_order %}
+          <li>1x {{ tshirt.color}} ({{ tshirt.size }})</li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li>Total Amount: ${{ total }}.00</li>
+  </ul>
+
+{% endblock body %}

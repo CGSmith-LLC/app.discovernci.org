@@ -1,0 +1,50 @@
+{% extends "base_email.html" %}
+
+{% block title %}Dinner in the Woods Registration{% endblock title %}
+
+{% block body %}
+
+  <ul>
+    <li>{{ name }}</li>
+    <li>{{ email }}</li>
+    <li>{{ phone }}</li>
+  </ul>
+
+  <p style="font-weight: bold;">Ticket Details</p>
+
+  <ul>
+    <li>Tickets: {{ ticket_qty }}</li>
+    <li>Extra Drinks: {{ drink_qty }}</li>
+
+    {% if has_veg %}<li>Vegetarian count: {{ veg_count }}</li>{% endif %}
+
+    {% if has_cabana %}<li>Cabana: Yes</li>{% endif %}
+
+    {% if has_childcare %}
+      <li>Childcare for {{ childcare_children|length }}</li>
+      <ul>
+        {% for child in childcare_children %}
+          <li>{{ child.name }} ({{ child.age}}/yo)</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </ul>
+
+  {% if tshirt_order %}
+    <p style="font-weight: bold;">Tshirt Order ({{ tshirt_order|length }})</p>
+    <ul>
+      {% for tshirt in tshirt_order %}
+        <li>1x {{ tshirt.color}} ({{ tshirt.size }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <p style="font-weight: bold;">Payment Details</p>
+
+  <ul>
+    <li>Method: Credit</li>
+    <li>Total Amount: ${{ total }}</li>
+    <li><a href="https://dashboard.stripe.com/test/customers/{{ stripe_customer }}">View Payment Details on Stripe.com</a></li>
+  </ul>
+
+{% endblock body %}

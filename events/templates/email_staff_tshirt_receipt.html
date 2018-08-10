@@ -1,0 +1,30 @@
+{% extends "base_email.html" %}
+
+{% block title %}Tshirt Order{% endblock title %}
+
+{% block body %}
+
+  <ul>
+    <li>{{ name }}</li>
+    <li>{{ email }}</li>
+    <li>{{ phone }}</li>
+  </ul>
+
+  {% if tshirt_order %}
+    <p style="font-weight: bold;">Tshirt Order ({{ tshirt_order|length }})</p>
+    <ul>
+      {% for tshirt in tshirt_order %}
+        <li>1x {{ tshirt.color}} ({{ tshirt.size }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <p style="font-weight: bold;">Payment Details</p>
+
+  <ul>
+    <li>Method: Credit</li>
+    <li>Total Amount: ${{ total }}</li>
+    <li><a href="https://dashboard.stripe.com/test/customers/{{ stripe_customer }}">View Payment Details on Stripe.com</a></li>
+  </ul>
+
+{% endblock body %}

@@ -1,0 +1,18 @@
+[Unit]
+Description=discovernci.org daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/discovernci.org
+DefaultEnvironment="PYTHONPATH=/home/ubuntu/discovernci.org"
+EnvironmentFile=/home/ubuntu/discovernci.org/.env
+ExecStart=/home/ubuntu/.virtualenvs/djnci/bin/gunicorn \
+    --bind=unix:/tmp/gunicorn_djnci.sock \
+    --error-logfile=/tmp/gunicorn_djnci_error.log \
+    --user=ubuntu --group=www-data --workers=3 \
+    --preload djnci.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,44 @@
+// out: ./style.css, sourcemap: false, compress: true
+
+.inline-formset-wrapper {
+  position: relative;
+  margin-top: 10px;
+  input.form-control {
+    display: inline-flex;
+    padding: 4px;
+    height: auto;
+    margin-right: 5px;
+    &.name {
+      width: 30%;
+      min-width: 120px;
+      max-width: 380px;
+    }
+    &.email {
+      width: 30%;
+      min-width: 120px;
+      max-width: 290px;
+    }
+    &.paddle {
+      width: 55px;
+    }
+  }
+  button {
+    position: absolute;
+    right: 20px;
+  }
+  .fa-trash, .fa-minus-circle {
+    position: relative;
+    top: 6px;
+    font-size: 1em;
+    color: #505050;
+    &:hover {
+      cursor: pointer;
+      color: #b1311b !important;
+    }
+  }
+}
+
+time {
+   font-family: helvetica, sans-serif;
+   font-size: 1em;
+}
