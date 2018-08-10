@@ -2,7 +2,7 @@
 
 from fabric.api import cd, env, get, lcd, local, put, run
 
-SITE_DIR = '/home/ubuntu/discovernci.org/'
+SITE_DIR = '/home/ubuntu/djnci/'
 PYTHON_PATH = '/home/ubuntu/.virtualenvs/djnci/bin/'
 
 
@@ -35,7 +35,7 @@ def getmedia():
 def commit():
     # local('git add -A')
     # local('git commit -m "auto commit"')
-    local('git push web master')
+    local('git push origin master')
 
 
 def migrations():
