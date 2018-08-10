@@ -8,7 +8,7 @@ import { graphql } from 'react-apollo';
 import { Row, Col } from 'react-bootstrap';
 
 import { genRandId } from '../utils';
-import { PanelLinkList, PanelMediaList } from '../common';
+import { PanelLinkList } from '../common';
 import BasicContainer from '../base/BasicContainer';
 
 const formItems = [

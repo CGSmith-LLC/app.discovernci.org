@@ -69,7 +69,7 @@ export default function PostList({ loading, posts }) {
             <li><a href="https://www.tmj4.com/weather/school-closings-delays" target="_blank" rel="noopener noreferrer"><FontAwesome name="frown-o" fixedWidth /> School Closings Site</a></li>
             <li style={{ display: 'block', borderBottom: '1px solid #e6e6e6', marginBottom: 10, paddingTop: 10 }} />
             <li>
-              <a href="http://nciw.s3.amazonaws.com/discovernci_media/2017-2018-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
                 <FontAwesome name="file-pdf-o" fixedWidth />{' '}Application for Admission
               </a>
             </li>

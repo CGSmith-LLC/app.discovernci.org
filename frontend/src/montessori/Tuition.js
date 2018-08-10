@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import { PanelLinkList } from '../common';
 
 const resources = [
-  { rank: 0, title: 'Application for Admission', url: 'http://nciw.s3.amazonaws.com/discovernci_media/2017-2018-Admission-Applications.pdf', faName: 'file-pdf-o' },
+  { rank: 0, title: 'Application for Admission', url: 'https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf', faName: 'file-pdf-o' },
   { rank: 1 },
   { rank: 2, title: 'Private School Tuition FAQ', url: 'https://www.revenue.wi.gov/Pages/faqs/ise-privscht.aspx' },
   { rank: 3, title: 'Private School Tax Form (PDF)', url: 'https://www.revenue.wi.gov/dorforms/2015SchedulePS.pdf' }

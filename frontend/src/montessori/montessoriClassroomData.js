@@ -34,7 +34,7 @@ const childrensHouse = {
         { rank: 1, title: 'Children\'s House Tumblr Blog', url: 'http://www.nciwch.tumblr.com/', faName: 'tumblr-square' },
         { rank: 2, title: 'NCM Facebook Page', url: 'https://www.facebook.com/NaturesClassroomMontessori/', faName: 'facebook-official' },
         { rank: 3 },
-        { rank: 4, title: 'Application for Admission', url: '//nciw.s3.amazonaws.com/discovernci_media/2017-2018-Admission-Applications.pdf', faName: 'file-pdf-o' },
+        { rank: 4, title: 'Application for Admission', url: 'https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf', faName: 'file-pdf-o' },
         { rank: 5, title: 'Immunization form', url: '//nciw.s3.amazonaws.com/documents/Immunization%20form.pdf', faName: 'file-pdf-o' }
       ]
     }
@@ -76,7 +76,7 @@ const lowerEl = {
         { rank: 1, title: 'Lower Elementary Tumblr Blog', url: '//www.ncilowerel.tumblr.com/', faName: 'tumblr-square' },
         { rank: 2, title: 'NCM Facebook Page', url: 'https://www.facebook.com/NaturesClassroomMontessori/', faName: 'facebook-official' },
         { rank: 3 },
-        { rank: 4, title: 'Application for Admission', url: '//nciw.s3.amazonaws.com/discovernci_media/2017-2018-Admission-Applications.pdf', faName: 'file-pdf-o' },
+        { rank: 4, title: 'Application for Admission', url: 'https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf', faName: 'file-pdf-o' },
         { rank: 5, title: 'Immunization form', url: '//nciw.s3.amazonaws.com/documents/Immunization%20form.pdf', faName: 'file-pdf-o' }
       ]
     }
@@ -118,7 +118,7 @@ const upperEl = {
         { rank: 1, title: 'Upper El Tumblr Blog', url: 'http://www.nciwue.tumblr.com', faName: 'tumblr-square' },
         { rank: 2, title: 'NCM Facebook Page', url: 'https://www.facebook.com/NaturesClassroomMontessori/', faName: 'facebook-official' },
         { rank: 3 },
-        { rank: 4, title: 'Application for Admission', url: '//nciw.s3.amazonaws.com/discovernci_media/2017-2018-Admission-Applications.pdf', faName: 'file-pdf-o' },
+        { rank: 4, title: 'Application for Admission', url: 'https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf', faName: 'file-pdf-o' },
         { rank: 5, title: 'Immunization form', url: '//nciw.s3.amazonaws.com/documents/Immunization%20form.pdf', faName: 'file-pdf-o' }
       ]
     }
@@ -160,7 +160,7 @@ const adolescent = {
         { rank: 1, title: 'Adolescent Tumblr Blog', url: 'http://www.nciwad.tumblr.com', faName: 'tumblr-square' },
         { rank: 2, title: 'NCM Facebook Page', url: 'https://www.facebook.com/NaturesClassroomMontessori/', faName: 'facebook-official' },
         { rank: 3 },
-        { rank: 4, title: 'Application for Admission', url: '//nciw.s3.amazonaws.com/discovernci_media/2017-2018-Admission-Applications.pdf', faName: 'file-pdf-o' },
+        { rank: 4, title: 'Application for Admission', url: 'https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf', faName: 'file-pdf-o' },
         { rank: 5, title: 'Immunization form', url: '//nciw.s3.amazonaws.com/documents/Immunization%20form.pdf', faName: 'file-pdf-o' }
       ]
     }
