@@ -27,8 +27,9 @@ export default function EventCalendar() {
           <ol>
 
             <li>We ask interested parents to observe at the school and participate in an
-              informational meeting. Call for an appointment (800-574-7881). The Executive
-              Director will be present to answer your questions.</li>
+              informational meeting. Call for an appointment (262-363-2815) or send an email to
+              {' '}<a href="mailto:office@nciw.org">office@nciw.org</a>. The Executive Director will be
+              present to answer your questions.</li>
 
             <li>When the decision to apply is made, complete the application form and send it to
               the school with a non-refundable $50.00 application fee.
@@ -103,7 +104,6 @@ export default function EventCalendar() {
             <ul className="nostyle">
               <li style={{ listStyle: 'bullet' }}><Link to="/contact">Schedule an Observation</Link></li>
               <li style={{ listStyle: 'bullet' }}><Link to="/montessori/tuition">Tuition and Fees</Link></li>
-              <li style={{ listStyle: 'bullet' }}><Link to="/montessori/enrollment">Enrollment</Link></li>
               <li style={{ display: 'block', borderBottom: '1px solid #e6e6e6', marginBottom: 10, paddingTop: 10 }} />
               <li>
                 <a href="https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
