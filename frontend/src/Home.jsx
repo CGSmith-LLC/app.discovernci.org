@@ -60,8 +60,8 @@ export default class Home extends React.Component {
             <h1 className="bottom-30 top-20">Nature&apos;s Classroom Institute and Montessori School</h1>
 
             <p>Nature&apos;s Classroom Institute is the nation&apos;s premier
-              environmental education program. We offer a fully customized, highly engaging 3 or 5
-              day experience that has direct positive impacts on classroom community and academic
+              environmental education program. We offer a fully customized, highly engaging 3, 4 or 5 day experience
+              that has direct positive impacts on classroom community and academic
               performance. Our multi-disciplined, degreed educators integrate lessons with the
               curriculum of visiting schools in order to reinforce what is being taught in the
               classroom. With thousands of classes and activities to choose from, we create unique
