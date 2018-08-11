@@ -59,15 +59,14 @@ export default class Locations extends React.Component {
             <li>Group and team-building field experience which improves peer bonding, self development, positive communication, leadership skills and the ability to problem solve</li>
             <li>Student choice and "hands-on" integrative approach to learning which awakens curiosity and elevates comprehension</li>
             <li>A tried and true environmental education residential program with nearly 20 years experience</li>
-            <li>Lodging: comfortable air-conditioned and heated facilities; handicapped accessible</li>
-            <li>Food: unlimited supply, served family-style with the ability to accommodate special dietary needs</li>
-            <li>Medical Response: medical staff on-duty or on-call</li>
+            <li>Lodging: comfortable air-conditioned and heated facilities; Handicap accessibility is site specific</li>
+            <li>Food: served family-style with the ability to accommodate special dietary needs</li>
+            <li>Medical Response: medical staff on-call</li>
           </ul>
 
           <p>Nature&apos;s Classroom Institute offers students, teachers, and parents around the nation the ability to partake in a unique and individualized educational experience. Our program is growing quickly!</p>
           <p>Each of our locations offers:</p>
           <ul>
-            <li>A Farm, animals, and gardens for multiple ecosystem comparisons and explorations</li>
             <li>Weatherized, clean living quarters</li>
             <li>Overnight accommodations, meals and snacks</li>
             <li>1:12 student teacher ratio</li>
@@ -75,7 +74,7 @@ export default class Locations extends React.Component {
             <li>All equipment and supplies</li>
             <li>24 hour supervision including overnight supervision of students</li>
           </ul>
-          <p>Additionally, at each location we have a program coordinator to help you walk through the process of bringing your class to Nature&apos;s Classroom Institute. We will organize a presentation for a school principal or school board, as well as one for parents and students, so that everyone is engaged, excited, and ready for an incredible educational experience!</p>
+          <p>Additionally, at each location we have a Education Director to help you walk through the process of bringing your class to Nature&apos;s Classroom Institute. We will organize a presentation for a school principal or school board, as well as one for parents and students, so that everyone is engaged, excited, and ready for an incredible educational experience!</p>
         </Col>
         <Col md={4}>
 
