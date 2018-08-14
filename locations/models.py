@@ -117,7 +117,9 @@ class VisitSubmission(models.Model):
         (6, 'Ben Lomond, California'),
         (7, 'Bruceville, Texas'),
         (8, 'New Ulm, Texas'),
-        (9, 'Lake Geneva, Wisconsin')
+        (9, 'Lake Geneva, Wisconsin'),
+        (10, 'Parrish, Florida'),
+        (11, 'Brooksville, Florida')
     )
     location = models.IntegerField(blank=True, null=True, choices=LOCATION_CHOICES)
 

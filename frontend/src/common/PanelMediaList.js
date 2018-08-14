@@ -43,7 +43,7 @@ export default function PanelMediaList(props) {
         <Media
           key={obj.rank}
           className="teacherBlock"
-          onClick={handleTeacherClick}
+          onClick={() => handleTeacherClick}
         >
           <Media.Left>
             {obj.profileIcon

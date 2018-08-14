@@ -10,13 +10,7 @@ import { getQueryParams } from '../utils';
 import { loggedIn } from '../common/auth';
 import NavLink from './NavLink';
 
-const locations = [
-  { id: 42, name: 'Angelus Oaks, California', slug: 'angelus-oaks-california' },
-  { id: 43, name: 'Ben Lomond, California', slug: 'ben-lomond-california' },
-  { id: 44, name: 'Bruceville, Texas', slug: 'bruceville-texas' },
-  { id: 45, name: 'New Ulm, Texas', slug: 'new-ulm-texas' },
-  { id: 46, name: 'Lake Geneva, Wisconsin', slug: 'lake-geneva-wisconsin' }
-];
+import { locations } from '../db';
 
 export default class MainMenuContainer extends React.Component {
   state = {

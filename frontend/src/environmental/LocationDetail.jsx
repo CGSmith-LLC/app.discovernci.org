@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
@@ -9,8 +9,6 @@ import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 import { PanelLinkList, PanelMediaList } from '../common';
-
-import { locations } from '../db';
 
 class LocationDetail extends React.Component {
 
@@ -29,24 +27,17 @@ class LocationDetail extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.updateLocationBgImg();
-  }
-
-  componentWillUpdate(nextProps) {
-    this.updateLocationBgImg(nextProps.params.location);
-  }
-
-  updateLocationBgImg = (slug = this.props.params.location) => {
-    document.body.style.backgroundImage = `url(${_.find(locations, { slug }).bgImg})`;
+  componentDidUpdate(prevProps) {
+    if ((prevProps !== this.props) && (this.props.locationDetailQuery.location)) {
+      const { location } = this.props.locationDetailQuery;
+      document.body.style.backgroundImage = `url(/media/${location.bgImage})`;
+    }
   }
 
   render() {
     const location = this.props.locationDetailQuery.location
       ? this.props.locationDetailQuery.location
       : {};
-
-    // console.log(this.props)
 
     return (
       /**

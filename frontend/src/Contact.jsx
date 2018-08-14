@@ -22,7 +22,7 @@ export default class Contact extends React.Component {
         <h1 className="center">Contact Information</h1>
 
         <Row>
-          <Col md={10} mdOffset={1} style={{ marginBottom: 30 }}>
+          <Col md={12} style={{ marginBottom: 30 }}>
             <div className="flex-container">
               <div className="flex-item">
 
@@ -44,6 +44,27 @@ export default class Contact extends React.Component {
                 </ul>
 
               </div>
+
+              <div className="flex-item">
+                <h3 className="location-header blueBg">Florida</h3>
+
+                <h4 className="purpleTxt top-35"><FontAwesome name="location-arrow" /> Brooksville, FL</h4>
+                <ul>
+                  <li>25458 Dan Brown Hill Rd,
+                    <br />Brooksville, FL 34602</li>
+                  <li>Phone: <a href="tel:414-949-1856">414-949-1856</a></li>
+                  <li>Email: <a href="mailto:Austin@DiscoverNCI.org">Austin@DiscoverNCI.org</a></li>
+                </ul>
+
+                <h4 className="purpleTxt top-35"><FontAwesome name="location-arrow" /> Parrish, FL</h4>
+                <ul>
+                  <li>8411 25th Street
+                    <br />Parrish FL, 34219</li>
+                  <li>Phone: <a href="tel:414-949-1856">414-949-1856</a></li>
+                  <li>Email: <a href="mailto:Austin@DiscoverNCI.org">Austin@DiscoverNCI.org</a></li>
+                </ul>
+              </div>
+
 
               <div className="flex-item">
                 <h3 className="location-header greenBg">Texas</h3>

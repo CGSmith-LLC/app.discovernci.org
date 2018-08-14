@@ -1,44 +1,51 @@
 const locations = [
   {
-    id: 1,
+    id: 0,
     shortName: 'Angelus Oaks',
     slug: 'angelus-oaks-california',
-    bgImg: 'https://nciw.s3.amazonaws.com/discovernci_media/AngelusOaksBg.jpg'
+    name: 'Angelus Oaks, California'
+  },
+  {
+    id: 1,
+    shortName: 'Ben Lomond',
+    slug: 'ben-lomond-california',
+    name: 'Ben Lomond, California'
   },
   {
     id: 2,
-    shortName: 'Ben Lomond',
-    slug: 'ben-lomond-california',
-    bgImg: 'https://nciw.s3.amazonaws.com/discovernci_media/NapaCaliforniaBg3.jpg'
+    shortName: 'Parrish',
+    slug: 'parrish-florida',
+    name: 'Parrish, Florida'
   },
   {
     id: 3,
-    shortName: 'Bruceville',
-    slug: 'bruceville-texas',
-    bgImg: 'https://nciw.s3.amazonaws.com/discovernci_media/BrucevilleTexasBg.jpg'
+    shortName: 'Brooksville',
+    slug: 'brooksville-florida',
+    name: 'Brooksville, Florida'
   },
   {
     id: 4,
-    shortName: 'New Ulm',
-    slug: 'new-ulm-texas',
-    bgImg: 'https://nciw.s3.amazonaws.com/discovernci_media/newulm-bg.jpg'
+    shortName: 'Bruceville',
+    slug: 'bruceville-texas',
+    name: 'Bruceville, Texas'
   },
   {
     id: 5,
-    shortName: 'Lake Geneva',
-    slug: 'lake-geneva-wisconsin',
-    bgImg: 'https://nciw.s3.amazonaws.com/discovernci_media/bg3.jpg'
+    shortName: 'New Ulm',
+    slug: 'new-ulm-texas',
+    name: 'New Ulm, Texas'
   },
   {
     id: 6,
-    shortName: 'Mukwonago Montessori',
-    slug: 'mukwonago-wisconsin-montessori',
-    bgImg: 'https://nciw.s3.amazonaws.com/discovernci_media/bg3.jpg'
+    shortName: 'Lake Geneva',
+    slug: 'lake-geneva-wisconsin',
+    name: 'Lake Geneva, Wisconsin'
   }
 ];
 
 const facultyStaffList = [
-  { id: 1,
+  {
+    id: 1,
     name: 'Jennifer Braun',
     image: '//nciw.s3.amazonaws.com/discovernci_media/JenniferBraun.jpg',
     locations: [5, 6],
@@ -46,7 +53,8 @@ const facultyStaffList = [
     primaryContactFor: [5, 6],
     slug: 'jennifer-braun'
   },
-  { id: 2,
+  {
+    id: 2,
     name: 'Austin Wood',
     title: 'Returning Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/AustinWood.jpg',
@@ -55,7 +63,8 @@ const facultyStaffList = [
     rank: 4,
     bio: 'Austin comes to us from Plymouth, England. This is his second year with us at NCI. He will be the one singing the camp songs! He strives to ensure every attendee has as much fun as possible, while learning of course.'
   },
-  { id: 3,
+  {
+    id: 3,
     name: 'Joseph (Joe) Alvarado',
     title: 'Environmental Instructors',
     image: '//nciw.s3.amazonaws.com/discovernci_media/JosephAlvarado.jpg',
@@ -64,7 +73,8 @@ const facultyStaffList = [
     rank: 4,
     bio: "Hi my name is Joe and  this will be my first year at NC. I am from Kentucky (GO CATS) where I graduated from Lindsey Wilson College with Bachelor of Arts in history. My life motto is: When you're having a bad day, just eat a S'more, they fix everything. This year is going to be fantastic and I cannot wait to begin my new journey with NC."
   },
-  { id: 4,
+  {
+    id: 4,
     name: 'Jordan Kendall',
     title: 'Environmental Instructors',
     image: '//nciw.s3.amazonaws.com/discovernci_media/JordanKendall.jpg',
@@ -73,7 +83,8 @@ const facultyStaffList = [
     rank: 7,
     bio: 'My name is Jordan Kendall I graduated from Lindsey Wilson college in Kentucky where I played soccer for 4 years with my bachelors in business administration. I am now currently taking online courses at the same school to attain my Masters in business admin. I love sports and superheroes. Especially batman.'
   },
-  { id: 5,
+  {
+    id: 5,
     name: 'Louise Twomey',
     title: 'Environmental Instructors',
     image: '//nciw.s3.amazonaws.com/discovernci_media/LouiseTwomey.jpg',
@@ -82,7 +93,8 @@ const facultyStaffList = [
     rank: 7,
     bio: "I'm Louise from Plymouth, UK! I have a background in Psychology, graduating from Keele University in 2015 with a Psychology with Criminology degree and since then I've taught and mentored in various places including England, Sri Lanka and most recently at a kindergarten in China. I love anything outdoors, especially if it has water involved. My favorite sports include kayaking, skiing and taking long hikes to places I've never been before. I love teaching in warmer climates and that's how I've ended up in sunny Texas."
   },
-  { id: 6,
+  {
+    id: 6,
     name: 'Geoffrey E. Bishop',
     title: 'Executive Director',
     image: '//nciw.s3.amazonaws.com/discovernci_media/GeoffreyBishop.jpg',
@@ -92,7 +104,8 @@ const facultyStaffList = [
     primaryContactFor: [],
     bio: "Geoffrey E. Bishop, hails from the bush in North West NSW, Australia. After his childhood spent on his family's sheep station he went to an agricultural boarding school for five years, and then to University in both Sydney and Melbourne where he studied Horticulture and Landscape Architecture. <br /><br /> For the next 10 years he traveled the world, visiting over 80 countries, where he spent most of his time trekking in rural areas, learning cultures and understanding his place in the world.<br /><br /> In 1996 Geoffrey started Nature&apos;s Classroom Institute of Wisconsin, Inc. NCI is a residential environmental education program serving schools throughout the Midwest. The Nature&apos;s Classroom Institute program helps students understand the natural environment, participate in ecosystem exploration and study, and work together with their peers and teachers as a community. The program includes activities such as confidence-building, group challenges, historical simulations, scientific explorations, and many more hands-on academic lessons. <br /><br /> After developing a strong academic and environmental outdoor based curriculum, he formed Nature&apos;s Classroom Montessori School that blends the core philosophy of Montessori with his environmental principles. The past Board Chair of the Wisconsin Association of Environmental Education (WAEE), he has been honored by WAEE as Wisconsin Non-Formal Educator of the Year. <br /><br /> Nature&apos;s Classroom is on 400 acres in the small rural community of Mukwonago, Wisconsin.  Geoffrey's passionate and sustained focus over the past 15 years has been on organics and sustainability in schools while promoting getting children back outdoors and helping adults understand the importance of instinctive play in the natural world."
   },
-  { id: 7,
+  {
+    id: 7,
     name: 'Mirko Sever',
     title: 'Director of Outreach',
     image: '//nciw.s3.amazonaws.com/discovernci_media/MirkoSever.jpg',
@@ -102,7 +115,8 @@ const facultyStaffList = [
     rank: 1,
     bio: 'Mirko Sever is the Director of Outreach - California for Nature&apos;s Classroom Institute. Mirko will be leading the sales, marketing, and development of the EE program in California. Mirko grew up in a Serbian family and  received a Master’s degree in Accounting and Finance from  University of Wisconsin - Milwaukee. In his free time Mirko works with a number of nonprofits and volunteers with a local hospice organization visiting patients. Mirko is excited to take on the adventure and expand NCI&apos;s teachings and values to students in California.'
   },
-  { id: 17,
+  {
+    id: 17,
     locations: [1, 2, 3, 4],
     name: 'Britta Casey',
     title: 'Education Director',
@@ -111,7 +125,8 @@ const facultyStaffList = [
     rank: 3,
     bio: 'Although my passion for nature began as a child, I started my career in the environmental field after graduating with a degree in Environmental Sustainability. My love of the outdoors, education and adventure has led me to take jobs in Australia, Europe and back in my home state of Texas. If I had a spare moment you would find me camping, road tripping, or attempting to play the banjo. I love to discover, whether it be through mountain trails or between the pages of a book.'
   },
-  { id: 8,
+  {
+    id: 8,
     locations: [5],
     name: 'Kristen Mehl',
     title: 'Director of Education',
