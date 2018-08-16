@@ -44,6 +44,7 @@ export default function PanelMediaList(props) {
           key={obj.rank}
           className="teacherBlock"
           onClick={() => handleTeacherClick}
+          style={{ padding: '0 0 0 10px' }}
         >
           <Media.Left>
             {obj.profileIcon
@@ -55,7 +56,16 @@ export default function PanelMediaList(props) {
           </Media.Left>
           <Media.Body>
             <Media.Heading>{obj.name}</Media.Heading>
-            <p>{obj.title}</p>
+            <ul style={{ listStyleType: 'none', margin: 0, padding: 0 }}>
+              <li>
+                {obj.title}
+              </li>
+              <li>
+                <a href={`mailto:${obj.email}`}>
+                  {obj.email}
+                </a>
+              </li>
+            </ul>
           </Media.Body>
         </Media>
       ))}

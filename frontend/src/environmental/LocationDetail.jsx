@@ -11,7 +11,6 @@ import { Link } from 'react-router';
 import { PanelLinkList, PanelMediaList } from '../common';
 
 class LocationDetail extends React.Component {
-
   static propTypes = {
     params: PropTypes.shape({
       location: PropTypes.string
@@ -50,25 +49,29 @@ class LocationDetail extends React.Component {
         <Helmet
           title={`Outdoor EE Program in ${location.name} - Nature's Classroom Institute`}
           link={[
-              { rel: 'canonical', href: `https://discovernci.org/environmental/${location.slug}` }
+            { rel: 'canonical', href: `https://discovernci.org/environmental/${location.slug}` }
           ]}
           meta={[
-              { property: 'og:url', content: `https://discovernci.org/environmental/${location.slug}` },
-              { property: 'og:title', content: `Outdoor Environmental Education in ${location.name}` },
-              { property: 'og:image', content: location.ogImage },
-              { property: 'og:description', content: location.ogDescription }
+            { property: 'og:url', content: `https://discovernci.org/environmental/${location.slug}` },
+            { property: 'og:title', content: `Outdoor Environmental Education in ${location.name}` },
+            { property: 'og:image', content: location.ogImage },
+            { property: 'og:description', content: location.ogDescription }
           ]}
         />
 
         <Row>
           <Col md={10} mdOffset={1}>
 
-            {location.specialMsg &&
-              <span dangerouslySetInnerHTML={{ __html: location.specialMsg }} />
+            {location.specialMsg
+              && (
+                <span dangerouslySetInnerHTML={{ __html: location.specialMsg }} />
+              )
             }
 
-            {location.heroImage &&
-              <img src={`/media/${location.heroImage}`} className="img-responsive img-rounded" alt="" />
+            {location.heroImage
+              && (
+                <img src={`/media/${location.heroImage}`} className="img-responsive img-rounded" alt="" />
+              )
             }
 
           </Col>
@@ -76,45 +79,71 @@ class LocationDetail extends React.Component {
 
         <Row className="top-30">
           <Col md={6} mdOffset={1}>
-            <h1 style={{ marginTop: 0 }} className="bottom-30">{location.name}</h1>
+            <h1 style={{ marginTop: 0 }} className="bottom-30">
+              {location.name}
+            </h1>
             <span dangerouslySetInnerHTML={{ __html: location.body }} />
           </Col>
 
           <Col md={4}>
 
-            {location.openEnrollment &&
-              <Link to="/dashboard" className="teacher-register-btn">
-                <FontAwesome name="users" fixedWidth /> Parent / Teacher Access
+            {location.openEnrollment
+              && (
+                <Link to="/dashboard" className="teacher-register-btn">
+                  <FontAwesome name="users" fixedWidth />
+                  {' '}
+                  Parent / Teacher Access
                   {/* <span className="subline"></span> */}
-              </Link>
+                </Link>
+              )
             }
 
-            {location.sidebarJson &&
-              <PanelLinkList header="General Information" data={JSON.parse(location.sidebarJson).sidebarGeneralInfo} />
+            {location.sidebarJson
+              && (
+                <PanelLinkList
+                  header="General Information"
+                  data={JSON.parse(location.sidebarJson).sidebarGeneralInfo}
+                />
+              )
             }
 
-            {location.primaryContact &&
-              <PanelMediaList header="Contacts" data={[location.primaryContact]}>
-                <span>
-                  <hr />
+            {location.primaryContact
+              && (
+                <PanelMediaList header="Contacts" data={[location.primaryContact]}>
+                  <span>
+                    <hr />
 
-                  <p style={{ fontFamily: 'helvetica, sans-serif' }}>Nature&apos;s Classroom Institute
-                    <br />{location.addressUrl
-                      ? <a href={location.addressUrl} target="_blank" rel="noopener noreferrer">{location.address }</a>
-                      : <span>{location.address}</span>
-                    }
-                  </p>
+                    <p style={{ fontFamily: 'helvetica, sans-serif', fontSize: '1.1em', paddingLeft: 10 }}>
+                      Nature&apos;s Classroom Institute
+                      <br />
+                      {location.addressUrl
+                        ? (
+                          <a href={location.addressUrl} target="_blank" rel="noopener noreferrer">
+                            {location.address}
+                          </a>
+                        )
+                        : <span>{location.address}</span>
+                      }
+                    </p>
 
-                  <hr />
+                    <hr />
 
-                  <ul className="nostyle" style={{ fontFamily: 'helvetica, sans-serif' }}>
-                    <li><FontAwesome name="phone" fixedWidth /> <a href="tel:{location.primaryContact.phone}">{location.phone}</a></li>
-                  </ul>
-                </span>
-              </PanelMediaList>
+                    <ul className="nostyle" style={{ fontFamily: 'helvetica, sans-serif' }}>
+
+                      <li>
+                        <FontAwesome name="phone" fixedWidth />
+                        {' '}
+                        <a href="tel:{location.primaryContact.phone}">
+                          {location.phone}
+                        </a>
+                      </li>
+
+                    </ul>
+
+                  </span>
+                </PanelMediaList>
+              )
             }
-
-            {/* <span dangerouslySetInnerHTML={{ __html: location.sidebarJson }} /> */}
 
           </Col>
 
@@ -147,6 +176,7 @@ const LOCATION_DETAIL_QUERY = gql`
         rank
         title
         phone
+        email
         profileIcon
       }
     }
