@@ -14,7 +14,6 @@ from jsonfield import JSONField
 from multiselectfield import MultiSelectField
 from measurement.measures import Weight
 
-from djnci.utils import msg_slack
 from accounts.models import AccountProfile, School, Insurance
 from accounts.schema import InsuranceType
 from locations.models import FieldTrip
@@ -366,15 +365,6 @@ class AddOrModifyStudent(graphene.Mutation):
         else:
             s.guardian_list.add(AccountProfile.objects.get(email=kwargs.get('parentGuardianEmail')))
 
-        # Notify our Slack channel
-        admin_url = 'https://discovernci.org/a/students/student/%s/change/' % s.id
-        slack_msg = 'Student from %s. \nDetails: %s' % (s.current_school.name, admin_url)
-        if kwargs.get('id') is None:
-            msg = 'Added new %s' % slack_msg
-        else:
-            msg = 'Updated existing %s' % slack_msg
-        msg_slack(msg)
-
         return AddOrModifyStudent(student=s, medical_record=mr, insurance=ins)
 
 
@@ -516,16 +506,6 @@ class LogAdministeredMed(graphene.Mutation):
                 (u.account_type == 'ee-staff') and field_trip.location in u.assoc_location_list.all()
             ):
                 administered_med.save()
-
-                # Notify our Slack channel
-                admin_url = 'https://discovernci.org/a/students/administeredmed/%s/change/' % administered_med.id
-                msg = '@%s: :medical: Medication administered (%s of %s). \nDetails: %s' % (
-                    field_trip.location.slug,
-                    medication.amount_human,
-                    medication.medication_name,
-                    admin_url
-                )
-                msg_slack(msg)
 
                 return LogAdministeredMed(success=True, administered_med=administered_med)
 

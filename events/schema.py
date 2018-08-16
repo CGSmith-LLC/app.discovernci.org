@@ -92,19 +92,6 @@ class UpdateDitwPreferences(graphene.Mutation):
 
         i.save()
 
-        # Send a notification to our Slack chat service.
-        slack_data = {
-            "channel": "#dinner-in-the-woods",
-            "username": "DitW Bot",
-            "text": "%s (%s) just updated their dinner preferences" % (i.name, i.email),
-            "icon_url": "https://nciw.s3.amazonaws.com/discovernci_media/DitWIcon.jpg"
-        }
-        if not settings.DEBUG:
-            requests.post(
-                settings.SLACK_INTEGRATION_URL,
-                data=json.dumps(slack_data)
-            )
-
         return UpdateDitwPreferences(
             success=True
         )
@@ -248,18 +235,6 @@ class PurchaseDitWTickets(graphene.Mutation):
                 })
         except:
             mailchimp_status = 'failed to subscribe'
-
-        # Send a notification to our Slack chat service.
-        slack_data = {
-            "channel": "#dinner-in-the-woods",
-            "username": "DitW Bot",
-            "text": "*%s tickets* were just purchased by *%s* for Dinner in the Woods. \nDetails: <http://dinnerinthewoods.org/%s>\nCheck-in QR Code: <%s>" % (order.ticket_qty, order.name, order.rsvp_token, order.qrcode_url),
-            "icon_url": "https://nciw.s3.amazonaws.com/discovernci_media/DitWIcon.jpg"
-        }
-        requests.post(
-            settings.SLACK_INTEGRATION_URL,
-            data=json.dumps(slack_data)
-        )
 
         # Email the Customer a receipt
         send_html_email(

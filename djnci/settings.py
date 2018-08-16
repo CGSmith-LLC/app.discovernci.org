@@ -250,9 +250,6 @@ FROALA_EDITOR_PLUGINS = (
     # 'word_paste',
 )
 
-# Slack Chat Service
-SLACK_INTEGRATION_URL = "https://hooks.slack.com/services/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"
-
 if DEBUG:
     STRIPE_PUBLIC_KEY = "pk_test_2iONQfKDphIIa8M9W1hkisQq"
     STRIPE_SECRET_KEY = "sk_test_pUX8VZ1DxHoxOLKPRZaJePID"

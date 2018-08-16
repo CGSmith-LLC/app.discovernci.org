@@ -18,7 +18,7 @@ from django.utils.http import urlsafe_base64_decode as uid_decoder
 from django.utils.http import urlsafe_base64_encode
 from django.utils import timezone
 
-from djnci.utils import send_html_email, msg_slack
+from djnci.utils import send_html_email
 from students.models import Student
 from .models import (AccountProfile, AccountProfileAddress, Insurance, School,
                      SchoolAddress)
@@ -112,10 +112,6 @@ class ApproveTeacher(graphene.Mutation):
                         'Your NCI Account have been activated',
                         [account.email]
                     )
-
-                    # Notify our slack channel
-                    admin_url = 'https://discovernci.org/a/accounts/accountprofile/%s/change/' % account.pk
-                    msg_slack('Approved teacher account. \nDetails: %s' % admin_url)
 
                     return ApproveTeacher(account=account)
                 else:
@@ -221,13 +217,11 @@ class CreateAccountProfile(graphene.Mutation):
 
         # Teachers must either be whitelisted or require manual approval
         if (account.account_type == 'teacher'):
-            slack_msg = 'Created new teacher account that needs manual review & approval. \nDetails: https://discovernci.org/a/accounts/accountprofile/%s/change/. \nClick to approve (only if you\'re certain!): https://discovernci.org/approve/%s/%s' % (account.pk, account.guid, school.guid)
             email_template = 'email_staff_new_teacher_account.html'
             email_subject = 'APPROVAL REQUEST: New Teacher NCI Account Sign up for %s' % school.name
 
             # Circle back and see if they are whitelisted
             if account.email.lower() in school.email_whitelist.lower():
-                slack_msg = 'Created new pre-approved teacher account. \nDetails: https://discovernci.org/a/accounts/accountprofile/%s/change/' % account.pk
                 email_template = 'email_staff_new_whitelisted_teacher_account.html'
                 email_subject = 'New Teacher NCI Account Sign up for %s (pre-approved)' % school.name
                 account.is_active = True
@@ -241,10 +235,7 @@ class CreateAccountProfile(graphene.Mutation):
                 settings.STAFF_TO_LIST
             )
 
-            msg_slack(slack_msg)
-
         elif (account.account_type == 'parent'):
-            msg_slack('Created new parent account. \nDetails: https://discovernci.org/a/accounts/accountprofile/%s/change/' % account.pk)
 
         # Send user a  Welcome/confirmation email
         send_html_email(

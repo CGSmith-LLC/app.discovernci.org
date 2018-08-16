@@ -56,26 +56,6 @@ def week_range(date):
     return (start_date, end_date)
 
 
-def msg_slack(message, channel=None):
-    """Send a message to one of our Slack channels."""
-    slack_data = {
-        'channel': "#portal-activity",
-        'username': 'NCI App',
-        'icon_url': 'https://nciw.s3.amazonaws.com/discovernci_media/NCIAppSlackIcon.png',
-        'text': message
-    }
-    if settings.DEBUG:
-        print(json.dumps(slack_data))
-    else:
-        send_to_slack = requests.post(
-            settings.SLACK_INTEGRATION_URL,
-            data=json.dumps(slack_data)
-        )
-        if send_to_slack.status_code == 200:
-            return True
-        return False
-
-
 def parse_first_name(str):
     """Return only the first name from a full (human) name."""
     i = HumanName(str)
