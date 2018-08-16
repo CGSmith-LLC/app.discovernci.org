@@ -100,13 +100,13 @@ export default class Home extends React.Component {
                   <td />
                 </tr>
                 <tr>
-                  <th><Link to="/environmental/ben-lomond-california">Brooksville, FL</Link></th>
+                  <th><Link to="/environmental/brooksville-florida">Brooksville, FL</Link></th>
                   <td><FontAwesome name="check" /></td>
                   <td><FontAwesome name="check" /></td>
                   <td />
                 </tr>
                 <tr>
-                  <th><Link to="/environmental/ben-lomond-california">Parrish, FL</Link></th>
+                  <th><Link to="/environmental/parrish-florida">Parrish, FL</Link></th>
                   <td><FontAwesome name="check" /></td>
                   <td><FontAwesome name="check" /></td>
                   <td />
