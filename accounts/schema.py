@@ -237,13 +237,13 @@ class CreateAccountProfile(graphene.Mutation):
 
         elif (account.account_type == 'parent'):
 
-        # Send user a  Welcome/confirmation email
-        send_html_email(
-            'email_welcome_new_signup.html',
-            email_payload,
-            'Welcome to Nature\'s Classroom Institute',
-            [account.email, ]
-        )
+            # Send user a  Welcome/confirmation email
+            send_html_email(
+                'email_welcome_new_signup.html',
+                email_payload,
+                'Welcome to Nature\'s Classroom Institute',
+                [account.email, ]
+            )
 
         auth_login(info.context, account)
 

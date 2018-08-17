@@ -36,6 +36,24 @@ p {
   font-size: 1.7em;
 }
 
+h4.modal-title {
+  padding: 10px 0 0 15px;
+}
+
+.message-textarea textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 300px;
+  min-height: 100px;
+}
+
+.modal-header .close {
+  position: relative;
+  top: 7px;
+  right: 7px;
+}
+
 .help-block {
   font-family: Helvetica, sans-serif;
   font-size: 0.9em !important;
@@ -47,6 +65,10 @@ p {
 
 .strong {
   font-weight: bold;
+}
+
+.btn {
+  font-family: 'Helvetica', sans-serif;
 }
 
 .top-1 {margin-top: 1px}
@@ -151,8 +173,13 @@ p {
   .navbar-nav>li>a {
     color: #979797;
   }
+  .navbar-nav>li>.dropdown-menu {
+    position: absolute;
+    left: 8px;
+  }
   .navbar-collapse {
     border: none;
+    text-align: center;
   }
   .navbar-toggle:hover {
     background: #4e4e4e;
@@ -219,7 +246,6 @@ p {
 }
 
 
-
 .navbar-default .navbar-nav>.active>a {
   background: transparent;
   color: #b1b1b1;
@@ -228,6 +254,12 @@ p {
   background: #252525;
 }
 
+.nav.navbar-nav {
+  text-align: center;
+  margin: auto;
+  float: none !important;
+  display: inline-block;
+}
 .nav.navbar-nav>li:first-child>a{
   padding-left: 0;
 }
@@ -235,7 +267,7 @@ p {
   padding-right: 0;
 }
 .nav.navbar-nav>li>a {
-  padding: 15px 16px;
+  padding: 15px 13px;
   font-size: 1.23em;
 }
 .nav.navbar-nav>li>a:hover {
@@ -834,10 +866,6 @@ hr {
     height: 50px;
   }
 
-  .brandItem {
-    display: none;
-  }
-
  .navbar-logo {
    width: 72px;
    float: left;
@@ -1059,6 +1087,7 @@ hr {
     padding: 15px 0px;
     font-size: 0.9em;
   }
+
 }
 
 @media only screen and (max-width : 1200px) {
@@ -1091,7 +1120,9 @@ hr {
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-
+  .brandItem {
+    display: none;
+  }
 }
 
 

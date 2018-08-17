@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import FontAwesome from 'react-fontawesome';
 import Form from 'react-jsonschema-form';
-// import fields from 'react-jsonschema-form-extras';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Modal } from 'react-bootstrap';
 
 class NciTechSupportModal extends React.Component {
-
   static propTypes = {
     submitTechSupportMessage: PropTypes.func.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
@@ -17,7 +14,8 @@ class NciTechSupportModal extends React.Component {
 
   handleSubmit = ({ formData }) => {
     const i = this;
-    this.props.submitTechSupportMessage({ variables: formData })
+    const { submitTechSupportMessage } = this.props;
+    submitTechSupportMessage({ variables: formData })
       .then(({ data }) => {
         i.setState({ success: true });
       }).catch((error) => {
@@ -26,6 +24,7 @@ class NciTechSupportModal extends React.Component {
   }
 
   render() {
+    const { showModal, handleCloseModal } = this.props;
     const formSchema = {
       type: 'object',
       required: ['message', 'token'],
@@ -42,7 +41,8 @@ class NciTechSupportModal extends React.Component {
     };
     const UiSchema = {
       message: {
-        'ui:widget': 'textarea'
+        'ui:widget': 'textarea',
+        classNames: 'message-textarea'
       },
       token: {
         'ui:widget': 'hidden'
@@ -50,14 +50,18 @@ class NciTechSupportModal extends React.Component {
     };
 
     return (
-      <Modal show={this.props.showModal} onHide={this.props.handleCloseModal}>
+      <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Help / Support</Modal.Title>
+
+          <Modal.Title>
+            Help / Support
+          </Modal.Title>
+
         </Modal.Header>
         <Modal.Body>
 
           <p style={{ marginBottom: 15, fontFamily: 'Helvetica, sans-serif', fontSize: '1em' }}>
-            If our site isn't behaving for you, please fill out the following form and let us know what's going on. We're listening, and we're here to help.
+            Send us a message if you need help or experience an issue using our website. We&apos;ll reply as quickly as we can.
           </p>
 
           <Form

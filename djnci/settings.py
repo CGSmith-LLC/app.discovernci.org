@@ -276,9 +276,8 @@ else:
         'mirko@discovernci.org'
     ]
     RAVEN_CONFIG = {
-        # 'dsn': 'https://47fa94712370440d952510d9d632f37c:c17b38a7fb894a17bd9a2a3c0e5804f3@sentry.io/284061',
-        'dsn': 'http://5d3cee34ca0b4c7dad4bf78b94ba3d61:75992de436d94836af769970257051a6@sentry.abstractly.io/1',
+        'dsn': 'https://3459680d947b49cb99620cd5e03b96d7:7e4713788b0248bdb2b8632395392b22@sentry.io/1264473',
         # If you are using git, you can also automatically configure the
         # release based on the git info.
-        # 'release': raven.fetch_git_sha(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'djnci.git/'))),
+        'release': raven.fetch_git_sha(BASE_DIR)
     }

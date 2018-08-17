@@ -50,7 +50,7 @@ export default class MainMenuContainer extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <li eventKey="412"><NavLink to="/" onlyActiveOnIndex>Home</NavLink></li>
+            <li eventKey="412" className="hidden-xs hidden-sm"><NavLink to="/" onlyActiveOnIndex>Home</NavLink></li>
 
             <NavDropdown eventKey="21" title="Outdoor Environmental Edu" id="basic-nav-dropdown">
 
@@ -86,7 +86,7 @@ export default class MainMenuContainer extends React.Component {
 
             <li><NavLink key={8} to="/curriculum">Curriculum</NavLink></li>
 
-            <li className="hidden-xs">
+            <li className="hidden-xs hidden-sm">
               <Link key={25} to="/" style={{ margin: '5px 0 0 0', padding: '0 21px' }}>
                 <img src="//nciw.s3.amazonaws.com/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
               </Link>

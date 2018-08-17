@@ -23,7 +23,7 @@ python-crfsuite==0.9.5
 python-dateutil==2.6.1
 pytz==2017.2
 qrcode==5.3
-raven==6.5.0
+raven==6.9.0
 requests==2.13.0
 simplejson==3.10.0
 stripe==1.46.0
