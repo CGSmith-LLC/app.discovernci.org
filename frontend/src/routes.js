@@ -97,7 +97,7 @@ const requireAuth = (nextState, replace) => {
 
 export default (
   <div>
-    <Raven dsn="http://34786354cf4c4af1a0531a32206eebbd@sentry.abstractly.io/2" />
+    <Raven dsn="https://a412ab91fe59481ba09d7dee36810151@sentry.io/1264486" />
 
     <Route path="/events/dinner-in-the-woods/check-in" component={DitWStaff}>
       <Route path="/events/dinner-in-the-woods/check-in/:rsvpToken" component={DitWReservation} />
