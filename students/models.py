@@ -5,12 +5,9 @@ from gettext import gettext as _
 import uuid
 
 from django.db import models
-# from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 
 from nameparser import HumanName
-from measurement.measures import Weight  # , Distance
-from django_measurement.models import MeasurementField
 from multiselectfield import MultiSelectField
 
 from .managers import StudentManager, MedicalRecordManager, MedicationManager
@@ -186,7 +183,7 @@ class MedicalRecord(models.Model):
 
     gender = models.IntegerField(blank=True, null=True, choices=GENDER_CHOICES)
     height = models.CharField(max_length=25, blank=True, null=True)
-    weight = MeasurementField(measurement=Weight, blank=True, null=True)
+    weight = models.CharField(max_length=25, blank=True, null=True)
 
     non_rx_type = models.IntegerField(blank=True, null=True, choices=NON_RX_TYPE_CHOICES)
     non_rx_notes = models.TextField(blank=True)
