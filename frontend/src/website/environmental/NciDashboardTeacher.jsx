@@ -346,7 +346,7 @@ const NciDashboardTeacher = compose(
     options: {
       pollInterval: 4000,
       variables: {
-        timeline: 'now'
+        timeline: 'upcoming'
       }
     }
   })
