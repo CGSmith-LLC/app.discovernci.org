@@ -264,14 +264,14 @@ else:
     # STRIPE_SECRET_KEY = "sk_test_pUX8VZ1DxHoxOLKPRZaJePID"
     STAFF_TO_LIST = [
         'bkeating+nciw@gmail.com',
-        'jennifer@nciw.org',
+        'Jenniferbraun07@gmail.com',
         'geoffrey@nciw.org',
         'sherry@nciw.org',
         'mirko@discovernci.org'
     ]
     TECH_SUPPORT_TO_LIST = [
         'bkeating+nciw@gmail.com',
-        'jennifer@nciw.org',
+        'Jenniferbraun07@gmail.com',
         'sherry@nciw.org',
         'mirko@discovernci.org'
     ]

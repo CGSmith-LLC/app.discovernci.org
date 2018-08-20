@@ -61,13 +61,13 @@ class PostVisitSubmission(View):
 
         # to_list = ['bkeating@gmail.com', ]
         if submission.location <= 4:
-            to_list = ['bkeating+nciw@gmail.com', 'jennifer@nciw.org', 'info@nciw.org', 'sherry@nciw.org']
+            to_list = ['bkeating+nciw@gmail.com', 'Jenniferbraun07@gmail.com', 'info@nciw.org']
         if submission.location > 4 < 7:
-            to_list = ['bkeating+nciw@gmail.com', 'jennifer@nciw.org', 'mirko@discovernci.org']
+            to_list = ['bkeating+nciw@gmail.com', 'Jenniferbraun07@gmail.com', 'mirko@discovernci.org']
         if submission.location > 7 < 9:
-            to_list = ['bkeating+nciw@gmail.com', 'jennifer@nciw.org', 'geoffrey@nciw.org']
+            to_list = ['bkeating+nciw@gmail.com', 'Jenniferbraun07@gmail.com', 'geoffrey@nciw.org']
         if submission.location >= 9:
-            to_list = ['bkeating+nciw@gmail.com', 'jennifer@nciw.org', 'geoffrey@nciw.org']
+            to_list = ['bkeating+nciw@gmail.com', 'Jenniferbraun07@gmail.com', 'geoffrey@nciw.org']
 
         send_html_email(
             'email_staff_visit_submission.html',
