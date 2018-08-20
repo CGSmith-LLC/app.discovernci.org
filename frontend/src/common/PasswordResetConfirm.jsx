@@ -6,8 +6,8 @@ import {
   Alert, Button, Row, Col, FormGroup, ControlLabel, FormControl
 } from 'react-bootstrap';
 
-import { getPasswordValidationState } from '../utils/formValidators';
-import BasicContainer from '../base/BasicContainer';
+import { getPasswordValidationState } from './utils/formValidators';
+import BasicContainer from '../website/base/BasicContainer';
 
 class PasswordResetConfirm extends React.Component {
   static propTypes = {

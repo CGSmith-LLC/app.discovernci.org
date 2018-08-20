@@ -75,4 +75,3 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(DitwTicketPurchase, DitwTicketPurchaseAdmin)
-# admin.site.unregister(Event)

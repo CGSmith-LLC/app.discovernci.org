@@ -25,7 +25,6 @@ class Mutation(
     accounts.schema.Mutation,
     students.schema.Mutation,
     locations.schema.Mutation,
-    events.schema.Mutation,
     graphene.ObjectType
 ):
     pass

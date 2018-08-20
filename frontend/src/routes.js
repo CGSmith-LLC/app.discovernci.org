@@ -2,30 +2,46 @@ import React from 'react';
 import Raven from 'react-raven';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './App';
-import Contact from './Contact';
-import Curriculum from './Curriculum';
-import Donate from './Donate';
-import Error404 from './base/404';
-import Home from './Home';
-import Newsletter from './Newsletter';
-import PageContainer from './PageContainer';
-import PostsContainer from './PostsContainer';
-import PostDetail from './PostDetail';
+import {
+  Login,
+  Logout,
+  PasswordReset,
+  PasswordResetConfirm,
+  CreateAccount,
+  requireAuth
+} from './common';
 
 import {
-  AdditionalPermissionsForm,
-  ApplicationForAdmissionForm,
-  BeforeAfterCareForm,
-  ChildrensHouseMedAuthForm,
-  EmergencyInfoMedAuthForm,
-  FamilyInfoForm,
-  ImmunizationRecordForm,
-  MedicalExamForEntranceForm,
+  WebsiteWrapper,
+  ContactPage,
+  CurriculumPage,
+  DonatePage,
+  Error404Page,
+  FrontPage,
+  NewsletterPage,
+  PageContainer,
+  PostsContainer,
+  PostDetail,
   VisitForm,
   VisitEnvironmentalForm,
-  VolunteerLogForm
-} from './forms';
+  EventCalendar,
+  EventListContainer,
+  EventDetail,
+  BaseMontessori,
+  FacultyStaffMontessori,
+  History,
+  MontessoriHomepage,
+  MontessoriEnrollment,
+  Tuition,
+  ThisWeekAtNci,
+  EEFacultyStaff,
+  LocationsContainer,
+  LocationsIndex,
+  LocationDetail,
+  PrepareForNci,
+  DayInTheLife,
+  NciDashboard
+} from './website';
 
 import {
   NciApp,
@@ -36,77 +52,19 @@ import {
   NciAppStudentDetail,
   NciAppGuardianDetail,
   NciAppStudentWaiver,
-  NciAppAddMedication
-} from './nciapp';
-
-import {
-  Login,
-  Logout,
-  PasswordReset,
-  PasswordResetConfirm,
-  CreateAccount
-} from './common';
-
-import { loggedIn } from './common/auth';
-
-import {
-  EEFacultyStaff,
-  RoomAssignment,
-  LocationsContainer,
-  LocationsIndex,
-  LocationDetail,
-  PrepareForNci,
-  DayInTheLife,
-  NciDashboard
-} from './environmental';
-
-import {
-  BaseMontessori,
-  FacultyStaffMontessori,
-  History,
-  MontessoriEnrollment,
-  MontessoriHomepage,
-  Tuition,
-  ThisWeekAtNci
-} from './montessori';
-
-import {
-  DinnerWoodsHomepage,
-  DitWCheckIn,
-  DitWStaff,
-  DitWReservation,
-  EventCalendar,
-  EventDetail,
-  EventListContainer
-} from './events';
-
-import ApproveAccountProfile from './accounts/ApproveAccountProfile';
-
-const requireAuth = (nextState, replace) => {
-  if (!loggedIn()) {
-    replace({
-      pathname: '/login',
-      state: {
-        nextPathname: nextState.location.pathname
-          ? nextState.location.pathname
-          : '/dashboard'
-      }
-    });
-  }
-};
+  NciAppAddMedication,
+  ApproveAccountProfile
+} from './portal';
 
 export default (
   <div>
-    <Raven dsn="https://a412ab91fe59481ba09d7dee36810151@sentry.io/1264486" />
+    <Raven dsn={process.env.REACT_APP_SENTRY_DSN_URL} />
 
-    <Route path="/events/dinner-in-the-woods/check-in" component={DitWStaff}>
-      <Route path="/events/dinner-in-the-woods/check-in/:rsvpToken" component={DitWReservation} />
-    </Route>
-
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+    <Route path="/" component={WebsiteWrapper}>
+      <IndexRoute component={FrontPage} />
 
       <Route path="/dashboard" component={NciDashboard} onEnter={requireAuth} />
+
       <Route path="/environmental" component={LocationsContainer}>
         <IndexRoute component={LocationsIndex} />
         <Route path="/environmental/a-day-in-the-life" component={DayInTheLife} />
@@ -114,11 +72,10 @@ export default (
         <Route path="/environmental/prepare" component={PrepareForNci} />
         <Route path="/environmental/visit" component={VisitEnvironmentalForm} />
         <Route path="/environmental/:location/faculty-staff" component={EEFacultyStaff} />
-        <Route path="/environmental/:location/room-assignment" component={RoomAssignment} />
         <Route path="/environmental/:location" component={LocationDetail} />
       </Route>
 
-      <Route path="/curriculum" component={Curriculum} />
+      <Route path="/curriculum" component={CurriculumPage} />
 
       <Route path="/montessori/history" component={History} />
       <Route path="/montessori/calendar" component={EventCalendar} />
@@ -135,25 +92,13 @@ export default (
       </Route>
 
       <Route path="/events" component={EventListContainer} />
-      <Route path="/events/dinner-in-the-woods" component={DinnerWoodsHomepage} />
-      <Route path="/events/dinner-in-the-woods/:rsvpToken" component={DitWCheckIn} />
       <Route path="/events/:year/:month/:slug" component={EventDetail} />
 
-      <Route path="/donate" component={Donate} />
+      <Route path="/donate" component={DonatePage} />
 
-      <Route path="/contact" component={Contact} />
+      <Route path="/contact" component={ContactPage} />
 
-      <Route path="/newsletters" component={Newsletter} />
-
-      <Route path="/forms/additional-permissions" component={AdditionalPermissionsForm} />
-      <Route path="/forms/application-for-admission" component={ApplicationForAdmissionForm} />
-      <Route path="/forms/childrens-house-medication-authorization" component={ChildrensHouseMedAuthForm} />
-      <Route path="/forms/before-after-care" component={BeforeAfterCareForm} />
-      <Route path="/forms/immunization-record" component={ImmunizationRecordForm} />
-      <Route path="/forms/medical-exam-for-entrance" component={MedicalExamForEntranceForm} />
-      <Route path="/forms/emergency-info-medication-authorization" component={EmergencyInfoMedAuthForm} />
-      <Route path="/forms/family-information" component={FamilyInfoForm} />
-      <Route path="/forms/volunteer-log" component={VolunteerLogForm} />
+      <Route path="/newsletters" component={NewsletterPage} />
 
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
@@ -174,7 +119,7 @@ export default (
     <Route path="/app/student/:id/waiver" component={NciAppStudentWaiver} onEnter={requireAuth} />
     <Route path="/app/guardian/:id" component={NciAppGuardianDetail} onEnter={requireAuth} />
 
-    <Route path="*" component={Error404} />
+    <Route path="*" component={Error404Page} />
 
   </div>
 );

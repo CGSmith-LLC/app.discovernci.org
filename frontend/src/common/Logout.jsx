@@ -4,12 +4,11 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { Row, Col } from 'react-bootstrap';
 
-import { logout } from './auth'; 
+import { logout } from './auth';
 
-import BasicContainer from '../base/BasicContainer';
+import BasicContainer from '../website/base/BasicContainer';
 
 class Logout extends React.Component {
-
   static propTypes = {
     mutate: PropTypes.func.isRequired
   }
@@ -24,8 +23,15 @@ class Logout extends React.Component {
       <BasicContainer>
         <Row>
           <Col md={12} className="center">
-            <h4 style={{ marginTop: 60 }}>You've logged out. Have a great day!</h4>
-            <a href="/login">Sign back in</a>
+
+            <h4 style={{ marginTop: 60 }}>
+              You've logged out. Have a great day!
+            </h4>
+
+            <a href="/login">
+              Sign back in
+            </a>
+
           </Col>
         </Row>
       </BasicContainer>

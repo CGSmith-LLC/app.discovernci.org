@@ -111,7 +111,7 @@ class MedicalRecordAdmin(admin.ModelAdmin):
         'last_tetanus',
         'gender',
         'height',
-        'weight_display',
+        'weight',
         'modified'
     )
     readonly_fields = ['guid', 'created', 'modified']
@@ -138,18 +138,9 @@ class MedicalRecordAdmin(admin.ModelAdmin):
             return format_html(allergies_display + food_allergens_display)
         return None
 
-    def weight_display(self, obj):
-        # return format_html("{0}", w.lb)
-        if obj.weight:
-            return round(obj.weight.lb)
-        return None
-
     medication_count.short_description = 'Medications'
-
     get_allergies_display.short_description = 'Allergies'
     get_allergies_display.allow_tags = True
-
-    weight_display.short_description = 'Weight (lbs)'
 
 
 class MedicationAdmin(admin.ModelAdmin):

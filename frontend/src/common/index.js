@@ -9,5 +9,5 @@ export { default as PanelLinkList } from './PanelLinkList';
 export { default as PanelMediaList } from './PanelMediaList';
 export { default as PasswordReset } from './PasswordReset';
 export { default as PasswordResetConfirm } from './PasswordResetConfirm';
-export auth from './auth';
+export * from './auth';
 export TableCellFormatters from './TableCellFormatters';

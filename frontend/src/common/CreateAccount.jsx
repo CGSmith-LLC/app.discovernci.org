@@ -10,10 +10,10 @@ import {
   Row, Col, Button, Alert, FormGroup, ControlLabel, FormControl, Checkbox
 } from 'react-bootstrap';
 
-import BasicContainer from '../base/BasicContainer';
+import BasicContainer from '../website/base/BasicContainer';
 import {
   getEmailValidationState, getPasswordValidationState, getFullNameValidationState, getPhoneValidationState
-} from '../utils/formValidators';
+} from './utils/formValidators';
 
 class CreateAccountContainer extends React.Component {
   static propTypes = {

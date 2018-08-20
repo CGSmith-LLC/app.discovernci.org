@@ -6,8 +6,8 @@ import { graphql } from 'react-apollo';
 import { Row, Col, Button, Alert, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-import { validateEmail } from '../utils';
-import BasicContainer from '../base/BasicContainer';
+import { validateEmail } from './utils/index';
+import BasicContainer from '../website/base/BasicContainer';
 
 class Login extends React.Component {
 

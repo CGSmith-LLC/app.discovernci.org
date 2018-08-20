@@ -12,7 +12,6 @@ from graphene_django.converter import convert_django_field
 
 from jsonfield import JSONField
 from multiselectfield import MultiSelectField
-from measurement.measures import Weight
 
 from accounts.models import AccountProfile, School, Insurance
 from accounts.schema import InsuranceType
@@ -102,7 +101,7 @@ class MedicalRecordType(DjangoObjectType):
     gender = graphene.Int()
     get_gender_display = graphene.String()
     height = graphene.String()
-    weight = graphene.Float()
+    weight = graphene.String()
 
     allergen_count = graphene.Int()
     food_allergen_count = graphene.Int()
@@ -151,7 +150,8 @@ class MedicalRecordType(DjangoObjectType):
 
     def resolve_weight(self, _args, *_kwargs):
         if self.weight:
-            return str(self.weight.lb)
+            return self.weight
+            # return str(self.weight.lb)
         return None
 
     def resolve_has_allergies(self, _args, *_kwargs):
@@ -225,7 +225,7 @@ class AddOrModifyStudent(graphene.Mutation):
         # Medical Fields **********************************
         gender = graphene.Int()
         height = graphene.String()
-        weight = graphene.Float()
+        weight = graphene.String()
         lastTetanus = graphene.String()
         noTetanusVaccine = graphene.Boolean()
         recentTrauma = graphene.String()
@@ -293,8 +293,8 @@ class AddOrModifyStudent(graphene.Mutation):
             mr = MedicalRecord(student=s)
         mr.gender = kwargs.get('gender')
         mr.height = kwargs.get('height')
-        if kwargs.get('weight'):
-            mr.weight = Weight(lb=kwargs.get('weight'))
+        mr.weight = kwargs.get('weight')
+
         if kwargs.get('lastTetanus'):
             mr.last_tetanus = parse(kwargs.get('lastTetanus')).date()
         mr.no_tetanus_vaccine = kwargs.get('noTetanusVaccine', False)

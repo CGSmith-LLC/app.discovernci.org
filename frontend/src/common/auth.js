@@ -18,6 +18,19 @@ const loggedIn = () => {
   return false;
 };
 
+const requireAuth = (nextState, replace) => {
+  if (!loggedIn()) {
+    replace({
+      pathname: '/login',
+      state: {
+        nextPathname: nextState.location.pathname
+          ? nextState.location.pathname
+          : '/dashboard'
+      }
+    });
+  }
+};
+
 export {
-  login, logout, loggedIn
+  login, logout, loggedIn, requireAuth
 };

@@ -8,8 +8,8 @@ import {
   Row, Col, Button, Alert, FormGroup, ControlLabel, FormControl
 } from 'react-bootstrap';
 
-import { getEmailValidationState } from '../utils/formValidators';
-import BasicContainer from '../base/BasicContainer';
+import { getEmailValidationState } from './utils/formValidators';
+import BasicContainer from '../website/base/BasicContainer';
 
 class PasswordReset extends React.Component {
   static propTypes = {

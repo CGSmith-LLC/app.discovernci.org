@@ -12,7 +12,8 @@ import { Router, browserHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'font-awesome/css/font-awesome.min.css';
-import './base/style.less';
+
+import './website/style.less';
 
 // react-router v3 routes
 import routes from './routes';
@@ -49,7 +50,7 @@ const client = new ApolloClient({
 });
 
 // Log page view to Google Analytics
-ReactGA.initialize('UA-91553844-1');
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
 function logPageView() {
   ReactGA.set({ page: window.location.pathname });
   ReactGA.pageview(window.location.pathname);
