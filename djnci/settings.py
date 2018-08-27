@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm97y&6tvt83#%%x7^eudo&^7!g!lpe4#_9q)9*1j@cd=f7x$m@'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = strtobool(os.getenv('DJNCI_DEBUG', 'false'))
 
-ALLOWED_HOSTS = ['.discovernci.org', '.nciw.org', 'localhost']
+ALLOWED_HOSTS = ['.discovernci.org', '.nciw.org', 'localhost', 'djnci.local']
 
 # Application definition
 INSTALLED_APPS = [
@@ -156,6 +156,7 @@ MEDIA_URL = '/media/'
 # exceptions raised in the request/response cycle are emailed to these addresses.
 ADMINS = [
     ('Ben Keating', 'bkeating@gmail.com'),
+    ('Chris Smith', 'chris@cgsmith.net'),
 ]
 
 # All email sent from site is done through our SendGrid account.
@@ -165,9 +166,9 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
-    EMAIL_HOST = "smtp.sendgrid.net"
-    EMAIL_HOST_PASSWORD = "vj4ZD72dDgpXbW78Ba64r37nuF9G"
-    EMAIL_HOST_USER = "nciw"
+    EMAIL_HOST = ['SMTP_HOST']
+    EMAIL_HOST_PASSWORD = os.environ['SMTP_PASSWORD']
+    EMAIL_HOST_USER = os.environ['SMTP_USER']
 
 FROALA_UPLOAD_PATH = 'froala_editor/uploads'
 FROALA_EDITOR_OPTIONS = {
@@ -251,17 +252,13 @@ FROALA_EDITOR_PLUGINS = (
 )
 
 if DEBUG:
-    STRIPE_PUBLIC_KEY = "pk_test_2iONQfKDphIIa8M9W1hkisQq"
-    STRIPE_SECRET_KEY = "sk_test_pUX8VZ1DxHoxOLKPRZaJePID"
-    # STRIPE_PUBLIC_KEY = "pk_live_I0aXq1wrhAdM6vxFA55zsOiZ"
-    # STRIPE_SECRET_KEY = "sk_live_8uvyONsuvLAXubtwS0jxGY3s"
-    STAFF_TO_LIST = ['bkeating+nciw@gmail.com']
-    TECH_SUPPORT_TO_LIST = ['bkeating+nciw@gmail.com']
+    STRIPE_PUBLIC_KEY = os.environ['STRIPE_TEST_PUBLIC_KEY']
+    STRIPE_SECRET_KEY = os.environ['STRIPE_TEST_SECRET_KEY']
+    STAFF_TO_LIST = ['bkeating+nciw@gmail.com', 'chris@cgsmith.net']
+    TECH_SUPPORT_TO_LIST = ['bkeating+nciw@gmail.com', 'chris@cgsmith.net']
 else:
-    STRIPE_PUBLIC_KEY = "pk_live_I0aXq1wrhAdM6vxFA55zsOiZ"
-    STRIPE_SECRET_KEY = "sk_live_8uvyONsuvLAXubtwS0jxGY3s"
-    # STRIPE_PUBLIC_KEY = "pk_test_2iONQfKDphIIa8M9W1hkisQq"
-    # STRIPE_SECRET_KEY = "sk_test_pUX8VZ1DxHoxOLKPRZaJePID"
+    STRIPE_PUBLIC_KEY = os.environ['STRIPE_LIVE_PUBLIC_KEY']
+    STRIPE_SECRET_KEY = os.environ['STRIPE_LIVE_PRIVATE_KEY']
     STAFF_TO_LIST = [
         'bkeating+nciw@gmail.com',
         'Jenniferbraun07@gmail.com',
@@ -271,12 +268,13 @@ else:
     ]
     TECH_SUPPORT_TO_LIST = [
         'bkeating+nciw@gmail.com',
+        'chris@cgsmith.net',
         'Jenniferbraun07@gmail.com',
         'sherry@nciw.org',
         'mirko@discovernci.org'
     ]
     RAVEN_CONFIG = {
-        'dsn': 'https://3459680d947b49cb99620cd5e03b96d7:7e4713788b0248bdb2b8632395392b22@sentry.io/1264473',
+        'dsn': os.environ['SENTRY_DSN_URL'],
         # If you are using git, you can also automatically configure the
         # release based on the git info.
         'release': raven.fetch_git_sha(BASE_DIR)

@@ -10,3 +10,4 @@ static_collected/
 build.tar.bz2
 npm-debug.log
 .idea
+.vagrant
