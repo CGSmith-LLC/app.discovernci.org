@@ -103,7 +103,6 @@ export default function EventCalendar() {
           <Panel header="Additional Resources">
             <ul className="nostyle">
               <li style={{ listStyle: 'bullet' }}><Link to="/contact">Schedule an Observation</Link></li>
-              <li style={{ listStyle: 'bullet' }}><Link to="/montessori/tuition">Tuition and Fees</Link></li>
               <li style={{ display: 'block', borderBottom: '1px solid #e6e6e6', marginBottom: 10, paddingTop: 10 }} />
               <li>
                 <a href="https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
