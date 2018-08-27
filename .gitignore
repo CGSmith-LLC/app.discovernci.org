@@ -9,3 +9,4 @@ static_collected/
 *.sqlite3
 build.tar.bz2
 npm-debug.log
+.idea

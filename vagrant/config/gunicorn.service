@@ -1,0 +1,22 @@
+[Unit]
+Description=discovernci.org daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=ubuntu
+Group=ubuntu
+RuntimeDirectory=gunicorn
+WorkingDirectory=/var/www/djnci
+EnvironmentFile=/var/www/djnci/.env
+ExecStart=/usr/local/bin/gunicorn --pid /run/gunicorn/pid \
+    --bind=unix:/run/gunicorn/socket \
+    --user=ubuntu --group=ubuntu --workers=3 \
+    djnci.wsgi
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
