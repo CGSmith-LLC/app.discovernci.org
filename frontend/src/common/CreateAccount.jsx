@@ -25,7 +25,7 @@ class CreateAccountContainer extends React.Component {
 
   state = {
     csrftoken: Cookies.get('csrftoken'),
-    accountType: '',
+    accountType: 'parent',
     currentSchool: [],
     email: '',
     password: '',
