@@ -166,7 +166,7 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
-    EMAIL_HOST = ['SMTP_HOST']
+    EMAIL_HOST = os.environ['SMTP_HOST']
     EMAIL_HOST_PASSWORD = os.environ['SMTP_PASSWORD']
     EMAIL_HOST_USER = os.environ['SMTP_USER']
 
@@ -260,18 +260,10 @@ else:
     STRIPE_PUBLIC_KEY = os.environ['STRIPE_LIVE_PUBLIC_KEY']
     STRIPE_SECRET_KEY = os.environ['STRIPE_LIVE_PRIVATE_KEY']
     STAFF_TO_LIST = [
-        'bkeating+nciw@gmail.com',
-        'Jenniferbraun07@gmail.com',
-        'geoffrey@nciw.org',
-        'sherry@nciw.org',
-        'mirko@discovernci.org'
+        'chris@cgsmith.net'
     ]
     TECH_SUPPORT_TO_LIST = [
-        'bkeating+nciw@gmail.com',
         'chris@cgsmith.net',
-        'Jenniferbraun07@gmail.com',
-        'sherry@nciw.org',
-        'mirko@discovernci.org'
     ]
     RAVEN_CONFIG = {
         'dsn': os.environ['SENTRY_DSN_URL'],
