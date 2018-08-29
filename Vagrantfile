@@ -31,7 +31,7 @@ end
 # vagrant configurate
 Vagrant.configure(2) do |config|
   # select the box
-  config.vm.box = 'bento/ubuntu-16.04'
+  config.vm.box = 'bento/ubuntu-18.04'
 
   # should we ask about box updates?
   config.vm.box_check_update = options['box_check_update']
@@ -54,8 +54,10 @@ Vagrant.configure(2) do |config|
   # network settings
   config.vm.network 'private_network', ip: options['ip']
   config.vm.network "forwarded_port", guest: 9000, host: 9000
+  config.vm.network "forwarded_port", guest: 80, host: 80
 
-  # sync: folder 'yii2-app-advanced' (host machine) -> folder '/app' (guest machine)
+  # sync: folder 'djnci' (host machine) -> folder '/var/www/djnci' (guest machine)
+  config.vm.synced_folder './', '/var/www/djnci', owner: 'vagrant', group: 'vagrant'
   config.vm.synced_folder './', '/app', owner: 'vagrant', group: 'vagrant'
 
   # disable folder '/vagrant' (guest machine)

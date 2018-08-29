@@ -20,23 +20,61 @@ export DEBIAN_FRONTEND=noninteractive
 
 info "Configure timezone"
 timedatectl set-timezone ${timezone} --no-ask-password
+echo "Done!"
 
-sudo apt install build-essential zlib1g-dev libssl-dev sqlite3 libsqlite3-dev virtualenv
+info "Install Additional Software"
+apt-get install -y build-essential zlib1g-dev libssl-dev sqlite3 libsqlite3-dev nginx
+echo "Done!"
 
+info "Install Python 3.6.6"
 wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz
 tar xf Python-3.6.6.tgz
 cd Python-3.6.6
 ./configure
 make
-make test
-sudo make install
+make install
+echo "Done!"
+
+info "Install PIP extensions"
+pip3.6 install -r /app/requirements.txt
+echo "Done!"
+
+info "Install Gunicorn"
+pip3.6 install gunicorn
+echo "Done!"
+
+info "Remove default site config in nginx"
+rm /etc/nginx/sites-enabled/default
+info "Done!"
+
+info "Enable site configuration in nginx"
+ln -s /app/vagrant/nginx/app.conf /etc/nginx/sites-enabled/app.conf
+echo "Done!"
 
 
-sudo pip3.6 install -r /app/requirements.txt
+rm -r /var/www/html/
+ln -s /var/www/djnci/frontend/build/ html
 
+info "Setup gunicorn folder for /run"
+mkdir -p /run/gunicorn
+info "Done!"
 
-# Setup Gunicorn
-# Setup .socket file
-# setup .service file
-# setup nginx
-# copy static django files to /static on /var/www/html
+info "Setting up gunicorn socket file"
+ln -s /app/vagrant/systemd/gunicorn.socket /etc/systemd/system/gunicorn.socket
+ln -s /app/vagrant/systemd/gunicorn.service /etc/systemd/system/gunicorn.service
+info "Done!"
+
+info "Reloading systemctl"
+systemctl daemon-reload
+info "Done!"
+
+info "Enabling service to start"
+systemctl enable nginx
+systemctl enable gunicorn
+info "Done!"
+
+info "Starting services and socket"
+systemctl start nginx
+systemctl start gunicorn.socket
+systemctl start gunicorn.service
+info "Done!"

@@ -10,10 +10,7 @@ Group=ubuntu
 RuntimeDirectory=gunicorn
 WorkingDirectory=/var/www/djnci
 EnvironmentFile=/var/www/djnci/.env
-ExecStart=/usr/local/bin/gunicorn --pid /run/gunicorn/pid \
-    --bind=unix:/run/gunicorn/socket \
-    --user=ubuntu --group=ubuntu --workers=3 \
-    djnci.wsgi
+ExecStart=/usr/local/bin/gunicorn --pid /run/gunicorn/pid  --bind=unix:/run/gunicorn/socket --user=ubuntu --group=ubuntu --workers=3 --capture-output --log-file=/var/log/gunicorn.log djnci.wsgi
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 PrivateTmp=true
