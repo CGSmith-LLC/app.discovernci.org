@@ -95,6 +95,16 @@ const facultyStaffList = [
     bio: 'Before joining the NCI team as an environmental educator, Cristina researched the marine environment and graduated from Western Washington University with a Master’s in marine and estuarine science. Throughout her academic career she combined her research interests with youth education and outreach opportunities. Why? Because to her, science education outside of the lab is just as important as inside the lab. She is an adventurer at heart and is always ready to go outdoors.'
   },
   {
+    id: 33,
+    name: 'Neil Pederson',
+    title: 'Environmental Educator',
+    image: '/discovernci_media/faculty-staff/Neil-Pederson.jpg',
+    slug: 'neil-pederson',
+    locations: [1, 2, 3, 4],
+    rank: 10,
+    bio: 'Neil was born and raised in Clarendon Hills, Illinois and is a graduate of the University of Wisconsin-Stevens Point with a degree in communications. As a Pointer, he was a member of the cross country and track & field teams, serving as a captain of each for two years and earning All-American status. Upon graduation, he worked as an Environmental Educator at Brandywine Creek State Park in Wilmington, DE for one year. More recently, he worked on a trail crew with the US Forest Service in the Church National Forest in South-Central Alaska. He is now thrilled to teach and learn from the children of Texas and California.'
+  },
+  {
     id: 5,
     name: 'Louise Twomey',
     title: 'Environmental Instructors',
