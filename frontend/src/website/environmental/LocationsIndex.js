@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 export default class Locations extends React.Component {
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bg3.jpg)';
+    document.body.style.backgroundImage = 'url(discovernci_media/bg3.jpg)';
   }
 
   render() {
@@ -20,7 +20,7 @@ export default class Locations extends React.Component {
           meta={[
               { property: 'og:url', content: 'https://discovernci.org/environmental' },
               { property: 'og:title', content: "Outdoor Environmental Education Program - Nature's Classroom Institute" },
-              { property: 'og:image', content: 'http://nciw.s3.amazonaws.com/discovernci_media/nci-og-ee-home.jpg' }
+              { property: 'og:image', content: 'discovernci_media/nci-og-ee-home.jpg' }
           ]}
         />
 
@@ -78,21 +78,21 @@ export default class Locations extends React.Component {
         </Col>
         <Col md={4}>
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/imgHappyTreeFriends.jpg" className="img-responsive img-rounded" alt="presentation" />
+          <img src="discovernci_media/imgHappyTreeFriends.jpg" className="img-responsive img-rounded" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/spring3.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/spring3.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/helping.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/helping.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/ObservationDeck.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/ObservationDeck.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/MeasuringOutside.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/MeasuringOutside.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/HappyCrew.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/HappyCrew.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/Feeding.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/Feeding.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/BoysInThaTrees.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="discovernci_media/BoysInThaTrees.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
         </Col>
       </Row>

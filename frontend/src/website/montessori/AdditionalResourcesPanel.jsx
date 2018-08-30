@@ -24,12 +24,12 @@ export default function AdditionalResourcesPanel() {
         <li><a href="http://www.companycasuals.com/naturesclassroom/start.jsp" target="_blank" rel="noopener noreferrer">School Store</a></li>
         <li style={{ display: 'block', borderBottom: '1px solid #e6e6e6', marginBottom: 10, paddingTop: 10 }} />
         <li>
-          <a href="https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
             <FontAwesome name="file-pdf-o" fixedWidth />{' '}Application for Admission
           </a>
         </li>
         <li>
-          <a href="//nciw.s3.amazonaws.com/documents/Immunization%20form.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/documents/Immunization%20form.pdf" target="_blank" rel="noopener noreferrer">
             <FontAwesome name="file-pdf-o" fixedWidth />{' '}Immunization form
           </a>
         </li>

@@ -32,7 +32,7 @@ export default class MainMenuContainer extends React.Component {
         <Navbar.Header>
           <Navbar.Brand className="brandItem">
             <Link key={1} to="/" style={{ margin: '5px 0 0 0', padding: '0 21px' }}>
-              <img src="//nciw.s3.amazonaws.com/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
+              <img src="/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
               <span
                 style={{
                   fontSize: 15,
@@ -88,7 +88,7 @@ export default class MainMenuContainer extends React.Component {
 
             <li className="hidden-xs hidden-sm">
               <Link key={25} to="/" style={{ margin: '5px 0 0 0', padding: '0 21px' }}>
-                <img src="//nciw.s3.amazonaws.com/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
+                <img src="/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
               </Link>
             </li>
 

@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 export default class Error404 extends React.Component {
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bg6.jpg)';
+    document.body.style.backgroundImage = 'url(discovernci_media/bg6.jpg)';
   }
 
   render() {

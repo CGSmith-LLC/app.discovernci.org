@@ -31,7 +31,7 @@ export default class VisitMontessori extends React.Component {
   }
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/winterBg1.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/winterBg1.jpg)';
   }
 
   getPreferredTimeValidationState = (e) => { if (this.state.preferredTime >= 1) return 'success'; }

@@ -23,7 +23,7 @@ export default function CreditCardForm(props) {
         <Row>
           <span className="panel-title display-td" style={{ marginLeft: 15, fontSize: '1.1em' }}>Payment Details</span>
           <img
-            src="//nciw.s3.amazonaws.com/discovernci_media/cards-accepted.jpg"
+            src="/discovernci_media/cards-accepted.jpg"
             style={{ width: 125, marginRight: 15, position: 'relative', top: 4 }}
             className="img-responsive pull-right"
             alt="All major credit cards accepted"

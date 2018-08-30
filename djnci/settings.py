@@ -149,7 +149,7 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 
 # Media files (those that are uploaded by users) via admin panel, api...
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/media')
 MEDIA_URL = '/media/'
 
 # A list of all the people who get code error notifications. Details of

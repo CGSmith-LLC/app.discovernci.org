@@ -37,7 +37,7 @@ export default function PostList({ loading, posts }) {
   return (
     <Row>
       <img
-        src="//nciw.s3.amazonaws.com/discovernci_media/artwork-header-001.jpg"
+        src="/discovernci_media/artwork-header-001.jpg"
         className="img-responsive img-rounded"
         style={{ marginBottom: 15, borderRadius: '4px 4px 0 0' }}
         alt=""
@@ -62,23 +62,23 @@ export default function PostList({ loading, posts }) {
 
         <Panel header="General Resources" style={{ marginTop: 30 }}>
           <ul className="spaced-list">
-            <li><a href="http://nciw.s3.amazonaws.com/documents/2017_yearly_calendar_updated.pdf" target="_blank" rel="noopener noreferrer"><FontAwesome name="calendar" fixedWidth /> 2017-2018 Yearly Calendar</a></li>
+            <li><a href="/documents/2017_yearly_calendar_updated.pdf" target="_blank" rel="noopener noreferrer"><FontAwesome name="calendar" fixedWidth /> 2017-2018 Yearly Calendar</a></li>
             <li><a href="https://www.facebook.com/NaturesClassroomMontessori/" target="_blank" rel="noopener noreferrer"><FontAwesome name="facebook-square" fixedWidth /> NCM Facebook Page</a></li>
             <li><a href="http://www.companycasuals.com/naturesclassroom/start.jsp" target="_blank" rel="noopener noreferrer"><FontAwesome name="shopping-basket" fixedWidth /> School Store</a></li>
             <li><a href="https://www.facebook.com/NaturesClassroomMontessori/" target="_blank" rel="noopener noreferrer"><FontAwesome name="facebook-official" fixedWidth /> NCM Facebook Page</a></li>
             <li><a href="https://www.tmj4.com/weather/school-closings-delays" target="_blank" rel="noopener noreferrer"><FontAwesome name="frown-o" fixedWidth /> School Closings Site</a></li>
             <li style={{ display: 'block', borderBottom: '1px solid #e6e6e6', marginBottom: 10, paddingTop: 10 }} />
             <li>
-              <a href="https://nciw.s3.amazonaws.com/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/discovernci_media/2018-2019-Admission-Applications.pdf" target="_blank" rel="noopener noreferrer">
                 <FontAwesome name="file-pdf-o" fixedWidth />{' '}Application for Admission
               </a>
             </li>
             <li style={{ display: 'block', borderBottom: '1px solid #e6e6e6', marginBottom: 10, paddingTop: 10 }} />
             <li><FontAwesome name="book" fixedWidth /> NCM Handbooks for 2017-2018
               <ul>
-                <li><a href="https://nciw.s3.amazonaws.com/documents/handbooks/2017-2018_Children's_House_Handbook.pdf">Children's House</a></li>
-                <li><a href="https://nciw.s3.amazonaws.com/documents/handbooks/2017-2018_Elementary_Handbook.pdf">Elementary</a></li>
-                <li><a href="https://nciw.s3.amazonaws.com/documents/handbooks/2017-2018_Adolescent_Handbook.pdf">Adolescent</a></li>
+                <li><a href="/documents/handbooks/2017-2018_Children's_House_Handbook.pdf">Children's House</a></li>
+                <li><a href="/documents/handbooks/2017-2018_Elementary_Handbook.pdf">Elementary</a></li>
+                <li><a href="/documents/handbooks/2017-2018_Adolescent_Handbook.pdf">Adolescent</a></li>
               </ul>
             </li>
             <li><FontAwesome name="tumblr-square" fixedWidth /> NCM Tumblr Blogs

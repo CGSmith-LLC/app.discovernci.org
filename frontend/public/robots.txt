@@ -1,6 +1,5 @@
 User-Agent: *
 Sitemap: https://discovernci.org/sitemap.xml
-Disallow:
 Allow: /
 Disallow: /a/
 Disallow: /admin/

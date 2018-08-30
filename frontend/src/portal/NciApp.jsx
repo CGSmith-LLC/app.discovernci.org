@@ -43,7 +43,7 @@ class NciAppContainer extends React.Component {
         />
 
         <div className="header">
-          <img src="//nciw.s3.amazonaws.com/discovernci_media/logo.png" target="_blank" rel="noopener noreferrer" alt="" />
+          <img src="discovernci_media/logo.png" target="_blank" rel="noopener noreferrer" alt="" />
           <p className="company-name">
             Nature&apos;s Classroom Institute
           </p>

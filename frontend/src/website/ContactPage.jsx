@@ -10,7 +10,7 @@ import BasicContainer from './base/BasicContainer';
 export default class Contact extends React.Component {
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bgDeep.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/bgDeep.jpg)';
   }
 
   render() {

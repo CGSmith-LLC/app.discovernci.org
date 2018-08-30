@@ -56,7 +56,7 @@ export default function EventList({ upcomingEvents, previousEvents }) {
 
         {/* <Panel header="Big Upcoming Events" className="top-30">
           <Link to="/events/dinner-in-the-woods">
-            <img src="//nciw.s3.amazonaws.com/discovernci_media/DinnerInTheWoodsTn.jpg" alt="" className="img-responsive img-rounded" style={{ marginBottom: 10 }} />
+            <img src="discovernci_media/DinnerInTheWoodsTn.jpg" alt="" className="img-responsive img-rounded" style={{ marginBottom: 10 }} />
           </Link>
           <h3 style={{ marginTop: 0, marginBottom: 5 }}>Dinner in the Woods 2018</h3>
           <p style={{ fontSize: '1em' }}>5-11:30pm on Saturday, June 2nd 2018</p>

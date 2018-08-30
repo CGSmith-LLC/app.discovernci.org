@@ -7,7 +7,7 @@ import NewsletterList from './NewsletterList';
 export default class Curriculum extends Component {
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bg6.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/bg6.jpg)';
   }
 
   render() {

@@ -5,7 +5,7 @@ import NewsletterList from './NewsletterList';
 
 export default class Contact extends React.Component {
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bg3.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/bg3.jpg)';
   }
   render() {
     return (

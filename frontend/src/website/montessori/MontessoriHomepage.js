@@ -14,7 +14,7 @@ export default class MontessoriHomepage extends React.Component {
   }
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bg6.jpg)';
+    document.body.style.backgroundImage = 'url(discovernci_media/bg6.jpg)';
   }
 
   handlePlay = () => {
@@ -49,7 +49,7 @@ export default class MontessoriHomepage extends React.Component {
                 className="img-responsive"
                 onClick={this.handlePlay}
                 role="button"
-                src="//nciw.s3.amazonaws.com/discovernci_media/homePoster.jpg"
+                src="discovernci_media/homePoster.jpg"
                 tabIndex={0}
               />
             :
@@ -78,7 +78,7 @@ export default class MontessoriHomepage extends React.Component {
               children to develop a love of learning and trust in their own ability to learn.</p>
 
             <img
-              src="//nciw.s3.amazonaws.com/documents/imgHappyTreeFriends.jpg"
+              src="documents/imgHappyTreeFriends.jpg"
               className="img-responsive img-rounded top-30"
               alt="presentation"
             />
@@ -146,7 +146,7 @@ export default class MontessoriHomepage extends React.Component {
               develop their own capabilities.</p>
           </Col>
           <Col md={6}>
-            <img src="//nciw.s3.amazonaws.com/discovernci_media/splash.jpg" className="top-25 img-responsive img-rounded" alt="presentation" />
+            <img src="discovernci_media/splash.jpg" className="top-25 img-responsive img-rounded" alt="presentation" />
           </Col>
         </Row>
 
