@@ -45,15 +45,6 @@ const locations = [
 
 const facultyStaffList = [
   {
-    id: 1,
-    name: 'Jennifer Braun',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/JenniferBraun.jpg',
-    locations: [5, 6],
-    rank: 2,
-    primaryContactFor: [5, 6],
-    slug: 'jennifer-braun'
-  },
-  {
     id: 2,
     name: 'Austin Wood',
     title: 'Returning Environmental Instructor',
@@ -186,16 +177,6 @@ const facultyStaffList = [
     bio: 'Gabe was born and raised in Hollidaysburg, PA where he enjoyed bird watching and exploring the nearby woods of Rothrock State Forest. He graduated this past May from Penn State Erie, the Behrend College with a degree in Biology. Gabe spent the last summer counseling at Camp Blue Diamond in Petersburg, PA, and is now looking forward to furthering his Environmental Education Experience at NCI this coming season. When not working, Gabe can usually be found with a guitar in hand, bird watching, or looking for a good movie.'
   },
   {
-    id: 8,
-    name: 'David Janusz',
-    title: 'Assistant Teacher',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/DavidJanusz.jpg',
-    slug: 'david-janusz',
-    locations: [6],
-    rank: 9,
-    bio: "Known to most of you as Will, Kendal and Everett's dad (CH students) and the Earth Day after school activities in charge person - will be assisting in the Upper Elementary and Adolescent classrooms. David  is a former high school chemistry and physics teacher who retired six years ago to stay home and care for his children. In addition to this, David has spent the last two years building his dog training business. David's passions include hunting, training dogs, golfing, soccer and anything outdoors."
-  },
-  {
     id: 16,
     name: 'Eric Ottmann',
     title: 'Environmental Instructor',
@@ -215,18 +196,6 @@ const facultyStaffList = [
     rank: 18,
     bio: '<p>Marina is originally from Bartlett, IL. She attended Illinois State University graduating with a bachelors degree in Biology. Marina hopes to attend graduate school for Behavioral Ecology. In the last year, Marina traveled to Costa Rica for a research project and has also worked in safe pesticide development for mosquitoes. Marina was inspired by her father who took her on outdoor expeditions at a young age. She hopes to have a similar impact on the children attending Natures Classroom. She loves hiking, conservation, and has a passion for bugs! In her free time, she enjoys watching sunsets, hanging out with friends, and watching movies. Each week she can’t wait to teach everything she knows about ecology and the environment!</p>'
   },
-
-  {
-    id: 20,
-    name: 'Sherry Mathews',
-    title: 'Administrative Assistant',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/SherryMathews.jpg',
-    slug: 'sherry-mathews',
-    locations: [6],
-    rank: 2,
-    bio: '<p>Sherry Mathews has been our Administrative Assistant since January of 2007. Previously she was a secretary for the New Berlin Public School System. Sherry is married and has 3 sons and 1 daughter and currently lives in Sugar Creek...just north of Elkhorn. She is an avid gardener and volunteer for the Walworth County Master Gardener Association so really enjoys what Nature’s Classroom offers students.</p>'
-  },
-
   {
     id: 29,
     name: 'Carrie Benzinger',
@@ -237,18 +206,16 @@ const facultyStaffList = [
     rank: 1,
     bio: "<p>Carrie Benzinger joined Nature's Classroom Institute Montessori as our Administrative Assistant in February of 2018. Previously she worked with client data providing service to both employer and customer in the Customs trade compliance and transportation payment industries. Carrie grew up in the Milwaukee area, is married, has 3 sons, and currently lives in the Town of Vernon, east of Mukwonago. She enjoys cooking, baking, spending time with her family dog (Chili) and is a dedicated library patron and fan of the many resources it has available to all. Carrie is interested in what Nature’s Classroom Institute and Montessori school offers students and is eager to learn much more about it.</p>"
   },
-
   {
     id: 21,
     name: 'Ms. Deepa',
-    title: "Directress - Children's House Classroom",
+    title: "Head of School",
     image: '//nciw.s3.amazonaws.com/discovernci_media/DeepaShreekumar.jpg',
     slug: 'deepa-shreekumar',
     locations: [6],
     rank: 2,
-    bio: "<p>Deepa Shreekumar grew up having a diplomat father enabling her to experience varied countries and cultures. Just when she thought life was settling down, her husband, Rajesh's job began to take them to many different countries and they moved to Milwaukee over a decade ago. Deepa has a Masters Degree in Mass Communication and Journalism from India and has worked in radio, made documentary films and taught film making before arriving at teaching. Her interest in Montessori began with her mother's teaching experience and resurfaced when her older son, Advik, now in the work force, attended a Montessori school. When her younger son, Arjun now in high school, started at a Children's House, her fascination with the Montessori philosophy peaked. She completed her Early Childhood training from Seton Montessori Institute, in 2006 and began working at Nature&apos;s Classroom Institute Montessori the same year. Deepa enjoys meeting people, cooking, reading and listening to music. She greatly appreciates a sense of humor and friendship especially when made in lands far away from her own.</p>"
+    bio: "<h4>Directress - Children's House Classroom</h4><p>Deepa Shreekumar grew up having a diplomat father enabling her to experience varied countries and cultures. Just when she thought life was settling down, her husband, Rajesh's job began to take them to many different countries and they moved to Milwaukee over a decade ago. Deepa has a Masters Degree in Mass Communication and Journalism from India and has worked in radio, made documentary films and taught film making before arriving at teaching. Her interest in Montessori began with her mother's teaching experience and resurfaced when her older son, Advik, now in the work force, attended a Montessori school. When her younger son, Arjun now in high school, started at a Children's House, her fascination with the Montessori philosophy peaked. She completed her Early Childhood training from Seton Montessori Institute, in 2006 and began working at Nature&apos;s Classroom Institute Montessori the same year. Deepa enjoys meeting people, cooking, reading and listening to music. She greatly appreciates a sense of humor and friendship especially when made in lands far away from her own.</p>"
   },
-
   {
     id: 22,
     name: 'Ms. Wilma',
@@ -259,7 +226,16 @@ const facultyStaffList = [
     rank: 3,
     bio: "<p>Wilma Murphy married 20 years ago and moved from México to Wisconsin. She learned English as a second language. Wilma and her husband, John, have 2 children, Jenny and Tony. In 2005 she started a new experience working at Nature&apos;s Classroom, teaching Spanish part time. Currently she is working full time in the Children's House classroom as an assistant and teaching Spanish as well. In 2011 she took her Montessori Teacher Training at Seton Montessori Institute as a Children’s House Directress. She really enjoys teaching her culture and language to the children and also takes pleasure in learning new experiences each day.</p>"
   },
-
+  {
+    id: 23,
+    name: 'Ms. Kym',
+    title: "Assistant Teacher - Children's House Classroom",
+   // image: '/discovernci_media/KymberlySmith.jpg',
+    slug: 'kymberly-smith',
+    locations: [6],
+    rank: 4,
+    bio: "<p>Kymberly Smith received a Bachelor’s in Elementary Education with a specialization in science from the University of Iowa in 2010. As a traditional teacher, she began her career teaching in Roxbury, MA at an urban high school in one of Boston’s poorest neighborhoods. She moved back to Wisconsin to be closer to family. Her family now includes Charlotte, Henry, and Elizabeth. She continued as a traditional teacher at a choice school on the Southside of Milwaukee, teaching science to middle school students. It wasn’t until her daughter, Charlotte, became old enough to start looking at school options that her family discovered Montessori. Her family became part of the Nature’s Classroom community in 2014 when Charlotte began in Children’s House. In summer 2017, Kymberly began her training at Seton Montessori Institute. She enters the role of assistant teacher and intern to Children’s house in 2018. She loves Montessori because it meets each child as his or her own level and directs the lessons to the individual.</p>"
+  },
   {
     id: 24,
     name: 'Ms. Satira',

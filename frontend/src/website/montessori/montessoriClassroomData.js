@@ -21,7 +21,8 @@ const childrensHouse = {
       rank: 1,
       items: [
         { rank: 0, name: 'Ms. Deepa', role: 'Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsDeepa.jpg', url: '/montessori/faculty-staff' },
-        { rank: 1, name: 'Ms. Wilma', role: 'Assistant Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsWilma.jpg', url: '/montessori/faculty-staff' }
+        { rank: 1, name: 'Ms. Wilma', role: 'Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsWilma.jpg', url: '/montessori/faculty-staff' },
+        { rank: 2, name: 'Ms. Kym', role: 'Assistant Teacher', url: '/montessori/faculty-staff' }
       ]
     },
     {
@@ -105,7 +106,6 @@ const upperEl = {
       rank: 1,
       items: [
         { rank: 0, name: 'Ms. Briana', role: 'Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsBriana.jpg', url: '/montessori/faculty-staff' },
-        { rank: 1, name: 'Mr. David', role: 'Teaching Assistant', url: '/montessori/faculty-staff' }
       ]
     },
     {
@@ -147,7 +147,6 @@ const adolescent = {
       rank: 1,
       items: [
         { rank: 0, name: 'Ms. Katelyn', role: 'Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsKatelyn.jpg', url: '/montessori/faculty-staff' },
-        { rank: 1, name: 'Mr. David', role: 'Teaching Assistant', url: '/montessori/faculty-staff' }
       ]
     },
     {
