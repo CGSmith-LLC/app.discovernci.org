@@ -48,9 +48,9 @@ const facultyStaffList = [
     id: 1,
     name: 'Jennifer Braun',
     image: '//nciw.s3.amazonaws.com/discovernci_media/JenniferBraun.jpg',
-    locations: [7],
+    locations: [6],
     rank: 2,
-    primaryContactFor: [7],
+    primaryContactFor: [6],
     slug: 'jennifer-braun'
   },
   {
@@ -119,7 +119,7 @@ const facultyStaffList = [
     title: 'Executive Director',
     image: '//nciw.s3.amazonaws.com/discovernci_media/GeoffreyBishop.jpg',
     slug: 'geoffrey-bishop',
-    locations: [0, 1, 2, 3, 4, 5, 6],
+    locations: [0, 1, 2, 3, 4, 5, 6, 7],
     rank: 0,
     primaryContactFor: [],
     bio: "Geoffrey E. Bishop, hails from the bush in North West NSW, Australia. After his childhood spent on his family's sheep station he went to an agricultural boarding school for five years, and then to University in both Sydney and Melbourne where he studied Horticulture and Landscape Architecture. <br /><br /> For the next 10 years he traveled the world, visiting over 80 countries, where he spent most of his time trekking in rural areas, learning cultures and understanding his place in the world.<br /><br /> In 1996 Geoffrey started Nature&apos;s Classroom Institute of Wisconsin, Inc. NCI is a residential environmental education program serving schools throughout the Midwest. The Nature&apos;s Classroom Institute program helps students understand the natural environment, participate in ecosystem exploration and study, and work together with their peers and teachers as a community. The program includes activities such as confidence-building, group challenges, historical simulations, scientific explorations, and many more hands-on academic lessons. <br /><br /> After developing a strong academic and environmental outdoor based curriculum, he formed Nature&apos;s Classroom Montessori School that blends the core philosophy of Montessori with his environmental principles. The past Board Chair of the Wisconsin Association of Environmental Education (WAEE), he has been honored by WAEE as Wisconsin Non-Formal Educator of the Year. <br /><br /> Nature&apos;s Classroom is on 400 acres in the small rural community of Mukwonago, Wisconsin.  Geoffrey's passionate and sustained focus over the past 15 years has been on organics and sustainability in schools while promoting getting children back outdoors and helping adults understand the importance of instinctive play in the natural world."
