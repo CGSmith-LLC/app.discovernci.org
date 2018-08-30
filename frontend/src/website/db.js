@@ -78,11 +78,21 @@ const facultyStaffList = [
     id: 31,
     name: 'Brittany Sumner',
     title: 'Environmental Educator',
-    image: '/discovernci_media/faculty-staff/Brittany-Sumber.jpg',
-    slug: 'jordan-kendall',
+    image: '/discovernci_media/faculty-staff/Brittany-Sumner.jpg',
+    slug: 'brittany-sumner',
     locations: [1, 2, 3, 4],
-    rank: 7,
+    rank: 8,
     bio: 'Brittany, also known as Peaches, cultivated her adventurous spirit and love for the environment as a child on her family’s farm in South Carolina. Her passion for the outdoors led her to Clemson University, where she earned a degree in Wildlife and Fisheries Biology in 2015. In 2017, she worked as a naturalist teaching people of all ages about the ever-changing natural world we live in. This past summer, she led conservation study abroad trips for high school students to Portugal and Botswana. Peaches’ love for various ecosystems has brought her to serve all over the world, from Florida’s coastal ecosystems to African deltas. Her free time is spent exploring the outdoors, photographing wildlife, tending to her garden, or with her nose in a good book.'
+  },
+  {
+    id: 32,
+    name: 'Cristina Villalobos',
+    title: 'Environmental Educator',
+    image: '/discovernci_media/faculty-staff/Cristina-Villalobos.jpg',
+    slug: 'cristina-villalobos',
+    locations: [1, 2, 3, 4],
+    rank: 9,
+    bio: 'Before joining the NCI team as an environmental educator, Cristina researched the marine environment and graduated from Western Washington University with a Master’s in marine and estuarine science. Throughout her academic career she combined her research interests with youth education and outreach opportunities. Why? Because to her, science education outside of the lab is just as important as inside the lab. She is an adventurer at heart and is always ready to go outdoors.'
   },
   {
     id: 5,
