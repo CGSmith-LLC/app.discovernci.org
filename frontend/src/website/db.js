@@ -47,12 +47,12 @@ const facultyStaffList = [
   {
     id: 2,
     name: 'Austin Wood',
-    title: 'Returning Environmental Instructor',
+    title: 'Senior Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/AustinWood.jpg',
     slug: 'austin-wood',
     locations: [1, 2, 3, 4],
     rank: 4,
-    bio: 'Austin comes to us from Plymouth, England. This is his second year with us at NCI. He will be the one singing the camp songs! He strives to ensure every attendee has as much fun as possible, while learning of course.'
+    bio: 'Austin has been an Environmental Educator for two years at Nature’s Classroom Institute, beginning his third year in the fall 2019. His love of the Outdoors and the natural environment has kept Austin coming back year after year. Austin enjoys writing his own curriculum and teaching about world history within the outdoor setting, a good example of this is his unique Gold Rush class, designed specifically for the California program. He has grown and developed alongside Nature’s Classroom Institute and has gained a wealth of experience that is on display for every visiting school to see.'
   },
   {
     id: 3,
@@ -109,12 +109,12 @@ const facultyStaffList = [
   {
     id: 17,
     locations: [1, 2, 3, 4],
-    name: 'Britta Casey',
-    title: 'Education Director',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/BrittaCasey.jpeg',
-    slug: 'britta-casey',
+    name: 'Britta Wood',
+    title: 'Education Director &mdash; Texas, California, Florida',
+    image: '/discovernci_media/faculty-staff/Britta-Wood.jpg',
+    slug: 'britta-wood',
     rank: 3,
-    bio: 'Although my passion for nature began as a child, I started my career in the environmental field after graduating with a degree in Environmental Sustainability. My love of the outdoors, education and adventure has led me to take jobs in Australia, Europe and back in my home state of Texas. If I had a spare moment you would find me camping, road tripping, or attempting to play the banjo. I love to discover, whether it be through mountain trails or between the pages of a book.'
+    bio: 'Britta\'s passion for the outdoors and exploring began as a child, discovering nature in the creeks and forests of her Texan hometown. She earned a degree in Environmental Sustainability and quickly found herself in the Environmental Education field. Britta has worked with children in Australia, Europe and all-over North America. She joined Nature\'s Classroom Institute as Education Director of Texas in 2015, became Education Director of California in 2017 and Education Director of Florida in 2018. Britta believes that getting children back outdoors can ignite their passion for learning and loves to have this opportunity year after year.'
   },
   {
     id: 8,
