@@ -34,7 +34,7 @@ export default class PrepareForNci extends React.Component {
         <Row>
           <Col md={6} mdOffset={1} className="top-10 bottom-30">
             <ul>
-              <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/Statement%20of%20Nature&apos;s%20Classroom%20Institute%20Security%20Policy.pdf">Statement of Nature&apos;s Classroom Institute Security Policy</a></li>
+              <li><a href="/documents/prepare/Statement%20of%20Nature&apos;s%20Classroom%20Institute%20Security%20Policy.pdf">Statement of Nature&apos;s Classroom Institute Security Policy</a></li>
             </ul>
 
             <h3>Parents ~ Here&apos;s What You&apos;ll Need</h3>
