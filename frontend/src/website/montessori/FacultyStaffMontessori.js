@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 import { facultyStaffList } from '../db';
 
 export default function MyComponent() {
-  const filteredFacultyStaffList = _.orderBy(_.filter(facultyStaffList, { locations: [6] }), ['rank']);
+  const filteredFacultyStaffList = _.orderBy(_.filter(facultyStaffList, { locations: [7] }), ['rank']);
   const showList = filteredFacultyStaffList.map(person => (
     <Row key={person.id}>
       <Col md={3} mdOffset={2}>
