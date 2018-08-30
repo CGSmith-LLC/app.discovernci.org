@@ -48,7 +48,7 @@ const facultyStaffList = [
     id: 2,
     name: 'Austin Wood',
     title: 'Senior Environmental Instructor',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/AustinWood.jpg',
+    image: '/discovernci_media/faculty-staff/AustinWood.jpg',
     slug: 'austin-wood',
     locations: [1, 2, 3, 4],
     rank: 4,
