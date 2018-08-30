@@ -67,12 +67,12 @@ const facultyStaffList = [
   {
     id: 4,
     name: 'Jordan Kendall',
-    title: 'Environmental Instructors',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/JordanKendall.jpg',
+    title: 'Senior Environmental Instructors',
+    image: '/discovernci_media/faculty-staff/Jordan-Kendall.jpg',
     slug: 'jordan-kendall',
     locations: [1, 2, 3, 4],
     rank: 7,
-    bio: 'My name is Jordan Kendall I graduated from Lindsey Wilson college in Kentucky where I played soccer for 4 years with my bachelors in business administration. I am now currently taking online courses at the same school to attain my Masters in business admin. I love sports and superheroes. Especially batman.'
+    bio: 'Jordan is currently in his second year with NCI and comes to us from Kentucky. He attended Lindsey Wilson College where he played soccer for four years and earned his bachelor\'s degree in business administration. He is currently taking online classes to obtain his masters and expects to have his MBA by next year. He is a high energy educator with a camp counselor background and knowledgeable about the trees and vegetation in the area. He can keep students engaged through silly games and songs while teaching them about the world around them.'
   },
   {
     id: 5,
