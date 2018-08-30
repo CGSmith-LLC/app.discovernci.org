@@ -75,6 +75,16 @@ const facultyStaffList = [
     bio: 'Jordan is currently in his second year with NCI and comes to us from Kentucky. He attended Lindsey Wilson College where he played soccer for four years and earned his bachelor\'s degree in business administration. He is currently taking online classes to obtain his masters and expects to have his MBA by next year. He is a high energy educator with a camp counselor background and knowledgeable about the trees and vegetation in the area. He can keep students engaged through silly games and songs while teaching them about the world around them.'
   },
   {
+    id: 31,
+    name: 'Brittany Sumner',
+    title: 'Environmental Educator',
+    image: '/discovernci_media/faculty-staff/Brittany-Sumber.jpg',
+    slug: 'jordan-kendall',
+    locations: [1, 2, 3, 4],
+    rank: 7,
+    bio: 'Brittany, also known as Peaches, cultivated her adventurous spirit and love for the environment as a child on her family’s farm in South Carolina. Her passion for the outdoors led her to Clemson University, where she earned a degree in Wildlife and Fisheries Biology in 2015. In 2017, she worked as a naturalist teaching people of all ages about the ever-changing natural world we live in. This past summer, she led conservation study abroad trips for high school students to Portugal and Botswana. Peaches’ love for various ecosystems has brought her to serve all over the world, from Florida’s coastal ecosystems to African deltas. Her free time is spent exploring the outdoors, photographing wildlife, tending to her garden, or with her nose in a good book.'
+  },
+  {
     id: 5,
     name: 'Louise Twomey',
     title: 'Environmental Instructors',
