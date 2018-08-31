@@ -41,7 +41,7 @@ export default class PrepareForNci extends React.Component {
             <ul>
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/Student_prep.pdf">Preparing your child for NCI</a></li>
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/NCI_Parents_Welcome_Letter.pdf">Visiting School Parent Package ~ Northern Region</a></li>
-              <li><a href="http://nciw.s3.amazonaws.com/documents/Visiting%20School%20Parent%20Package-Southern-Western%20Region.pdf">Visiting School Parent Package ~ Southern Region</a></li>
+              <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package_Southern%20Region.pdf">Visiting School Parent Package ~ Southern Region</a></li>
               <li><a href="http://nciw.s3.amazonaws.com/documents/Visiting%20School%20Parent%20Package-Southern-Western%20Region.pdf">Visiting School Parent Package ~ Western Region</a></li>
               <li><a href="http://nciw.s3.amazonaws.com/documents/prepare/NCI_Parent_tutorial.pdf">NCI Online Registration - Parent Tutorial</a></li>
               <li><a href="https://discovernci.org/dashboard" target="_blank" rel="noopener noreferrer">Access NCI Online Registration Portal</a></li>
