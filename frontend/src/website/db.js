@@ -153,27 +153,17 @@ const facultyStaffList = [
     image: '//nciw.s3.amazonaws.com/discovernci_media/KristenMehl.jpeg',
     slug: 'kristen-mehl',
     rank: 3,
-    bio: "Kristen Mehl hails from the great mitten state of Michigan where she grew up running around outdoors with her father and brother. She was inspired to become a teacher as an elementary student, and even studied early childhood education in college at the University of Michigan. After taking a leap a leap of faith and packing up three months worth of belongings, she moved to North Carolina to start a series of internships that would lead her to Nature's Classroom. She started as an instructor for the 2015-2016 school year, returned last season to help transplant NCI from Mukwonago to Lake Geneva as co-director, and is happily returning as director of education. She was inspired by children from all over the country to continue her work as an environmental educator after watching many become so enthralled with the world around them. This summer, Kristen spent a month traveling the country and is excited to bring back some of her knowledge in the form of Stump the Staff questions. When she's not working, she can be found calling for owls in Big Foot Beach State Park, watercolor painting, singing along to the musical Hamilton or watching Harry Potter."
-  },
-  {
-    id: 9,
-    locations: [6],
-    name: 'Hayley Trzinkski',
-    title: 'Environmental Instructor',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/HayleyTrzinkski.jpg',
-    slug: 'hayley-trzinkski',
-    rank: 10,
-    bio: 'Hayley is originally from Wisconsin Rapids, Wisconsin where she graduated from the University of Wisconsin, Stevens Point with degrees in Wildlife Ecology and Biology. This summer she worked at Upham Woods Outdoor Learning Center as a teaching naturalist and is excited to continue teaching environmental education at NCI as a newcomer on staff this season. Hayley likes to go on adventures, sing, and do art projects in her spare time.'
+    bio: "Kristen Mehl hails from the great mitten state of Michigan where she grew up running around outdoors with her father and brother. She was inspired to become a teacher as an elementary student, and even studied early childhood education in college at the University of Michigan. After taking a leap a leap of faith and packing up three months worth of belongings, she moved to North Carolina to start a series of internships that would lead her to Nature's Classroom. She started as an instructor for the 2015-2016 school year, returned two seasons ago to help transplant NCI from Mukwonago to Lake Geneva as Co-Director, and is happily returning as Director of Education for her second and final term. She was inspired by children from all over the country to continue her work as an environmental educator after watching many become so enthralled with the world around them. This summer, Kristen spent a few weeks traveling around Europe with Chelsea and is excited to bring back some of her knowledge in the form of Stump the Staff questions. When she's not working, she can be found calling for owls in Big Foot Beach State Park, watercolor painting, singing along to the musical Hamilton or watching Harry Potter."
   },
   {
     id: 10,
     locations: [6],
     name: 'Corie Walton',
-    title: 'Returning Environmental Instructor',
+    title: 'Senior Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/CorieWalton.jpg',
     slug: 'corie-walton',
-    rank: 11,
-    bio: "Corie grew up in Indianapolis, Indiana and graduated in 2016 from a small school south of Indy called Franklin College. She has a Biology degree and a Spanish minor and dreams of a day when she can teach the natural sciences in Spanish. Corie joined the Nature's Classroom family in the Spring of 2017 and had an unforgettable experience teaching for the first time so she decided to come back this fall. Corie loves Lake Geneva, Wisconsin so much that she spent her summer working for Lake Geneva Youth Camp; the Christian summer camp that NCI rents during the school year. Her enthusiastic attitude makes her a perfect fit for inspiring kids to care about and become more aware of the world around them.  Corie is most at home surrounded by a group of people she loves, but you can also find her playing golf, watching Disney movies, or enjoying a hot beverage while under a blanket."
+    rank: 6,
+    bio: "Corie grew up in Indianapolis, IN, but she has been living in Lake Geneva for almost 2 years and she loves it here! She studied at Franklin College and graduated with a Biology degree and a Spanish minor. After finishing out the spring with NCI, Corie worked at Lake Geneva Youth Camp as the Program Facilitator in the Nature/Handcraft Center. That allowed her to work on a farm, teach classes, and experience a new leadership role at camp. She finds so much joy from being outside and she loves teaching. Corie also loves being with people, so doing anything with her friends is fun. She especially likes to go for walks, watch Disney movies, and drink coffee. Corie is excited to be going on her second year of working as an EE instructor because she wants to use this year to teach herself new things while she is teaching the students!"
   },
   {
     id: 11,
@@ -183,27 +173,27 @@ const facultyStaffList = [
     slug: 'chelsea-jandreau',
     locations: [6],
     rank: 4,
-    bio: "Chelsea comes from the small town of Potsdam at the top of New York State near the Canadian border. After graduating from Cornell University as an Animal Science and Biology major, she began traveling around the country working at farms and greenhouses along with building trails in State and National Parks. She finally found her first environmental education position in Louisiana and was hooked. She was an Instructor at Nature's Classroom during the 2015-16 year. This year she will be returning as the Assistant Director after a year in California as a Naturalist at Foothill Horizons Outdoor School followed by spending her summer travelling across the country to some amazing National Parks. She is excited to continue helping students find something that connects them to nature and really learn to explore the outdoors. Chelsea also enjoys baking, knitting, and spending time outdoors hiking, snowshoeing and getting left behind on the trail as she is distracted by wildflowers."
+    bio: "Chelsea comes from the small town of Potsdam, New York way up near the Canadian border. After graduating from Cornell University as an Animal Science and Biology major, she began traveling around the country working at farms and greenhouses, building trails, and visiting as many State and National Parks as possible. She finally found her first environmental education position in Louisiana and was hooked. She began as an instructor at Nature’s Classroom four years ago, and this will be her second year returning as the Assistant Director. She is excited to continue helping students find something that connects them to nature and really learn to explore the outdoors. Chelsea also enjoys baking, knitting, and spending time outdoors hiking, snowshoeing and getting left behind on the trail as she is distracted by wildflowers."
   },
   {
     id: 12,
     name: 'Vicki Agee',
-    title: 'Returning Environmental Educator',
+    title: 'Senior Environmental Educator',
     image: '//nciw.s3.amazonaws.com/discovernci_media/VickiAgee.jpg',
     slug: 'vicki-agee',
     locations: [6],
-    rank: 13,
-    bio: 'Vicki Agee grew up in northwestern Indiana where she spent most of her time reading books or spending time with her best friend. Once graduated from high school, Vicki attending Indiana University Bloomington where she majored in environmental management. After college, Vicki discovered the joys of teaching and spent 4 years working various education jobs. Currently, Vicki is spending the summer as a head counselor at a farm camp frolicking with children and animals. This fall, Vicki is exciting to be returning back to Nature’s Classroom after her two year absence. She began working at NCI straight out of college and fell in love with it. Vicki loves sharing her passion for exploring and learning new things with students from so many different places.  When not working with children Vicki can usually be found reading a book, watching a Sherlock marathon, or hanging out with friends.'
+    rank: 5,
+    bio: 'Vicki is originally from Indiana and attended Indiana University Bloomington. She majored in Environmental Management and began working at NCI straight out of college. Vicki fell in love with Environmental Education as working at NCI afforded her the amazing opportunity to share her love of nature and the world with kids. When Vicki isn’t working, she can be either be found reading, swimming or trying to have new and exciting adventures.'
   },
   {
     id: 13,
     name: 'Gabe Imler',
-    title: 'Environmental Instructor',
+    title: 'Senior Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/GabeImler.jpg',
     slug: 'gabe-imler',
     locations: [6],
-    rank: 14,
-    bio: 'Gabe was born and raised in Hollidaysburg, PA where he enjoyed bird watching and exploring the nearby woods of Rothrock State Forest. He graduated this past May from Penn State Erie, the Behrend College with a degree in Biology. Gabe spent the last summer counseling at Camp Blue Diamond in Petersburg, PA, and is now looking forward to furthering his Environmental Education Experience at NCI this coming season. When not working, Gabe can usually be found with a guitar in hand, bird watching, or looking for a good movie.'
+    rank: 7,
+    bio: 'Gabe was born and raised in Hollidaysburg, PA where he enjoyed bird watching and exploring the nearby woods of Rothrock State Forest. He graduated from Penn State Erie, the Behrend College with a degree in Biology. Gabe spent the last summer as Naturalist at Camp Blue Diamond in Petersburg, PA, and used many of the skills he learned in his first year at NCI. Gabe is now looking forward to a great second season on the NCI crew! When not working, Gabe can usually be found with a guitar in hand, bird watching, or looking for a good movie. '
   },
   {
     id: 16,
@@ -212,18 +202,38 @@ const facultyStaffList = [
     image: '//nciw.s3.amazonaws.com/discovernci_media/EricOttmann.jpg',
     slug: 'eric-ottmann',
     locations: [6],
-    rank: 17,
-    bio: "Eric was born in Raleigh, NC but spent a majority of his growing years in Kenosha County, WI. He attended University of Wisconsin-Madison and graduated with a double degree in Geological Science and History. He recently graduated this past May and spent this past summer as an Adventure Trip Guide for McGaw YMCA Camp Echo. He has been a lifeguard for 6 years and am currently WFR certified. Eric has always loved the outdoors and can't wait to teach kids about nature in its truest environment. In his free time he often plays tennis and soccer with old friends or goes out sailing."
+    rank: 8,
+    bio: "This will be Eric’s second year working for Nature’s Classroom. Eric is originally from North Carolina but spent most of his formative years in Kenosha County. He attended University of Wisconsin-Madison with a double major in Geological Science and History. This past summer he was an adventure trip guide for Camp Echo, a Y camp run out of Evanston IL. Eric truly enjoys working for Nature’s classroom because of the opportunity to enjoy most of his day outdoors and the freedom to teach what he is interested in. His free time in the summer is spent on the water: sailing, skiing, kayaking, etc."
+  },
+  {
+    id: 35,
+    name: 'Jeremy Aines',
+    title: 'Environmental Instructor',
+    image: '/discovernci_media/faculty-staff/Jeremy-Aines.jpg',
+    slug: 'jeremy-aines',
+    locations: [6],
+    rank: 11,
+    bio: "Jeremy is originally from Dallas, Texas. He went to Stephen F. Austin State University in Nacogdoches Texas. While there, he majored in Forestry and Wildlife Management and minored in Biology. Prior to NCI, Jeremy was running the wildlife division of a pest control company. When he was younger, he was a naturalist for the YMCA where he taught outdoor education. Since he really loved working with the kids and being outdoors, he decided to return to this field. For fun, Jeremy really enjoys hiking, playing sports, and just hanging out outdoors."
+  },
+  {
+    id: 36,
+    name: 'Emily Stanislawski',
+    title: 'Environmental Instructor',
+    image: '/discovernci_media/faculty-staff/Emily-Stanislawski.jpg',
+    slug: 'emily-stanislawski',
+    locations: [6],
+    rank: 12,
+    bio: "Emily is originally from New Berlin, WI and graduated from Lawrence University with a major in biology and a minor in psychology. While there, she did research on native pollinators in urban areas using citizen science. She also has worked at a resident camp teaching STEM. She is so excited to work with the students and help them learn through exploration of the world around them. In her free time, she loves exploring, swimming, and science- especially insect science."
   },
   {
     id: 18,
     name: 'Marina Theisen',
-    title: 'Environmental Instructor',
+    title: 'Senior Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/MarinaTheisen.jpg',
     slug: 'marina-theisen',
     locations: [6],
-    rank: 18,
-    bio: '<p>Marina is originally from Bartlett, IL. She attended Illinois State University graduating with a bachelors degree in Biology. Marina hopes to attend graduate school for Behavioral Ecology. In the last year, Marina traveled to Costa Rica for a research project and has also worked in safe pesticide development for mosquitoes. Marina was inspired by her father who took her on outdoor expeditions at a young age. She hopes to have a similar impact on the children attending Natures Classroom. She loves hiking, conservation, and has a passion for bugs! In her free time, she enjoys watching sunsets, hanging out with friends, and watching movies. Each week she can’t wait to teach everything she knows about ecology and the environment!</p>'
+    rank: 9,
+    bio: '<p>Marina is a returning Environmental Educator that began her journey in October of 2017. She’s originally from Bartlett, IL, a small north west suburb of Chicago. Marina graduated from Illinois State University with a degree in Biology. In the Summer of 2018, Marina worked as a Naturalist in Wisconsin Dells. In her free time, Marina likes to explore nature for insects and other cool critters. This year, she is particularly excited about getting kids comfortable with insects as well as fine tuning her skills as an instructor.</p>'
   },
   {
     id: 29,
@@ -297,27 +307,15 @@ const facultyStaffList = [
     rank: 7,
     bio: '<p>Katelyn Bratz graduated in 2008 with a Bachelor of the Arts degree in History, as well as certificates in Classical History and European History from the University of Wisconsin-Madison. Katelyn began her career working with students through environmental education. She came to Nature’s Classroom Institute and Montessori in 2008. Since then she has taken on various roles: environmental educator, environmental Education Director, history teacher, elementary assistant and currently our Adolescent Directress. It is during her work in our environmental program that Katelyn came to appreciate and understand the Montessori Method. Katelyn completed the AMI Montessori Orientation to Adolescent Studies in 2012. Since then Katelyn has worked to progress and expand our Adolescent program. She can be found regularly hiking and working at Nature’s Classroom property with her dog, Audi and the school dog, Pinto, gardening, or tending to the farm. All of which continue to be hobbies for Katelyn and a strong connection to her environmental background.</p>'
   },
-
-  {
-    id: 27,
-    name: 'Lucas Marin',
-    title: 'Environmental Instructor',
-    image: '//nciw.s3.amazonaws.com/discovernci_media/LucasMarin.jpg',
-    slug: 'lucas-marin',
-    locations: [6],
-    rank: 20,
-    bio: "<p>Lucas was born and raised in Portland, Oregon where his love of the outdoors spread from summers of outdoor camps and excursions. He graduated from Western Washington University's Huxley College of the Environment with a degree in Environmental Studies and a minor in Environmental Education. After graduating, he became a Science Educator for the Mount St. Helens Institute in Washington State, where he taught children about the wonders of the outdoors with a focus on volcanic landscapes. Lucas loves sharing his enthusiasm for exploration and looks forward to continuing to share at NCI. When he isn't working with children you can find him spending time outside hiking, camping, backpacking, fishing and birding. </p>"
-  },
-
   {
     id: 28,
     name: 'James Gorsline',
-    title: 'Environmental Instructor',
+    title: 'Senior Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/JamesGorsline.jpg',
     slug: 'james-gorsline',
     locations: [6],
-    rank: 21,
-    bio: "<p>James comes from Wheatland, WI in Kenosha County, and he graduated Carthage College with an Environmental Science major with a concentration in Conservation and Ecology, along with a Geography and Earth Science minor. Before joining Nature's Classroom Institute, he spent last fall and summer traveling the country through Utah, Tennessee and Illinois surveying road conditions for the Department of Transportation. James came to NCI because he loves sharing his appreciation for the natural world with others, and is passionate about showing others how the world can inspire them. In his free time, he enjoys travelling, photography, video games, running, reading and anything he can do outdoors.</p>"
+    rank: 10,
+    bio: "<p>James grew up on a small farm in southeast Wisconsin, the lovely Dairyland of America. He graduated with degrees in Conservation and Ecology, as well as Geography from Carthage College and he has been working with Nature’s Classroom since December 2017. James loves being outdoors so much that he spent the whole month of August living in a tent doing conservation work in Georgia at Kennesaw Mountain National Battlefield Park. Looking forward to an amazing year at NCI!</p>"
   },
   {
     id: 30,
