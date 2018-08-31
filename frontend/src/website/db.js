@@ -228,7 +228,7 @@ const facultyStaffList = [
   {
     id: 29,
     name: 'Carrie Benzinger',
-    title: 'Administrative Assistant',
+    title: 'Office Manager',
     image: '//nciw.s3.amazonaws.com/discovernci_media/CarrieBenzinger.jpg',
     slug: 'carrie-benzinger',
     locations: [7],
@@ -248,7 +248,7 @@ const facultyStaffList = [
   {
     id: 22,
     name: 'Ms. Wilma',
-    title: "Directress - Children's House Classroom",
+    title: "Assistant Directress - Children's House Classroom",
     image: '//nciw.s3.amazonaws.com/discovernci_media/WilmaMurphy.jpg',
     slug: 'wilma-murphy',
     locations: [7],
@@ -258,8 +258,8 @@ const facultyStaffList = [
   {
     id: 23,
     name: 'Ms. Kym',
-    title: "Assistant Teacher - Children's House Classroom",
-   // image: '/discovernci_media/KymberlySmith.jpg',
+    title: "Intern - Children's House Classroom",
+    image: '/discovernci_media/faculty-staff/Kymberly-Smith.jpg',
     slug: 'kymberly-smith',
     locations: [7],
     rank: 4,
