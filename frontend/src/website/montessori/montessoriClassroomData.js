@@ -21,8 +21,8 @@ const childrensHouse = {
       rank: 1,
       items: [
         { rank: 0, name: 'Ms. Deepa', role: 'Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsDeepa.jpg', url: '/montessori/faculty-staff' },
-        { rank: 1, name: 'Ms. Wilma', role: 'Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsWilma.jpg', url: '/montessori/faculty-staff' },
-        { rank: 2, name: 'Ms. Kym', role: 'Assistant Teacher', url: '/montessori/faculty-staff' }
+        { rank: 1, name: 'Ms. Wilma', role: 'Assistant Directress', image: '//nciw.s3.amazonaws.com/discovernci_media/MsWilma.jpg', url: '/montessori/faculty-staff' },
+        { rank: 2, name: 'Ms. Kym', role: 'Intern',  image: '/discovernci_media/faculty-staff/MsKym.jpg', url: '/montessori/faculty-staff' }
       ]
     },
     {
