@@ -423,7 +423,7 @@ class StudentFormContainer extends React.Component {
         isParentGuardian: true,
 
         name: i.state.name,
-        dob: moment([this.state.dobYear, this.state.dobMonth, this.state.dobDay]).format('YYYY-MM-DD'),
+        dob: moment([this.state.dobYear, this.state.dobMonth - 1, this.state.dobDay]).format('YYYY-MM-DD'),
         currentSchoolId: i.state.currentSchool[0].id,
         classroom: i.state.classroom,
 

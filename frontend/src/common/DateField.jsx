@@ -61,7 +61,7 @@ export default class DateField extends React.Component {
 
   birthdayMessage = () => (
     this.isValidDate &&
-      (moment([this.props.year, this.props.month, this.props.day]).format('MM-DD') === moment().format('MM-DD')) &&
+      (moment([this.props.year, this.props.month - 1, this.props.day]).format('MM-DD') === moment().format('MM-DD')) &&
         <span>Hey, Happy Birthday! <span role="img" aria-label="Party Popper">🎉</span></span>
   );
 
@@ -81,7 +81,7 @@ export default class DateField extends React.Component {
           >
             <option value={''} disabled>Month</option>
             {_.map(moment.months(), (month, index) => (
-              <option key={index} value={index}>{month}</option>
+              <option key={index} value={index + 1}>{month}</option>
             ))}
           </select>
 
