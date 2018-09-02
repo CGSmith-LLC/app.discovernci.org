@@ -119,92 +119,92 @@ class StudentFormContainer extends React.Component {
     waiverAgreement: false
   }
 
-  componentDidUpdate = () => {
-    const nextProps = this.props;
-    console.log('StudentForm componentDidUpdate: ', nextProps);
-    if (!_.isEmpty(nextProps.selectedstudentObj) && (nextProps.selectedstudentObj.id > 0)) {
+  componentDidMount() {
+
+      const nextProps = this.props;
       const s = nextProps.selectedstudentObj;
-      this.setState({
-        name: s.name,
-        dobMonth: (parseInt(moment(s.dob).format('M'), 10) - 1),
-        dobDay: parseInt(moment(s.dob).format('D'), 10),
-        dobYear: parseInt(moment(s.dob).format('YYYY'), 10),
-        currentSchool: [
-          {
-            id: nextProps.selectedstudentObj.currentSchool.id,
-            label: nextProps.selectedstudentObj.currentSchool.name
-          }
-        ],
-        classroom: s.classroom,
-        photoWaiver: s.photoWaiver,
-        gender: s.medicalrecord.gender,
-        height: s.medicalrecord.height,
-        weight: s.medicalrecord.weight,
-        lastTetanusMonth: (parseInt(moment(s.lastTetanus).format('M'), 10) - 1),
-        lastTetanusDay: parseInt(moment(s.lastTetanus).format('D'), 10),
-        lastTetanusYear: parseInt(moment(s.lastTetanus).format('YYYY'), 10),
-        noTetanusVaccine: s.medicalrecord.noTetanusVaccine,
-        insId: (s.insuranceDependentsList.length > 0) &&
-          s.insuranceDependentsList[0].id,  // FIXME It's an array...
-        recentTrauma: s.medicalrecord.recentTrauma,
-        restrictions: s.medicalrecord.restrictions,
-        nonRxType: s.medicalrecord.nonRxType,
-        nonRxNotes: s.medicalrecord.nonRxNotes,
-        medicationSet: s.medicalrecord.medicationSet &&
-          (s.medicalrecord.medicationSet.length > 0)
-            ? _.map(s.medicalrecord.medicationSet, med => {
-              console.log(med.administrationTimes);
-              console.log(med.administrationTimes);
-              return (
-                {
-                  id: med.id,
-                  administrationTimes: med.administrationTimes.toString(),
-                  administrationTimesOther: med.administrationTimesOther,
-                  medicationName: med.medicationName,
-                  amount: med.amount,
-                  amountHuman: med.amountHuman,
-                  amountUnit: med.amountUnit,
-                  getAmountUnitDisplay: med.getAmountUnitDisplay,
-                  notes: med.notes
-                }
-              )
-            })
-            : [],
-        // medicationSet: [
-        //   ...s.medicalrecord.medicationSet
-        // ],
-        allergies: s.medicalrecord.allergies && eval(JSON.parse(s.medicalrecord.allergies)).join(','),
+      if (!_.isEmpty(nextProps.selectedstudentObj) && (nextProps.selectedstudentObj.id > 0)) {
+          this.setState({
+              name: s.name,
+              dobMonth: (parseInt(moment(s.dob).format('M'), 10)),
+              dobDay: parseInt(moment(s.dob).format('D'), 10),
+              dobYear: parseInt(moment(s.dob).format('YYYY'), 10),
+              currentSchool: [
+                  {
+                      id: nextProps.selectedstudentObj.currentSchool.id,
+                      label: nextProps.selectedstudentObj.currentSchool.name
+                  }
+              ],
+              classroom: s.classroom,
+              photoWaiver: s.photoWaiver,
+              gender: s.medicalrecord.gender,
+              height: s.medicalrecord.height,
+              weight: s.medicalrecord.weight,
+              lastTetanusMonth: (parseInt(moment(s.lastTetanus).format('M'), 10) - 1),
+              lastTetanusDay: parseInt(moment(s.lastTetanus).format('D'), 10),
+              lastTetanusYear: parseInt(moment(s.lastTetanus).format('YYYY'), 10),
+              noTetanusVaccine: s.medicalrecord.noTetanusVaccine,
+              insId: (s.insuranceDependentsList.length > 0) &&
+                  s.insuranceDependentsList[0].id,  // FIXME It's an array...
+              recentTrauma: s.medicalrecord.recentTrauma,
+              restrictions: s.medicalrecord.restrictions,
+              nonRxType: s.medicalrecord.nonRxType,
+              nonRxNotes: s.medicalrecord.nonRxNotes,
+              medicationSet: s.medicalrecord.medicationSet &&
+              (s.medicalrecord.medicationSet.length > 0)
+                  ? _.map(s.medicalrecord.medicationSet, med => {
+                      console.log(med.administrationTimes);
+                      console.log(med.administrationTimes);
+                      return (
+                          {
+                              id: med.id,
+                              administrationTimes: med.administrationTimes.toString(),
+                              administrationTimesOther: med.administrationTimesOther,
+                              medicationName: med.medicationName,
+                              amount: med.amount,
+                              amountHuman: med.amountHuman,
+                              amountUnit: med.amountUnit,
+                              getAmountUnitDisplay: med.getAmountUnitDisplay,
+                              notes: med.notes
+                          }
+                      )
+                  })
+                  : [],
+              // medicationSet: [
+              //   ...s.medicalrecord.medicationSet
+              // ],
+              allergies: s.medicalrecord.allergies && eval(JSON.parse(s.medicalrecord.allergies)).join(','),
 
-        hasFoodAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 1),
-        hasSkinAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 2),
-        hasDustAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 3),
-        hasInsectStingAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 4),
-        hasAnimalAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 5),
-        hasEyeAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 6),
-        hasDrugAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 7),
-        hasAllergicRhinitis: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 8),
-        hasLatexAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 9),
-        hasMoldAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 10),
-        hasPollenAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 11),
-        hasSinusAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 12),
-        hasOtherAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 13),
+              hasFoodAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 1),
+              hasSkinAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 2),
+              hasDustAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 3),
+              hasInsectStingAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 4),
+              hasAnimalAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 5),
+              hasEyeAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 6),
+              hasDrugAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 7),
+              hasAllergicRhinitis: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 8),
+              hasLatexAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 9),
+              hasMoldAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 10),
+              hasPollenAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 11),
+              hasSinusAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 12),
+              hasOtherAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 13),
 
-        hasFoodAllergyMilk: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 1),
-        hasFoodAllergyEggs: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 2),
-        hasFoodAllergyPeanuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 3),
-        hasFoodAllergySoy: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 4),
-        hasFoodAllergyWheat: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 5),
-        hasFoodAllergyTreeNuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 6),
-        hasFoodAllergyFish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 7),
-        hasFoodAllergyShellfish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 8),
-        hasFoodAllergyOther: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 9),
+              hasFoodAllergyMilk: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 1),
+              hasFoodAllergyEggs: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 2),
+              hasFoodAllergyPeanuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 3),
+              hasFoodAllergySoy: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 4),
+              hasFoodAllergyWheat: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 5),
+              hasFoodAllergyTreeNuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 6),
+              hasFoodAllergyFish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 7),
+              hasFoodAllergyShellfish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 8),
+              hasFoodAllergyOther: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 9),
 
-        allergiesExpanded: s.medicalrecord.allergiesExpanded,
-        dietaryNeeds: s.medicalrecord.dietaryNeeds,
-        guardianSuppliesFood: s.medicalrecord.guardianSuppliesFood
-      });
-    }
-  };
+              allergiesExpanded: s.medicalrecord.allergiesExpanded,
+              dietaryNeeds: s.medicalrecord.dietaryNeeds,
+              guardianSuppliesFood: s.medicalrecord.guardianSuppliesFood
+          })
+      }
+  }
 
   prevFormStep = () => {
     let { step } = this.state;
@@ -493,8 +493,6 @@ class StudentFormContainer extends React.Component {
       _.find(this.props.schoolList.schools, { id: this.state.currentSchool[0].id }).schoolType;
 
     const schoolTypeClassroomOptions = currentSchoolType === 'MONTESSORI' ? schoolClassroomListMontessori : schoolClassroomListPublic;
-
-    console.log(this.props);
 
     return (
       <div className="student-form">
