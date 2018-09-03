@@ -70,7 +70,7 @@ const facultyStaffList = [
     image: '/discovernci_media/faculty-staff/Austin-Wood2.jpg',
     slug: 'austin-wood',
     locations: [2, 3],
-    rank: 4,
+    rank: 2,
     bio: '<p>Austin has been an Environmental Educator with Nature’s Classroom Institute for 2 years at the Texas and California facilities. He has brought his passion for education and the outdoors to the new Florida sites and will be able to offer prospective schools a true insight into the depth of the Nature’s Classroom Institute Program. (New paragraph) Hailing from England, Austin had a long career in sales and marketing before following a dream of adventure and a vocation outdoors. While working as an Educator, Austin became enthusiastic about the values and mission of Nature’s Classroom Institute and was eager to see the program grow, leading to the opening of the two new Florida facilities.</p><p>Austin as Outreach Director is excited to meet and work with new schools and welcome them to the Nature’s Classroom Institute program.</p>'
   },
   {
