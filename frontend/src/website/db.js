@@ -282,7 +282,7 @@ const facultyStaffList = [
     image: '//nciw.s3.amazonaws.com/discovernci_media/SatiraLord.jpg',
     slug: 'satira-lord',
     locations: [7],
-    rank: 5,
+    rank: 6,
     bio: '<p>Satira Lord graduated from Green Mountain College with a degree in Psychology. From 2010 to 2013 she worked for Nature’s Classroom Institute and helped establish the NCI program in Texas. After NCI, she worked at Ithaca Montessori School in Ithaca, NY as the Education Director of the Youth Farm Project. She most recently ran a food pantry, as well as, worked with children in foster care. One of the highlights from her recent international travels was working at an agricultural museum in Dorf Tirol, Italy. She befriended a donkey named Ginna. She is excited to return to Nature&apos;s Classroom Montessori and cannot wait to teach your children.</p>'
   },
 
@@ -293,7 +293,7 @@ const facultyStaffList = [
     image: '//nciw.s3.amazonaws.com/discovernci_media/BrianaKyle.jpg',
     slug: 'briana',
     locations: [7],
-    rank: 6,
+    rank: 8,
     bio: '<p>Ms. Briana has always had a mind rooted in science and nature. In her youth she was active in 4-H, hiking, and had an inquisitive mind. Briana graduated from UW- Madison in 2010 with a B.S. in Biological Aspects of Conservation. After graduating she soon found Nature’s Classroom Institute in 2010. In 2014 Briana hiked the entire Ice Age Trail. The following year she worked at the Urban Ecology Center. Since joining NCI in 2010 she has worked in every aspect of the organization from Environmental Educator, Assistant Directress, and now Head Upper Elementary Teacher.</p>'
   },
 
@@ -304,7 +304,7 @@ const facultyStaffList = [
     image: '//nciw.s3.amazonaws.com/discovernci_media/KatelynBratz.jpg',
     slug: 'katelyn',
     locations: [7],
-    rank: 7,
+    rank: 9,
     bio: '<p>Katelyn Bratz graduated in 2008 with a Bachelor of the Arts degree in History, as well as certificates in Classical History and European History from the University of Wisconsin-Madison. Katelyn began her career working with students through environmental education. She came to Nature’s Classroom Institute and Montessori in 2008. Since then she has taken on various roles: environmental educator, environmental Education Director, history teacher, elementary assistant and currently our Adolescent Directress. It is during her work in our environmental program that Katelyn came to appreciate and understand the Montessori Method. Katelyn completed the AMI Montessori Orientation to Adolescent Studies in 2012. Since then Katelyn has worked to progress and expand our Adolescent program. She can be found regularly hiking and working at Nature’s Classroom property with her dog, Audi and the school dog, Pinto, gardening, or tending to the farm. All of which continue to be hobbies for Katelyn and a strong connection to her environmental background.</p>'
   },
   {
@@ -324,9 +324,29 @@ const facultyStaffList = [
     image: '//nciw.s3.amazonaws.com/discovernci_media/adriana.jpg',
     slug: 'adriana-haslam',
     locations: [7],
-    rank: 5,
+    rank: 6,
     bio: '<p>Teaching children has always been a passion of mine, as is spending time in nature and learning from my surroundings. Nature’s Classroom offers the unique opportunity for me to be able to have both daily. I have had the privilege of living all across the United States from Alaska to New York, and many places in between. I have walked inside of glaciers, tiptoed around snakes in the desert, looked down from the top of massive skyscrapers, and sat wide-eyed through stories told by tribe elders. Each community has helped shape who I am today as an educator and the rich cultures of those people influence what I bring to the classroom. I received my Bachelors degree in Sociology and Psychology with an emphasis on the sociology of education and learning and cognition from the University of Alaska. I received my Montessori education in Lower and Upper Elementary from Seton Montessori Institute.</p>'
-  }
+  },
+  {
+    id: 37,
+    name: 'Ms. Helen',
+    title: 'Assistant Teacher',
+    image: '/discovernci_media/faculty-staff/Helen-Holtz.jpg',
+    slug: 'helen-holtz',
+    locations: [7],
+    rank: 5,
+    bio: "<p>Helen Holtz grew up on a family farm in Mukwonago, Wisconsin and was raised with a passion for the outdoors. Helen graduated from the University of Wisconsin – Madison with an agricultural degree and works with her father and mother on the farm. Her dedication for outdoor land ethics has enabled her to work across the United States; creating and building trails for State and National Parks, wild land firefighting and fuels reduction, eradicating invasive plant species and establishing natives, and also working as a wildlife biologist. Helen and her dog, Dobby, recently finished hiking and backpacking in every continental state and she hopes to continue to explore the world. She is very excited to continue her commitment to environmental stewardship by passing her knowledge to the next generation.</p>"
+  },
+  {
+    id: 38,
+    name: 'Ms. Elizabeth',
+    title: 'Student Support Specialist',
+    image: '/discovernci_media/faculty-staff/Elizabeth-Splitberger.jpg',
+    slug: 'elizabeth-splitberger',
+    locations: [7],
+    rank: 10,
+    bio: "<p>I am happy to serve Nature’s Classroom Institute as an Educational Consultant and Student Support Specialist. My background includes a bachelor’s degree from Wisconsin Lutheran College in Elementary Education. With over 10 years experience in school and home settings, I have served individuals with significant needs across the life span, alongside their families, ensuring an environment of success for everyone. I pursue a developmental approach in all interventions, focusing on the whole child, and what the child can do. My objective is to meet the child where they are, so that they may continue to grow and learn. My passion is support for individuals with complex communication needs and sensory issues. Additionally, I have traditional classroom experience, including ESL practices. I look forward to growing and learning with Nature’s Classroom this year.</p>"
+  },
 ];
 
 
