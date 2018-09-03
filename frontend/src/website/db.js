@@ -79,7 +79,7 @@ const facultyStaffList = [
     title: 'Senior Environmental Instructors',
     image: '/discovernci_media/faculty-staff/Jordan-Kendall.jpg',
     slug: 'jordan-kendall',
-    locations: [0, 1, 4, 5],
+    locations: [0, 1, 2, 3, 4, 5],
     rank: 7,
     bio: 'Jordan is currently in his second year with NCI and comes to us from Kentucky. He attended Lindsey Wilson College where he played soccer for four years and earned his bachelor\'s degree in business administration. He is currently taking online classes to obtain his masters and expects to have his MBA by next year. He is a high energy educator with a camp counselor background and knowledgeable about the trees and vegetation in the area. He can keep students engaged through silly games and songs while teaching them about the world around them.'
   },
@@ -89,7 +89,7 @@ const facultyStaffList = [
     title: 'Environmental Educator',
     image: '/discovernci_media/faculty-staff/Brittany-Sumner.jpg',
     slug: 'brittany-sumner',
-    locations: [0, 1, 4, 5],
+    locations: [0, 1,  2, 3, 4, 5],
     rank: 8,
     bio: 'Brittany, also known as Peaches, cultivated her adventurous spirit and love for the environment as a child on her family’s farm in South Carolina. Her passion for the outdoors led her to Clemson University, where she earned a degree in Wildlife and Fisheries Biology in 2015. In 2017, she worked as a naturalist teaching people of all ages about the ever-changing natural world we live in. This past summer, she led conservation study abroad trips for high school students to Portugal and Botswana. Peaches’ love for various ecosystems has brought her to serve all over the world, from Florida’s coastal ecosystems to African deltas. Her free time is spent exploring the outdoors, photographing wildlife, tending to her garden, or with her nose in a good book.'
   },
@@ -99,17 +99,17 @@ const facultyStaffList = [
     title: 'Environmental Educator',
     image: '/discovernci_media/faculty-staff/Cristina-Villalobos.jpg',
     slug: 'cristina-villalobos',
-    locations: [0, 1, 4, 5],
+    locations: [0, 1,  2, 3, 4, 5],
     rank: 9,
     bio: 'Before joining the NCI team as an environmental educator, Cristina researched the marine environment and graduated from Western Washington University with a Master’s in marine and estuarine science. Throughout her academic career she combined her research interests with youth education and outreach opportunities. Why? Because to her, science education outside of the lab is just as important as inside the lab. She is an adventurer at heart and is always ready to go outdoors.'
   },
   {
     id: 33,
-    name: 'Neil Pederson',
+    name: 'Neil Pedersen',
     title: 'Environmental Educator',
-    image: '/discovernci_media/faculty-staff/Neil-Pederson.jpg',
-    slug: 'neil-pederson',
-    locations: [0, 1, 4, 5],
+    image: '/discovernci_media/faculty-staff/Neil-Pedersen.jpg',
+    slug: 'neil-pedersen',
+    locations: [0, 1,  2, 3, 4, 5],
     rank: 10,
     bio: 'Neil was born and raised in Clarendon Hills, Illinois and is a graduate of the University of Wisconsin-Stevens Point with a degree in communications. As a Pointer, he was a member of the cross country and track & field teams, serving as a captain of each for two years and earning All-American status. Upon graduation, he worked as an Environmental Educator at Brandywine Creek State Park in Wilmington, DE for one year. More recently, he worked on a trail crew with the US Forest Service in the Church National Forest in South-Central Alaska. He is now thrilled to teach and learn from the children of Texas and California.'
   },
@@ -137,7 +137,7 @@ const facultyStaffList = [
   },
   {
     id: 17,
-    locations: [1, 4],
+    locations: [0, 1, 2, 3, 4, 5],
     name: 'Britta Wood',
     title: 'Education Director - Texas, California, Florida',
     image: '/discovernci_media/faculty-staff/Britta-Wood.jpg',
@@ -149,7 +149,7 @@ const facultyStaffList = [
     id: 8,
     locations: [6],
     name: 'Kristen Mehl',
-    title: 'Director of Education',
+    title: 'Education Director - Wisconsin',
     image: '//nciw.s3.amazonaws.com/discovernci_media/KristenMehl.jpeg',
     slug: 'kristen-mehl',
     rank: 3,
@@ -168,7 +168,7 @@ const facultyStaffList = [
   {
     id: 11,
     name: 'Chelsea Jandreau',
-    title: 'Assistant Director of Education',
+    title: 'Education Director - Wisconsin',
     image: '//nciw.s3.amazonaws.com/discovernci_media/ChelseaJandreau.jpg',
     slug: 'chelsea-jandreau',
     locations: [6],
@@ -198,7 +198,7 @@ const facultyStaffList = [
   {
     id: 16,
     name: 'Eric Ottmann',
-    title: 'Environmental Instructor',
+    title: 'Senior Environmental Instructor',
     image: '//nciw.s3.amazonaws.com/discovernci_media/EricOttmann.jpg',
     slug: 'eric-ottmann',
     locations: [6],
