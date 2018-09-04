@@ -150,7 +150,7 @@ const facultyStaffList = [
     locations: [6],
     name: 'Kristen Mehl',
     title: 'Education Director - Wisconsin',
-    image: '/discovernci_media/Kristen-Mehl.jpg',
+    image: '/discovernci_media/faculty-staff/Kristen-Mehl.jpg',
     slug: 'kristen-mehl',
     rank: 3,
     bio: "Kristen Mehl hails from the great mitten state of Michigan where she grew up running around outdoors with her father and brother. She was inspired to become a teacher as an elementary student, and even studied early childhood education in college at the University of Michigan. After taking a leap a leap of faith and packing up three months worth of belongings, she moved to North Carolina to start a series of internships that would lead her to Nature's Classroom. She started as an instructor for the 2015-2016 school year, returned two seasons ago to help transplant NCI from Mukwonago to Lake Geneva as Co-Director, and is happily returning as Director of Education for her second and final term. She was inspired by children from all over the country to continue her work as an environmental educator after watching many become so enthralled with the world around them. This summer, Kristen spent a few weeks traveling around Europe with Chelsea and is excited to bring back some of her knowledge in the form of Stump the Staff questions. When she's not working, she can be found calling for owls in Big Foot Beach State Park, watercolor painting, singing along to the musical Hamilton or watching Harry Potter."
@@ -311,7 +311,7 @@ const facultyStaffList = [
     id: 28,
     name: 'James Gorsline',
     title: 'Senior Environmental Educator',
-    image: '/discovernci_media/James-Gorsline.jpg',
+    image: '/discovernci_media/faculty-staff/James-Gorsline.jpg',
     slug: 'james-gorsline',
     locations: [6],
     rank: 10,
