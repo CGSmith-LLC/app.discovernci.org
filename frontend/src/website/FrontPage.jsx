@@ -36,7 +36,7 @@ export default class Home extends React.Component {
 
             {this.state.showPoster
               ? <img
-                src="//nciw.s3.amazonaws.com/discovernci_media/homePosterOutsideRiver.jpg"
+                src="/discovernci_media/hero.jpg"
                 className="img-responsive"
                 alt="presentation"
                 onClick={this.handlePlay}
