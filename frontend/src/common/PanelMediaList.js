@@ -58,7 +58,7 @@ export default function PanelMediaList(props) {
             <Media.Heading>{obj.name}</Media.Heading>
             <ul style={{ listStyleType: 'none', margin: 0, padding: 0 }}>
               <li>
-                {obj.title}
+                {obj.role}
               </li>
               <li>
                 <a href={`mailto:${obj.email}`}>

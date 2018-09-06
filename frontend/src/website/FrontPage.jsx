@@ -14,7 +14,7 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    document.body.style.backgroundImage = 'url(/discovernci_media/bgDeep.jpg)';
+    document.body.style.backgroundImage = 'url(//nciw.s3.amazonaws.com/discovernci_media/bgDeep.jpg)';
   }
 
   handlePlay = () => {
@@ -36,7 +36,7 @@ export default class Home extends React.Component {
 
             {this.state.showPoster
               ? <img
-                src="/discovernci_media/homePosterOutsideRiver.jpg"
+                src="/discovernci_media/hero.jpg"
                 className="img-responsive"
                 alt="presentation"
                 onClick={this.handlePlay}
@@ -149,12 +149,12 @@ export default class Home extends React.Component {
           </Col>
           <Col md={4}>
             <img
-              src="/discovernci_media/onTheFarm.jpg"
+              src="//nciw.s3.amazonaws.com/discovernci_media/onTheFarm.jpg"
               className="img-responsive img-rounded top-10"
               alt="presentation"
             />
             <img
-              src="/documents/BeTheTree.jpg"
+              src="//nciw.s3.amazonaws.com/documents/BeTheTree.jpg"
               style={{ marginTop: 30 }}
               className="img-responsive img-rounded"
               alt="presentation"

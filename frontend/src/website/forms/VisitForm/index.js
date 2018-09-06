@@ -208,7 +208,7 @@ export default class VisitMontessori extends React.Component {
             <h3>What to expect...</h3>
             <p style={{ marginBottom: 20, fontFamily: 'Helvetica' }}>Our montessori school tours begin at 9:30am starting at the office and last approximately 90 minutes. Please plan on a tour of our grounds, an observation in the classroom of the age you are interested in and a meeting with our Executive Director.</p>
             <p style={{ fontFamily: 'Helvetica' }}><a href="https://goo.gl/maps/cGXoTPKAiZL2" target="_blank" rel="noopener noreferrer">Get directions (Google Maps)</a></p>
-            <iframe title="Map" src="//www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d373399.846249984!2d-88.5289272525183!3d43.01646572090082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88059633d969329b%3A0xa4aff843ee787691!2sNature&#39;s+Classroom+Institute+and+Montessori+School!5e0!3m2!1sen!2sus!4v1512742719122" width="380" height="360" frameBorder="0" style={{ border: '1px solid #949494' }} allowFullScreen />
+            <iframe title="Map" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJmzJp2TOWBYgRkXZ47kP4r6Q&key=AIzaSyBbch5v146nAkVkR13DHAEMhVUNWHlODok" width="380" height="360" frameBorder="0" style={{ border: '1px solid #949494' }} allowFullScreen />
           </Col>
         </Row>
       </BasicContainer>

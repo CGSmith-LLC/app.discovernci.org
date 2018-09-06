@@ -34,7 +34,7 @@ const StudentFormReview = ({ student, myInsuranceListQuery}) => {
           </tr>
           <tr>
             <td>Birth Date</td>
-            <td>{moment([student.dobYear, student.dobMonth, student.dobDay]).format('YYYY-MM-DD')} ({moment().diff([student.dobYear, student.dobMonth, student.dobDay], 'years')} Years old)</td>
+            <td>{moment([student.dobYear, student.dobMonth - 1, student.dobDay]).format('YYYY-MM-DD')} ({moment().diff([student.dobYear, student.dobMonth, student.dobDay], 'years')} Years old)</td>
           </tr>
           <tr>
             <td>School</td>
