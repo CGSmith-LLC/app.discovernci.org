@@ -45,7 +45,7 @@ export default function EventCalendar() {
       <Row className="top-30">
         <Col md={10} mdOffset={1} xs={12}>
           <img
-            src="//nciw.s3.amazonaws.com/discovernci_media/calendar.jpg"
+            src="/discovernci_media/calendar.jpg"
             className="img-responsive"
             alt="Montessori Calendar"
             style={{ marginBottom: 60 }}
