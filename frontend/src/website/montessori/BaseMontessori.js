@@ -15,7 +15,7 @@ BaseMontessori.defaultProps = {
 export default function BaseMontessori(props) {
   return (
     <Grid className="grid-container">
-      <h1 className="center top-35">Nature&apos;s Classroom Institute Montessori School</h1>
+      <h1 className="center top-35">Nature&apos;s Classroom Institute Montessori School<img src="/discovernci_media/seal.jpg" alt="American Montessori Society 6 Seal" width="125"/></h1>
       <Row>
         <Col md={10} mdOffset={1}>
 
