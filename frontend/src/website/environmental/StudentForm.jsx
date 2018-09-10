@@ -140,9 +140,9 @@ class StudentFormContainer extends React.Component {
               gender: s.medicalrecord.gender,
               height: s.medicalrecord.height,
               weight: s.medicalrecord.weight,
-              lastTetanusMonth: (parseInt(moment(s.lastTetanus).format('M'), 10) - 1),
-              lastTetanusDay: parseInt(moment(s.lastTetanus).format('D'), 10),
-              lastTetanusYear: parseInt(moment(s.lastTetanus).format('YYYY'), 10),
+              lastTetanusMonth: parseInt(moment(s.medicalrecord.lastTetanus).format('M'), 10),
+              lastTetanusDay: parseInt(moment(s.medicalrecord.lastTetanus).format('D'), 10),
+              lastTetanusYear: parseInt(moment(s.medicalrecord.lastTetanus).format('YYYY'), 10),
               noTetanusVaccine: s.medicalrecord.noTetanusVaccine,
               insId: (s.insuranceDependentsList.length > 0) &&
                   s.insuranceDependentsList[0].id,  // FIXME It's an array...
