@@ -41,15 +41,16 @@ export default class PrepareForNci extends React.Component {
             <ul>
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/Student_prep.pdf">Preparing your child for NCI</a></li>
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/NCI_Parents_Welcome_Letter.pdf">Visiting School Parent Package ~ Northern Region</a></li>
-              <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package_Southern%20Region.pdf">Visiting School Parent Package ~ Southern Region</a></li>
-              <li><a href="http://nciw.s3.amazonaws.com/documents/Visiting%20School%20Parent%20Package-Southern-Western%20Region.pdf">Visiting School Parent Package ~ Western Region</a></li>
+              <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package%20-%20Southern%20Region.pdf">Visiting School Parent Package ~ Southern Region</a></li>
+              <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package%20-%20Western%20Region.pdf">Visiting School Parent Package ~ Western Region</a></li>
               <li><a href="http://nciw.s3.amazonaws.com/documents/prepare/NCI_Parent_tutorial.pdf">NCI Online Registration - Parent Tutorial</a></li>
               <li><a href="https://discovernci.org/dashboard" target="_blank" rel="noopener noreferrer">Access NCI Online Registration Portal</a></li>
+              <li><a href="/documents/prepare/NCI%20-%20Curriculum%20Concept%20Overview.pdf">Curriculum Concept Overview</a></li>
             </ul>
 
             <h3>Teachers ~ Here&apos;s What You&apos;ll Need</h3>
             <ul>
-              <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/Visiting%20Teachers%20Role_revised10_17_16.pdf">Visiting Teachers Role at NCI</a></li>
+              <li><a href="/documents/prepare/Visiting%20Teachers%20Role.pdf">Visiting Teachers Role at NCI</a></li>
               <li><a href="http://nciw.s3.amazonaws.com/documents/prepare/NCI_Teacher_tutorial.pdf">NCI Online Registration - Teacher Tutorial</a></li>
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/Roommate%20Selection%20Form_revised10_17_16.pdf">NCI Roommate Selection Form</a></li>
               <li><a href="http://nciw.s3.amazonaws.com/documents/Bruceville-Housing-Assignment-Worksheet.xlsx">NCI Housing Assignment Worksheet - Bruceville</a></li>

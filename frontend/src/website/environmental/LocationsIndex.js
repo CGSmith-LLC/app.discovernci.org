@@ -25,7 +25,7 @@ export default class Locations extends React.Component {
         />
 
         <Col xs={6} md={6} mdOffset={1}>
-          <p>Nature&apos;s Classroom Institute is the nation&apos;s premier environmental education program. We offer a fully customized, highly engaging 3 or 5 day experience that has direct positive impacts on classroom community and academic performance. Our multi-disciplined, degreed educators integrate lessons with the curriculum of visiting schools in order to reinforce what is being taught in the classroom. With thousands of classes and activities to choose from, we create unique and individualized experiences for each and every student and teacher.</p>
+          <p>Nature&apos;s Classroom Institute is the nation&apos;s premier environmental education program. We offer a fully customized, highly engaging 3, 4 or 5 day experience that has direct positive impacts on classroom community and academic performance. Our multi-disciplined, degreed educators integrate lessons with the curriculum of visiting schools in order to reinforce what is being taught in the classroom. With thousands of classes and activities to choose from, we create unique and individualized experiences for each and every student and teacher.</p>
 
           <h3>An Extension of the Classroom</h3>
           <p>Nature&apos;s Classroom Institute is a place where students begin to value their education. We broaden their perspectives to see that learning is not all textbooks, not all desk, but that school is where they obtain the skills necessary for other, more exciting things. Our goal is to motivate students to learn, to integrate social development with academic experiences, and to strengthen the link between school and the "real world."</p>
@@ -59,7 +59,7 @@ export default class Locations extends React.Component {
             <li>Group and team-building field experience which improves peer bonding, self development, positive communication, leadership skills and the ability to problem solve</li>
             <li>Student choice and "hands-on" integrative approach to learning which awakens curiosity and elevates comprehension</li>
             <li>A tried and true environmental education residential program with nearly 20 years experience</li>
-            <li>Lodging: comfortable air-conditioned and heated facilities; Handicap accessibility is site specific</li>
+            <li>Lodging: comfortable air-conditioned and heated facilities; Handicap accessibility is site dependent</li>
             <li>Food: served family-style with the ability to accommodate special dietary needs</li>
             <li>Medical Response: medical staff on-call</li>
           </ul>

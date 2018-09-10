@@ -66,7 +66,7 @@ const facultyStaffList = [
   {
     id: 34,
     name: 'Austin Wood',
-    title: 'Outreach Director',
+    title: 'Director of Outreach',
     image: '/discovernci_media/faculty-staff/Austin-Wood2.jpg',
     slug: 'austin-wood',
     locations: [2, 3],
@@ -168,7 +168,7 @@ const facultyStaffList = [
   {
     id: 11,
     name: 'Chelsea Jandreau',
-    title: 'Education Director - Wisconsin',
+    title: 'Assistant Education Director - Wisconsin',
     image: '//nciw.s3.amazonaws.com/discovernci_media/ChelseaJandreau.jpg',
     slug: 'chelsea-jandreau',
     locations: [6],
