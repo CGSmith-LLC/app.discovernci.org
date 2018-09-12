@@ -320,10 +320,10 @@ class AddOrModifyStudent(graphene.Mutation):
                 except Medication.DoesNotExist:
                     medication = Medication()
                 medication.administration_times = ', '.join(str(x) for x in med['administrationTimes']),
-                medication.administration_times_other = str(med['administrationTimesOther']),
-                medication.medication_name = str(med['medicationName']),
-                medication.amount_human = str(med['amountHuman']),
-                medication.notes = str(med['notes']),
+                medication.administration_times_other = str(med['administrationTimesOther'])
+                medication.medication_name = str(med['medicationName'])
+                medication.amount_human = str(med['amountHuman'])
+                medication.notes = str(med['notes'])
                 medication.medical_record = mr
 
                 medication.save()
