@@ -45,7 +45,6 @@ export default class PrepareForNci extends React.Component {
               <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package%20-%20Western%20Region.pdf">Visiting School Parent Package ~ Western Region</a></li>
               <li><a href="http://nciw.s3.amazonaws.com/documents/prepare/NCI_Parent_tutorial.pdf">NCI Online Registration - Parent Tutorial</a></li>
               <li><a href="https://discovernci.org/dashboard" target="_blank" rel="noopener noreferrer">Access NCI Online Registration Portal</a></li>
-              <li><a href="/documents/prepare/NCI%20-%20Curriculum%20Concept%20Overview.pdf">Curriculum Concept Overview</a></li>
             </ul>
 
             <h3>Teachers ~ Here&apos;s What You&apos;ll Need</h3>
@@ -58,6 +57,7 @@ export default class PrepareForNci extends React.Component {
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/NCI%20Field%20Group%20Assignment%20Form_revised10_17_16.pdf">NCI Field Group Assignment Form</a></li>
               <li><a href="https://nciw.s3.amazonaws.com/documents/prepare/NCI%20Arrival%20Departure%20Contact%20Policies%20-%20Bruceville.pdf">NCI Arrival Departure Contact Policies - Bruceville</a></li>
               <li><a href="http://www.lgyc.org/directions/" target="_blank" rel="noopener noreferrer">Directions to NCI - Lake Geneva (aka Lake Geneva Youth Camp)</a></li>
+              <li><a href="/documents/prepare/NCI%20-%20Curriculum%20Concept%20Overview.pdf">Curriculum Concept Overview</a></li>
             </ul>
 
           </Col>
