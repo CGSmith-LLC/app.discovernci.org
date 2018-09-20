@@ -14,6 +14,8 @@ from graphene_django.views import GraphQLView
 
 from locations.views import PostVisitSubmission
 
+from views.charge import views
+
 
 def template(template_name):
     """Reusable TemplateView to keep things shorter down below."""
@@ -35,6 +37,9 @@ urlpatterns = [
 
     # Manual POST endpoints
     url(r'^post/visit/$', PostVisitSubmission.as_view()),
+
+    # Stripe Charge
+    url(r'^charge/$', views.charge),
 
     # Static routes for SEO (html generated via react-snapshot)
     # TODO: Nginx should do this instead if the url/index.html exists,
