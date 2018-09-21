@@ -14,10 +14,10 @@ def charge(request):
 
     if request.method == 'POST':
         data = stripe.Charge.create(
-            amount=(int(request.POST['amount']) + 100),  # Amount must be in cents for form to accept it
+            amount=(int(request.POST.get('amount')) + 100),  # Amount must be in cents for form to accept it
             currency='usd',
             description='Donation to Nature\'s Classroom Institute and Montessori',
-            source=request.POST['stripeToken']
+            source=request.POST.get('stripeToken')
         )
         return JsonResponse(data)
 
