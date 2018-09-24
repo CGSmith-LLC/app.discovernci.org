@@ -61,9 +61,11 @@ class CheckoutForm extends Component {
 
         let formData = new FormData(); // Used for sending form data to Django /charge/
 
-        this.props.stripe.createToken({name: "Name"}).then(async ({token}) => {
+        this.props.stripe.createToken({name: this.state.name}).then(async ({token}) => {
             formData.append('amount', this.state.amount);
             formData.append('stripeToken', token.id);
+            formData.append('email', this.state.email);
+            formData.append('phone', this.state.phone);
 
             let response = await fetch("/charge/", {
                 method: "POST",
