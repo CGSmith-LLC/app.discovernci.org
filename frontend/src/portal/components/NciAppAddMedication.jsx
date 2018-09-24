@@ -62,6 +62,7 @@ class NciAppAddMedicationContainer extends React.Component {
     this.props.addOrModifyMedicationMutation({
       variables: {
         // id: this.state.id,
+        studentId: this.props.data.student.id,
         medicationName: this.state.medicationName,
         amountHuman: this.state.amountHuman,
         notes: this.state.notes,
