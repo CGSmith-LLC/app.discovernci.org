@@ -87,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djnci.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES = {
@@ -123,7 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -136,7 +134,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -155,7 +152,6 @@ MEDIA_URL = '/media/'
 # A list of all the people who get code error notifications. Details of
 # exceptions raised in the request/response cycle are emailed to these addresses.
 ADMINS = [
-    ('Ben Keating', 'bkeating@gmail.com'),
     ('Chris Smith', 'chris@cgsmith.net'),
 ]
 
@@ -254,16 +250,19 @@ FROALA_EDITOR_PLUGINS = (
 if DEBUG:
     STRIPE_PUBLIC_KEY = os.environ['STRIPE_TEST_PUBLIC_KEY']
     STRIPE_SECRET_KEY = os.environ['STRIPE_TEST_SECRET_KEY']
-    STAFF_TO_LIST = ['bkeating+nciw@gmail.com', 'chris@cgsmith.net']
-    TECH_SUPPORT_TO_LIST = ['bkeating+nciw@gmail.com', 'chris@cgsmith.net']
+    STAFF_TO_LIST = ['chris@cgsmith.net']
+    TECH_SUPPORT_TO_LIST = ['chris@cgsmith.net']
 else:
     STRIPE_PUBLIC_KEY = os.environ['STRIPE_LIVE_PUBLIC_KEY']
     STRIPE_SECRET_KEY = os.environ['STRIPE_LIVE_PRIVATE_KEY']
     STAFF_TO_LIST = [
-        'chris@cgsmith.net'
+        'mirko@discovernci.org',
+        'office@nciw.org',
+        'geoffrey@nciw.org',
     ]
     TECH_SUPPORT_TO_LIST = [
-        'chris@cgsmith.net',
+        'mirko@discovernci.org',
+        'office@nciw.org',
     ]
     RAVEN_CONFIG = {
         'dsn': os.environ['SENTRY_DSN_URL'],
