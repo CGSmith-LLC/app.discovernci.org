@@ -137,8 +137,8 @@ export default class VisitEnvironmental extends React.Component {
                       <option value="0" disabled>Select...</option>
                       <option value="5">Angelus Oaks, California</option>
                       <option value="6">Ben Lomond, California</option>
-                      <option value="11">Brooksville, FL</option>
-                      <option value="10">Parrish, FL</option>
+                      <option value="11">Brooksville, Florida</option>
+                      <option value="10">Parrish, Florida</option>
                       <option value="7">Bruceville, Texas</option>
                       <option value="8">New Ulm, Texas</option>
                       <option value="9">Lake Geneva, Wisconsin</option>

@@ -71,7 +71,7 @@ const StudentFormReview = ({ student, myInsuranceListQuery}) => {
             <td>
               {student.noTetanusVaccine
                 ? 'NO TETANUS'
-                : moment([student.lastTetanusYear, student.lastTetanusMonth, student.lastTetanusDay]).format('YYYY-MM-DD')
+                : moment([student.lastTetanusYear, student.lastTetanusMonth - 1, student.lastTetanusDay]).format('YYYY-MM-DD')
               }
             </td>
           </tr>
