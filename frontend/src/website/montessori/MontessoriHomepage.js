@@ -49,7 +49,7 @@ export default class MontessoriHomepage extends React.Component {
                 className="img-responsive"
                 onClick={this.handlePlay}
                 role="button"
-                src="discovernci_media/homePoster.jpg"
+                src="/discovernci_media/homePoster.jpg"
                 tabIndex={0}
               />
             :
@@ -146,7 +146,7 @@ export default class MontessoriHomepage extends React.Component {
               develop their own capabilities.</p>
           </Col>
           <Col md={6}>
-            <img src="discovernci_media/splash.jpg" className="top-25 img-responsive img-rounded" alt="presentation" />
+            <img src="/discovernci_media/splash.jpg" className="top-25 img-responsive img-rounded" alt="presentation" />
           </Col>
         </Row>
 

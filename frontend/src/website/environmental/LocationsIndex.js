@@ -78,21 +78,21 @@ export default class Locations extends React.Component {
         </Col>
         <Col md={4}>
 
-          <img src="discovernci_media/imgHappyTreeFriends.jpg" className="img-responsive img-rounded" alt="presentation" />
+          <img src="/discovernci_media/imgHappyTreeFriends.jpg" className="img-responsive img-rounded" alt="presentation" />
 
-          <img src="discovernci_media/spring3.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/spring3.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="discovernci_media/helping.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/helping.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="discovernci_media/ObservationDeck.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/ObservationDeck.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="discovernci_media/MeasuringOutside.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/MeasuringOutside.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="discovernci_media/HappyCrew.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/HappyCrew.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="discovernci_media/Feeding.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/Feeding.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
-          <img src="discovernci_media/BoysInThaTrees.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
+          <img src="/discovernci_media/BoysInThaTrees.jpg" className="img-responsive img-rounded top-30" alt="presentation" />
 
         </Col>
       </Row>
