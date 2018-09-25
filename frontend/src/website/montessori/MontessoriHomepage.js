@@ -14,7 +14,7 @@ export default class MontessoriHomepage extends React.Component {
   }
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(discovernci_media/bg6.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/bg6.jpg)';
   }
 
   handlePlay = () => {

@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 export default class Locations extends React.Component {
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(discovernci_media/bg3.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/bg3.jpg)';
   }
 
   render() {

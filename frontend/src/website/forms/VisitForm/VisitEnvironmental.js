@@ -30,7 +30,7 @@ export default class VisitEnvironmental extends React.Component {
   }
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'url(discovernci_media/winterBg1.jpg)';
+    document.body.style.backgroundImage = 'url(/discovernci_media/winterBg1.jpg)';
   }
 
   getPreferredTimeValidationState = (e) => { if (this.state.preferredTime >= 1) return 'success'; }
