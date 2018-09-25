@@ -73,7 +73,7 @@ class PostVisitSubmission(View):
             email_context,
             'New Visit Submission',
             to_list,
-            from_email="Nature's Classroom <no-reply@discovernci.org>"
+            from_email="Nature's Classroom <office@discovernci.org>"
         )
 
         response = JsonResponse({"status": "ok"})

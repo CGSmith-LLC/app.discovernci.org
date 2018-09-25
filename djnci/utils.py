@@ -12,7 +12,7 @@ from django.template import loader
 def send_html_email(template, context, subject, to_list, from_email=None, attachment=None):
     """Send an HTML-templated email to a list of users."""
     if not from_email:
-        from_email = "Nature's Classroom <no-reply@discovernci.org>"
+        from_email = "Nature's Classroom <office@discovernci.org>"
 
     mailt = loader.get_template(template)
     mailc = context

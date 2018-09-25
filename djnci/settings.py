@@ -157,7 +157,7 @@ ADMINS = [
 
 # All email sent from site is done through our SendGrid account.
 # Credentials cited here can also be used on their site (https://sendgrid.com/)
-DEFAULT_FROM_EMAIL = "Nature's Classroom <no-reply@nciw.org>"
+DEFAULT_FROM_EMAIL = "Nature's Classroom <office@discovernci.org>"
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
