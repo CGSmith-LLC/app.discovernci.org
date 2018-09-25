@@ -27,7 +27,7 @@ export default class DonatePage extends Component {
                         <p style={{fontSize: '1.4em', marginBottom: 20}}>Your support directly impacts our mission in
                             teaching independence, mastery of self and the environment.</p>
 
-                        <StripeProvider apiKey="pk_test_2iONQfKDphIIa8M9W1hkisQq">
+                        <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
                             <Elements>
                                 <CheckoutForm />
                             </Elements>

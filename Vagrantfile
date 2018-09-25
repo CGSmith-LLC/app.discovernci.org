@@ -22,11 +22,6 @@ FileUtils.cp config[:example], config[:local] unless File.exist?(config[:local])
 # read config
 options = YAML.load_file config[:local]
 
-# check github token
-if options['github_token'].nil? || options['github_token'].to_s.length != 40
-  puts "You must place REAL GitHub token into configuration:\nvagrant/config/vagrant-local.yml"
-  exit
-end
 
 # vagrant configurate
 Vagrant.configure(2) do |config|
