@@ -79,7 +79,7 @@ export default function Footer(props) {
           <p className="center">
             Learning through experience. Growing through expression.
             <a
-              href="https://www.facebook.com/NaturesClassroomInstitute/"
+              href="https://www.facebook.com/NaturesClassroomMontessori"
               target="_blank"
               rel="noopener noreferrer"
               style={{ marginLeft: 15, color: '#5bb3ff' }}
