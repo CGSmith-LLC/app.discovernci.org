@@ -37,17 +37,17 @@ export default class DonatePage extends Component {
                     <Col md={4}>
 
                         <img
-                            src="//nciw.s3.amazonaws.com/discovernci_media/skyviewRibbonCutting.jpg"
+                            src="/discovernci_media/skyviewRibbonCutting.jpg"
                             alt="presentation"
                             className="img-responsive img-rounded"
                             style={{marginTop: 20, marginBottom: 25}}
                         />
 
                         <Panel header="Annual Report 2016-2017" style={{textAlign: 'center'}}>
-                            <a href="//nciw.s3.amazonaws.com/discovernci_media/Natures%20Classroom%202017-2018%20Annual%20Report.pdf"
+                            <a href="/discovernci_media/Natures%20Classroom%202017-2018%20Annual%20Report.pdf"
                                className="btn btn-primary" target="_blank" rel="noopener noreferrer">View our 2017-2018
                                 Annual Report (PDF)</a><br/><br/>
-                            <a href="//nciw.s3.amazonaws.com/discovernci_media/2016-2017%20Annual%20Report%20-%20Final_Spreads.pdf"
+                            <a href="/discovernci_media/2016-2017%20Annual%20Report%20-%20Final_Spreads.pdf"
                                className="btn btn-primary" target="_blank" rel="noopener noreferrer">View our 2016-2017
                                 Annual Report (PDF)</a>
                         </Panel>
