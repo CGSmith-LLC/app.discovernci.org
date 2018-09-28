@@ -58,6 +58,7 @@ class CheckoutForm extends Component {
 
     submit(ev) {
         ev.preventDefault();
+        this.setState({submitDisabled: true});
 
         let formData = new FormData(); // Used for sending form data to Django /charge/
 
@@ -76,6 +77,8 @@ class CheckoutForm extends Component {
                 console.log("Purchase Complete!");
             }
             if (response.ok) this.setState({success: true});
+
+            this.setState({submitDisabled: false});
         });
     }
 
