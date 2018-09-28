@@ -67,15 +67,17 @@ class CheckoutForm extends Component {
             formData.append('email', this.state.email);
             formData.append('phone', this.state.phone);
 
-            let response = await fetch("/charge/", {
+            fetch("/charge/", {
                 method: "POST",
                 body: formData
-            });
-
-            if (response.ok) {
-                console.log("Purchase Complete!");
-            }
-            if (response.ok) this.setState({success: true});
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        this.setState({paymentError: response.statusText});
+                    } else {
+                        this.setState({success: true});
+                    }
+                });
         });
     }
 
