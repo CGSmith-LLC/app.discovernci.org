@@ -21,6 +21,23 @@ The projects technical name is 'djnci'. This is just a naming convention to help
 
 The website 'Pages' are written in React. The nature of React is very loose structure. We did this, as appose to using something like off-the-shelf WordPress because we determined that having control over the presentation and custom functionality is important to us.
 
+## How to Convert database from SQLite to MySQL
+
+1. Dump data
+python manage.py dumpdata > datadump.json
+2. Create a new database for the Django project.
+CREATE DATABASE djnci CHARACTER SET UTF8;
+3. Create a database user to use to connect to and interact with the database.
+CREATE USER djnci@localhost IDENTIFIED BY 'djncidjnci';
+4. Give database user access to the database
+GRANT ALL PRIVILEGES ON djnci.* To djnci@localhost;
+5. FLUSH the changes.
+FLUSH PRIVILEGES;
+6. Install the mysqlclient package that will allow us to use the database we configured:
+pip install django mysqlclient
+7. python manage.py migrate --run-syncdb
+8. python manage.py loaddata datadump.json
+
 ## How to Edit a 'Page'
 
 Currently, this is non-trivial to a non-developer. But here's how it's done:
