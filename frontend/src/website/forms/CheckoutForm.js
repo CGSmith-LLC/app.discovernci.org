@@ -74,9 +74,10 @@ class CheckoutForm extends Component {
             });
 
             if (response.ok) {
-                console.log("Purchase Complete!");
+                this.setState({success: true});
+            } else {
+                this.setState({paymentError: response.statusText});
             }
-            if (response.ok) this.setState({success: true});
 
             this.setState({submitDisabled: false});
         });
