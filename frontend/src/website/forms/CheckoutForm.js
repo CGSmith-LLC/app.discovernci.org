@@ -58,6 +58,7 @@ class CheckoutForm extends Component {
 
     submit(ev) {
         ev.preventDefault();
+        this.setState({submitDisabled: true});
 
         let formData = new FormData(); // Used for sending form data to Django /charge/
 
@@ -67,17 +68,18 @@ class CheckoutForm extends Component {
             formData.append('email', this.state.email);
             formData.append('phone', this.state.phone);
 
-            fetch("/charge/", {
+            let response = await fetch("/charge/", {
                 method: "POST",
                 body: formData
-            })
-                .then((response) => {
-                    if (!response.ok) {
-                        this.setState({paymentError: response.statusText});
-                    } else {
-                        this.setState({success: true});
-                    }
-                });
+            });
+
+            if (response.ok) {
+                this.setState({success: true});
+            } else {
+                this.setState({paymentError: response.statusText});
+            }
+
+            this.setState({submitDisabled: false});
         });
     }
 
