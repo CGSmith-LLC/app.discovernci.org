@@ -240,7 +240,7 @@ class ModalAddStudent extends React.Component {
           >
 
             <p style={{ marginTop: 0, position: 'relative', top: -15, fontFamily: 'Helvetica, sans-serif', fontSize: '1em' }}>
-              <a href="discovernci_media/waiver.pdf" target="_blank" rel="noopener noreferrer">View Waiver and Release of Liability Agreement <FontAwesome name="external-link-square" fixedWidth /></a>
+              <a href="/discovernci_media/waiver.pdf" target="_blank" rel="noopener noreferrer">View Waiver and Release of Liability Agreement <FontAwesome name="external-link-square" fixedWidth /></a>
             </p>
 
             <Button bsStyle="success" type="submit">Save Child</Button>

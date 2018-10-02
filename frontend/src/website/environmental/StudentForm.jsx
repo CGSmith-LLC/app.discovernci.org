@@ -924,7 +924,7 @@ class StudentFormContainer extends React.Component {
                 <span style={{ paddingLeft: 5, fontWeight: 'bold' }}>Medical Authorization, Youth Waiver & Release of Liability</span>
               </Checkbox>{' '}
               <p className="help-block">
-                I have read the medical authorization, waiver and release, and understand my rights by signing it and sign it voluntarily. <a href="discovernci_media/waiver.pdf" target="_blank" rel="noopener noreferrer">View Waiver and Release of Liability Agreement</a>.
+                I have read the medical authorization, waiver and release, and understand my rights by signing it and sign it voluntarily. <a href="/discovernci_media/waiver.pdf" target="_blank" rel="noopener noreferrer">View Waiver and Release of Liability Agreement</a>.
               </p>
             </FormGroup>
 
