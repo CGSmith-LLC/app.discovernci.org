@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'graphene_django',
     'raven.contrib.django.raven_compat',
+    'anymail',
 
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',
@@ -163,7 +164,7 @@ ADMINS = [
 DEFAULT_FROM_EMAIL = "Nature's Classroom <office@discovernci.org>"
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'anymail.backends.postmark.EmailBackend'
 else:
     EMAIL_HOST = os.environ['SMTP_HOST']
     EMAIL_HOST_PASSWORD = os.environ['SMTP_PASSWORD']
@@ -273,3 +274,7 @@ else:
         # release based on the git info.
         'release': raven.fetch_git_sha(BASE_DIR)
     }
+
+ANYMAIL = {
+    'POSTMARK_SERVER_TOKEN': '7df1c2cb-8e7c-4817-8acb-216659edfd4a',
+}
