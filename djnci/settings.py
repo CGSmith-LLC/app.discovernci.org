@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'raven.contrib.django.raven_compat',
     'anymail',
+    'encrypted_model_fields',
 
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',
@@ -278,3 +279,5 @@ else:
 ANYMAIL = {
     'POSTMARK_SERVER_TOKEN': '7df1c2cb-8e7c-4817-8acb-216659edfd4a',
 }
+
+FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', 'ZLnyp1yUbNbRBi34UeJy14hHb7PylwZcgx0UVGfMW2w=')

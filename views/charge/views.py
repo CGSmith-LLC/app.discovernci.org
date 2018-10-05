@@ -32,9 +32,9 @@ def charge(request):
                     'email_stripe_receipt.html',
                     {
                         'receipt_id': data.stripe_id,
-                        'amount': int(data.amount / 100)
+                        'amount': float("{0:.2f}".format(data.amount/100))
                     },
-                    'Receipt of Stripe',
+                    'Thank you for your Donation!',
                     [request.POST.get('email')]
                 )
 

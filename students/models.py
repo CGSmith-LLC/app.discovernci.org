@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 from gettext import gettext as _
 import uuid
+from encrypted_model_fields.fields import EncryptedCharField, EncryptedDateField
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -41,8 +42,8 @@ class Student(models.Model):
     current_school = models.ForeignKey('accounts.School', blank=True, null=True)
     classroom = models.IntegerField(blank=True, null=True, choices=CLASSROOM_CHOICES)
 
-    name = models.CharField(_('Full Name'), max_length=255)
-    dob = models.DateField(_('Date of Birth'), blank=True, null=True, help_text="Format: MM-DD-YYYY")
+    name = EncryptedCharField(max_length=255)
+    dob = EncryptedDateField(blank=True, null=True, help_text="Format: MM-DD-YYYY")
 
     photo_waiver = models.NullBooleanField(_('Photo Waiver Permission'), default=True)
     waiver_agreement = models.NullBooleanField(_('Waiver Agreement'), default=False)
