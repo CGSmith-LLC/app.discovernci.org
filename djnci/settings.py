@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'djnci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djnci',
+        'NAME': 'new_schema',
         'USER': 'djnci',
-        'PASSWORD': 'djncidjnci',
+        'PASSWORD': os.environ['DJNCI_SQL_PASSWORD'],
         'HOST': 'localhost',
         'PORT': '3306'
     }
