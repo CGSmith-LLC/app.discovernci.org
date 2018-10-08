@@ -15,20 +15,10 @@ def replicate_to_temporary(apps, schema_editor):
     model = apps.get_model(app_with_model, model_with_column)
     for row in model.objects.all():
         setattr(row, 'temp_name', getattr(row, 'name', None))
-        if int(getattr(row, 'id')) == 402:
-            setattr(row, 'temp_dob', '1970-01-01')
-        else:
-            try:
-                parse(getattr(row, 'dob'))
-                setattr(row, 'temp_dob', getattr(row, 'dob'))
-            except ValueError:
-                setattr(row, 'temp_dob', None)
+        setattr(row, 'temp_dob', None if getattr(row, 'dob') is None else getattr(row, 'dob'))
         setattr(row, 'name', '')
         setattr(row, 'dob', None)
-        setattr(row, 'legacy_student_id', None)
-        setattr(row, 'legacy_account_id', None)
-        setattr(row, 'legacy_class_id', None)
-        row.save(update_fields=['temp_name', 'name', 'classroom', 'temp_dob', 'dob', 'legacy_student_id', 'legacy_account_id', 'legacy_class_id'])
+        row.save(update_fields=['temp_name', 'name', 'temp_dob', 'dob'])
 
 
 def replicate_to_real(apps, schema_editor):
