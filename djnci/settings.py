@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'multiselectfield',
     'graphene_django',
     'raven.contrib.django.raven_compat',
-
+    'anymail',
+    'encrypted_model_fields',
     'accounts.apps.AccountsConfig',
     'events.apps.EventsConfig',
     'locations.apps.LocationsConfig',
@@ -91,8 +92,8 @@ WSGI_APPLICATION = 'djnci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'new_schema',
-        'USER': 'djnci',
+        'NAME': os.environ['DJNCI_SQL_HOST'],
+        'USER': os.environ['DJNCI_SQL_USER'],
         'PASSWORD': os.environ['DJNCI_SQL_PASSWORD'],
         'HOST': 'localhost',
         'PORT': '3306'
@@ -163,7 +164,7 @@ ADMINS = [
 DEFAULT_FROM_EMAIL = "Nature's Classroom <office@discovernci.org>"
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'anymail.backends.postmark.EmailBackend'
 else:
     EMAIL_HOST = os.environ['SMTP_HOST']
     EMAIL_HOST_PASSWORD = os.environ['SMTP_PASSWORD']
@@ -273,3 +274,9 @@ else:
         # release based on the git info.
         'release': raven.fetch_git_sha(BASE_DIR)
     }
+
+ANYMAIL = {
+    'POSTMARK_SERVER_TOKEN': os.environ['SMTP_PASSWORD'],
+}
+
+FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', os.environ['FIELD_ENCRYPTION_KEY'])
