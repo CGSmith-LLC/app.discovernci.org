@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'djnci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'new_schema',
-        'USER': 'djnci',
+        'NAME': os.environ['DJNCI_SQL_HOST'],
+        'USER': os.environ['DJNCI_SQL_USER'],
         'PASSWORD': os.environ['DJNCI_SQL_PASSWORD'],
         'HOST': 'localhost',
         'PORT': '3306'
@@ -277,7 +277,7 @@ else:
     }
 
 ANYMAIL = {
-    'POSTMARK_SERVER_TOKEN': '7df1c2cb-8e7c-4817-8acb-216659edfd4a',
+    'POSTMARK_SERVER_TOKEN': os.environ['SMTP_PASSWORD'],
 }
 
-FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', 'ZLnyp1yUbNbRBi34UeJy14hHb7PylwZcgx0UVGfMW2w=')
+FIELD_ENCRYPTION_KEY = os.environ.get('FIELD_ENCRYPTION_KEY', os.environ['FIELD_ENCRYPTION_KEY'])
