@@ -41,8 +41,9 @@ export default class PrepareForNci extends React.Component {
             <ul>
               <li><a href="/documents/prepare/Student_prep.pdf">Preparing your child for NCI</a></li>
               <li><a href="/documents/prepare/NCI_Parents_Welcome_Letter.pdf">Visiting School Parent Package ~ Northern Region</a></li>
-              <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package_Southern%20Region.pdf">Visiting School Parent Package ~ Southern Region</a></li>
-              <li><a href="/documents/Visiting%20School%20Parent%20Package-Southern-Western%20Region.pdf">Visiting School Parent Package ~ Western Region</a></li>
+              <li><a href="/documents/prepare/Visiting%20School%20Parent%20Package%20-%20Southern%20Region.pdf">Visiting School Parent Package ~ Southern Region</a></li>
+              <li><a href="/documents/prepare/Visiting School Parent Package - Western Region.pdf">Visiting School Parent Package ~ Western Region</a></li>
+              <li><a href="/documents/NCI Parent Letter and Packing List updated 2018.pdf">Parent Letter and Packing List</a></li>
               <li><a href="/documents/prepare/NCI_Parent_tutorial.pdf">NCI Online Registration - Parent Tutorial</a></li>
               <li><a href="https://discovernci.org/dashboard" target="_blank" rel="noopener noreferrer">Access NCI Online Registration Portal</a></li>
             </ul>
@@ -52,10 +53,7 @@ export default class PrepareForNci extends React.Component {
               <li><a href="/documents/prepare/Visiting%20Teachers%20Role_revised10_17_16.pdf">Visiting Teachers Role at NCI</a></li>
               <li><a href="/documents/prepare/NCI_Teacher_tutorial.pdf">NCI Online Registration - Teacher Tutorial</a></li>
               <li><a href="/documents/prepare/Roommate%20Selection%20Form_revised10_17_16.pdf">NCI Roommate Selection Form</a></li>
-              <li><a href="/documents/Bruceville-Housing-Assignment-Worksheet.xlsx">NCI Housing Assignment Worksheet - Bruceville</a></li>
-              <li><a href="/documents/prepare/NCI%20Housing%20Assignment%20Worksheet%20-%20Wimberley.xls">NCI Housing Assignment Worksheet - New Ulm</a></li>
               <li><a href="/documents/prepare/NCI%20Field%20Group%20Assignment%20Form_revised10_17_16.pdf">NCI Field Group Assignment Form</a></li>
-              <li><a href="/documents/prepare/NCI%20Arrival%20Departure%20Contact%20Policies%20-%20Bruceville.pdf">NCI Arrival Departure Contact Policies - Bruceville</a></li>
               <li><a href="http://www.lgyc.org/directions/" target="_blank" rel="noopener noreferrer">Directions to NCI - Lake Geneva (aka Lake Geneva Youth Camp)</a></li>
             </ul>
 
