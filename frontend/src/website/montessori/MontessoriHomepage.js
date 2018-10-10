@@ -78,7 +78,7 @@ export default class MontessoriHomepage extends React.Component {
               children to develop a love of learning and trust in their own ability to learn.</p>
 
             <img
-              src="documents/imgHappyTreeFriends.jpg"
+              src="/discovernci_media/imgHappyTreeFriends.jpg"
               className="img-responsive img-rounded top-30"
               alt="presentation"
             />
