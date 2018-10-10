@@ -54,6 +54,7 @@ export default class PrepareForNci extends React.Component {
               <li><a href="/documents/prepare/NCI_Teacher_tutorial.pdf">NCI Online Registration - Teacher Tutorial</a></li>
               <li><a href="/documents/prepare/Roommate%20Selection%20Form_revised10_17_16.pdf">NCI Roommate Selection Form</a></li>
               <li><a href="/documents/prepare/NCI%20Field%20Group%20Assignment%20Form_revised10_17_16.pdf">NCI Field Group Assignment Form</a></li>
+              <li><a href="/documents/prepare/NCI - Curriculum Concept Overview.pdf">NCI Curriculum Concept Overview</a></li>
               <li><a href="http://www.lgyc.org/directions/" target="_blank" rel="noopener noreferrer">Directions to NCI - Lake Geneva (aka Lake Geneva Youth Camp)</a></li>
             </ul>
 
