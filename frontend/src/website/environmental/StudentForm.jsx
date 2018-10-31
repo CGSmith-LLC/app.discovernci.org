@@ -153,12 +153,12 @@ class StudentFormContainer extends React.Component {
               medicationSet: s.medicalrecord.medicationSet &&
               (s.medicalrecord.medicationSet.length > 0)
                   ? _.map(s.medicalrecord.medicationSet, med => {
-                      console.log(med.administrationTimes);
-                      console.log(med.administrationTimes);
+                      console.log(med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean));
+
                       return (
                           {
                               id: med.id,
-                              administrationTimes: med.administrationTimes.toString(),
+                              administrationTimes: med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean).toString(),
                               administrationTimesOther: med.administrationTimesOther,
                               medicationName: med.medicationName,
                               amount: med.amount,
@@ -415,6 +415,13 @@ class StudentFormContainer extends React.Component {
   handleWaiverAgreement = (e) => { this.setState({ waiverAgreement: e.target.checked }); }
 
   handleSubmit = () => {
+    var tetanusShot = moment([this.state.lastTetanusYear, this.state.lastTetanusMonth - 1, this.state.lastTetanusDay]).format('YYYY-MM-DD');
+    // Fixes issue where tetanus shot could not be updated
+    if (tetanusShot == "Invalid date") {
+        this.state.lastTetanus = null;
+    }else {
+        this.state.lastTetanus = tetanusShot;
+    }
     const i = this;
     this.setState({ submitDisabled: true });
     this.props.addOrModifyStudentMutation({

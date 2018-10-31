@@ -21,6 +21,10 @@ The projects technical name is 'djnci'. This is just a naming convention to help
 
 The website 'Pages' are written in React. The nature of React is very loose structure. We did this, as appose to using something like off-the-shelf WordPress because we determined that having control over the presentation and custom functionality is important to us.
 
+## Deploy to prod
+    sudo rm -rf frontend/build/ && sudo mv frontend/live/build frontend/ && sudo rm -rf static_collected/ && sudo mv frontend/live/static_collected/ static_collected/
+
+
 ## How to Convert database from SQLite to MySQL
 
 1. Dump data
