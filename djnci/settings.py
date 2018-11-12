@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = strtobool(os.getenv('DJNCI_DEBUG', 'false'))
 
-ALLOWED_HOSTS = ['.discovernci.org', '.nciw.org', 'localhost', 'djnci.local']
+ALLOWED_HOSTS = ['app.discovernci.org', 'localhost', 'app.djnci.local']
 
 # Application definition
 INSTALLED_APPS = [

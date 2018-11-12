@@ -61,44 +61,9 @@ export default (
     <Raven dsn={process.env.REACT_APP_SENTRY_DSN_URL} />
 
     <Route path="/" component={WebsiteWrapper}>
-      <IndexRoute component={FrontPage} />
+      <IndexRoute component={NciDashboard} />
 
       <Route path="/dashboard" component={NciDashboard} onEnter={requireAuth} />
-
-      <Route path="/environmental" component={LocationsContainer}>
-        <IndexRoute component={LocationsIndex} />
-        <Route path="/environmental/a-day-in-the-life" component={DayInTheLife} />
-        <Route path="/environmental/faculty-staff" component={EEFacultyStaff} />
-        <Route path="/environmental/prepare" component={PrepareForNci} />
-        <Route path="/environmental/visit" component={VisitEnvironmentalForm} />
-        <Route path="/environmental/:location/faculty-staff" component={EEFacultyStaff} />
-        <Route path="/environmental/:location" component={LocationDetail} />
-      </Route>
-
-      <Route path="/curriculum" component={CurriculumPage} />
-
-      <Route path="/montessori/history" component={History} />
-      <Route path="/montessori/calendar" component={EventCalendar} />
-      <Route path="/montessori/enrollment" component={MontessoriEnrollment} />
-      <Route path="/montessori/faculty-staff" component={FacultyStaffMontessori} />
-      <Route path="/montessori/tuition" component={Tuition} />
-      <Route path="/montessori/parents" component={PostsContainer} />
-      <Route path="/montessori/this-week" component={ThisWeekAtNci} />
-      <Route path="/montessori/parents/:year/:month/:slug" component={PostDetail} />
-      <Route path="/montessori/visit" component={VisitForm} />
-      <Route path="/montessori" component={BaseMontessori}>
-        <IndexRoute component={MontessoriHomepage} />
-        <Route path="/montessori/:slug" component={PageContainer} />
-      </Route>
-
-      <Route path="/events" component={EventListContainer} />
-      <Route path="/events/:year/:month/:slug" component={EventDetail} />
-
-      <Route path="/donate" component={DonatePage} />
-
-      <Route path="/contact" component={ContactPage} />
-
-      <Route path="/newsletters" component={NewsletterPage} />
 
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />

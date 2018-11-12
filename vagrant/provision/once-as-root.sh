@@ -26,6 +26,10 @@ info "Install Additional Software"
 apt-get install -y build-essential zlib1g-dev libssl-dev sqlite3 libsqlite3-dev nginx libmysqlclient-dev
 echo "Done!"
 
+info "Install PHP-FPM"
+apt-get install -y php-fpm php-mysql php-curl
+echo "Done!"
+
 info "Install Python 3.6.6"
 wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz
 tar xf Python-3.6.6.tgz

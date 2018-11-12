@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "UNLICENSED",
   "private": true,
-  "proxy": "http://djnci.local:9000",
+  "proxy": "http://app.djnci.local:9000",
   "devDependencies": {
     "@babel/runtime": "7.0.0-beta.55",
     "babel-cli": "^6.26.0",

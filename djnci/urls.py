@@ -12,9 +12,8 @@ from django.views.generic.base import TemplateView
 
 from graphene_django.views import GraphQLView
 
-from locations.views import PostVisitSubmission
+from django.views.decorators.csrf import csrf_exempt
 
-from views.charge import views
 
 
 def template(template_name):
@@ -27,34 +26,14 @@ urlpatterns = [
     url(r'^sitemap.xml$', template(template_name='sitemap.xml')),
 
     # GraphQL Resources
-    url(r'^graphql', GraphQLView.as_view(
-        graphiql=strtobool(os.getenv('DJNCI_GRAPHIQL', 'false'))
+    url(r'^graphql', csrf_exempt(GraphQLView.as_view(
+        graphiql=strtobool(os.getenv('DJNCI_GRAPHIQL', 'false')))
     )),
 
     # Django Admin panel
     url(r'^a/', admin.site.urls),
     url(r'^froala_editor/', include('froala_editor.urls')),
 
-    # Manual POST endpoints
-    url(r'^post/visit/$', PostVisitSubmission.as_view()),
-
-    # Stripe Charge
-    url(r'^charge/$', views.charge),
-
-    # Static routes for SEO (html generated via react-snapshot)
-    # TODO: Nginx should do this instead if the url/index.html exists,
-    #       load it, otherwise defer to root index
-    url(r'^environmental/$',                         template('environmental/index.html')),
-    url(r'^environmental/prepare/$',                 template('environmental/prepare/index.html')),
-    url(r'^environmental/angelus-oaks-california/$', template('environmental/angelus-oaks-california/index.html')),
-    url(r'^environmental/ben-lomond-california/$',   template('environmental/ben-lomond-california/index.html')),
-    url(r'^environmental/parrish-florida/$',         template('environmental/parrish-florida/index.html')),
-    url(r'^environmental/brooksville-florida/$',     template('environmental/brooksville-florida/index.html')),
-    url(r'^environmental/bruceville-texas/$',        template('environmental/bruceville-texas/index.html')),
-    url(r'^environmental/new-ulm-texas/$',           template('environmental/new-ulm-texas/index.html')),
-    url(r'^environmental/lake-geneva-wisconsin/$',   template('environmental/lake-geneva-wisconsin/index.html')),
-    url(r'^environmental/a-day-in-the-life/$',       template('environmental/a-day-in-the-life/index.html')),
-    url(r'^montessori/childrens-house/$',            template('montessori/childrens-house/index.html')),
 
     # Anything that wasn't caught up above, we defer to index.html
     url(r'^.*/$', template(template_name='index.html'))
