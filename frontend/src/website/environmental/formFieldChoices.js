@@ -22,7 +22,11 @@ module.exports = {
     { id: 5, label: '5th Grade' },
     { id: 6, label: '6th Grade' },
     { id: 7, label: '7th Grade' },
-    { id: 8, label: '8th Grade' }
+    { id: 8, label: '8th Grade' },
+    { id: 13, label: '9th Grade' },
+    { id: 14, label: '10th Grade' },
+    { id: 15, label: '11th Grade' },
+    { id: 16, label: '12th Grade' }
   ],
   schoolClassroomListMontessori: [
     { id: 9, label: 'Children\'s house (Ages 3-6)' },

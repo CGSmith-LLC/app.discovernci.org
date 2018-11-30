@@ -148,7 +148,7 @@ class ModalAddStudent extends React.Component {
         classroom: {
           title: 'Classroom / Grade',
           type: 'number',
-          enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],  // TODO: DRY
+          enum: [1, 2, 3, 4, 5, 6, 7, 8, 13, 14, 15, 16, 9, 10, 11, 12],  // TODO: DRY
           enumNames: [
             '1st Grade',
             '2nd Grade',
@@ -158,6 +158,10 @@ class ModalAddStudent extends React.Component {
             '6th Grade',
             '7th Grade',
             '8th Grade',
+            '9th Grade',
+            '10th Grade',
+            '11th Grade',
+            '12th Grade',
             'Children\'s House',
             'Lower Elementary',
             'Upper Elementary',
