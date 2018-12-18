@@ -406,7 +406,7 @@ class ResetPasswordRequest(graphene.Mutation):
             account = AccountProfile.objects.get(email=kwargs.get('email'))
             uid = urlsafe_base64_encode(force_bytes(account.id)).decode()
             token = token_generator.make_token(account)
-            link = 'https://discovernci.org/reset/%s/%s' % (uid, token)
+            link = 'https://app.discovernci.org/reset/%s/%s' % (uid, token)
             send_html_email(
                 'email_password_reset.html',
                 {'account': account, 'link': link},

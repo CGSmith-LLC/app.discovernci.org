@@ -4,7 +4,7 @@
 
 {% block body %}
 
-  <p>You've successully signed up as a {{ account.account_type }} on discovernci.org.</p>
+  <p>You've successfully signed up as a {{ account.account_type }} on discovernci.org.</p>
 
   <ul>
     <li>Name: <strong>{{ account.name }}</strong></li>
@@ -17,7 +17,7 @@
     <p>NOTE: With your students safety in mind, Your account must first be verified before you can sign in. This verification process can take up to 24-hours.</p>
   {% elif account.account_type == 'parent' %}
     <p>Sign in to update and manage your child(ren)'s NCI experience including food preferences, medications, and more.</p>
-    <a href="https://discovernci.org/login" style="width: 200px; text-align: center; text-decoration: none; border-radius: 4px; margin: 20px 0px; padding: 10px 20px; display: inline-block; white-space: nowrap; background: #16b55f; color: #fff; font-size: 110%;">Sign in</a>
+    <a href="https://app.discovernci.org/login" style="width: 200px; text-align: center; text-decoration: none; border-radius: 4px; margin: 20px 0px; padding: 10px 20px; display: inline-block; white-space: nowrap; background: #16b55f; color: #fff; font-size: 110%;">Sign in</a>
   {% endif %}
 
 {% endblock body %}
