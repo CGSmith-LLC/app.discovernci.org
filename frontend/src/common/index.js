@@ -10,4 +10,4 @@ export { default as PanelMediaList } from './PanelMediaList';
 export { default as PasswordReset } from './PasswordReset';
 export { default as PasswordResetConfirm } from './PasswordResetConfirm';
 export * from './auth';
-export TableCellFormatters from './TableCellFormatters';
+export * from './TableCellFormatters';

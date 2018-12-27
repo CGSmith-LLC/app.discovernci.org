@@ -35,7 +35,9 @@ class PasswordResetConfirm extends React.Component {
     const i = this;
     this.props.resetPassword({
       variables: {
-        password: this.state.password
+        password: this.state.password,
+        id: this.props.params.uidb64,
+        token: this.props.params.token
       }
     })
       .then(({ data }) => {
@@ -128,12 +130,4 @@ const RESET_PASSWORD = gql`
     }
   }`;
 
-export default graphql(RESET_PASSWORD, {
-  name: 'resetPassword',
-  options: ownProps => ({
-    variables: {
-      id: ownProps.params.uidb64,
-      token: ownProps.params.token
-    }
-  })
-})(PasswordResetConfirm);
+export default graphql(RESET_PASSWORD, { name: 'resetPassword' })(PasswordResetConfirm);
