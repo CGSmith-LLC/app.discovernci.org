@@ -432,6 +432,33 @@ class AddOrModifyMedication(graphene.Mutation):
         return AddOrModifyMedication(medication=medication)
 
 
+class ToggleStudentActivation(graphene.Mutation):
+    """Flip a Student object's is_active bit.
+
+    Students grow up. They move on. Students not marked 'active' in our system
+    are as good as deleted from the perspective of the Guardians and Teachers,
+    but EE Staff still have access for a 7-year record retention requirement.
+
+    """
+
+    newStatus = graphene.Boolean()
+
+    class Arguments:
+        id = graphene.Int(required=True)
+
+    def mutate(self, info, id):
+        user = info.context.user
+        if user.is_authenticated() and (user.account_type == 'ee-staff'):
+            try:
+                student = Student.objects.get(pk=id)
+                student.is_active = not student.is_active
+                student.save()
+                return ToggleStudentActivation(newStatus=student.is_active)
+            except Student.DoesNotExist:
+                raise Exception('No record found')
+        raise Exception('Invalid credentials')
+
+
 class CheckInMedication(graphene.Mutation):
     success = graphene.Int()
 
@@ -538,6 +565,7 @@ class Mutation(graphene.ObjectType):
     delete_student = DeleteStudent.Field()
     add_or_modify_medication = AddOrModifyMedication.Field()
     check_in_medication = CheckInMedication.Field()
+    toggle_student_activation = ToggleStudentActivation.Field()
     check_out_medication = CheckOutMedication.Field()
     delete_medication = DeleteMedication.Field()
     log_administered_med = LogAdministeredMed.Field()
