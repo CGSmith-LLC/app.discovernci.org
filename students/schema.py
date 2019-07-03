@@ -619,14 +619,20 @@ class Query(object):
             * NciAppAddMedication
         """
         u = info.context.user
-        kwargs = {'pk': id, 'is_active': True}
+        kwargs = {'pk': id}
         if u.is_authenticated():
             if u.account_type == 'teacher':
                 kwargs['current_school__in'] = u.assoc_school_list.all()
             elif u.account_type == 'parent':
                 kwargs['guardian_list'] = u
-            if ((u.account_type == 'teacher') or (u.account_type == 'parent') or (u.account_type == 'ee-staff')):
+
+            if (u.account_type == 'teacher') or (u.account_type == 'parent'):
+                kwargs['is_active'] = True
                 return Student.objects.get(**kwargs)
+
+            if u.account_type == 'ee-staff':
+                return Student.objects.get(**kwargs)
+
         raise Exception('Unauthorized')
 
     def resolve_medications(self, info, fieldTripId):
