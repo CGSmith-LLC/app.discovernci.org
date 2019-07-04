@@ -439,6 +439,9 @@ class ToggleStudentActivation(graphene.Mutation):
     are as good as deleted from the perspective of the Guardians and Teachers,
     but EE Staff still have access for a 7-year record retention requirement.
 
+    Note that teachers *do* have the ability to re-activate. There is no
+    restriction or check as you can see
+
     """
 
     newStatus = graphene.Boolean()
@@ -448,7 +451,7 @@ class ToggleStudentActivation(graphene.Mutation):
 
     def mutate(self, info, id):
         user = info.context.user
-        if user.is_authenticated() and (user.account_type == 'ee-staff'):
+        if user.is_authenticated() and (user.account_type == 'ee-staff') or (user.account_type == 'teacher'):
             try:
                 student = Student.objects.get(pk=id)
                 student.is_active = not student.is_active
