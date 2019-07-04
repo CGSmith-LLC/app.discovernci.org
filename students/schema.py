@@ -593,18 +593,25 @@ class Query(object):
                 i = FieldTrip.objects.get(pk=fieldTripId, school_list__in=u.assoc_school_list.all())
             except FieldTrip.DoesNotExist:
                 raise Exception('Unable to retrieve field trip details')
-            return Student.objects.filter(pk__in=i.student_list.all(), current_school__in=u.assoc_school_list.all())
+            return Student.objects.filter(
+                pk__in=i.student_list.all(),
+                current_school__in=u.assoc_school_list.all(),
+                is_active=True
+            )
         raise Exception('Unauthorized')
 
     def resolve_my_students(self, info, **kwargs):
         """Return all students from all of the schools I'm associated with.
 
         This is most useful for Teachers that belong to multiple schools and
-        need a master list of all Students they belonging to their schools.
+        need a master list of all their Students.
         """
         u = info.context.user
         if u.is_authenticated() and (u.account_type == 'teacher' or u.account_type == 'ee-staff'):
-            return Student.objects.filter(current_school__in=u.assoc_school_list.all())
+            return Student.objects.filter(
+                current_school__in=u.assoc_school_list.all(),
+                is_active=True
+            )
         raise Exception('Unauthorized')
 
     def resolve_student(self, info, id):
