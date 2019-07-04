@@ -162,6 +162,7 @@ const MY_ACCOUNT_QUERY = gql`
         name
         firstName
         dob
+        isActive
         getClassroomDisplay
         hasAllergies
         hasFoodAllergens
