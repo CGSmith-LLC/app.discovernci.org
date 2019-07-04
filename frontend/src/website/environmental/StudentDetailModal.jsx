@@ -114,7 +114,7 @@ class StudentDetailModalContainer extends React.Component {
                           {_.map(student.medicalrecord.medicationSet, medication => (
                             <tr key={medication.id}>
                               <td>{medication.medicationName}</td>
-                              <td>{medication.amount}x {medication.getAmountUnitDisplay}</td>
+                              <td>{medication.amountHuman}</td>
                               <td>
                                 {this.getMedTimeDisplay(medication.administrationTimes)}
                                 {' '}
@@ -242,6 +242,7 @@ const STUDENT_PROFILE = gql`
         medicationName
         amount
         amountUnit
+        amountHuman
         administrationTimes
         administrationTimesOther
         getAmountUnitDisplay
