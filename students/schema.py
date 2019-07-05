@@ -309,6 +309,15 @@ class AddOrModifyStudent(graphene.Mutation):
         mr.dietary_caution = kwargs.get('dietaryCaution', False)
         mr.save()
 
+        # If dietary_caution is True, we notify Staff right away
+        if mr.dietary_caution:
+            send_html_email(
+                'email_staff_dietary_caution.html',
+                {'student': s},
+                'CONTACT REQUEST: Student Dietary Concerns',
+                settings.TECH_SUPPORT_TO_LIST
+            )
+
         # Medication objects (med)
         medication_list_str = kwargs.get('medicationSet', None)
         if medication_list_str:
