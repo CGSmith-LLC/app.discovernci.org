@@ -99,7 +99,7 @@ class MedicalRecordAdmin(admin.ModelAdmin):
         'food_allergens',
         'last_tetanus',
         'no_tetanus_vaccine',
-        'guardian_supplies_food',
+        'dietary_caution',
         'created',
         'modified'
     )

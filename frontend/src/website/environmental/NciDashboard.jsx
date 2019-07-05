@@ -161,6 +161,7 @@ const MY_ACCOUNT_QUERY = gql`
         id
         name
         firstName
+        lastName
         dob
         isActive
         getClassroomDisplay
@@ -196,7 +197,7 @@ const MY_ACCOUNT_QUERY = gql`
           weight
           height
           modified
-          guardianSuppliesFood
+          dietaryCaution
           medicationSet {
             id
             administrationTimes

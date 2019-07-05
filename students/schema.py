@@ -250,7 +250,7 @@ class AddOrModifyStudent(graphene.Mutation):
 
         # Dietary Fields **********************************
         dietaryNeeds = graphene.String()
-        guardianSuppliesFood = graphene.Boolean()
+        dietaryCaution = graphene.Boolean()
 
         # Opt-ins, Outs... ********************************
         photoWaiver = graphene.Boolean()
@@ -306,8 +306,17 @@ class AddOrModifyStudent(graphene.Mutation):
         mr.food_allergens = kwargs.get('foodAllergens')
         mr.allergies_expanded = kwargs.get('allergiesExpanded', '')
         mr.dietary_needs = kwargs.get('dietaryNeeds', '')
-        mr.guardian_supplies_food = kwargs.get('guardianSuppliesFood', False)
+        mr.dietary_caution = kwargs.get('dietaryCaution', False)
         mr.save()
+
+        # If dietary_caution is True, we notify Staff right away
+        if mr.dietary_caution:
+            send_html_email(
+                'email_staff_dietary_caution.html',
+                {'student': s},
+                'CONTACT REQUEST: Student Dietary Concerns',
+                settings.TECH_SUPPORT_TO_LIST
+            )
 
         # Medication objects (med)
         medication_list_str = kwargs.get('medicationSet', None)

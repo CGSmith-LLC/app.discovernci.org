@@ -200,7 +200,7 @@ class MedicalRecord(models.Model):
     allergies_expanded = models.TextField(blank=True)
     recent_trauma = models.TextField(blank=True)
     dietary_needs = models.TextField(blank=True)
-    guardian_supplies_food = models.BooleanField(default=False)
+    dietary_caution = models.BooleanField(default=False)
 
     allergies = MultiSelectField(
         choices=ALLERGY_CHOICES,
@@ -243,7 +243,7 @@ class MedicalRecord(models.Model):
         return False
 
     def has_dietary_restriction(self):
-        if self.has_food_allergens or self.dietary_needs or self.guardian_supplies_food:
+        if self.has_food_allergens or self.dietary_needs or self.dietary_caution:
             return True
         return False
 
