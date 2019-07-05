@@ -92,11 +92,11 @@ WSGI_APPLICATION = 'djnci.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['DJNCI_SQL_HOST'],
+        'NAME': os.environ['DJNCI_SQL_DBNAME'],
         'USER': os.environ['DJNCI_SQL_USER'],
         'PASSWORD': os.environ['DJNCI_SQL_PASSWORD'],
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'HOST': os.environ['DJNCI_SQL_HOST'],
+        'PORT': os.environ['DJNCI_SQL_PORT']
     }
 }
 
@@ -261,12 +261,10 @@ else:
     STRIPE_SECRET_KEY = os.environ['STRIPE_LIVE_PRIVATE_KEY']
     STAFF_TO_LIST = [
         'mirko@discovernci.org',
-        'office@nciw.org',
         'geoffrey@nciw.org',
     ]
     TECH_SUPPORT_TO_LIST = [
         'mirko@discovernci.org',
-        'office@nciw.org',
     ]
     RAVEN_CONFIG = {
         'dsn': os.environ['SENTRY_DSN_URL'],
