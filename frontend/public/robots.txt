@@ -1,5 +1,4 @@
 User-Agent: *
-Sitemap: https://discovernci.org/sitemap.xml
 Allow: /
 Disallow: /a/
 Disallow: /admin/
