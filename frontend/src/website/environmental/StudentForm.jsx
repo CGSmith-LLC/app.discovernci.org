@@ -112,7 +112,7 @@ class StudentFormContainer extends React.Component {
 
     // Dietary Fields
     dietaryNeeds: '',
-    guardianSuppliesFood: false,
+    dietaryCaution: false,
 
     // Opt-ins, Outs
     photoWaiver: true,
@@ -201,7 +201,7 @@ class StudentFormContainer extends React.Component {
 
               allergiesExpanded: s.medicalrecord.allergiesExpanded,
               dietaryNeeds: s.medicalrecord.dietaryNeeds,
-              guardianSuppliesFood: s.medicalrecord.guardianSuppliesFood
+              dietaryCaution: s.medicalrecord.dietaryCaution
           })
       }
   }
@@ -408,7 +408,7 @@ class StudentFormContainer extends React.Component {
     this.setState({ foodAllergens: x.join() });
   }
 
-  handleGuardianSuppliesFood = (e) => { this.setState({ guardianSuppliesFood: e.target.checked }); }
+  handledietaryCaution = (e) => { this.setState({ dietaryCaution: e.target.checked }); }
   handleDietaryNeeds = (e) => { this.setState({ dietaryNeeds: e.target.value }); }
 
   handlePhotoWaiver = (e) => { this.setState({ photoWaiver: e.target.checked }); }
@@ -462,7 +462,7 @@ class StudentFormContainer extends React.Component {
 
         // Dietary Fields
         dietaryNeeds: i.state.dietaryNeeds,
-        guardianSuppliesFood: i.state.guardianSuppliesFood,
+        dietaryCaution: i.state.dietaryCaution,
 
         // Opt-ins, Outs
         photoWaiver: i.state.photoWaiver,
@@ -902,8 +902,8 @@ class StudentFormContainer extends React.Component {
               <FormControl.Feedback />
             </FormGroup>
 
-            <Checkbox checked={this.state.guardianSuppliesFood} onChange={this.handleGuardianSuppliesFood}>
-              We (Parent/Gaurdians) will supply our own food
+            <Checkbox checked={this.state.dietaryCaution} onChange={this.handledietaryCaution}>
+              Please have NCI contact me about my child's diet
             </Checkbox>
 
             <div className="step-footer">
@@ -1006,7 +1006,7 @@ const ADD_STUDENT_MUTATION = gql`
     $allergiesExpanded: String
 
     $dietaryNeeds: String
-    $guardianSuppliesFood: Boolean
+    $dietaryCaution: Boolean
 
     $photoWaiver: Boolean
     $waiverAgreement: Boolean!
@@ -1044,7 +1044,7 @@ const ADD_STUDENT_MUTATION = gql`
       allergiesExpanded: $allergiesExpanded
 
       dietaryNeeds: $dietaryNeeds
-      guardianSuppliesFood: $guardianSuppliesFood
+      dietaryCaution: $dietaryCaution
 
       photoWaiver: $photoWaiver
       waiverAgreement: $waiverAgreement
@@ -1079,7 +1079,7 @@ const ADD_STUDENT_MUTATION = gql`
         foodAllergens
         allergiesExpanded
         dietaryNeeds
-        guardianSuppliesFood
+        dietaryCaution
         modified
       }
       insurance {

@@ -267,7 +267,7 @@ const STUDENT_DETAIL = gql`
         getFoodAllergensDisplay
         dietaryNeeds
         recentTrauma
-        guardianSuppliesFood
+        dietaryCaution
         medicationSet {
           id
           medicationName

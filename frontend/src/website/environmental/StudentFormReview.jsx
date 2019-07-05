@@ -177,7 +177,7 @@ const StudentFormReview = ({ student, myInsuranceListQuery}) => {
 
         {/* Dietary ******************************************************* */}
 
-        {(student.dietaryNeeds !== '' || student.guardianSuppliesFood) &&
+        {(student.dietaryNeeds !== '' || student.dietaryCaution) &&
           <thead>
             <tr>
               <th colSpan={2}>Dietary</th>
@@ -191,7 +191,7 @@ const StudentFormReview = ({ student, myInsuranceListQuery}) => {
               <td>{student.dietaryNeeds}</td>
             </tr>
           }
-          {student.guardianSuppliesFood &&
+          {student.dietaryCaution &&
             <tr>
               <td>Parents/Guardians supply meals</td>
               <td>Yes</td>
