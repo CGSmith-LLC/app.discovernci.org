@@ -13,11 +13,11 @@ from graphene_django.converter import convert_django_field
 from jsonfield import JSONField
 from multiselectfield import MultiSelectField
 
+from djnci.utils import send_html_email
 from accounts.models import AccountProfile, School, Insurance
 from accounts.schema import InsuranceType
 from locations.models import FieldTrip
 from .models import AdministeredMed, MedicalRecord, Medication, Student, StudentNote
-
 
 @convert_django_field.register(JSONField)
 def convert_JSONField(field, registry=None):
