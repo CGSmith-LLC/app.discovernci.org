@@ -262,6 +262,7 @@ else:
     STAFF_TO_LIST = [
         'mirko@discovernci.org',
         'geoffrey@nciw.org',
+        'britta@discovernci.org'
     ]
     TECH_SUPPORT_TO_LIST = [
         'mirko@discovernci.org',
