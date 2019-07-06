@@ -1,11 +1,11 @@
 {% extends "base_email.html" %}
 
-{% block title %}Guardian request over dietary conerns{% endblock title %}
+{% block title %}Dietary conerns contact request{% endblock title %}
 
 {% block body %}
 
   <p>A Student record was just marked "Please have NCI contact me about my child's diet".</p>
 
-  <p><a href="https://app.discovernci.org/students/{{student.id}}">View Student Record</a> to pull up Guardian's contact details.</p>
+  <p><a href="https://app.discovernci.org/app/student/{{student.id}}}">View Student Record</a> for contact details.</p>
 
 {% endblock body %}

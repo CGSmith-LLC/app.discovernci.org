@@ -478,8 +478,8 @@ class StudentFormContainer extends React.Component {
           data
         });
       }).catch((error) => {
-        const err = String(error).replace('Error: GraphQL error:', '');
-        i.setState({ err: `Error adding student: ${err}` });
+        const err = String(error).replace('GraphQL error:', '');
+        i.setState({ err });
       });
   }
 
@@ -934,6 +934,14 @@ class StudentFormContainer extends React.Component {
                 I have read the medical authorization, waiver and release, and understand my rights by signing it and sign it voluntarily. <a href="/discovernci_media/waiver.pdf" target="_blank" rel="noopener noreferrer">View Waiver and Release of Liability Agreement</a>.
               </p>
             </FormGroup>
+
+            {this.state.err
+              && (
+                <div style={{ background: '#ffb5b5', padding: 10 }}>
+                  {this.state.err}
+                </div>
+              )
+            }
 
             <div className="step-footer">
               <Button bsStyle="link" className="btn-form-step-prev" onClick={this.prevFormStep}>Back</Button>
