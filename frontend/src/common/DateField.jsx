@@ -64,10 +64,10 @@ export const DateField = (props) => {
         <select
           className="rdf-input-month"
           onChange={handleMonth}
-          value={month}
+          value={month || 0}
           disabled={disabled}
         >
-          <option value="" disabled>Month</option>
+          <option value={0} disabled>Month</option>
           {_.map(moment.months(), (mont, index) => (
             <option key={index} value={index + 1}>
               {mont}
