@@ -43,6 +43,7 @@
     "react-bootstrap-typeahead": "^3.1.4",
     "react-day-picker": "^7.1.10",
     "react-dom": "^16.4.1",
+    "react-export-excel": "^0.5.3",
     "react-filterable-table": "^0.3.426",
     "react-fontawesome": "^1.6.1",
     "react-ga": "^2.5.3",
