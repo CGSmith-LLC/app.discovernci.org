@@ -15,7 +15,7 @@ import NciTeacherRequestFieldTripModal from './NciTeacherRequestFieldTripModal';
 import NciTeacherFieldTripDetailModal from './NciTeacherFieldTripDetailModal';
 import StudentDetailModal from './StudentDetailModal';
 import {
-  renderName, renderDobAsAge, renderHasAllergies, renderPhotoWaiverCell, renderLastUpdated
+  renderFirstName, renderLastName, renderDobAsAge, renderHasAllergies, renderPhotoWaiverCell, renderLastUpdated
 } from '../../common/TableCellFormatters';
 
 class TeacherDashboard extends React.Component {
@@ -118,7 +118,8 @@ class TeacherDashboard extends React.Component {
   render() {
     // Fields to show in the table, and what object properties in the data they bind to
     const fields = [
-      { name: 'name', displayName: 'Name', inputFilterable: true, sortable: true, render: renderName },
+      { name: 'firstName', displayName: 'First Name', inputFilterable: true, sortable: true, render: renderFirstName },
+      { name: 'lastName', displayName: 'Last Name', inputFilterable: true, sortable: true, render: renderLastName },
       { name: 'dob', displayName: 'Age', inputFilterable: true, sortable: true, render: renderDobAsAge },
       { name: 'getClassroomDisplay', displayName: 'Classroom', inputFilterable: true, sortable: true },
       { name: 'hasAllergies', displayName: 'Allergies', inputFilterable: true, sortable: true, render: renderHasAllergies },
@@ -130,7 +131,8 @@ class TeacherDashboard extends React.Component {
     // We use Lodash's `pick()` to inflate with data.
     const model = {
       id: null,
-      name: null,
+      firstName: null,
+      lastName: null,
       dob: null,
       getClassroomDisplay: null,
       photoWaiver: null,
@@ -237,7 +239,7 @@ class TeacherDashboard extends React.Component {
         {this.props.myStudents.myStudents &&
           <FilterableTable
             namespace="Students"
-            initialSort="name"
+            initialSort="lastName"
             data={_.map(
               this.state.classroomFilter > 0
                 ? _.filter(this.props.myStudents.myStudents, {
@@ -299,6 +301,8 @@ const MY_FIELDTRIPS = gql`
       }
       studentList {
         id
+        firstName
+        lastName
         name
       }
       schoolList {
@@ -315,6 +319,8 @@ const MY_STUDENTS = gql`
   query MyStudentsQuery {
     myStudents {
       id
+      firstName
+      lastName
       name
       dob
       classroom
