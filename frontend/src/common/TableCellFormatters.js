@@ -23,6 +23,21 @@ const renderName = props => (
     </span>
 );
 
+const renderFirstName = props => (
+  props.value &&
+    <span>
+      <FontAwesome name="user" fixedWidth />{' '}
+      {props.value}
+    </span>
+);
+
+const renderLastName = props => (
+  props.value &&
+    <span>
+      {props.value}
+    </span>
+);
+
 const renderDobAsAge = props => (
   <span>
     {moment().diff(props.value, 'years')}
@@ -70,5 +85,7 @@ export {
   renderDobAsAge,
   renderHasAllergies,
   renderHasFoodAllergens,
-  renderLastUpdated
+  renderLastUpdated,
+  renderFirstName,
+  renderLastName
 };

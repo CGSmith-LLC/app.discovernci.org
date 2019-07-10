@@ -115,7 +115,7 @@ const FIELD_TRIP_MED_LOG = gql`
         getFoodAllergensDisplay
         foodAllergenCount,
         dietaryNeeds
-        guardianSuppliesFood
+        dietaryCaution
       }
     }
   }

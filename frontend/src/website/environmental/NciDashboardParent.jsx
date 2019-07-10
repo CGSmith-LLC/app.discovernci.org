@@ -111,6 +111,10 @@ export default class NciDashboardParent extends React.Component {
             </Button>
           </h3>
 
+          <div style={{ margin: '15px 0', padding: 10, background: '#fff6b5' }}>
+            If you have any specific questions about your child’s stay please contact their teacher directly.
+          </div>
+
           {studentSet.length > 0 &&
             <ul className="parent-child-list">
               {_.map(studentSet, student => (

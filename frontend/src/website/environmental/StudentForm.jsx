@@ -2,7 +2,6 @@
 
 import _ from 'lodash';
 import React from 'react';
-import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
 import gql from 'graphql-tag';
@@ -13,28 +12,16 @@ import {
 } from 'react-bootstrap';
 
 import { genRandId } from '../../common/utils/index';
-import DateField from '../../common/DateField';
+import { DateField } from '../../common/DateField';
 import StudentFormReview from './StudentFormReview';
 import MedicationForm from './MedicationForm';
-import { schoolClassroomListPublic, schoolClassroomListMontessori, medicationAdminTimeChoices } from './formFieldChoices';
+import {
+  schoolClassroomListPublic,
+  schoolClassroomListMontessori,
+  medicationAdminTimeChoices
+} from './formFieldChoices';
 
 class StudentFormContainer extends React.Component {
-  static propTypes = {
-    addOrModifyStudentMutation: PropTypes.func.isRequired,
-    deleteStudent: PropTypes.func.isRequired,
-    selectedstudentObj: PropTypes.object,
-    closeModal: PropTypes.func.isRequired,
-    schoolList: PropTypes.shape({
-      loading: PropTypes.bool,
-      schools: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number,
-          name: PropTypes.string
-        })
-      )
-    }).isRequired
-  }
-
   static defaultProps = {
     selectedstudentObj: null
   }
@@ -45,7 +32,9 @@ class StudentFormContainer extends React.Component {
     formSubmitted: false,
     submitDisabled: false,
     medicationSetFormError: false,
+    showStepError: false,
 
+    // Step 1 *******************************
     // Basic Information Fields
     name: '',
     dobMonth: null,
@@ -54,6 +43,7 @@ class StudentFormContainer extends React.Component {
     currentSchool: [],
     classroom: 0,
 
+    // Step 2 *******************************
     // Medical Fields
     gender: 0,
     height: '',
@@ -62,8 +52,6 @@ class StudentFormContainer extends React.Component {
     lastTetanusDay: null,
     lastTetanusYear: null,
     noTetanusVaccine: false,
-    recentTrauma: '',
-    restrictions: '',
 
     // Health Insurance Fields
     insId: 0,
@@ -73,6 +61,11 @@ class StudentFormContainer extends React.Component {
     insHolderName: '',
     // --
     deferIns: false,
+
+
+    // Step 3 *******************************
+    recentTrauma: '',
+    restrictions: '',
 
     // Medications (Non-Rx) Fields
     nonRxType: 0,
@@ -112,7 +105,7 @@ class StudentFormContainer extends React.Component {
 
     // Dietary Fields
     dietaryNeeds: '',
-    guardianSuppliesFood: false,
+    dietaryCaution: false,
 
     // Opt-ins, Outs
     photoWaiver: true,
@@ -120,90 +113,93 @@ class StudentFormContainer extends React.Component {
   }
 
   componentDidMount() {
+    const nextProps = this.props;
+    const s = nextProps.selectedstudentObj;
+    if (!_.isEmpty(nextProps.selectedstudentObj) && (nextProps.selectedstudentObj.id > 0)) {
+      this.setState({
 
-      const nextProps = this.props;
-      const s = nextProps.selectedstudentObj;
-      if (!_.isEmpty(nextProps.selectedstudentObj) && (nextProps.selectedstudentObj.id > 0)) {
-          this.setState({
-              name: s.name,
-              dobMonth: (parseInt(moment(s.dob).format('M'), 10)),
-              dobDay: parseInt(moment(s.dob).format('D'), 10),
-              dobYear: parseInt(moment(s.dob).format('YYYY'), 10),
-              currentSchool: [
-                  {
-                      id: nextProps.selectedstudentObj.currentSchool.id,
-                      label: nextProps.selectedstudentObj.currentSchool.name
-                  }
-              ],
-              classroom: s.classroom,
-              photoWaiver: s.photoWaiver,
-              gender: s.medicalrecord.gender,
-              height: s.medicalrecord.height,
-              weight: s.medicalrecord.weight,
-              lastTetanusMonth: parseInt(moment(s.medicalrecord.lastTetanus).format('M'), 10),
-              lastTetanusDay: parseInt(moment(s.medicalrecord.lastTetanus).format('D'), 10),
-              lastTetanusYear: parseInt(moment(s.medicalrecord.lastTetanus).format('YYYY'), 10),
-              noTetanusVaccine: s.medicalrecord.noTetanusVaccine,
-              insId: (s.insuranceDependentsList.length > 0) &&
-                  s.insuranceDependentsList[0].id,  // FIXME It's an array...
-              recentTrauma: s.medicalrecord.recentTrauma,
-              restrictions: s.medicalrecord.restrictions,
-              nonRxType: s.medicalrecord.nonRxType,
-              nonRxNotes: s.medicalrecord.nonRxNotes,
-              medicationSet: s.medicalrecord.medicationSet &&
-              (s.medicalrecord.medicationSet.length > 0)
-                  ? _.map(s.medicalrecord.medicationSet, med => {
-                      console.log(med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean));
+        // Step 1 *******************************
+        name: s.name,
+        dobMonth: (parseInt(moment(s.dob).format('M'), 10)),
+        dobDay: parseInt(moment(s.dob).format('D'), 10),
+        dobYear: parseInt(moment(s.dob).format('YYYY'), 10),
+        currentSchool: [
+            {
+                id: nextProps.selectedstudentObj.currentSchool.id,
+                label: nextProps.selectedstudentObj.currentSchool.name
+            }
+        ],
+        classroom: s.classroom,
+        photoWaiver: s.photoWaiver,
 
-                      return (
-                          {
-                              id: med.id,
-                              administrationTimes: med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean).toString(),
-                              administrationTimesOther: med.administrationTimesOther,
-                              medicationName: med.medicationName,
-                              amount: med.amount,
-                              amountHuman: med.amountHuman,
-                              amountUnit: med.amountUnit,
-                              getAmountUnitDisplay: med.getAmountUnitDisplay,
-                              notes: med.notes
-                          }
-                      )
-                  })
-                  : [],
-              // medicationSet: [
-              //   ...s.medicalrecord.medicationSet
-              // ],
-              allergies: s.medicalrecord.allergies && eval(JSON.parse(s.medicalrecord.allergies)).join(','),
+        // Step 2 *******************************
+        gender: s.medicalrecord.gender,
+        height: s.medicalrecord.height,
+        weight: s.medicalrecord.weight,
+        lastTetanusMonth: parseInt(moment(s.medicalrecord.lastTetanus).format('M'), 10),
+        lastTetanusDay: parseInt(moment(s.medicalrecord.lastTetanus).format('D'), 10),
+        lastTetanusYear: parseInt(moment(s.medicalrecord.lastTetanus).format('YYYY'), 10),
+        noTetanusVaccine: s.medicalrecord.noTetanusVaccine,
+        insId: (s.insuranceDependentsList.length > 0) &&
+            s.insuranceDependentsList[0].id,  // FIXME It's an array...
+        recentTrauma: s.medicalrecord.recentTrauma,
+        restrictions: s.medicalrecord.restrictions,
+        nonRxType: s.medicalrecord.nonRxType,
+        nonRxNotes: s.medicalrecord.nonRxNotes,
+        medicationSet: s.medicalrecord.medicationSet &&
+        (s.medicalrecord.medicationSet.length > 0)
+            ? _.map(s.medicalrecord.medicationSet, med => {
+                console.log(med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean));
 
-              hasFoodAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 1),
-              hasSkinAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 2),
-              hasDustAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 3),
-              hasInsectStingAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 4),
-              hasAnimalAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 5),
-              hasEyeAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 6),
-              hasDrugAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 7),
-              hasAllergicRhinitis: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 8),
-              hasLatexAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 9),
-              hasMoldAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 10),
-              hasPollenAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 11),
-              hasSinusAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 12),
-              hasOtherAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 13),
+                return (
+                    {
+                        id: med.id,
+                        administrationTimes: med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean).toString(),
+                        administrationTimesOther: med.administrationTimesOther,
+                        medicationName: med.medicationName,
+                        amount: med.amount,
+                        amountHuman: med.amountHuman,
+                        amountUnit: med.amountUnit,
+                        getAmountUnitDisplay: med.getAmountUnitDisplay,
+                        notes: med.notes
+                    }
+                )
+            })
+            : [],
+        // medicationSet: [
+        //   ...s.medicalrecord.medicationSet
+        // ],
+        allergies: s.medicalrecord.allergies && eval(JSON.parse(s.medicalrecord.allergies)).join(','),
 
-              hasFoodAllergyMilk: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 1),
-              hasFoodAllergyEggs: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 2),
-              hasFoodAllergyPeanuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 3),
-              hasFoodAllergySoy: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 4),
-              hasFoodAllergyWheat: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 5),
-              hasFoodAllergyTreeNuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 6),
-              hasFoodAllergyFish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 7),
-              hasFoodAllergyShellfish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 8),
-              hasFoodAllergyOther: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 9),
+        hasFoodAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 1),
+        hasSkinAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 2),
+        hasDustAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 3),
+        hasInsectStingAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 4),
+        hasAnimalAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 5),
+        hasEyeAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 6),
+        hasDrugAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 7),
+        hasAllergicRhinitis: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 8),
+        hasLatexAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 9),
+        hasMoldAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 10),
+        hasPollenAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 11),
+        hasSinusAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 12),
+        hasOtherAllergy: s.medicalrecord.allergies && _.includes(JSON.parse(s.medicalrecord.allergies), 13),
 
-              allergiesExpanded: s.medicalrecord.allergiesExpanded,
-              dietaryNeeds: s.medicalrecord.dietaryNeeds,
-              guardianSuppliesFood: s.medicalrecord.guardianSuppliesFood
-          })
-      }
+        hasFoodAllergyMilk: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 1),
+        hasFoodAllergyEggs: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 2),
+        hasFoodAllergyPeanuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 3),
+        hasFoodAllergySoy: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 4),
+        hasFoodAllergyWheat: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 5),
+        hasFoodAllergyTreeNuts: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 6),
+        hasFoodAllergyFish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 7),
+        hasFoodAllergyShellfish: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 8),
+        hasFoodAllergyOther: s.medicalrecord.foodAllergens && _.includes(JSON.parse(s.medicalrecord.foodAllergens), 9),
+
+        allergiesExpanded: s.medicalrecord.allergiesExpanded,
+        dietaryNeeds: s.medicalrecord.dietaryNeeds,
+        dietaryCaution: s.medicalrecord.dietaryCaution
+      })
+    }
   }
 
   prevFormStep = () => {
@@ -213,9 +209,73 @@ class StudentFormContainer extends React.Component {
 
   nextFormStep = () => {
     let { step } = this.state;
+    const {
+      name,
+      dobMonth,
+      dobDay,
+      dobYear,
+      currentSchool,
+      classroom,
+
+      gender,
+      height,
+      weight,
+      lastTetanusMonth,
+      lastTetanusDay,
+      lastTetanusYear,
+      noTetanusVaccine,
+      insId,
+
+      nonRxType
+    } = this.state;
+
+    if (step === 1) {
+      if ((name === '') || (dobMonth === null) || (dobDay === null) || (dobYear === null) || (currentSchool.length === 0) || (classroom === 0)) {
+        this.setState({ showStepError: true });
+        return;
+      }
+      this.setState({ showStepError: false });
+    }
+
+    if (step === 2) {
+      if (
+        (gender === 0)
+        || (height === '')
+        || (weight === 0)
+        // @TODO conditional checking between date val and no-vacine bool
+        // || ((lastTetanusMonth === null) || (lastTetanusDay === null) || (lastTetanusYear === null) || noTetanusVaccine === false)
+        || (insId === 0)
+      ) {
+        this.setState({ showStepError: true });
+        return;
+      }
+      this.setState({ showStepError: false });
+    }
+
+    if (step === 4) {
+      if (
+        (gender === 0)
+        || (height === '')
+        || (weight === 0)
+        || ((lastTetanusMonth === null) || (lastTetanusDay === null) || (lastTetanusYear === null))
+        || noTetanusVaccine
+        || (insId === 0)
+      ) {
+        this.setState({ showStepError: true });
+        return;
+      }
+      this.setState({ showStepError: false });
+    }
+
     if (step === 5) {
       this.handleGetAllergySelection();
       this.handleGetFoodAllergenSelection();
+
+      if (nonRxType === 0) {
+        this.setState({ showStepError: true });
+        return;
+      }
+      this.setState({ showStepError: false });
     }
     if (step === 7) {
       this.handleSubmit();
@@ -408,7 +468,7 @@ class StudentFormContainer extends React.Component {
     this.setState({ foodAllergens: x.join() });
   }
 
-  handleGuardianSuppliesFood = (e) => { this.setState({ guardianSuppliesFood: e.target.checked }); }
+  handledietaryCaution = (e) => { this.setState({ dietaryCaution: e.target.checked }); }
   handleDietaryNeeds = (e) => { this.setState({ dietaryNeeds: e.target.value }); }
 
   handlePhotoWaiver = (e) => { this.setState({ photoWaiver: e.target.checked }); }
@@ -462,7 +522,7 @@ class StudentFormContainer extends React.Component {
 
         // Dietary Fields
         dietaryNeeds: i.state.dietaryNeeds,
-        guardianSuppliesFood: i.state.guardianSuppliesFood,
+        dietaryCaution: i.state.dietaryCaution,
 
         // Opt-ins, Outs
         photoWaiver: i.state.photoWaiver,
@@ -478,8 +538,8 @@ class StudentFormContainer extends React.Component {
           data
         });
       }).catch((error) => {
-        const err = String(error).replace('Error: GraphQL error:', '');
-        i.setState({ err: `Error adding student: ${err}` });
+        const err = String(error).replace('GraphQL error:', '');
+        i.setState({ err });
       });
   }
 
@@ -599,6 +659,12 @@ class StudentFormContainer extends React.Component {
                 Keep this checked if you are ok with your child being cited in photos we sometimes post to our website or use in presentations. Your child's name and other personal information are never cited.
               </p>
             </FormGroup>
+
+            {this.state.showStepError && (
+              <div style={{ background: '#ffb5b5', margin: '15px 0', padding: 15 }}>
+                Please check the required form fields before continuing
+              </div>
+            )}
 
             <div className="step-footer">
               {this.props.selectedstudentObj &&
@@ -749,6 +815,11 @@ class StudentFormContainer extends React.Component {
               </Col>
             </Row>
 
+            {this.state.showStepError && (
+              <div style={{ background: '#ffb5b5', margin: '15px 0', padding: 15 }}>
+                Please check the required form fields before continuing
+              </div>
+            )}
 
             <div className="step-footer">
               <Button bsStyle="link" className="btn-form-step-prev" onClick={this.prevFormStep}>Back</Button>
@@ -881,6 +952,12 @@ class StudentFormContainer extends React.Component {
               />
             }
 
+            {this.state.showStepError && (
+              <div style={{ background: '#ffb5b5', margin: '15px 0', padding: 15 }}>
+                Please check a pain relief option above.
+              </div>
+            )}
+
             <div className="step-footer">
               <Button bsStyle="link" className="btn-form-step-prev" onClick={this.prevFormStep}>Back</Button>
               <Button className="btn-form-step-next" onClick={this.nextFormStep} bsSize="lg" bsStyle="success">Next</Button>
@@ -902,8 +979,8 @@ class StudentFormContainer extends React.Component {
               <FormControl.Feedback />
             </FormGroup>
 
-            <Checkbox checked={this.state.guardianSuppliesFood} onChange={this.handleGuardianSuppliesFood}>
-              We (Parent/Gaurdians) will supply our own food
+            <Checkbox checked={this.state.dietaryCaution} onChange={this.handledietaryCaution}>
+              Please have NCI contact me about my child's diet
             </Checkbox>
 
             <div className="step-footer">
@@ -934,6 +1011,14 @@ class StudentFormContainer extends React.Component {
                 I have read the medical authorization, waiver and release, and understand my rights by signing it and sign it voluntarily. <a href="/discovernci_media/waiver.pdf" target="_blank" rel="noopener noreferrer">View Waiver and Release of Liability Agreement</a>.
               </p>
             </FormGroup>
+
+            {this.state.err
+              && (
+                <div style={{ background: '#ffb5b5', padding: 10 }}>
+                  {this.state.err}
+                </div>
+              )
+            }
 
             <div className="step-footer">
               <Button bsStyle="link" className="btn-form-step-prev" onClick={this.prevFormStep}>Back</Button>
@@ -1006,7 +1091,7 @@ const ADD_STUDENT_MUTATION = gql`
     $allergiesExpanded: String
 
     $dietaryNeeds: String
-    $guardianSuppliesFood: Boolean
+    $dietaryCaution: Boolean
 
     $photoWaiver: Boolean
     $waiverAgreement: Boolean!
@@ -1044,7 +1129,7 @@ const ADD_STUDENT_MUTATION = gql`
       allergiesExpanded: $allergiesExpanded
 
       dietaryNeeds: $dietaryNeeds
-      guardianSuppliesFood: $guardianSuppliesFood
+      dietaryCaution: $dietaryCaution
 
       photoWaiver: $photoWaiver
       waiverAgreement: $waiverAgreement
@@ -1079,7 +1164,7 @@ const ADD_STUDENT_MUTATION = gql`
         foodAllergens
         allergiesExpanded
         dietaryNeeds
-        guardianSuppliesFood
+        dietaryCaution
         modified
       }
       insurance {

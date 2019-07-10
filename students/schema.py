@@ -3,6 +3,7 @@
 import ast
 # import datetime as dt
 from dateutil.parser import parse
+from django.conf import settings
 # from django.utils import timezone
 
 import graphene
@@ -250,7 +251,7 @@ class AddOrModifyStudent(graphene.Mutation):
 
         # Dietary Fields **********************************
         dietaryNeeds = graphene.String()
-        guardianSuppliesFood = graphene.Boolean()
+        dietaryCaution = graphene.Boolean()
 
         # Opt-ins, Outs... ********************************
         photoWaiver = graphene.Boolean()
@@ -274,13 +275,44 @@ class AddOrModifyStudent(graphene.Mutation):
         # }]
 
         # Student object (s)
+        current_school = School.objects.get(pk=kwargs.get('currentSchoolId'))
+        name = kwargs.get('name')
+        dob = parse(kwargs.get('dob')).date()
+
         try:
             s = Student.objects.get(id=kwargs.get('id'))
         except Student.DoesNotExist:
+
+            # Check for pre-existing Student record.
+            # This is a costly command as the Name and date of birth fields are
+            # encrypted. So we grab all Students from school, and then compare
+            # both fields. An email gets sent to Staff and msg displayed that
+            # user may already be entered and that we'll be in touch soon.
+            for classmate in current_school.student_set.all():
+                if (classmate.name == name) and (classmate.dob == dob):
+                    # send email to Tech Support (with person information about
+                    # who is duplicated, who is trying to register the student,
+                    # and who has the student registered
+                    send_html_email(
+                        'email_duplicate_student_record.html',
+                        {
+                            'existing_record': classmate,
+                            'user': info.context.user.email
+                        },
+                        'Duplicate Student Record Attempt',
+                        settings.TECH_SUPPORT_TO_LIST
+                    )
+
+                    # Display error message to parent to contact NCI, student
+                    # may already be registered.
+                    raise GraphQLError('This student may already have a record on-file. Our staff will be notified and be in contact with you shortly. Sorry for the trouble. You can close this window.')
+
+            # Otherwisse, let's create a brand new student object!
             s = Student()
-        s.name = kwargs.get('name')
-        s.dob = parse(kwargs.get('dob')).date()
-        s.current_school = School.objects.get(pk=kwargs.get('currentSchoolId'))
+
+        s.name = name
+        s.dob = dob
+        s.current_school = current_school
         s.classroom = kwargs.get('classroom')
         s.photo_waiver = kwargs.get('photoWaiver')
         s.waiver_agreement = kwargs.get('waiverAgreement')
@@ -306,8 +338,17 @@ class AddOrModifyStudent(graphene.Mutation):
         mr.food_allergens = kwargs.get('foodAllergens')
         mr.allergies_expanded = kwargs.get('allergiesExpanded', '')
         mr.dietary_needs = kwargs.get('dietaryNeeds', '')
-        mr.guardian_supplies_food = kwargs.get('guardianSuppliesFood', False)
+        mr.dietary_caution = kwargs.get('dietaryCaution', False)
         mr.save()
+
+        # If dietary_caution is True, we notify Staff right away
+        if mr.dietary_caution:
+            send_html_email(
+                'email_staff_dietary_caution.html',
+                {'student': s},
+                'CONTACT REQUEST: Student Dietary Concerns',
+                settings.TECH_SUPPORT_TO_LIST
+            )
 
         # Medication objects (med)
         medication_list_str = kwargs.get('medicationSet', None)
