@@ -32,7 +32,7 @@ export default class MainMenuContainer extends React.Component {
         <Navbar.Header>
           <Navbar.Brand className="brandItem">
             <a key={1} href="https://discovernci.org/" target="_self" style={{ margin: '5px 0 0 0', padding: '0 21px' }}>
-              <img src="/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
+              <img src="/discovernci_media/logo.png" className="navbar-logo" alt="NCI" />
               <span
                 style={{
                   fontSize: 15,
@@ -88,7 +88,7 @@ export default class MainMenuContainer extends React.Component {
 
             <li className="hidden-xs hidden-sm">
               <Link key={25} href="https://discovernci.org/" style={{ margin: '5px 0 0 0', padding: '0 21px' }} target="_self">
-                <img src="/discovernci_media/logo.png" className="navbar-logo" alt="presentation" />
+                <img src="/discovernci_media/logo.png" className="navbar-logo" alt="NCI" />
               </Link>
             </li>
 
@@ -113,8 +113,8 @@ export default class MainMenuContainer extends React.Component {
               <li><NavLink key={20} href="https://discovernci.org/montessori/enrollment" target="_self">Enrollment</NavLink></li>
             </NavDropdown>
 
-            <li><NavLink key={21} href="https://discovernci.org/events" target="_self">Events</NavLink></li>
-            <li><NavLink key={22} href="https://discovernci.org/donate" target="_self">Donate</NavLink></li>
+            <li className="hidden-xs hidden-sm hidden-md"><NavLink key={21} href="https://discovernci.org/events" target="_self">Events</NavLink></li>
+            <li className="hidden-xs hidden-sm hidden-md"><NavLink key={22} href="https://discovernci.org/donate" target="_self">Donate</NavLink></li>
             <li><NavLink key={23} href="https://discovernci.org/contact" target="_self">Contact</NavLink></li>
           </Nav>
         </Navbar.Collapse>
