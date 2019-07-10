@@ -6,6 +6,12 @@ import gql from 'graphql-tag';
 import SearchInput, { createFilter } from 'react-search-input';
 import { graphql, compose } from 'react-apollo';
 import { Link } from 'react-router';
+import ReactExport from 'react-export-excel';
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
+
 
 const KEYS_TO_FILTERS = ['name', 'currentSchool.name'];
 
@@ -40,6 +46,41 @@ class NciAppFieldTripDetailContainer extends React.Component {
       _(filteredList).groupBy(e => e.currentSchool.name).map(
         (value, key) => ({ name: key, students: value })
       ).value();
+
+    const dataSet1 = filteredList && filteredList.map(i => (
+      {
+        id: i.id,
+        firstName: i.firstName,
+        lastName: i.lastName,
+        dob: i.dob,
+        hasAllergies: i.hasAllergies,
+        allergenCount: i.allergenCount,
+        getNonRxTypeDisplay: i.medicalrecord.getNonRxTypeDisplay,
+        nonRxNotes: i.medicalrecord.nonRxNotes,
+        restrictions: i.medicalrecord.restrictions,
+        weight: i.medicalrecord.weight,
+        height: i.medicalrecord.height,
+        getGenderDisplay: i.medicalrecord.getGenderDisplay,
+        getAllergiesDisplay: i.medicalrecord.getAllergiesDisplay,
+        getFoodAllergensDisplay: i.medicalrecord.getFoodAllergensDisplay,
+        dietaryNeeds: i.medicalrecord.dietaryNeeds,
+        recentTrauma: i.medicalrecord.recentTrauma,
+        dietaryCaution: i.medicalrecord.dietaryCaution
+      }
+    ));
+
+    var dataSet2 = [
+        {
+            name: "Johnson",
+            total: 25,
+            remainig: 16
+        },
+        {
+            name: "Josef",
+            total: 25,
+            remainig: 7
+        }
+    ];
 
     return (
       <div className="nciapp-fieldtrip-detail">
@@ -96,8 +137,35 @@ class NciAppFieldTripDetailContainer extends React.Component {
                     <li>
                       <Link to={`/app/fieldtrip/${fieldtrip.id}/dietary`}>Dietary</Link>
                     </li>
-                    <li style={{ opacity: 0.4 }}>
-                      <a href="" style={{ cursor: 'not-allowed' }}>Housing</a>
+                    <li>
+
+                    <ExcelFile element={<button style={{ background: 'none', fontWeight: 'bold', display: 'block', width: '100%', color: '#337ab7', padding: 5, borderRadius: 6, border: '1px solid #377BB5' }}><FontAwesome name ="file-excel-o" /> Download as Excel File</button>}>
+                        <ExcelSheet data={dataSet1} name="Students">
+                            <ExcelColumn label="First Name" value="firstName"/>
+                            <ExcelColumn label="Last Name" value="lastName"/>
+                            <ExcelColumn label="Birth date" value="dob"/>
+                            <ExcelColumn label="Allergies" value={(col) => col.hasAllergies === 'true' ? 'Yes' : ''} />
+                            <ExcelColumn label="Allergen Count" value={(col) => col.allergenCount > 0 ? col.allergenCount : ''}/>
+                            <ExcelColumn label="Non-Rx Type" value="getNonRxTypeDisplay"/>
+                            <ExcelColumn label="Non-Rx Notes" value="nonRxNotes" />
+                            <ExcelColumn label="Restrictions" value="restrictions" />
+                            <ExcelColumn label="Weight" value="weight" />
+                            <ExcelColumn label="Height" value="height" />
+                            <ExcelColumn label="Gender" value="getGenderDisplay" />
+                            <ExcelColumn label="Allergies" value="getAllergiesDisplay" />
+                            <ExcelColumn label="Food Allergens" value="getFoodAllergensDisplay" />
+                            <ExcelColumn label="Dietary Needs" value="dietaryNeeds" />
+                            <ExcelColumn label="Recent Trauma" value="recentTrauma" />
+                            <ExcelColumn label="Dietary Caution" value="dietaryCaution" />
+                        </ExcelSheet>
+                        <ExcelSheet data={dataSet2} name="Med Log">
+                            <ExcelColumn label="Name" value="name"/>
+                            <ExcelColumn label="Total Leaves" value="total"/>
+                            <ExcelColumn label="Remaining Leaves" value="remaining"/>
+                        </ExcelSheet>
+                    </ExcelFile>
+
+
                     </li>
                   </ul>
                 </div>
@@ -160,12 +228,52 @@ const FIELD_TRIP_DETAIL = gql`
       studentList {
         id
         name
+        firstName
+        lastName
         dob
         hasAllergies
+        hasFoodAllergens
         allergenCount
         currentSchool {
           id
           name
+        }
+        medicalrecord {
+          id
+          getNonRxTypeDisplay
+          nonRxNotes
+          restrictions
+          weight
+          height
+          getGenderDisplay
+          allergies
+          getAllergiesDisplay
+          allergenCount
+          foodAllergenCount
+          allergiesExpanded
+          foodAllergens
+          getFoodAllergensDisplay
+          dietaryNeeds
+          recentTrauma
+          dietaryCaution
+          medicationSet {
+            id
+            medicationName
+            amount
+            amountUnit
+            getAmountUnitDisplay
+            administrationTimes
+            getAdministrationTimesDisplay
+            administrationTimesOther
+            inPossession
+            notes
+          }
+        }
+        guardianList {
+          id
+          name
+          phone
+          email
         }
       }
     }
