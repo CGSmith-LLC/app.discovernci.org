@@ -65,13 +65,13 @@ We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ### 1.0.0
 
-* Feature: [#38](/issues/38) Add export student functionality to CSV
-* Feature: [#36](/issues/36) Duplicate student check for parents
-* Feature: [#33](/issues/33) Replace checkbox from parent signup with dietary caution
-* Feature: [#32](/issues/32) Ability to deactivate students from admin panel
-* Feature: [#39](/issues/39) Sort field trips alphabetically
-* Bugfix: [#9](/issues/9) Fix menu overlaps
-* Misc: [#34](/issues/34) Email changes for notifications
+* Feature: [#38](/../../issues/38) Add export student functionality to CSV
+* Feature: [#36](/../../issues/36) Duplicate student check for parents
+* Feature: [#33](/../../issues/33) Replace checkbox from parent signup with dietary caution
+* Feature: [#32](/../../issues/32) Ability to deactivate students from admin panel
+* Feature: [#39](/../../issues/39) Sort field trips alphabetically
+* Bugfix: [#9](/../../issues/9) Fix menu overlaps
+* Misc: [#34](/../../issues/34) Email changes for notifications
 
 *Breaking Changes*
 
