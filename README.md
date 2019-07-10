@@ -24,48 +24,6 @@ The website 'Pages' are written in React. The nature of React is very loose stru
 ## Deploy to prod
     sudo rm -rf frontend/build/ && sudo mv frontend/live/build frontend/ && sudo rm -rf static_collected/ && sudo mv frontend/live/static_collected/ static_collected/
 
-
-## How to Convert database from SQLite to MySQL
-
-1. Dump data
-python manage.py dumpdata > datadump.json
-2. Create a new database for the Django project.
-CREATE DATABASE djnci CHARACTER SET UTF8;
-3. Create a database user to use to connect to and interact with the database.
-CREATE USER djnci@localhost IDENTIFIED BY 'djncidjnci';
-4. Give database user access to the database
-GRANT ALL PRIVILEGES ON djnci.* To djnci@localhost;
-5. FLUSH the changes.
-FLUSH PRIVILEGES;
-6. Install the mysqlclient package that will allow us to use the database we configured:
-pip install django mysqlclient
-7. python manage.py migrate --run-syncdb
-8. python manage.py loaddata datadump.json
-
-## How to Edit a 'Page'
-
-Currently, this is non-trivial to a non-developer. But here's how it's done:
-
-1. Open 'routes.js' and add a routing path of your choosing
-2. Create a React component to answer to that route. e.g.
-
-## How to push code updates
-
-Once you've made the changes you can push to the production web site (discovernci.org) with the following command *ONLY* if you've been given server access. Not just anyone can push updates. This is for security purposes.
-
-1. $ cd /path/to/djnci
-2. $ fab production deploy
-
-
-## Obtaining a fresh copy of the database (for local development)
-
-You can grab a snapshot of the database (again, given you have appropriate permission) by using our projects Fabric file--a python script that automates some out the repetitive tasks away.
-
-1. $ cd /path/to/djnci
-2. $ fab getdb
-
-
-
 # NCI EE Portal
 Allow Parents, Teachers and EE Staff the ability to securely manage their students/child(ren)s NCI experience.
 
@@ -100,3 +58,22 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 * Manage and log student medication administrations
 * Generate reports (e.g. Kitchen dietary restrictions, Allergen lists)
 * List upcoming field trips and their details
+
+
+## Versions
+We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
+
+### 1.0.0
+
+* Feature: [#38](/../../issues/38) Add export student functionality to CSV
+* Feature: [#36](/../../issues/36) Duplicate student check for parents
+* Feature: [#33](/../../issues/33) Replace checkbox from parent signup with dietary caution
+* Feature: [#32](/../../issues/32) Ability to deactivate students from admin panel
+* Feature: [#39](/../../issues/39) Sort field trips alphabetically
+* Bugfix: [#9](/../../issues/9) Fix menu overlaps
+* Misc: [#34](/../../issues/34) Email changes for notifications
+
+*Breaking Changes*
+
+1. Add `DJNCI_SQL_PORT` and `DJNCI_SQL_DBNAME` environment variables
+1. A database update is required. Run `python3.6 manage.py migrate`
