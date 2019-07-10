@@ -114,21 +114,23 @@ export default class NciDashboardParent extends React.Component {
           {studentSet.length > 0 &&
             <ul className="parent-child-list">
               {_.map(studentSet, student => (
-                <li key={student.id}>
-                  <span className="avatar"><FontAwesome name="user-circle" /></span>
-                  <span className="name">{student.firstName}</span>
-                  <span className="subline">{moment().diff(student.dob, 'years')} y/o • <span className="classroom">{student.getClassroomDisplay}</span></span>
-                  <ul style={{ marginTop: 15, display: 'block' }}>
-                    {student.hasAllergies === 'true' && <li><strong>{student.allergenCount}</strong> Allergies</li>}
-                    {(student.foodAllergenCount > 0) && <li><strong>{student.foodAllergenCount}</strong> Food Allergens</li>}
-                    {student.medicalrecord.medicationSet.length > 0 && <li><strong>{student.medicalrecord.medicationSet.length}</strong> Medications</li>}
-                  </ul>
-                  <span className="foot">
-                    <Button bsStyle="default" onClick={() => this.openStudentFormModal(student)}>
-                      <FontAwesome name="pencil-square-o" fixedWidth /> Update
-                    </Button>
-                  </span>
-                </li>
+                student.isActive && (
+                  <li key={student.id}>
+                    <span className="avatar"><FontAwesome name="user-circle" /></span>
+                    <span className="name">{student.firstName}</span>
+                    <span className="subline">{moment().diff(student.dob, 'years')} y/o • <span className="classroom">{student.getClassroomDisplay}</span></span>
+                    <ul style={{ marginTop: 15, display: 'block' }}>
+                      {student.hasAllergies === 'true' && <li><strong>{student.allergenCount}</strong> Allergies</li>}
+                      {(student.foodAllergenCount > 0) && <li><strong>{student.foodAllergenCount}</strong> Food Allergens</li>}
+                      {student.medicalrecord.medicationSet.length > 0 && <li><strong>{student.medicalrecord.medicationSet.length}</strong> Medications</li>}
+                    </ul>
+                    <span className="foot">
+                      <Button bsStyle="default" onClick={() => this.openStudentFormModal(student)}>
+                        <FontAwesome name="pencil-square-o" fixedWidth /> Update
+                      </Button>
+                    </span>
+                  </li>
+                )
               ))}
             </ul>
           }

@@ -432,6 +432,36 @@ class AddOrModifyMedication(graphene.Mutation):
         return AddOrModifyMedication(medication=medication)
 
 
+class ToggleStudentActivation(graphene.Mutation):
+    """Flip a Student object's is_active bit.
+
+    Students grow up. They move on. Students not marked 'active' in our system
+    are as good as deleted from the perspective of the Guardians and Teachers,
+    but EE Staff still have access for a 7-year record retention requirement.
+
+    Note that teachers *do* have the ability to re-activate. There is no
+    restriction or check as you can see
+
+    """
+
+    newStatus = graphene.Boolean()
+
+    class Arguments:
+        id = graphene.Int(required=True)
+
+    def mutate(self, info, id):
+        user = info.context.user
+        if user.is_authenticated() and (user.account_type == 'ee-staff') or (user.account_type == 'teacher'):
+            try:
+                student = Student.objects.get(pk=id)
+                student.is_active = not student.is_active
+                student.save()
+                return ToggleStudentActivation(newStatus=student.is_active)
+            except Student.DoesNotExist:
+                raise Exception('No record found')
+        raise Exception('Invalid credentials')
+
+
 class CheckInMedication(graphene.Mutation):
     success = graphene.Int()
 
@@ -538,6 +568,7 @@ class Mutation(graphene.ObjectType):
     delete_student = DeleteStudent.Field()
     add_or_modify_medication = AddOrModifyMedication.Field()
     check_in_medication = CheckInMedication.Field()
+    toggle_student_activation = ToggleStudentActivation.Field()
     check_out_medication = CheckOutMedication.Field()
     delete_medication = DeleteMedication.Field()
     log_administered_med = LogAdministeredMed.Field()
@@ -565,18 +596,25 @@ class Query(object):
                 i = FieldTrip.objects.get(pk=fieldTripId, school_list__in=u.assoc_school_list.all())
             except FieldTrip.DoesNotExist:
                 raise Exception('Unable to retrieve field trip details')
-            return Student.objects.filter(pk__in=i.student_list.all(), current_school__in=u.assoc_school_list.all())
+            return Student.objects.filter(
+                pk__in=i.student_list.all(),
+                current_school__in=u.assoc_school_list.all(),
+                is_active=True
+            )
         raise Exception('Unauthorized')
 
     def resolve_my_students(self, info, **kwargs):
         """Return all students from all of the schools I'm associated with.
 
         This is most useful for Teachers that belong to multiple schools and
-        need a master list of all Students they belonging to their schools.
+        need a master list of all their Students.
         """
         u = info.context.user
         if u.is_authenticated() and (u.account_type == 'teacher' or u.account_type == 'ee-staff'):
-            return Student.objects.filter(current_school__in=u.assoc_school_list.all())
+            return Student.objects.filter(
+                current_school__in=u.assoc_school_list.all(),
+                is_active=True
+            )
         raise Exception('Unauthorized')
 
     def resolve_student(self, info, id):
@@ -591,14 +629,20 @@ class Query(object):
             * NciAppAddMedication
         """
         u = info.context.user
-        kwargs = {'pk': id, 'is_active': True}
+        kwargs = {'pk': id}
         if u.is_authenticated():
             if u.account_type == 'teacher':
                 kwargs['current_school__in'] = u.assoc_school_list.all()
             elif u.account_type == 'parent':
                 kwargs['guardian_list'] = u
-            if ((u.account_type == 'teacher') or (u.account_type == 'parent') or (u.account_type == 'ee-staff')):
+
+            if (u.account_type == 'teacher') or (u.account_type == 'parent'):
+                kwargs['is_active'] = True
                 return Student.objects.get(**kwargs)
+
+            if u.account_type == 'ee-staff':
+                return Student.objects.get(**kwargs)
+
         raise Exception('Unauthorized')
 
     def resolve_medications(self, info, fieldTripId):
