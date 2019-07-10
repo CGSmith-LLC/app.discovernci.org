@@ -14,6 +14,7 @@ from graphene_django.views import GraphQLView
 
 from django.views.decorators.csrf import csrf_exempt
 
+ENABLE_GRAPHIQL = strtobool(os.getenv('DJNCI_GRAPHIQL', 'false'))
 
 
 def template(template_name):
@@ -23,19 +24,8 @@ def template(template_name):
 
 urlpatterns = [
     url(r'^$', template(template_name='index.html')),
-    url(r'^sitemap.xml$', template(template_name='sitemap.xml')),
-
-    # GraphQL Resources
-    url(r'^graphql', csrf_exempt(GraphQLView.as_view(
-        graphiql=strtobool(os.getenv('DJNCI_GRAPHIQL', 'false')))
-    )),
-
-    # Django Admin panel
+    url(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=ENABLE_GRAPHIQL))),
     url(r'^a/', admin.site.urls),
     url(r'^froala_editor/', include('froala_editor.urls')),
-
-
-    # Anything that wasn't caught up above, we defer to index.html
     url(r'^.*/$', template(template_name='index.html'))
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
