@@ -484,7 +484,7 @@ class Query(object):
     def resolve_ncim_staff_faculty(self, info, **kwargs):
         # id = kwargs.get('id')
         # classroom = kwargs.get('classroom')
-        print(kwargs)
+        # print(kwargs)
         if classroom:
             return AccountProfile.objects.filter(account_type='teacher').filter(assoc_school_list__id=50, classroom=classroom)
         return AccountProfile.objects.filter(account_type='teacher').filter(assoc_school_list__id=50)
