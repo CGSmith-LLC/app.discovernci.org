@@ -11,3 +11,4 @@ build.tar.bz2
 npm-debug.log
 .idea
 .vagrant
+djnci.sql.gz
