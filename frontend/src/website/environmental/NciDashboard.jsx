@@ -40,51 +40,47 @@ class NciDashboardContainer extends React.Component {
   closeTechSupport = () => this.setState({ showTechSupport: false });
 
   render() {
-    const { me } = this.props.myAccountQuery;
+    const { myAccountQuery, schoolList } = this.props;
     const { showMyProfile, showTechSupport } = this.state;
-
+    const { me } = myAccountQuery;
     return (
       <BasicContainer>
 
-        {me
+        {!myAccountQuery.loading && me
           ? (
             <span>
               <Row>
 
                 <Col md={10} mdOffset={1} className="center bottom-30">
 
-                  <h2>
-                    My NCI Dashboard
-                  </h2>
+                  <h2>My NCI Dashboard</h2>
 
                   <Button onClick={this.openMyProfile}>
-                    <FontAwesome name="edit" fixedWidth />
-                    {' '}
-                    Edit My Profile
+                    <FontAwesome name="edit" fixedWidth /> Edit My Profile
                   </Button>
+
                   {' '}
 
                   <Button onClick={() => this.openTechSupport()}>
-                    <FontAwesome name="question-circle" fixedWidth />
-                    {' '}
-                    Help / Support
+                    <FontAwesome name="question-circle" fixedWidth /> Help / Support
                   </Button>
+
                   {' '}
 
-                  {me.accountType === 'EE_STAFF'
-                    && (
-                      <a href="/app" className="btn btn-default">
-                        NCI App
-                        {' '}
-                        <FontAwesome name="external-link" fixedWidth />
-                      </a>
-                    )
-                  }
+                  {me.accountType === 'EE_STAFF' && (
+                    <a href="/app" className="btn btn-default">
+                      NCI App
+                      {' '}
+                      <FontAwesome name="external-link" fixedWidth />
+                    </a>
+                  )}
+
                   {' '}
 
                   <a className="btn btn-default" href="/logout">
                     Logout ({me.email})
                   </a>
+
                   {' '}
 
                   <NciDashboardModalUpdateMyProfile
@@ -100,21 +96,19 @@ class NciDashboardContainer extends React.Component {
 
                 </Col>
               </Row>
-
               <Row>
-
                 <Col md={10} mdOffset={1}>
-                  {(me.accountType === 'PARENT' || me.accountType === 'EE_STAFF')
-                   && <NciDashboardParent data={me} schoolList={this.props.schoolList} />
-                  }
 
-                  {me.accountType === 'TEACHER'
-                    && <NciDashboardTeacher me={me} schoolList={this.props.schoolList} />
-                  }
+                  {(me.accountType === 'PARENT' || me.accountType === 'EE_STAFF') && (
+                    <NciDashboardParent data={me} schoolList={schoolList} />
+                  )}
+
+                  {me.accountType === 'TEACHER' && (
+                    <NciDashboardTeacher me={me} schoolList={schoolList} />
+                  )}
+
                 </Col>
-
               </Row>
-
             </span>
           )
           : (
