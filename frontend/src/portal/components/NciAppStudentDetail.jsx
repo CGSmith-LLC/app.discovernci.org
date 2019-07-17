@@ -210,7 +210,7 @@ class NciAppStudentDetailContainer extends React.Component {
                           </div>
                         )}
                       </li>
-                      <li>Guardian supplies meals <span className="pull-right">{student.medicalrecord.guardianSuppliesFood}</span></li>
+                      <li>NCI to contact me about meals <span className="pull-right">{student.medicalrecord.dietaryCaution}</span></li>
                     </ul>
                   )}
 
