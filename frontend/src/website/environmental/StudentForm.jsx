@@ -152,7 +152,7 @@ class StudentFormContainer extends React.Component {
                 return (
                     {
                         id: med.id,
-                        administrationTimes: med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean).toString(),
+                        administrationTimes: med.administrationTimes.filter(entry => entry.trim() !== '').filter(Boolean).toString(),
                         administrationTimesOther: med.administrationTimesOther,
                         medicationName: med.medicationName,
                         amount: med.amount,
@@ -196,7 +196,7 @@ class StudentFormContainer extends React.Component {
         allergiesExpanded: s.medicalrecord.allergiesExpanded,
         dietaryNeeds: s.medicalrecord.dietaryNeeds,
         dietaryCaution: s.medicalrecord.dietaryCaution
-      })
+      });
     }
   }
 
@@ -475,10 +475,10 @@ class StudentFormContainer extends React.Component {
   handleSubmit = () => {
     var tetanusShot = moment([this.state.lastTetanusYear, this.state.lastTetanusMonth - 1, this.state.lastTetanusDay]).format('YYYY-MM-DD');
     // Fixes issue where tetanus shot could not be updated
-    if (tetanusShot == "Invalid date") {
-        this.state.lastTetanus = null;
-    }else {
-        this.state.lastTetanus = tetanusShot;
+    if (tetanusShot === 'Invalid date') {
+        this.setState({ lastTetanus: null })
+    } else {
+        this.setState({ lastTetanus: tetanusShot })
     }
     const i = this;
     this.setState({ submitDisabled: true });
@@ -528,7 +528,6 @@ class StudentFormContainer extends React.Component {
       }
     })
       .then(({ data }) => {
-        // console.log('RETURNED DATA ', data);
         i.setState({
           step: 8,
           formSubmitted: true,
@@ -568,7 +567,7 @@ class StudentFormContainer extends React.Component {
 
         {this.state.step !== 8 &&
           <span>
-            <h3 className="center modal-header" onClick={() => console.log(this.props, this.state)}>
+            <h3 className="center modal-header">
               {studentObj ? this.state.name : 'Add Your Child'}
             </h3>
 

@@ -78,7 +78,8 @@ export default class NciDashboardParent extends React.Component {
   });
 
   render() {
-    const { studentSet, insuranceSet, schoolList } = this.props.data;
+    const { schoolList } = this.props;
+    const { studentSet, insuranceSet } = this.props.data;
     const { showAddInsurance, selectedstudentObj, selectedInsuranceObj, showStudentFormModal } = this.state;
     return (
       <div>
