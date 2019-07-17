@@ -193,7 +193,7 @@ const StudentFormReview = ({ student, myInsuranceListQuery}) => {
           }
           {student.dietaryCaution &&
             <tr>
-              <td>Parents/Guardians supply meals</td>
+              <td>NCI to contact me about meals</td>
               <td>Yes</td>
             </tr>
           }
