@@ -149,8 +149,6 @@ class StudentFormContainer extends React.Component {
         medicationSet: s.medicalrecord.medicationSet &&
         (s.medicalrecord.medicationSet.length > 0)
             ? _.map(s.medicalrecord.medicationSet, med => {
-                console.log(med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean));
-
                 return (
                     {
                         id: med.id,
