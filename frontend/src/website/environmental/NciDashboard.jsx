@@ -41,6 +41,7 @@ class NciDashboardContainer extends React.Component {
 
   render() {
     const { me } = this.props.myAccountQuery;
+    const { showMyProfile, showTechSupport } = this.state;
 
     return (
       <BasicContainer>
@@ -87,13 +88,13 @@ class NciDashboardContainer extends React.Component {
                   {' '}
 
                   <NciDashboardModalUpdateMyProfile
-                    showMyProfile={this.state.showMyProfile}
+                    showMyProfile={showMyProfile}
                     closeMyProfile={this.closeMyProfile}
                     me={me}
                   />
 
                   <NciTechSupportModal
-                    showModal={this.state.showTechSupport}
+                    showModal={showTechSupport}
                     handleCloseModal={this.closeTechSupport}
                   />
 
