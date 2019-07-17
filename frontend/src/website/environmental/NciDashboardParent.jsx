@@ -112,7 +112,7 @@ export default class NciDashboardParent extends React.Component {
           </h3>
 
           <div style={{ margin: '15px 0', padding: 10, background: '#fff6b5' }}>
-            If you have any specific questions about your child’s stay please contact their teacher directly.
+            If you have any specific questions about your student’s experience, please contact the lead teacher on the trip or your school’s office.
           </div>
 
           {studentSet.length > 0 &&
