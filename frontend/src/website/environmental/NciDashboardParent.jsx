@@ -78,14 +78,10 @@ export default class NciDashboardParent extends React.Component {
   });
 
   render() {
-    const { studentSet, schoolList, insuranceSet } = this.props.data;
+    const { studentSet, insuranceSet, schoolList } = this.props.data;
     const { showAddInsurance, selectedstudentObj, selectedInsuranceObj, showStudentFormModal } = this.state;
     return (
       <div>
-
-        <h3>Upcoming Field Trips</h3>
-
-        <FieldTripTable />
 
         <span>
           <h3 style={{ marginTop: 40, marginBottom: 15 }}>
@@ -141,6 +137,10 @@ export default class NciDashboardParent extends React.Component {
             </Modal.Body>
           </Modal>
         )}
+
+        <h3>Field Trips</h3>
+
+        <FieldTripTable />
 
         <Row>
           <Col md={12}>
