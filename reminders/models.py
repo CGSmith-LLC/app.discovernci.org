@@ -9,7 +9,7 @@ from .managers import ReminderManager
 
 class Reminder(models.Model):
 
-    fieldtrip_id = models.ForeignKey(
+    fieldtrip = models.ForeignKey(
         'locations.FieldTrip',
         blank=False,
         null=False
@@ -23,7 +23,7 @@ class Reminder(models.Model):
 
 class ReminderAddresses(models.Model):
 
-    reminder_id = models.ForeignKey(
+    reminder = models.ForeignKey(
         'reminders.Reminder',
         blank=False,
         null=False
