@@ -112,10 +112,13 @@ class StudentFormContainer extends React.Component {
     waiverAgreement: false
   }
 
+  // Check if we need to bind the form to an existing student object
   componentDidMount() {
     const nextProps = this.props;
-    const s = nextProps.selectedstudentObj;
-    if (!_.isEmpty(nextProps.selectedstudentObj) && (nextProps.selectedstudentObj.id > 0)) {
+    const { selectedstudentObj: s } = nextProps;
+    if (!_.isEmpty(s) && (s.id > 0)) {
+      // Existing student object found, lets set state with their details.
+      // state properties are grouped in form steps to make it easier on us humans.
       this.setState({
 
         // Step 1 *******************************
@@ -123,12 +126,10 @@ class StudentFormContainer extends React.Component {
         dobMonth: (parseInt(moment(s.dob).format('M'), 10)),
         dobDay: parseInt(moment(s.dob).format('D'), 10),
         dobYear: parseInt(moment(s.dob).format('YYYY'), 10),
-        currentSchool: [
-            {
-                id: nextProps.selectedstudentObj.currentSchool.id,
-                label: nextProps.selectedstudentObj.currentSchool.name
-            }
-        ],
+        currentSchool: [{
+          id: s.currentSchool.id,
+          label: s.currentSchool.name
+        }],
         classroom: s.classroom,
         photoWaiver: s.photoWaiver,
 
@@ -140,32 +141,27 @@ class StudentFormContainer extends React.Component {
         lastTetanusDay: parseInt(moment(s.medicalrecord.lastTetanus).format('D'), 10),
         lastTetanusYear: parseInt(moment(s.medicalrecord.lastTetanus).format('YYYY'), 10),
         noTetanusVaccine: s.medicalrecord.noTetanusVaccine,
-        insId: (s.insuranceDependentsList.length > 0) &&
-            s.insuranceDependentsList[0].id,  // FIXME It's an array...
+        insId: (s.insuranceDependentsList.length > 0)
+          && s.insuranceDependentsList[0].id, // FIXME It's an array...
         recentTrauma: s.medicalrecord.recentTrauma,
         restrictions: s.medicalrecord.restrictions,
         nonRxType: s.medicalrecord.nonRxType,
         nonRxNotes: s.medicalrecord.nonRxNotes,
-        medicationSet: s.medicalrecord.medicationSet &&
-        (s.medicalrecord.medicationSet.length > 0)
-            ? _.map(s.medicalrecord.medicationSet, med => {
-                console.log(med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean));
 
-                return (
-                    {
-                        id: med.id,
-                        administrationTimes: med.administrationTimes.filter(entry => entry.trim() != '').filter(Boolean).toString(),
-                        administrationTimesOther: med.administrationTimesOther,
-                        medicationName: med.medicationName,
-                        amount: med.amount,
-                        amountHuman: med.amountHuman,
-                        amountUnit: med.amountUnit,
-                        getAmountUnitDisplay: med.getAmountUnitDisplay,
-                        notes: med.notes
-                    }
-                )
-            })
-            : [],
+        medicationSet: s.medicalrecord.medicationSet
+        && (s.medicalrecord.medicationSet.length > 0)
+          ? _.map(s.medicalrecord.medicationSet, med => ({
+            id: med.id,
+            administrationTimes: med.administrationTimes.filter(entry => entry.trim() !== '').filter(Boolean).toString(),
+            administrationTimesOther: med.administrationTimesOther,
+            medicationName: med.medicationName,
+            amount: med.amount,
+            amountHuman: med.amountHuman,
+            amountUnit: med.amountUnit,
+            getAmountUnitDisplay: med.getAmountUnitDisplay,
+            notes: med.notes
+          }))
+          : [],
         // medicationSet: [
         //   ...s.medicalrecord.medicationSet
         // ],
@@ -198,7 +194,7 @@ class StudentFormContainer extends React.Component {
         allergiesExpanded: s.medicalrecord.allergiesExpanded,
         dietaryNeeds: s.medicalrecord.dietaryNeeds,
         dietaryCaution: s.medicalrecord.dietaryCaution
-      })
+      });
     }
   }
 
@@ -297,35 +293,52 @@ class StudentFormContainer extends React.Component {
   }
 
   handleDobMonth = e => this.setState({ dobMonth: parseInt(e.target.value, 10) });
+
   handleDobDay = e => this.setState({ dobDay: parseInt(e.target.value, 10) });
+
   handleDobYear = e => this.setState({ dobYear: parseInt(e.target.value, 10) });
+
   handleDobClear = () => this.setState({ dobMonth: null, dobDay: null, dobYear: null });
 
   handleClassroom = (e) => { this.setState({ classroom: parseInt(e.target.value, 10) }); }
 
   // Step 2
   handleGender = (e) => { this.setState({ gender: parseInt(e.target.value, 10) }); }
+
   handleHeight = (e) => { this.setState({ height: e.target.value }); }
+
   handleWeight = (e) => { this.setState({ weight: e.target.value }); }
 
   handleLastTetanusMonth = e => this.setState({ lastTetanusMonth: parseInt(e.target.value, 10) });
+
   handleLastTetanusDay = e => this.setState({ lastTetanusDay: parseInt(e.target.value, 10) });
+
   handleLastTetanusYear = e => this.setState({ lastTetanusYear: parseInt(e.target.value, 10) });
-  handleLastTetanusClear = () => this.setState({ lastTetanusMonth: null, lastTetanusDay: null, lastTetanusYear: null });
+
+  handleLastTetanusClear = () => (
+    this.setState({ lastTetanusMonth: null, lastTetanusDay: null, lastTetanusYear: null })
+  );
 
   handleNoTetanusVaccine = (e) => { this.setState({ noTetanusVaccine: e.target.checked }); }
 
   handleSelectedInsOption = (e) => { this.setState({ insId: parseInt(e.target.value, 10) }); }
+
   handleInsCompanyName = (e) => { this.setState({ insCompanyName: e.target.value }); }
+
   handleInsPolicyNum = (e) => { this.setState({ insPolicyNum: e.target.value }); }
+
   handleInsGroupNum = (e) => { this.setState({ insGroupNum: e.target.value }); }
+
   handleInsHolderName = (e) => { this.setState({ insHolderName: e.target.value }); }
+
   handleDeferIns = (e) => { this.setState({ deferIns: e.target.checked }); }
 
   handleRecentTrauma = (e) => { this.setState({ recentTrauma: e.target.value }); }
+
   handleRestrictions = (e) => { this.setState({ restrictions: e.target.value }); }
 
   handleNonRxType = (e) => { this.setState({ nonRxType: parseInt(e.target.value, 10) }); }
+
   handleNonRxNotes = (e) => { this.setState({ nonRxNotes: e.target.value }); }
 
   // The medicationSet is an empty array by default.
@@ -346,6 +359,7 @@ class StudentFormContainer extends React.Component {
       }),
     );
   }
+
   handleMedicationAdd = () => {
     this.setState(
       state => ({
@@ -363,22 +377,27 @@ class StudentFormContainer extends React.Component {
       })
     );
   }
+
   handleMedMedicationName = (id, medicationName) => {
     const items = this.state.medicationSet.slice();
     const index = items.findIndex(x => x.id === id);
     items[index] = { ...items[index], medicationName };
     this.setState({ medicationSetFormError: false, medicationSet: items });
   }
+
   handleMedAmountHuman = (id, amountHuman) => {
     const items = this.state.medicationSet.slice();
     const index = items.findIndex(x => x.id === id);
     items[index] = { ...items[index], amountHuman };
     this.setState({ medicationSetFormError: false, medicationSet: items });
   }
+
   handleMedAdministrationTimes = (id, label, checked) => {
     const items = this.state.medicationSet.slice();
     const index = items.findIndex(x => x.id === id);
-    const x = items[index].administrationTimes;
+    // Convert a dirty string into an array of numbers
+    const x = items[index].administrationTimes.replace(' ', '').split(',').map(Number);
+    console.log(x);
     _.map(medicationAdminTimeChoices, (choice) => {
       if (label === String(choice.label).toLowerCase()) {
         checked
@@ -386,24 +405,27 @@ class StudentFormContainer extends React.Component {
           : _.pull(x, choice.id);
       }
     });
-    items[index] = { ...items[index], administrationTimes: x };
+    items[index] = { ...items[index], administrationTimes: x.toString() };
     this.setState({
       medicationSetFormError: false,
       medicationSet: items
     });
   }
+
   handleMedAdministrationTimesOther = (id, administrationTimesOther) => {
     const items = this.state.medicationSet.slice();
     const index = items.findIndex(x => x.id === id);
     items[index] = { ...items[index], administrationTimesOther };
     this.setState({ medicationSetFormError: false, medicationSet: items });
   }
+
   handleMedNotes = (id, notes) => {
     const items = this.state.medicationSet.slice();
     const index = items.findIndex(x => x.id === id);
     items[index] = { ...items[index], notes };
     this.setState({ medicationSetFormError: false, medicationSet: items });
   }
+
   handleMedicationRemove = (id) => {
     this.setState({
       medicationSetFormError: false,
@@ -412,28 +434,50 @@ class StudentFormContainer extends React.Component {
   }
 
   handleHasFoodAllergy = (e) => { this.setState({ hasFoodAllergy: e.target.checked }); }
+
   handleSkinAllergy = (e) => { this.setState({ hasSkinAllergy: e.target.checked }); }
+
   handleDustAllergy = (e) => { this.setState({ hasDustAllergy: e.target.checked }); }
+
   handleInsectStingAllergy = (e) => { this.setState({ hasInsectStingAllergy: e.target.checked }); }
+
   handleAnimalAllergy = (e) => { this.setState({ hasAnimalAllergy: e.target.checked }); }
+
   handleEyeAllergy = (e) => { this.setState({ hasEyeAllergy: e.target.checked }); }
+
   handleDrugAllergy = (e) => { this.setState({ hasDrugAllergy: e.target.checked }); }
+
   handleAllergicRhinitis = (e) => { this.setState({ hasAllergicRhinitis: e.target.checked }); }
+
   handleLatexAllergy = (e) => { this.setState({ hasLatexAllergy: e.target.checked }); }
+
   handlePollenAllergy = (e) => { this.setState({ hasPollenAllergy: e.target.checked }); }
+
   handleMoldAllergy = (e) => { this.setState({ hasMoldAllergy: e.target.checked }); }
+
   handleSinusAllergy = (e) => { this.setState({ hasSinusAllergy: e.target.checked }); }
+
   handleOtherAllergy = (e) => { this.setState({ hasOtherAllergy: e.target.checked }); }
+
   handleAllergiesExpanded = (e) => { this.setState({ allergiesExpanded: e.target.value }); }
 
+
   handleHasFoodMilk = (e) => { this.setState({ hasFoodAllergyMilk: e.target.checked }); }
+
   handleHasFoodEggs = (e) => { this.setState({ hasFoodAllergyEggs: e.target.checked }); }
+
   handleHasFoodPeanuts = (e) => { this.setState({ hasFoodAllergyPeanuts: e.target.checked }); }
+
   handleHasFoodSoy = (e) => { this.setState({ hasFoodAllergySoy: e.target.checked }); }
+
   handleHasFoodWheat = (e) => { this.setState({ hasFoodAllergyWheat: e.target.checked }); }
+
   handleHasFoodTreeNuts = (e) => { this.setState({ hasFoodAllergyTreeNuts: e.target.checked }); }
+
   handleHasFoodFish = (e) => { this.setState({ hasFoodAllergyFish: e.target.checked }); }
+
   handleHasFoodShellfish = (e) => { this.setState({ hasFoodAllergyShellfish: e.target.checked }); }
+
   handleHasFoodOther = (e) => { this.setState({ hasFoodAllergyOther: e.target.checked }); }
 
   handleGetAllergySelection = () => {
@@ -469,18 +513,20 @@ class StudentFormContainer extends React.Component {
   }
 
   handledietaryCaution = (e) => { this.setState({ dietaryCaution: e.target.checked }); }
+
   handleDietaryNeeds = (e) => { this.setState({ dietaryNeeds: e.target.value }); }
 
   handlePhotoWaiver = (e) => { this.setState({ photoWaiver: e.target.checked }); }
+
   handleWaiverAgreement = (e) => { this.setState({ waiverAgreement: e.target.checked }); }
 
   handleSubmit = () => {
     var tetanusShot = moment([this.state.lastTetanusYear, this.state.lastTetanusMonth - 1, this.state.lastTetanusDay]).format('YYYY-MM-DD');
     // Fixes issue where tetanus shot could not be updated
-    if (tetanusShot == "Invalid date") {
-        this.state.lastTetanus = null;
-    }else {
-        this.state.lastTetanus = tetanusShot;
+    if (tetanusShot === 'Invalid date') {
+        this.setState({ lastTetanus: null })
+    } else {
+        this.setState({ lastTetanus: tetanusShot })
     }
     const i = this;
     this.setState({ submitDisabled: true });
@@ -530,7 +576,6 @@ class StudentFormContainer extends React.Component {
       }
     })
       .then(({ data }) => {
-        // console.log('RETURNED DATA ', data);
         i.setState({
           step: 8,
           formSubmitted: true,
@@ -570,7 +615,7 @@ class StudentFormContainer extends React.Component {
 
         {this.state.step !== 8 &&
           <span>
-            <h3 className="center modal-header" onClick={() => console.log(this.props, this.state)}>
+            <h3 className="center modal-header">
               {studentObj ? this.state.name : 'Add Your Child'}
             </h3>
 

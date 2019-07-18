@@ -1,13 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import {
-  Grid,
-  Row,
-  Col,
-  Panel
-} from 'react-bootstrap';
-import CheckoutForm from "./forms/CheckoutForm";
+import { Grid, Row, Col, Panel } from 'react-bootstrap';
 
 export default class DonatePage extends Component {
 
@@ -26,12 +19,6 @@ export default class DonatePage extends Component {
                             Donation</h1>
                         <p style={{fontSize: '1.4em', marginBottom: 20}}>Your support directly impacts our mission in
                             teaching independence, mastery of self and the environment.</p>
-
-                        <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
-                            <Elements>
-                                <CheckoutForm />
-                            </Elements>
-                        </StripeProvider>
 
                     </Col>
                     <Col md={4}>

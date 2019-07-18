@@ -45,7 +45,7 @@ MedicationForm.propTypes = {
       medicationName: PropTypes.string,
       amountHuman: PropTypes.string,
       notes: PropTypes.string,
-      administrationTimes: PropTypes.arrayOf(PropTypes.number),
+      administrationTimes: PropTypes.string,
       administrationTimesOther: PropTypes.string
     })
   ).isRequired,
