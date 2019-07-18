@@ -63,6 +63,17 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 ## Versions
 We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
 
+### 1.0.1
+* Resolves [#33](/../../issues/33)
+* Resolves [#35](/../../issues/35)
+* lint deconstruction syntax fix
+* removed unused components and related artifact. some linting.
+* get to the me prop, properly.
+* Display Children before fieldtrips. Sick of scrolling.
+* Removed console.log citations and unused ModalAddNew Component
+* eliminating working copy noise. removed unused components, fixed lint errors, destructed props for reliable availability
+* Addresses [#45](/../../issues/45)
+
 ### 1.0.0
 
 * Feature: [#38](/../../issues/38) Add export student functionality to CSV
