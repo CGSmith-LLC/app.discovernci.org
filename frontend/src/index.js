@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactGA from 'react-ga';
 import Cookies from 'js-cookie';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -43,18 +42,9 @@ const client = new ApolloClient({
   shouldBatch: true
 });
 
-// Log page view to Google Analytics
-ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS);
-function logPageView() {
-  ReactGA.set({ page: window.location.pathname });
-  ReactGA.pageview(window.location.pathname);
-}
-
-// On every internal route change, scroll the user back to the
-// top of the page and log their page view to Google Analyics.
+// On every internal route change, scroll the user back to the top of the page.
 function handleUpdate() {
   if (this.state.location.action === 'PUSH') { window.scrollTo(0, 0); }
-  logPageView();
 }
 
 ReactDOM.render(
