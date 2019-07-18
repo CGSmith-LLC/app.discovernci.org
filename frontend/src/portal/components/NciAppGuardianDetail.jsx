@@ -12,7 +12,7 @@ class NciAppGuardianDetailContainer extends React.Component {
 
   static propTypes = {
     data: PropTypes.shape({
-      loading: PropTypes.boolean,
+      loading: PropTypes.bool,
       guardian: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string
