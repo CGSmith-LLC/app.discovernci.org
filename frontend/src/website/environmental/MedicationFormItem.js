@@ -7,12 +7,30 @@ import FontAwesome from 'react-fontawesome';
 import { medicationAdminTimeChoices } from './formFieldChoices';
 
 const MedicationFormItem = props => (
-  <Row className="inline-formset-wrapper" style={{ background: '#fffdf1', margin: '0 0 25px 0', padding: '15px 0', border: '1px solid #cccccc', borderRadius: 6 }}>
+  <Row
+    className="inline-formset-wrapper"
+    style={{
+      position: 'relative',
+      background: '#fffdf1',
+      margin: '0 0 25px 0',
+      padding: '15px 0',
+      border: '1px solid #cccccc',
+      borderRadius: 6
+    }}
+  >
 
     {props.showCloseBtn &&
       <button
         onClick={() => props.handleRemove(props.item.id)}
-        style={{ border: 'none', background: 'none', position: 'absolute', right: 0, top: 3, color: '#b55050' }}
+        style={{
+          border: 'none',
+          background: 'none',
+          position: 'absolute',
+          right: 0,
+          top: 3,
+          color: '#b55050',
+          zIndex: 999
+        }}
       >
         <FontAwesome name="close" fixedWidth />
       </button>
