@@ -7,6 +7,7 @@ import { ApolloLink } from 'apollo-client-preset';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { Router, browserHistory } from 'react-router';
+import * as Sentry from '@sentry/browser';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
@@ -16,6 +17,8 @@ import './website/style.css';
 
 // react-router v3 routes
 import routes from './routes';
+
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN });
 
 // GraphQL via Apollo Client
 const httpLink = new HttpLink({
