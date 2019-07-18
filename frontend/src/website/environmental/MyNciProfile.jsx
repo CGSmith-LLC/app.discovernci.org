@@ -35,7 +35,6 @@ class ModalUpdateMyProfile extends React.Component {
 
   handleSubmit = ({ formData }) => {
     const i = this;
-    console.log(formData);
     this.props.updateMyProfile({ variables: formData })
       .then(({ data }) => {
         i.setState({

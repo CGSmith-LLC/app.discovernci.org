@@ -3,14 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
-import {
-  Row, Col, Button, Modal, Table
-} from 'react-bootstrap';
+import { Row, Col, Button, Modal, Table } from 'react-bootstrap';
 
 import FieldTripTable from './FieldTripTable';
 import StudentForm from './StudentForm';
 
-import NciDashboardModalAddStudent from './NciDashboardModalAddStudent';
 import NciDashboardModalAddInsurance from './NciDashboardModalAddInsurance';
 
 export default class NciDashboardParent extends React.Component {
@@ -56,7 +53,6 @@ export default class NciDashboardParent extends React.Component {
 
   state = {
     showAddInsurance: false,
-    showAddStudent: false,
     selectedstudentObj: null,
     selectedInsuranceObj: null
   };
@@ -71,16 +67,6 @@ export default class NciDashboardParent extends React.Component {
     selectedstudentObj: null
   });
 
-  openAddStudent = studentObj => this.setState({
-    showAddStudent: true,
-    selectedstudentObj: studentObj
-  });
-
-  closeAddStudent = () => this.setState({
-    showAddStudent: false,
-    selectedstudentObj: null
-  });
-
   openAddInsurance = insuranceObj => this.setState({
     showAddInsurance: true,
     selectedInsuranceObj: insuranceObj
@@ -92,16 +78,11 @@ export default class NciDashboardParent extends React.Component {
   });
 
   render() {
-    const studentSet = this.props.data && this.props.data.studentSet;
-
+    const { schoolList } = this.props;
+    const { studentSet, insuranceSet } = this.props.data;
+    const { showAddInsurance, selectedstudentObj, selectedInsuranceObj, showStudentFormModal } = this.state;
     return (
       <div>
-
-        <h3>
-          Upcoming Field Trips
-        </h3>
-
-        <FieldTripTable />
 
         <span>
           <h3 style={{ marginTop: 40, marginBottom: 15 }}>
@@ -115,7 +96,7 @@ export default class NciDashboardParent extends React.Component {
             If you have any specific questions about your student’s experience, please contact the lead teacher on the trip or your school’s office.
           </div>
 
-          {studentSet.length > 0 &&
+          {studentSet.length > 0 && (
             <ul className="parent-child-list">
               {_.map(studentSet, student => (
                 student.isActive && (
@@ -137,19 +118,12 @@ export default class NciDashboardParent extends React.Component {
                 )
               ))}
             </ul>
-          }
+          )}
         </span>
 
-        <NciDashboardModalAddStudent
-          onHide={this.closeAddStudent}
-          showAddStudent={this.state.showAddStudent}
-          schoolList={this.props.schoolList}
-          studentObj={this.state.selectedstudentObj ? this.state.selectedstudentObj : {}}
-        />
-
-        {this.state.showStudentFormModal &&
+        {showStudentFormModal && (
           <Modal
-            show={this.state.showStudentFormModal}
+            show={showStudentFormModal}
             onHide={this.closeStudentFormModal}
             backdrop="static"
             className="student-form-modal"
@@ -158,12 +132,16 @@ export default class NciDashboardParent extends React.Component {
             <Modal.Body>
               <StudentForm
                 closeModal={this.closeStudentFormModal}
-                schoolList={this.props.schoolList}
-                selectedstudentObj={this.state.selectedstudentObj}
+                schoolList={schoolList}
+                selectedstudentObj={selectedstudentObj}
               />
             </Modal.Body>
           </Modal>
-        }
+        )}
+
+        <h3>Field Trips</h3>
+
+        <FieldTripTable />
 
         <Row>
           <Col md={12}>
@@ -182,8 +160,8 @@ export default class NciDashboardParent extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {!_.isEmpty(this.props.data.insuranceSet)
-                  && _.map(this.props.data.insuranceSet, insurance => (
+                {!_.isEmpty(insuranceSet)
+                  && _.map(insuranceSet, insurance => (
                   <tr key={insurance.id}>
                     <td>
                       {insurance.companyName}
@@ -226,9 +204,9 @@ export default class NciDashboardParent extends React.Component {
 
             <NciDashboardModalAddInsurance
               onHide={this.closeAddInsurance}
-              showAddInsurance={this.state.showAddInsurance}
-              dependentsList={this.props.data.studentSet}
-              instanceObj={this.state.selectedInsuranceObj && this.state.selectedInsuranceObj}
+              showAddInsurance={showAddInsurance}
+              dependentsList={studentSet}
+              instanceObj={selectedInsuranceObj && selectedInsuranceObj}
             />
           </Col>
 
