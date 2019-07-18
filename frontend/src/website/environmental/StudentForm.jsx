@@ -21,6 +21,13 @@ import {
   medicationAdminTimeChoices
 } from './formFieldChoices';
 
+const nonRxTypeList = [
+  { id: 1, label: 'None' },
+  { id: 2, label: 'Tylenol' },
+  { id: 3, label: 'Ibuprofen' },
+  { id: 4, label: 'Tylenol or Ibuprofen' }
+];
+
 class StudentFormContainer extends React.Component {
   static defaultProps = {
     selectedstudentObj: null
@@ -957,16 +964,23 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Allergies */}
+        {/* Allergies ****************************************************** */}
         {this.state.step === 5 &&
           <div className="form-step">
 
             <FormGroup>
               <ControlLabel>If necessary, NCI can provide over-the-counter pain relief. Which of these pain relief choices do you prefer administered if your child becomes ill, gets a headache, catches a cold or older *minor* medical or dental issues.</ControlLabel>
-              <Radio onChange={this.handleNonRxType} value={1} name="nonRxType" checked={this.state.nonRxType === 1}>None</Radio>
-              <Radio onChange={this.handleNonRxType} value={2} name="nonRxType" checked={this.state.nonRxType === 2}>Tylenol</Radio>
-              <Radio onChange={this.handleNonRxType} value={3} name="nonRxType" checked={this.state.nonRxType === 3}>Ibuprofen</Radio>
-              <Radio onChange={this.handleNonRxType} value={4} name="nonRxType" checked={this.state.nonRxType === 4}>Tylenol or Ibuprofen</Radio>
+              {nonRxTypeList.map(i => (
+                <Radio
+                  key={i.id}
+                  onChange={this.handleNonRxType}
+                  value={i.id}
+                  name="nonRxType"
+                  checked={this.state.nonRxType === i.id}
+                >
+                  {i.label}
+                </Radio>
+              ))}
             </FormGroup>
 
 
