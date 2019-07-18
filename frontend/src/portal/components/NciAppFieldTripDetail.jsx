@@ -194,7 +194,9 @@ class NciAppFieldTripDetailContainer extends React.Component {
                       ))}
                     </ul>
                   ))}
-                  {this.state.searchTerms !== '' && <div className="center top-20"><a onClick={() => this.setState({ searchTerms: '' })}>Clear Search</a></div>}
+                  {this.state.searchTerms !== '' && <div className="center top-20">
+                    <button onClick={() => this.setState({ searchTerms: '' })}>Clear Search</button>
+                    </div>}
                 </ul>
               </div>
 
