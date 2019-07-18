@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import 'font-awesome/css/font-awesome.min.css';
 
-import './website/style.less';
+import './website/style.css';
 
 // react-router v3 routes
 import routes from './routes';
@@ -21,12 +21,6 @@ import routes from './routes';
 // GraphQL via Apollo Client
 const httpLink = new HttpLink({
   credentials: 'same-origin'
-  // react-snap doe not (yet) have proxy support,
-  // so it errors when trying to hit localhost:<react-snap port>/graphql
-  // there does appear to be a fix just waiting on tests to be written:
-  // https://github.com/stereobooster/react-snap/pull/136
-  //
-  // uri: 'http://localhost:9000/'
 });
 
 const middlewareAuthLink = new ApolloLink((operation, forward) => {
