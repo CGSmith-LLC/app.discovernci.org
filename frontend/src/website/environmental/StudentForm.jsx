@@ -360,6 +360,10 @@ class StudentFormContainer extends React.Component {
     this.setState({ medicationSet: items });
   }
 
+  /*
+   * Push and pull Numbers out of an array representing administration times
+   * of a particular medication item, updating state payload.
+   */
   handleMedAdministrationTimes = (id, label, checked) => {
     // All the medication items this student has on-file, as an Array
     const items = this.state.medicationSet.slice();
@@ -378,7 +382,7 @@ class StudentFormContainer extends React.Component {
     });
     // ...and inject the updated Array back into the medication item
     items[index] = { ...items[index], administrationTimes: x };
-    // Update state. this.handleSubmit() will take it from here.
+    // Update state; this.handleSubmit() will take it from there
     this.setState({ medicationSet: items });
   }
 
