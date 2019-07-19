@@ -90,7 +90,7 @@ class NciTeacherRequestFieldTripModal extends React.Component {
                 onSubmit={this.handleSubmitFieldtripRequest}
               >
                 <p style={{ fontSize: '0.9em', color: '#969696', fontFamily: 'Helvetica, sans-serif' }}>
-                  Note: Your email and phone can be updated via your <a href="">Account Settings</a>.
+                  Note: Your email and phone can be updated via your Account Profile.
                 </p>
                 <Button bsStyle="info" type="submit" style={{ marginBottom: 15 }}>Submit Request</Button>
               </Form>
