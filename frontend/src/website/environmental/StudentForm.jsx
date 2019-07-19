@@ -254,8 +254,6 @@ class StudentFormContainer extends React.Component {
         (gender === 0)
         || (height === '')
         || (weight === 0)
-        || ((lastTetanusMonth === null) || (lastTetanusDay === null) || (lastTetanusYear === null))
-        || noTetanusVaccine
         || (insId === 0)
       ) {
         this.setState({ showStepError: true });
@@ -702,7 +700,7 @@ class StudentFormContainer extends React.Component {
         }
 
         {/* Step 2 ************************** */}
-        {this.state.step === 2 &&
+        {(step === 2) &&
           <div className="form-step">
 
             <Row>
@@ -710,7 +708,7 @@ class StudentFormContainer extends React.Component {
               <Col sm={7} md={7}>
 
                 <FormGroup>
-                  <ControlLabel>Gender</ControlLabel>
+                  <ControlLabel>Gender<span style={{ color: 'red' }}>*</span></ControlLabel>
                   <FormControl
                     componentClass="select"
                     value={this.state.gender}
@@ -741,6 +739,7 @@ class StudentFormContainer extends React.Component {
                     day={this.state.lastTetanusDay}
                     year={this.state.lastTetanusYear}
                     disabled={this.state.noTetanusVaccine}
+                    required
                   />
 
                   <Checkbox
@@ -756,7 +755,7 @@ class StudentFormContainer extends React.Component {
               <Col sm={5} md={5}>
 
                 <FormGroup controlId="name">
-                  <ControlLabel>Height (feet and inches)</ControlLabel>
+                  <ControlLabel>Height (feet and inches)<span style={{ color: 'red' }}>*</span></ControlLabel>
                   <FormControl
                     type="text"
                     placeholder="e.g. 4' 3&quot;"
@@ -768,7 +767,7 @@ class StudentFormContainer extends React.Component {
                 </FormGroup>
 
                 <FormGroup controlId="name">
-                  <ControlLabel>Weight (lbs)</ControlLabel>
+                  <ControlLabel>Weight (lbs)<span style={{ color: 'red' }}>*</span></ControlLabel>
                   <FormControl
                     type="number"
                     placeholder="e.g. 65lbs"
@@ -785,7 +784,7 @@ class StudentFormContainer extends React.Component {
             <Row>
               <Col md={12}>
                 <FormGroup controlId="accountTypeSelect" style={{ marginTop: 15 }}>
-                  <ControlLabel style={{ marginBottom: 10 }}>Health Insurance Provider</ControlLabel>
+                  <ControlLabel style={{ marginBottom: 10 }}>Health Insurance Provider<span style={{ color: 'red' }}>*</span></ControlLabel>
                   <FormControl
                     componentClass="select"
                     value={this.state.insId}
@@ -849,8 +848,8 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Medical Text Blobs */}
-        {this.state.step === 3 &&
+        {/* Step 3 ************************** */}
+        {(step === 3) &&
           <div className="form-step">
             <FormGroup controlId="recentTrauma">
               <ControlLabel>Has anything happened recently in your child’s life that may affect him/her emotionally or physically while at Nature’s Classroom Institute? If yes, please explain.</ControlLabel>
@@ -879,8 +878,8 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Meication */}
-        {this.state.step === 4 &&
+        {/* Step 4 ************************** */}
+        {(step === 4) &&
           <div className="form-step">
 
             <Row>
@@ -933,12 +932,12 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Allergies ****************************************************** */}
-        {this.state.step === 5 &&
+        {/* Step 5 ************************** */}
+        {(step === 5) &&
           <div className="form-step">
 
             <FormGroup>
-              <ControlLabel>If necessary, NCI can provide over-the-counter pain relief. Which of these pain relief choices do you prefer administered if your child becomes ill, gets a headache, catches a cold or older *minor* medical or dental issues.</ControlLabel>
+              <ControlLabel><span style={{ color: 'red' }}>*</span> If necessary, NCI can provide over-the-counter pain relief. Which of these pain relief choices do you prefer administered if your child becomes ill, gets a headache, catches a cold or older *minor* medical or dental issues.</ControlLabel>
               {nonRxTypeList.map(i => (
                 <Radio
                   key={i.id}
@@ -992,8 +991,8 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Dietary */}
-        {this.state.step === 6 &&
+        {/* Step 6 ************************** */}
+        {(step === 6) &&
           <div className="form-step">
 
             <FormGroup controlId="dietaryNeeds">
@@ -1017,8 +1016,8 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Review */}
-        {this.state.step === 7 &&
+        {/* Step 7 ************************** */}
+        {(step === 7) &&
           <div className="form-step">
 
             <StudentFormReview
@@ -1054,8 +1053,8 @@ class StudentFormContainer extends React.Component {
           </div>
         }
 
-        {/* Confirmation */}
-        {this.state.step === 8 &&
+        {/* Step 8 ************************** */}
+        {(step === 8) &&
           <div className="form-step center">
 
             <span style={{ display: 'block', marginTop: 50, fontSize: '7em', color: '#5cc700', lineHeight: 0 }}><FontAwesome name="check-circle" /></span>
