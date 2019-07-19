@@ -223,7 +223,7 @@ const NciTeacherFieldTripDetailModal = compose(
   graphql(FIELD_TRIP_DETAIL, {
     name: 'fieldTripDetail',
     options: ownProps => ({
-      // pollInterval: 4000,
+      // pollInterval: 4800,
       variables: {
         id: ownProps.fieldTripId
       }
@@ -232,7 +232,7 @@ const NciTeacherFieldTripDetailModal = compose(
   graphql(ONLY_MY_STUDENTS_ON_FIELD_TRIP, {
     name: 'onlyMyStudentsOnFieldTrip',
     options: ownProps => ({
-      // pollInterval: 4000,
+      pollInterval: 4500,
       variables: {
         fieldTripId: ownProps.fieldTripId
       }

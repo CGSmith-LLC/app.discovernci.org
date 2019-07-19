@@ -509,7 +509,15 @@ class ToggleStudentActivation(graphene.Mutation):
                 student = Student.objects.get(pk=id)
                 student.is_active = not student.is_active
                 student.save()
+
+                # Remove Student from fieldtrips. Note that .save() is not called
+                # through this, nor does it play a role in the removal of records
+                fieldtrip_list = FieldTrip.objects.filter(student_list__pk=student.pk)
+                for i in fieldtrip_list:
+                    i.student_list.remove(student)
+
                 return ToggleStudentActivation(newStatus=student.is_active)
+
             except Student.DoesNotExist:
                 raise Exception('No record found')
         raise Exception('Invalid credentials')
