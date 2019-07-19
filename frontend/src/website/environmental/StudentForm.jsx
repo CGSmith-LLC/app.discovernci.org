@@ -367,7 +367,7 @@ class StudentFormContainer extends React.Component {
   handleMedAdministrationTimes = (id, label, checked) => {
     // All the medication items this student has on-file, as an Array
     const items = this.state.medicationSet.slice();
-    // Confirm the medication item in question by matching id value
+    // Find the medication item in question and get it's index position
     const index = items.findIndex(x => x.id === id);
     // The medications admin times (an Array of Numbers)
     const x = items[index].administrationTimes;
