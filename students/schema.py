@@ -174,7 +174,12 @@ class MedicalRecordType(DjangoObjectType):
 class MedicationType(DjangoObjectType):
     id = graphene.Int()
     amount_unit = graphene.Int()
-    administration_times = graphene.List(graphene.String)
+
+    # django-multiselectfield package holds authority of how this field is
+    # stored. From their docs:
+    # > Stores to the database as a CharField of comma-separated values.
+    administration_times = graphene.List(graphene.Int)
+
     get_amount_unit_display = graphene.String()
     get_administration_times_display = graphene.String()
 
@@ -185,7 +190,14 @@ class MedicationType(DjangoObjectType):
         return self.get_amount_unit_display()
 
     def resolve_administration_times(self, _args, *_kwargs):
-        return self.administration_times
+        # Our frontend (js) expects this payload to be an array of numbers, so
+        # we convert that here so that we dont have to fumble around in js
+        #
+        # Example:
+        #   Incoming: ["1", " ", "", "  ", " 2", " ", "", "  ", " 5"]
+        #   Outgoing: [1,2,5]
+        #
+        return [int(i.strip()) for i in self.administration_times if i and i.strip() != '']
 
     def resolve_get_administration_times_display(self, _args, *_kwargs):
         return self.get_administration_times_display()
