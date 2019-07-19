@@ -378,8 +378,7 @@ class StudentFormContainer extends React.Component {
     });
     // ...and inject the updated Array back into the medication item
     items[index] = { ...items[index], administrationTimes: x };
-    // Update state with new medication data since the originaging payload
-    // through props will not be updated/polled automatically.
+    // Update state. this.handleSubmit() will take it from here.
     this.setState({ medicationSet: items });
   }
 
