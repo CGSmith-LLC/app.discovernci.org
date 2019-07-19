@@ -254,8 +254,6 @@ class StudentFormContainer extends React.Component {
         (gender === 0)
         || (height === '')
         || (weight === 0)
-        || ((lastTetanusMonth === null) || (lastTetanusDay === null) || (lastTetanusYear === null))
-        || noTetanusVaccine
         || (insId === 0)
       ) {
         this.setState({ showStepError: true });
