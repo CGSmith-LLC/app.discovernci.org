@@ -8,8 +8,8 @@ class ReminderInline(admin.TabularInline):
     model = Reminder
     verbose_name_plural = "Email Reminders"
     # exclude = ('note_type', 'guid')
-    # readonly_fields = ('created', 'modified', 'author')
-    extra = 3
+    readonly_fields = ('sent',)
+    extra = 0
 
 
 class LocationAdmin(admin.ModelAdmin):

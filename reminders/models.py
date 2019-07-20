@@ -16,6 +16,12 @@ class Reminder(models.Model):
     is_active = models.BooleanField(default=True)
     objects = ReminderManager()
 
+    class Meta:
+        ordering = ['-send_date', ]
+
+    def __str__(self):
+        return '%s - Send on: %s' % (self.fieldtrip, self.send_date)
+
 
 class ReminderAddresses(models.Model):
     reminder = models.ForeignKey(Reminder, blank=False, null=False)
