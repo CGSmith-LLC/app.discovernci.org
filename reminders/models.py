@@ -24,7 +24,7 @@ class Reminder(models.Model):
 
 
 class ReminderAddresses(models.Model):
-    reminder = models.ForeignKey(Reminder, blank=False, null=False)
+    reminder = models.ForeignKey(Reminder, blank=False, null=False, related_name="reminder_addresses")
     name = models.CharField(max_length=140, blank=False)
     email = models.EmailField(blank=False)
 
