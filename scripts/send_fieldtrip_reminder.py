@@ -12,6 +12,7 @@ system and email them an html/plain-text email on how to renew their membership.
 from datetime import datetime
 
 from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
 
 from reminders.models import Reminder
 
@@ -25,31 +26,31 @@ def run():
     )
     for reminder in todays_reminders:
         # Convert plain-text body to string to concatenate variables into the body
-        text_content = """\
-            You have an upcoming fieldtrip:
-            """ + str(reminder.fieldtrip) + """ on """ + str(reminder.fieldtrip.start_date) + """
-            Please contact us if you have any questions.
-        """
+        # text_content = """\
+        #     You have an upcoming fieldtrip:
+        #     """ + str(reminder.fieldtrip) + """ on """ + str(reminder.fieldtrip.start_date) + """
+        #     Please contact us if you have any questions.
+        # """
 
         # Convert html body to string to concatenate variables into the body
-        html_content = """\
-        <html>
-          <head></head>
-          <body>
-            <p>You have an upcoming fieldtrip:<br>
-               <br>
-               """ + str(reminder.fieldtrip) + """ on """ + str(reminder.fieldtrip.start_date) + """
-            </p>
-            additional info: """ + str(reminder.html) + """
-          </body>
-        </html>
-        """
+        # html_content = """\
+        # <html>
+        #   <head></head>
+        #   <body>
+        #     <p>You have an upcoming fieldtrip:<br>
+        #        <br>
+        #        """ + str(reminder.fieldtrip) + """ on """ + str(reminder.fieldtrip.start_date) + """
+        #     </p>
+        #     additional info: """ + str(reminder.html) + """
+        #   </body>
+        # </html>
+        # """
 
         msg = EmailMultiAlternatives(
             reminder.subject,  # subject
-            text_content,  # plain-text body
+            strip_tags(reminder.html),  # plain-text body
             'no-reply@discovernci.org',  # from-email
             [i.email for i in reminder.reminder_addresses.all()]  # to email list
         )
-        msg.attach_alternative(html_content, "text/html")  # html-formatted bodyx
+        msg.attach_alternative(reminder.html, "text/html")  # html-formatted bodyx
         msg.send()
