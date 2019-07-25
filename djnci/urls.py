@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=ENABLE_GRAPHIQL))),
     url(r'^a/', admin.site.urls),
     url(r'^froala_editor/', include('froala_editor.urls')),
-    url(r'^.*/$', template(template_name='index.html'))
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^.*/$', template(template_name='index.html')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

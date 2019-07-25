@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'students.apps.StudentsConfig',
     'reminders.apps.RemindersConfig',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -159,6 +161,18 @@ MEDIA_URL = '/media/'
 ADMINS = [
     ('Chris Smith', 'chris@cgsmith.net'),
 ]
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_BROWSE_SHOW_DIRS = False
+
+# CKEDITOR_CONFIGS = {
+#    'default': {
+#        # 'skin': 'moono-lisa',
+#        # 'toolbar': 'standard',
+#        # 'height': 300,
+#        # 'width': 300
+#    },
+# }
 
 # All email sent from site is done through our SendGrid account.
 # Credentials cited here can also be used on their site (https://sendgrid.com/)
