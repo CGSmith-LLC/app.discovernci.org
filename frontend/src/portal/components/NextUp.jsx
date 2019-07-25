@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 
 NextUp.propTypes = {
   data: PropTypes.shape({
-    loading: PropTypes.boolean,
+    loading: PropTypes.bool,
     myFieldTrips: PropTypes.arrayOf(
       PropTypes.object
     )

@@ -63,6 +63,18 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 ## Versions
 We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
 
+### 1.1.0
+
+* Feature: [#37](/../../issues/37) Weekly email to teachers
+* Bugfix: [#44](/../../issues/47) Remove inactive student from fieldtrip
+* Misc: [#42](/../../issues/42) Add asterisks to required fields
+
+
+*Breaking Changes*
+
+1. Add `python3.6 manage.py runscript send_fieldtrip_reminder` to @daily CRON
+1. A database update is required. Run `python3.6 manage.py migrate`
+
 ### 1.0.1
 * Resolves [#33](/../../issues/33)
 * Resolves [#35](/../../issues/35)

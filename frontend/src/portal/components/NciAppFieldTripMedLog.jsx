@@ -84,7 +84,11 @@ class NciAppFieldTripMedLogContainer extends React.Component {
 
             <div className="nci-navbar-header" style={{ position: 'fixed', zIndex: 999 }}>
               <div className="nci-navbar-header-back">
-                <a role="button" onClick={() => { window.history.back(); }}><FontAwesome name="chevron-left" fixedWidth /> Back</a>
+                <button type="button" onClick={() => { window.history.back(); }} className="btn-nostyle">
+                  <FontAwesome name="chevron-left" fixedWidth />
+                  {' '}
+                  Back
+                </button>
               </div>
               <div className="nci-navbar-header-title">
                 <h2>Medication Overview</h2>

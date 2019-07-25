@@ -92,7 +92,7 @@ export default class NciDashboardParent extends React.Component {
             </Button>
           </h3>
 
-          <div style={{ margin: '15px 0', padding: 10, background: '#fff6b5' }}>
+          <div style={{ margin: '15px 0', padding: 10, background: '#dae7ef' }}>
             If you have any specific questions about your student’s experience, please contact the lead teacher on the trip or your school’s office.
           </div>
 

@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 
 import { genRandId } from '../../common/utils/index';
 import { medicationAdminTimeChoices } from '../../website/environmental/formFieldChoices';
-import MedicationFormItem from '../../website/environmental/MedicationFormItem';
+import { MedicationFormItem } from '../../website/environmental/MedicationFormItem';
 
 class NciAppAddMedicationContainer extends React.Component {
   static propTypes = {

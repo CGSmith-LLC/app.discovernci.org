@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'locations.apps.LocationsConfig',
     'posts.apps.PostsConfig',
-    'students.apps.StudentsConfig'
+    'students.apps.StudentsConfig',
+    'reminders.apps.RemindersConfig',
 ]
 
 MIDDLEWARE = [

@@ -11,7 +11,7 @@ class FieldTripListScrollerContainer extends React.Component {
 
   static propTypes = {
     data: PropTypes.shape({
-      loading: PropTypes.boolean,
+      loading: PropTypes.bool,
       myFieldTrips: PropTypes.array
     }).isRequired
   }
