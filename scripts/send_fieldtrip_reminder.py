@@ -19,7 +19,7 @@ from reminders.models import Reminder
 
 def run():
     todays_reminders = Reminder.objects.filter(
-        send_date=datetime.today().date(),
+        send_date__lte=datetime.today().date(),
         fieldtrip__is_enabled=True,
         is_active=True,
         sent=False
