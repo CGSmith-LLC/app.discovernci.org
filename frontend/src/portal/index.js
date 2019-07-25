@@ -1,4 +1,4 @@
-import './style.less';
+import './style.css';
 
 export { default as NciApp } from './NciApp';
 export { default as NciAppAddMedication } from './components/NciAppAddMedication';

@@ -1,6 +1,15 @@
 from django.contrib import admin
 
+from reminders.models import Reminder
 from .models import Building, FieldTrip, Location, VisitSubmission
+
+
+class ReminderInline(admin.TabularInline):
+    model = Reminder
+    verbose_name_plural = "Email Reminders"
+    # exclude = ('note_type', 'guid')
+    readonly_fields = ('sent',)
+    extra = 0
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -77,6 +86,9 @@ class FieldTripAdmin(admin.ModelAdmin):
     list_display = ('name', 'location', 'start_date', 'end_date', 'is_enabled', 'modified')
     readonly_fields = ['guid', 'created', 'modified']
     filter_horizontal = ('school_list', 'student_list')
+    inlines = [
+        ReminderInline,
+    ]
     fieldsets = (
         ('Basic Information', {
             'fields': (

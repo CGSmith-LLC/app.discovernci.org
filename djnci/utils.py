@@ -1,5 +1,3 @@
-import json
-import requests
 import stripe
 from datetime import timedelta
 from nameparser import HumanName

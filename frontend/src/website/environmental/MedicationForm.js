@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import { Alert, Button } from 'react-bootstrap';
 
-import MedicationFormItem from './MedicationFormItem';
+import { MedicationFormItem } from './MedicationFormItem';
 
 const MedicationForm = props => (
   <div>

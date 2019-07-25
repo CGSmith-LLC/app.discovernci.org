@@ -12,7 +12,7 @@ class NciAppGuardianDetailContainer extends React.Component {
 
   static propTypes = {
     data: PropTypes.shape({
-      loading: PropTypes.boolean,
+      loading: PropTypes.bool,
       guardian: PropTypes.shape({
         id: PropTypes.number,
         name: PropTypes.string
@@ -51,7 +51,11 @@ class NciAppGuardianDetailContainer extends React.Component {
                 <FontAwesome name="user-circle" />
               </div>
               <h2>{guardian.name}</h2>
-              <p style={{ marginBottom: 10 }}><a href="">{guardian.assocSchoolList[0].name} <FontAwesome name="arrow-circle-right" /></a></p>
+              <p style={{ marginBottom: 10 }}>
+                  {guardian.assocSchoolList[0].name}
+                  {' '}
+                  <FontAwesome name="arrow-circle-right" />
+              </p>
             </div>
 
             <ul className="display-list">
@@ -103,8 +107,8 @@ class NciAppGuardianDetailContainer extends React.Component {
             <ul className="display-list">
               <li>Date joined <span className="pull-right"><Moment date={guardian.dateJoined} format="L" /></span></li>
               <li>Last login  <span className="pull-right"><Moment date={guardian.lastLogin} format="L @ h:mm a" /></span></li>
-              <li><a href="">Reset Password</a> <span className="pull-right"><FontAwesome name="chevron-right" style={{ color: '#cccccc' }} /></span></li>
-              <li><a href="">Deactivate Account</a> <span className="pull-right"><FontAwesome name="chevron-right" style={{ color: '#cccccc' }} /></span></li>
+              {/* <li><a href="#">Reset Password</a> <span className="pull-right"><FontAwesome name="chevron-right" style={{ color: '#cccccc' }} /></span></li>
+              <li><a href="#">Deactivate Account</a> <span className="pull-right"><FontAwesome name="chevron-right" style={{ color: '#cccccc' }} /></span></li> */}
             </ul>
 
 

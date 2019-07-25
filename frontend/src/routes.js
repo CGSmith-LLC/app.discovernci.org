@@ -1,5 +1,4 @@
 import React from 'react';
-import Raven from 'react-raven';
 import { Route, IndexRoute } from 'react-router';
 
 import {
@@ -32,7 +31,6 @@ import {
 
 export default (
   <div>
-    <Raven dsn={process.env.REACT_APP_SENTRY_DSN_URL} />
 
     <Route path="/" component={WebsiteWrapper}>
       <IndexRoute component={NciDashboard} />

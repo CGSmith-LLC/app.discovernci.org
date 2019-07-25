@@ -12,7 +12,7 @@ class NciAppStudentWaiver extends React.Component {
       id: PropTypes.string
     }).isRequired,
     data: PropTypes.shape({
-      loading: PropTypes.boolean,
+      loading: PropTypes.bool,
       student: PropTypes.shape({
         name: PropTypes.string,
         dob: PropTypes.string,

@@ -18,7 +18,8 @@ export const DateField = (props) => {
     label,
     month,
     day,
-    year
+    year,
+    required
   } = props;
 
   const isValidDate = () => ((year >= minYear)
@@ -56,7 +57,7 @@ export const DateField = (props) => {
     <div className="rdf-wrapper">
 
       <label htmlFor="rdf-fieldset">
-        {label}
+        {label}{required && <span style={{ color: 'red' }}>*</span>}
       </label>
 
       <fieldset id="rdf-fieldset">
