@@ -54,3 +54,6 @@ def run():
         )
         msg.attach_alternative(reminder.html, "text/html")  # html-formatted bodyx
         msg.send()
+
+        reminder.sent = True
+        reminder.save()
