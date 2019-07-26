@@ -1,8 +1,5 @@
-import stripe
 from datetime import timedelta
-from nameparser import HumanName
 
-from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template import loader
 
@@ -52,29 +49,3 @@ def week_range(date):
     end_date = start_date + timedelta(6)
 
     return (start_date, end_date)
-
-
-def parse_first_name(str):
-    """Return only the first name from a full (human) name."""
-    i = HumanName(str)
-    if i.first:
-        return i.first.capitalize()
-    return None
-
-
-def parse_last_name(str):
-    """Return only the last name from a full (human) name."""
-    i = HumanName(str)
-    if i.last:
-        return i.last.capitalize()
-    return None
-
-
-def retrieve_stripe_customer(cus_id):
-    """Return a Stripe Customer object based on Stripe customer id."""
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    if cus_id:
-        try:
-            return stripe.Customer.retrieve(cus_id)
-        except:
-            return None
