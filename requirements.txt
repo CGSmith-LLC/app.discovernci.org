@@ -11,7 +11,6 @@ django-ckeditor==5.7.1
 django-encrypted-model-fields==0.5.8
 django-extensions==2.1.0
 django-filter==2.0.0
-django-froala-editor==2.8.4
 django-measurement==2.4.0
 django-multiselectfield==0.1.8
 Django==1.11.15
