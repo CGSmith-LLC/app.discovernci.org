@@ -218,7 +218,7 @@ class FieldTrip(models.Model):
         """Return a list of Teacher email addresses associated with this FieldTrip."""
         email_list = []
         for school in self.school_list.all():
-            for teacher in school.account_assoc_school_list.filter(account_type='teacher'):
+            for teacher in school.account_assoc_school_list.filter(account_type='teacher', is_active=True):
                 email_list.append(teacher.email)
         return email_list
 
