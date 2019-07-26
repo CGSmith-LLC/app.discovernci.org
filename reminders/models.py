@@ -24,12 +24,6 @@ class Reminder(models.Model):
         return '%s - Send on: %s' % (self.fieldtrip, self.send_date)
 
 
-class ReminderAddresses(models.Model):
-    reminder = models.ForeignKey(Reminder, blank=False, null=False, related_name="reminder_addresses")
-    name = models.CharField(max_length=140, blank=False)
-    email = models.EmailField(blank=False)
-
-
 class ReminderTemplates(models.Model):
     subject = models.CharField(max_length=128, blank=False)
     template = models.TextField(blank=False)
