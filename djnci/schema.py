@@ -1,16 +1,12 @@
 import graphene
 
 import locations.schema
-import events.schema
 import students.schema
-import posts.schema
 import accounts.schema
 
 
 class Query(
     locations.schema.Query,
-    events.schema.Query,
-    posts.schema.Query,
     students.schema.Query,
     accounts.schema.Query,
     graphene.ObjectType
