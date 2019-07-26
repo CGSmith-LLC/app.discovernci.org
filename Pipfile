@@ -34,7 +34,6 @@ qrcode = "==5.3"
 raven = "==6.5.0"
 requests = "==2.13.0"
 simplejson = "==3.10.0"
-stripe = "==1.46.0"
 usaddress = "==0.5.10"
 
 

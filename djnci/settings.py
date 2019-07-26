@@ -183,13 +183,9 @@ else:
     EMAIL_HOST_USER = os.environ['SMTP_USER']
 
 if DEBUG:
-    STRIPE_PUBLIC_KEY = os.environ['STRIPE_TEST_PUBLIC_KEY']
-    STRIPE_SECRET_KEY = os.environ['STRIPE_TEST_SECRET_KEY']
     STAFF_TO_LIST = ['chris@cgsmith.net']
     TECH_SUPPORT_TO_LIST = ['chris@cgsmith.net']
 else:
-    STRIPE_PUBLIC_KEY = os.environ['STRIPE_LIVE_PUBLIC_KEY']
-    STRIPE_SECRET_KEY = os.environ['STRIPE_LIVE_PRIVATE_KEY']
     STAFF_TO_LIST = [
         'mirko@discovernci.org',
         'geoffrey@nciw.org',
