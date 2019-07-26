@@ -27,6 +27,12 @@ def run():
 
     for reminder in todays_reminders:
 
+        send_to_list = reminder.fieldtrip.get_teacher_email_list()
+        reply_to_list = ["{} <{}>".format(
+            reminder.fieldtrip.location.primary_contact.name,
+            reminder.fieldtrip.location.primary_contact.email
+        )]
+
         signature = """\
             {}<br />\n
             {}<br />\n
@@ -46,13 +52,6 @@ def run():
 
         html_body = reminder.html + "\n" + signature
         plain_text_body = strip_tags(html_body)
-
-        send_to_list = reminder.fieldtrip.get_teacher_email_list()
-
-        reply_to_list = ["{} <{}>".format(
-            reminder.fieldtrip.location.primary_contact.name,
-            reminder.fieldtrip.location.primary_contact.email
-        )]
 
         msg = EmailMultiAlternatives(
             reminder.subject,
