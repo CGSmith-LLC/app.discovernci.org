@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from django.utils.functional import curry
 
@@ -35,17 +36,31 @@ Have a great summer :)<br /><br />
 Thanks!<br /><br />
 """
 
+subject = "NCI Online Registration"
+
+
+class ReminderFormSet(forms.models.BaseInlineFormSet):
+    @property
+    def empty_form(self):
+        form = super(ReminderFormSet, self).empty_form
+        # you can access self.instance to get the model parent object
+        form.fields['subject'].initial = subject
+        form.fields['html'].initial = email_copy
+        return form
+
 
 class ReminderInline(admin.TabularInline):
     model = Reminder
+    formset = ReminderFormSet
     verbose_name_plural = "Email Reminders"
     readonly_fields = ('sent',)
-    extra = 3
+    extra = 1
 
     def get_formset(self, request, obj=None, **kwargs):
         initial = []
         if request.method == "GET":
             initial.append({
+                'subject': subject,
                 'html': email_copy,
             })
         formset = super(ReminderInline, self).get_formset(request, obj, **kwargs)
