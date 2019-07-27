@@ -1,15 +1,56 @@
 from django.contrib import admin
+from django.utils.functional import curry
 
 from reminders.models import Reminder
-from .models import Building, FieldTrip, Location, VisitSubmission
+from .models import FieldTrip, Location
+
+email_copy = """
+Dear all –<br /><br />
+
+Attached you will find instructional documents for our NCI online registration process. Each guardian will create an account through our website in order to input his/her student’s personal and medical information.<br /><br />
+
+Your role will be to ensure that all participating student information has been submitted.<br /><br />
+
+In order to do so, you will need to create an account of your own.<br /><br />
+
+>>Note: As of February 1st, 2018 this is a NEW portal. All previously entered accounts are no longer active. Everyone will be treated as a new user and will need to create a new account. This is a one-time event.<br /><br />
+
+Both teachers and parents/guardians will access the NCI online registration portal at: https://app.discovernci.org<br /><br />
+
+We have pre-approved the following teachers for this trip:<br /><br />
+
+[...]<br /><br /><br />
+
+If we should pre-approve additional teacher(s), please provide us with their name(s) and email address(es). We have implemented a process to ensure only teachers that are attending the field trip have access to the pertinent information related to the trip. Any teacher that has not been pre-approved and tries to register online will have to wait to receive approval from one of our NCI administrators. In this case, one of our administrators would reach out to the lead teacher on the trip or the head of school/principal to confirm whether the teacher who has requested approval should be approved. This process will help ensure your students’ information is protected.<br /><br />
+
+Our Education Director, Britta Casey, will be reaching out to you 2-3 weeks prior of your trip to help you organize your housing, field group assignments and curriculum.<br />
+
+Should you or any of your parents have any questions relating to the online registration process, please let me know. Any questions in regards to details regarding your experience, please direct those to Britta.<br /><br />
+
+**Nature’s Classroom values the privacy and protection of each student’s personal information. Our security measures are twofold. First, we utilize an active SSL Certificate which provides a secure connection between the parent/administrator inputting the personal information and the server that stores the information. Secondly, our server hosting company performs an internal cyber security audit for all its websites and features a pair of high availability load balanced firewalls. These, together, will provide the needed security measures to ensure information is submitted, accessed and stored in a secure and confidential manner.**<br /><br />
+
+We look forward to seeing you this coming fall!<br /><br />
+Have a great summer :)<br /><br />
+
+Thanks!<br /><br />
+"""
 
 
 class ReminderInline(admin.TabularInline):
     model = Reminder
     verbose_name_plural = "Email Reminders"
-    # exclude = ('note_type', 'guid')
     readonly_fields = ('sent',)
-    extra = 0
+    extra = 3
+
+    def get_formset(self, request, obj=None, **kwargs):
+        initial = []
+        if request.method == "GET":
+            initial.append({
+                'html': email_copy,
+            })
+        formset = super(ReminderInline, self).get_formset(request, obj, **kwargs)
+        formset.__init__ = curry(formset.__init__, initial=initial)
+        return formset
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -130,14 +171,9 @@ class FieldTripAdmin(admin.ModelAdmin):
         })
     )
 
-
-class VisitSubmissionAdmin(admin.ModelAdmin):
-    search_fields = ('personal_name', 'email', 'phone', 'comments')
-    list_filter = ('location', 'preferred_time', 'created',)
-    list_display = ('personal_name', 'email', 'phone', 'location', 'created')
+    # def get_changeform_initial_data(self, request):
+    #     return {'name': 'custom_initial_value'}
 
 
 admin.site.register(FieldTrip, FieldTripAdmin)
 admin.site.register(Location, LocationAdmin)
-admin.site.register(Building)
-admin.site.register(VisitSubmission, VisitSubmissionAdmin)
