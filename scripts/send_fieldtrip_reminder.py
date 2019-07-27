@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-Send a Membership Renewal Email to our Members Billing Representatives.
+Send a reminder email to Teachers about their upcoming FieldTrips.
 
-USAGE: $ ./manage.py runscript send_renewal_invoice
+USAGE: $ ./manage.py runscript send_fieldtrip_reminder
 
-Running this script will query the database for all Active Members in our
-system and email them an html/plain-text email on how to renew their membership.
 """
 
 from datetime import datetime
@@ -18,39 +16,60 @@ from reminders.models import Reminder
 
 
 def run():
+    from_email = "Nature's Classroom <no-reply@discovernci.org>"
+
+    # Grab all Reminders marked for today *and* earlier (just in case)
     todays_reminders = Reminder.objects.filter(
-        send_date=datetime.today().date(),
+        send_date__lte=datetime.today().date(),
         fieldtrip__is_enabled=True,
         is_active=True,
         sent=False
     )
+
     for reminder in todays_reminders:
-        # Convert plain-text body to string to concatenate variables into the body
-        # text_content = """\
-        #     You have an upcoming fieldtrip:
-        #     """ + str(reminder.fieldtrip) + """ on """ + str(reminder.fieldtrip.start_date) + """
-        #     Please contact us if you have any questions.
-        # """
 
-        # Convert html body to string to concatenate variables into the body
-        # html_content = """\
-        # <html>
-        #   <head></head>
-        #   <body>
-        #     <p>You have an upcoming fieldtrip:<br>
-        #        <br>
-        #        """ + str(reminder.fieldtrip) + """ on """ + str(reminder.fieldtrip.start_date) + """
-        #     </p>
-        #     additional info: """ + str(reminder.html) + """
-        #   </body>
-        # </html>
-        # """
+        # Send to all [is_active] teachers belonging to any of the schools
+        # affiliated with this field trip.
+        send_to_list = reminder.fieldtrip.get_teacher_email_list()
 
-        msg = EmailMultiAlternatives(
-            reminder.subject,  # subject
-            strip_tags(reminder.html),  # plain-text body
-            'no-reply@discovernci.org',  # from-email
-            [i.email for i in reminder.reminder_addresses.all()]  # to email list
+        # Reply back to this field trip locations primary contact
+        reply_to_list = ["{} <{}>".format(
+            reminder.fieldtrip.location.primary_contact.name,
+            reminder.fieldtrip.location.primary_contact.email
+        )]
+
+        # Custom signature based on location's primary contact details
+        signature = """\
+            {}<br />\n
+            {}<br />\n
+            Nature’s Classroom Institute and Montessori School<br />\n
+            Direct Phone: {}<br />\n
+            Office Phone: {}<br />\n
+            www.discovernci.org<br />\n
+            Like us on Facebook: www.facebook.com/NaturesClassroomInstitute<br />\n
+            Follow us on Instagram: www.instagram.com/NaturesClassroomInstitute<br />\n
+            <img src="https://app.discovernci.org/email-signature-logo.png" alt="" />
+        """.format(
+            reminder.fieldtrip.location.primary_contact.name,
+            reminder.fieldtrip.location.primary_contact.title,
+            reminder.fieldtrip.location.primary_contact.phone,
+            reminder.fieldtrip.location.phone
         )
-        msg.attach_alternative(reminder.html, "text/html")  # html-formatted bodyx
+
+        html_body = reminder.html + "\n" + signature
+        plain_text_body = strip_tags(html_body)
+
+        # Create and send out the Email
+        msg = EmailMultiAlternatives(
+            reminder.subject,
+            plain_text_body,
+            from_email,
+            send_to_list,
+            reply_to=reply_to_list
+        )
+        msg.attach_alternative(html_body, "text/html")  # html-formatted bodyx
         msg.send()
+
+        # Mark sent reminders as being sent
+        reminder.sent = True
+        reminder.save()

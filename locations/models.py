@@ -214,6 +214,14 @@ class FieldTrip(models.Model):
             created__gte=self.reg_start_date
         ).count()
 
+    def get_teacher_email_list(self):
+        """Return a list of Teacher email addresses associated with this FieldTrip."""
+        email_list = []
+        for school in self.school_list.all():
+            for teacher in school.account_assoc_school_list.filter(account_type='teacher', is_active=True):
+                email_list.append(teacher.email)
+        return email_list
+
     def save(self, *args, **kwargs):
         if not self.guid:
             self.guid = str(uuid.uuid4())

@@ -211,10 +211,6 @@ class StudentFormContainer extends React.Component {
       gender,
       height,
       weight,
-      lastTetanusMonth,
-      lastTetanusDay,
-      lastTetanusYear,
-      noTetanusVaccine,
       insId,
 
       nonRxType
