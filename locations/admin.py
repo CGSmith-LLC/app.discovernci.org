@@ -54,7 +54,7 @@ class ReminderInline(admin.TabularInline):
     formset = ReminderFormSet
     verbose_name_plural = "Email Reminders"
     readonly_fields = ('sent',)
-    extra = 1
+    extra = 0  # anything more than 0 results in un-removable 'extra' entries
 
     def get_formset(self, request, obj=None, **kwargs):
         initial = []
