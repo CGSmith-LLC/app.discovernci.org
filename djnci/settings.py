@@ -40,18 +40,17 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_filters',
     'django_measurement',
-    'froala_editor',
     'multiselectfield',
     'graphene_django',
     'raven.contrib.django.raven_compat',
     'anymail',
     'encrypted_model_fields',
     'accounts.apps.AccountsConfig',
-    'events.apps.EventsConfig',
     'locations.apps.LocationsConfig',
-    'posts.apps.PostsConfig',
     'students.apps.StudentsConfig',
     'reminders.apps.RemindersConfig',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -160,6 +159,18 @@ ADMINS = [
     ('Chris Smith', 'chris@cgsmith.net'),
 ]
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_BROWSE_SHOW_DIRS = False
+
+# CKEDITOR_CONFIGS = {
+#    'default': {
+#        # 'skin': 'moono-lisa',
+#        # 'toolbar': 'standard',
+#        # 'height': 300,
+#        # 'width': 300
+#    },
+# }
+
 # All email sent from site is done through our SendGrid account.
 # Credentials cited here can also be used on their site (https://sendgrid.com/)
 DEFAULT_FROM_EMAIL = "Nature's Classroom <office@discovernci.org>"
@@ -171,95 +182,10 @@ else:
     EMAIL_HOST_PASSWORD = os.environ['SMTP_PASSWORD']
     EMAIL_HOST_USER = os.environ['SMTP_USER']
 
-FROALA_UPLOAD_PATH = 'froala_editor/uploads'
-FROALA_EDITOR_OPTIONS = {
-    'imageResize': True,
-    'spellcheck': True,
-    'borderColor': "#eee",
-    'width': 540,
-    'heightMin': 300,
-    'toolbarButtons': [
-        'fullscreen',
-        'bold',
-        'italic',
-        'underline',
-        'strikeThrough',
-        # 'subscript',
-        # 'superscript',
-        '|',
-        'fontFamily',
-        'fontSize',
-        'color',
-        'inlineStyle',
-        'paragraphStyle',
-        '|',
-        'paragraphFormat',
-        'align',
-        'formatOL',
-        'formatUL',
-        'outdent',
-        'indent',
-        'quote',
-        '-',
-        'insertLink',
-        'insertImage',
-        'insertVideo',
-        'insertFile',
-        'insertTable',
-        '|',
-        'emoticons',
-        'specialCharacters',
-        'insertHR',
-        # 'selectAll',
-        'clearFormatting',
-        '|',
-        'print',
-        'spellChecker',
-        'help',
-        'html',
-        '|',
-        'undo',
-        'redo'
-    ]
-}
-FROALA_EDITOR_PLUGINS = (
-    'align',
-    'char_counter',
-    'code_beautifier',
-    'code_view',
-    'colors',
-    'draggable',
-    'emoticons',
-    'entities',
-    'file',
-    # 'font_family',
-    'font_size',
-    # 'fullscreen',
-    'image_manager',
-    'image',
-    # 'inline_style',
-    'line_breaker',
-    'link',
-    'lists',
-    # 'paragraph_format',
-    # 'paragraph_style',
-    'quick_insert',
-    'quote',
-    # 'save',
-    'table',
-    'url',
-    'video',
-    # 'word_paste',
-)
-
 if DEBUG:
-    STRIPE_PUBLIC_KEY = os.environ['STRIPE_TEST_PUBLIC_KEY']
-    STRIPE_SECRET_KEY = os.environ['STRIPE_TEST_SECRET_KEY']
     STAFF_TO_LIST = ['chris@cgsmith.net']
     TECH_SUPPORT_TO_LIST = ['chris@cgsmith.net']
 else:
-    STRIPE_PUBLIC_KEY = os.environ['STRIPE_LIVE_PUBLIC_KEY']
-    STRIPE_SECRET_KEY = os.environ['STRIPE_LIVE_PRIVATE_KEY']
     STAFF_TO_LIST = [
         'mirko@discovernci.org',
         'geoffrey@nciw.org',

@@ -8,9 +8,9 @@ name = "pypi"
 [packages]
 
 dateutils = "==0.6.6"
+django-ckeditor = "==5.7.1"
 django-extensions = "==1.7.5"
 django-filter = "==1.0.4"
-django-froala-editor = "==2.4.2"
 django-measurement = "==2.4.0"
 django-multiselectfield = "==0.1.8"
 Django = "<2.0"
@@ -34,7 +34,6 @@ qrcode = "==5.3"
 raven = "==6.5.0"
 requests = "==2.13.0"
 simplejson = "==3.10.0"
-stripe = "==1.46.0"
 usaddress = "==0.5.10"
 
 

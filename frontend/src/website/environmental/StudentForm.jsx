@@ -211,10 +211,6 @@ class StudentFormContainer extends React.Component {
       gender,
       height,
       weight,
-      lastTetanusMonth,
-      lastTetanusDay,
-      lastTetanusYear,
-      noTetanusVaccine,
       insId,
 
       nonRxType
@@ -500,7 +496,7 @@ class StudentFormContainer extends React.Component {
         gender: i.state.gender,
         height: i.state.height,
         weight: i.state.weight,
-        lastTetanus: i.state.lastTetanus,
+        lastTetanus: (tetanusShot !== 'Invalid date') ? tetanusShot : null,
         noTetanusVaccine: i.state.noTetanusVaccine,
         recentTrauma: i.state.recentTrauma,
         restrictions: i.state.restrictions,
