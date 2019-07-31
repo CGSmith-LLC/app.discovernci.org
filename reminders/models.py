@@ -27,3 +27,6 @@ class Reminder(models.Model):
 class ReminderTemplates(models.Model):
     subject = models.CharField(max_length=128, blank=False)
     template = models.TextField(blank=False)
+
+    class Meta:
+        verbose_name_plural = "reminder templates"
