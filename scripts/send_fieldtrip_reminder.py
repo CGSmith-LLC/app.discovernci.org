@@ -14,6 +14,9 @@ from django.utils.html import strip_tags
 
 from reminders.models import Reminder
 
+from bs4 import BeautifulSoup
+import re
+
 
 def run():
     from_email = "Nature's Classroom <no-reply@discovernci.org>"
@@ -27,10 +30,11 @@ def run():
     )
 
     for reminder in todays_reminders:
-
         # Send to all [is_active] teachers belonging to any of the schools
         # affiliated with this field trip.
         send_to_list = reminder.fieldtrip.get_teacher_email_list()
+        # separate list by br for send to
+        send_to_br_string = "<br/>".join(send_to_list)
 
         # Reply back to this field trip locations primary contact
         reply_to_list = ["{} <{}>".format(
@@ -55,6 +59,26 @@ def run():
             reminder.fieldtrip.location.primary_contact.phone,
             reminder.fieldtrip.location.phone
         )
+
+        # Prepare HTML to be parsed and massaged
+        soup = BeautifulSoup(reminder.html)
+
+        # Replace TO_LIST with BR list of teachers
+        target = soup.find_all(text=re.compile(r'TO_LIST'))
+        for v in target:
+            v.replace_with(v.replace('TO_LIST', send_to_br_string))
+
+        # Education director name replaced with primary contact
+        target = soup.find_all(text=re.compile(r'EDUCATION_DIRECTOR_NAME'))
+        for v in target:
+            v.replace_with(v.replace('EDUCATION_DIRECTOR_NAME', reminder.fieldtrip.location.primary_contact.name))
+
+        # Education director name replaced with primary contact
+        #target = soup.find_all(text=re.compile(r'EDUCATION_DIRECTOR_NAME'))
+        #for v in target:
+        #    v.replace_with(v.replace('EDUCATION_DIRECTOR_NAME', reminder.fieldtrip.location.primary_contact.name))
+
+        print(send_to_br_string)
 
         html_body = reminder.html + "\n" + signature
         plain_text_body = strip_tags(html_body)
