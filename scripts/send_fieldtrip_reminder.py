@@ -76,12 +76,12 @@ def run():
         # Total registered students
         target = soup.find_all(text=re.compile(r'STUDENTS_REGISTERED'))
         for v in target:
-            v.replace_with(v.replace('STUDENTS_REGISTERED', reminder.fieldtrip.expected_head_count))
+            v.replace_with(v.replace('STUDENTS_REGISTERED', reminder.fieldtrip.get_total_students))
 
         # Expected head count
         target = soup.find_all(text=re.compile(r'STUDENTS_EXPECTED'))
         for v in target:
-            v.replace_with(v.replace('STUDENTS_EXPECTED', reminder.fieldtrip.get_total_students))
+            v.replace_with(v.replace('STUDENTS_EXPECTED', reminder.fieldtrip.expected_head_count))
 
         html_body = soup.prettify() + "\n" + signature
         plain_text_body = strip_tags(html_body)
