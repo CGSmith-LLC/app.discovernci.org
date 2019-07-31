@@ -13,6 +13,7 @@ class Reminder(models.Model):
     subject = models.CharField(max_length=128, blank=False)
     html = RichTextUploadingField(blank=False)
     send_date = models.DateField()
+    send_weekly = models.BooleanField(default=False)
     sent = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     objects = ReminderManager()
