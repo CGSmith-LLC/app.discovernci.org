@@ -7,12 +7,15 @@ USAGE: $ ./manage.py runscript send_fieldtrip_reminder
 
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 
 from reminders.models import Reminder
+
+from bs4 import BeautifulSoup
+import re
 
 
 def run():
@@ -27,10 +30,11 @@ def run():
     )
 
     for reminder in todays_reminders:
-
         # Send to all [is_active] teachers belonging to any of the schools
         # affiliated with this field trip.
         send_to_list = reminder.fieldtrip.get_teacher_email_list()
+        # separate list by br for send to
+        send_to_br_string = "<br/>".join(send_to_list)
 
         # Reply back to this field trip locations primary contact
         reply_to_list = ["{} <{}>".format(
@@ -45,7 +49,7 @@ def run():
             Nature’s Classroom Institute and Montessori School<br />\n
             Direct Phone: {}<br />\n
             Office Phone: {}<br />\n
-            www.discovernci.org<br />\n
+            https://discovernci.org<br />\n
             Like us on Facebook: www.facebook.com/NaturesClassroomInstitute<br />\n
             Follow us on Instagram: www.instagram.com/NaturesClassroomInstitute<br />\n
             <img src="https://app.discovernci.org/email-signature-logo.png" alt="" />
@@ -56,7 +60,30 @@ def run():
             reminder.fieldtrip.location.phone
         )
 
-        html_body = reminder.html + "\n" + signature
+        # Prepare HTML to be parsed and massaged
+        soup = BeautifulSoup(reminder.html, features="html.parser")
+
+        # Replace TO_LIST with BR list of teachers
+        target = soup.find_all(text=re.compile(r'TO_LIST'))
+        for v in target:
+            v.replace_with(v.replace('TO_LIST', send_to_br_string))
+
+        # Education director name replaced with primary contact
+        target = soup.find_all(text=re.compile(r'EDUCATION_DIRECTOR_NAME'))
+        for v in target:
+            v.replace_with(v.replace('EDUCATION_DIRECTOR_NAME', reminder.fieldtrip.location.primary_contact.name))
+
+        # Total registered students
+        target = soup.find_all(text=re.compile(r'STUDENTS_REGISTERED'))
+        for v in target:
+            v.replace_with(v.replace('STUDENTS_REGISTERED', reminder.fieldtrip.expected_head_count))
+
+        # Expected head count
+        target = soup.find_all(text=re.compile(r'STUDENTS_EXPECTED'))
+        for v in target:
+            v.replace_with(v.replace('STUDENTS_EXPECTED', reminder.fieldtrip.get_total_students))
+
+        html_body = soup.prettify() + "\n" + signature
         plain_text_body = strip_tags(html_body)
 
         # Create and send out the Email
@@ -67,9 +94,13 @@ def run():
             send_to_list,
             reply_to=reply_to_list
         )
-        msg.attach_alternative(html_body, "text/html")  # html-formatted bodyx
+        msg.attach_alternative(html_body, "text/html")  # html-formatted body
         msg.send()
 
-        # Mark sent reminders as being sent
-        reminder.sent = True
+        # Mark send_weekly reminders with 7 days in advance
+        if reminder.send_weekly:
+            reminder.send_date = reminder.send_date + timedelta(days=7)
+        else:
+            reminder.sent = True
+
         reminder.save()

@@ -101,7 +101,6 @@ class Building(models.Model):
 
 
 class VisitSubmission(models.Model):
-
     PREFERRED_TIME_CHOICES = (
         (1, 'Classroom Observation'),
         (2, 'During off hours')
@@ -141,17 +140,21 @@ class FieldTrip(models.Model):
 
     customer_list = models.ManyToManyField('accounts.AccountProfile', blank=True)
     building_list = models.ManyToManyField('locations.Building', blank=True)
-    student_list = models.ManyToManyField('students.Student', blank=True, help_text="When Parents register their children, those registrations will show up here. You normally do not have to touch this field but is provided so you can manually add/remove students.")
-    school_list = models.ManyToManyField('accounts.School', blank=True, help_text="Select the school(s) that will be attending this field trip.")
+    student_list = models.ManyToManyField('students.Student', blank=True,
+                                          help_text="When Parents register their children, those registrations will show up here. You normally do not have to touch this field but is provided so you can manually add/remove students.")
+    school_list = models.ManyToManyField('accounts.School', blank=True,
+                                         help_text="Select the school(s) that will be attending this field trip.")
     location = models.ForeignKey(Location, blank=True, null=True, related_name='+')
     assignment = JSONField(blank=True, null=True)
-    name = models.CharField(max_length=140, blank=True, help_text="Not required, used interally (Parents and Teachers do not see this).")
+    name = models.CharField(max_length=140, blank=True,
+                            help_text="Not required, used interally (Parents and Teachers do not see this).")
     reg_start_date = models.DateTimeField(blank=True, null=True)
     reg_end_date = models.DateTimeField(blank=True, null=True)
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     expected_head_count = models.IntegerField(default=0)
-    is_enabled = models.BooleanField(default=False, help_text="Only enabled Field Trips will be visible on the site and portal.")
+    is_enabled = models.BooleanField(default=False,
+                                     help_text="Only enabled Field Trips will be visible on the site and portal.")
     guid = models.CharField(max_length=140)
     created = models.DateTimeField(editable=False, auto_now_add=True)
     modified = models.DateTimeField(blank=True, auto_now=True)
@@ -218,8 +221,8 @@ class FieldTrip(models.Model):
         """Return a list of Teacher email addresses associated with this FieldTrip."""
         email_list = []
         for school in self.school_list.all():
-            for teacher in school.account_assoc_school_list.filter(account_type='teacher', is_active=True):
-                email_list.append(teacher.email)
+            for email in school.email_whitelist.split(','):
+                email_list.append(email)
         return email_list
 
     def save(self, *args, **kwargs):

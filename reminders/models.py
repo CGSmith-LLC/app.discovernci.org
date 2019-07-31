@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-# from django.template.defaultfilters import slugify
-
-# from jsonfield import JSONField
 
 from .managers import ReminderManager
 
@@ -13,6 +10,7 @@ class Reminder(models.Model):
     subject = models.CharField(max_length=128, blank=False)
     html = RichTextUploadingField(blank=False)
     send_date = models.DateField()
+    send_weekly = models.BooleanField(default=False)
     sent = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     objects = ReminderManager()
@@ -27,3 +25,6 @@ class Reminder(models.Model):
 class ReminderTemplates(models.Model):
     subject = models.CharField(max_length=128, blank=False)
     template = models.TextField(blank=False)
+
+    class Meta:
+        verbose_name_plural = "reminder templates"
