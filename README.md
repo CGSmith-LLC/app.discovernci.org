@@ -63,6 +63,16 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 ## Versions
 We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
 
+### 1.3.0
+* Feature: [#37](/.../../issues/37) Weekly email changes
+
+*Breaking Changes*
+
+1. Run `pip install -r requirements.txt`
+1. Run `python3.6 manage.py migrate` 
+1. Run `python3.6 manage.py collectstatic --no-input`
+
+
 ### 1.2.0
 * Bugfix: [#50](/../../issues/50) Field trip no longer editable
 * Bugfix: [#49](/../../issues/49) Student form does not add tetanus
