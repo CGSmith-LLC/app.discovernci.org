@@ -37,6 +37,7 @@ pycparser==2.19
 pycrypto==2.6.1
 python-crfsuite==0.9.6
 python-dateutil==2.7.3
+python-dotenv==0.10.3
 python-keyczar==0.716
 pytz==2018.5
 raven==6.9.0
