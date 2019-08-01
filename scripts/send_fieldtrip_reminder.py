@@ -97,6 +97,9 @@ def run():
         msg.attach_alternative(html_body, "text/html")  # html-formatted body
         msg.send()
 
+        if reminder.fieldtrip.get_total_students >= reminder.fieltrip.expected_head_count:
+            reminder.is_active = False
+
         # Mark send_weekly reminders with 7 days in advance
         if reminder.send_weekly:
             reminder.send_date = reminder.send_date + timedelta(days=7)
