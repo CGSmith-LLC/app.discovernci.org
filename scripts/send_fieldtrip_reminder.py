@@ -34,7 +34,7 @@ def run():
         # affiliated with this field trip.
         send_to_list = reminder.fieldtrip.get_teacher_email_list()
         # separate list by br for send to
-        send_to_br_string = "<br/>".join(send_to_list)
+        send_to_br_string = "\n".join(send_to_list)
 
         # Reply back to this field trip locations primary contact
         reply_to_list = ["{} <{}>".format(
@@ -48,7 +48,7 @@ def run():
             {}<br />\n
             Nature’s Classroom Institute and Montessori School<br />\n
             Direct Phone: {}<br />\n
-            Office Phone: {}<br />\n
+            Office Phone: 262-363-2815<br />\n
             https://discovernci.org<br />\n
             Like us on Facebook: www.facebook.com/NaturesClassroomInstitute<br />\n
             Follow us on Instagram: www.instagram.com/NaturesClassroomInstitute<br />\n
