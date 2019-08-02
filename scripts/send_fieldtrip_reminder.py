@@ -34,7 +34,7 @@ def run():
         # affiliated with this field trip.
         send_to_list = reminder.fieldtrip.get_teacher_email_list()
         # separate list by br for send to
-        send_to_br_string = "<br/>".join(send_to_list)
+        send_to_br_string = "\r\n".join(send_to_list)
 
         # Reply back to this field trip locations primary contact
         reply_to_list = ["{} <{}>".format(
@@ -48,7 +48,7 @@ def run():
             {}<br />\n
             Nature’s Classroom Institute and Montessori School<br />\n
             Direct Phone: {}<br />\n
-            Office Phone: {}<br />\n
+            Office Phone: 262-363-2815<br />\n
             https://discovernci.org<br />\n
             Like us on Facebook: www.facebook.com/NaturesClassroomInstitute<br />\n
             Follow us on Instagram: www.instagram.com/NaturesClassroomInstitute<br />\n
@@ -68,20 +68,17 @@ def run():
         for v in target:
             v.replace_with(v.replace('TO_LIST', send_to_br_string))
 
-        # Education director name replaced with primary contact
-        target = soup.find_all(text=re.compile(r'EDUCATION_DIRECTOR_NAME'))
-        for v in target:
-            v.replace_with(v.replace('EDUCATION_DIRECTOR_NAME', reminder.fieldtrip.location.primary_contact.name))
-
         # Total registered students
+        students_expected = reminder.fieldtrip.expected_head_count
+        students_registered = reminder.fieldtrip.get_total_students()
         target = soup.find_all(text=re.compile(r'STUDENTS_REGISTERED'))
         for v in target:
-            v.replace_with(v.replace('STUDENTS_REGISTERED', reminder.fieldtrip.get_total_students))
+            v.replace_with(v.replace('STUDENTS_REGISTERED', str(students_registered)))
 
         # Expected head count
         target = soup.find_all(text=re.compile(r'STUDENTS_EXPECTED'))
         for v in target:
-            v.replace_with(v.replace('STUDENTS_EXPECTED', reminder.fieldtrip.expected_head_count))
+            v.replace_with(v.replace('STUDENTS_EXPECTED', str(students_expected)))
 
         html_body = soup.prettify() + "\n" + signature
         plain_text_body = strip_tags(html_body)
@@ -92,18 +89,20 @@ def run():
             plain_text_body,
             from_email,
             send_to_list,
-            reply_to=reply_to_list
+            reply_to=reply_to_list,
+            bcc=reply_to_list,
         )
         msg.attach_alternative(html_body, "text/html")  # html-formatted body
         msg.send()
-
-        if reminder.fieldtrip.get_total_students >= reminder.fieldtrip.expected_head_count:
-            reminder.is_active = False
 
         # Mark send_weekly reminders with 7 days in advance
         if reminder.send_weekly:
             reminder.send_date = reminder.send_date + timedelta(days=7)
         else:
             reminder.sent = True
+
+        # Set active to False if we have more registered students
+        if students_registered >= students_expected:
+            reminder.is_active = False
 
         reminder.save()
