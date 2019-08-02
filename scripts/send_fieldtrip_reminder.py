@@ -68,11 +68,6 @@ def run():
         for v in target:
             v.replace_with(v.replace('TO_LIST', send_to_br_string))
 
-        # Education director name replaced with primary contact
-        target = soup.find_all(text=re.compile(r'EDUCATION_DIRECTOR_NAME'))
-        for v in target:
-            v.replace_with(v.replace('EDUCATION_DIRECTOR_NAME', reminder.fieldtrip.location.primary_contact.name))
-
         # Total registered students
         target = soup.find_all(text=re.compile(r'STUDENTS_REGISTERED'))
         for v in target:
