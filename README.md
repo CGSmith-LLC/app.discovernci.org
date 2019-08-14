@@ -63,8 +63,13 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 ## Versions
 We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
 
-### 1.5.1
+### 1.6.0
 * Fixing spelling error
+* Adding medical waiver check
+
+*Breaking Changes* 
+1. Run `python3.6 manage.py migrate`
+1. Run `systemctl restart gunicorn`
 
 ### 1.5.0
 * Feature: [#51](/../../issues/51) Adding dotenv package
