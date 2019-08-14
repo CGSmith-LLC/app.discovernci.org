@@ -51,6 +51,7 @@ class Student(models.Model):
 
     photo_waiver = models.NullBooleanField(_('Photo Waiver Permission'), default=True)
     waiver_agreement = models.NullBooleanField(_('Waiver Agreement'), default=False)
+    medical_agreement = models.NullBooleanField(_('Medical Agreement'), default=True)
 
     legacy_student_id = models.IntegerField(_('Legacy Student ID'), blank=True, null=True)
     legacy_account_id = models.IntegerField(_('Legacy Account ID'), blank=True, null=True)

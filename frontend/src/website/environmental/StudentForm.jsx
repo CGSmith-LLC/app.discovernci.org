@@ -103,7 +103,8 @@ class StudentFormContainer extends React.Component {
     dietaryCaution: false,
 
     // Step 7 ***********************************
-    waiverAgreement: false
+    waiverAgreement: false,
+    medicalAgreement: false
 
   }
 
@@ -471,6 +472,7 @@ class StudentFormContainer extends React.Component {
   handleDietaryNeeds = e => this.setState({ dietaryNeeds: e.target.value });
   handlePhotoWaiver = e => this.setState({ photoWaiver: e.target.checked });
   handleWaiverAgreement = e => this.setState({ waiverAgreement: e.target.checked });
+  handleMedicationAgreement = e => this.setState({ medicalAgreement: e.target.checked });
 
   handleSubmit = () => {
     const { state } = this;
@@ -524,7 +526,8 @@ class StudentFormContainer extends React.Component {
 
         // Opt-ins, Outs
         photoWaiver: i.state.photoWaiver,
-        waiverAgreement: i.state.waiverAgreement
+        waiverAgreement: i.state.waiverAgreement,
+        medicalAgreement: i.state.medicalAgreement
       }
     })
       .then(({ data }) => {
@@ -1034,6 +1037,19 @@ class StudentFormContainer extends React.Component {
               </p>
             </FormGroup>
 
+            <FormGroup style={{ background: '#fff6b5', padding: '10px 10px 0 10px', border: '1px solid #dfdfdf', borderRadius: 4 }}>
+              <Checkbox
+                inline
+                checked={this.state.medicationAgreement}
+                onChange={this.handleMedicationAgreement}
+              >
+                <span style={{ paddingLeft: 5, fontWeight: 'bold' }}>Permission to Dispense Medication</span>
+              </Checkbox>{' '}
+              <p className="help-block">
+                I hereby certify that the medical information I have provided in this form, for my student, is true and correct. By checking this box, I am giving express permission to Nature’s Classroom Institute Environmental Education, Inc. to dispense medications to my student or work with my student’s school and school’s policy to dispense medications as per the instructions I have provided in this online registration form.
+              </p>
+            </FormGroup>
+
             {this.state.err
               && (
                 <div style={{ background: '#ffe1e1', padding: 10 }}>
@@ -1044,7 +1060,7 @@ class StudentFormContainer extends React.Component {
 
             <div className="step-footer">
               <Button bsStyle="link" className="btn-form-step-prev" onClick={this.prevFormStep}>Back</Button>
-              <Button className="btn-form-step-next" onClick={this.nextFormStep} bsStyle="success" disabled={!this.state.waiverAgreement}>Save</Button>
+              <Button className="btn-form-step-next" onClick={this.nextFormStep} bsStyle="success" disabled={(!this.state.waiverAgreement || !this.state.medicalAgreement)}>Save</Button>
             </div>
           </div>
         }
@@ -1117,6 +1133,7 @@ const ADD_STUDENT_MUTATION = gql`
 
     $photoWaiver: Boolean
     $waiverAgreement: Boolean!
+    $medicalAgreement: Boolean!
   ) {
     addOrModifyStudent(
       id: $id
@@ -1155,6 +1172,7 @@ const ADD_STUDENT_MUTATION = gql`
 
       photoWaiver: $photoWaiver
       waiverAgreement: $waiverAgreement
+      medicalAgreement: $medicalAgreement
     ) {
       student {
         id
@@ -1165,6 +1183,7 @@ const ADD_STUDENT_MUTATION = gql`
         photoWaiver
         modified
         waiverAgreement
+        medicalAgreement
         guardianList {
           id
           email

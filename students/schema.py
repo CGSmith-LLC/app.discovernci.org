@@ -268,6 +268,7 @@ class AddOrModifyStudent(graphene.Mutation):
         # Opt-ins, Outs... ********************************
         photoWaiver = graphene.Boolean()
         waiverAgreement = graphene.Boolean(required=True)
+        medicalAgreement = graphene.Boolean(required=True)
 
     def mutate(self, info, **kwargs):
         if not info.context.user.is_authenticated():
@@ -328,6 +329,7 @@ class AddOrModifyStudent(graphene.Mutation):
         s.classroom = kwargs.get('classroom')
         s.photo_waiver = kwargs.get('photoWaiver')
         s.waiver_agreement = kwargs.get('waiverAgreement')
+        s.medical_agreement = kwargs.get('medicalAgreement')
         s.save()
 
         # MedicalRecord object (mr)
