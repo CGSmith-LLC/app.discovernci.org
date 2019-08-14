@@ -8,7 +8,7 @@ from .models import FieldTrip, Location
 email_copy = """
 Dear all –<br /><br />
 
-Included below you will find instructional documents for our NCI online registration process. Each parent/guardian will create an account through our website in order to input his/her student’s personal and medical information. For parents/guardians who creatRed an account last year, please ask them to use the same log in credentials.<br /><br />
+Included below you will find instructional documents for our NCI online registration process. Each parent/guardian will create an account through our website in order to input his/her student’s personal and medical information. For parents/guardians who created an account last year, please ask them to use the same log in credentials.<br /><br />
 NCI Online Registration – Parent Tutorial: https://discovernci.org/wp-content/uploads/2018/11/NCI-Online-Registration-Parent-Tutorial-Updated-11_18.pdf<br/>
 NCI Online Registration – Para Padres: https://discovernci.org/wp-content/uploads/2018/11/NCI-Online-Registration-Para-Padres.pdf<br/>
 NCI Online Registration - Teacher Tutorial: everyone to insert their own link here directly from the website<br/>
