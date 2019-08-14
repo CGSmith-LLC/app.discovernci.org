@@ -93,7 +93,13 @@ export default class NciDashboardParent extends React.Component {
           </h3>
 
           <div style={{ margin: '15px 0', padding: 10, background: '#dae7ef' }}>
-            If you have any specific questions about your student’s experience, please contact the lead teacher on the trip or your school’s office.
+            If you have any specific questions about your student’s experience, please contact the lead teacher on the
+              trip or your school’s office.
+          </div>
+          <div style={{ margin: '15px 0', padding: 10, background: '#dae7ef' }}>
+            Please remember all medications must be 1) in their original container, 2) be properly labeled from the
+            pharmacy and 3) contain current dosage information. Please provide and send with your student’s teacher(s)
+            all medications, including any over the counter medications, as per your school’s policy.
           </div>
 
           {studentSet.length > 0 && (
