@@ -63,24 +63,13 @@ class NciAppFieldTripDetailContainer extends React.Component {
         getGenderDisplay: i.medicalrecord.getGenderDisplay,
         getAllergiesDisplay: i.medicalrecord.getAllergiesDisplay,
         getFoodAllergensDisplay: i.medicalrecord.getFoodAllergensDisplay,
+        allergiesExpanded: i.medicalrecord.allergiesExpanded,
         dietaryNeeds: i.medicalrecord.dietaryNeeds,
         recentTrauma: i.medicalrecord.recentTrauma,
-        dietaryCaution: i.medicalrecord.dietaryCaution
+        dietaryCaution: i.medicalrecord.dietaryCaution,
+        photoWaiver: i.photoWaiver
       }
     ));
-
-    var dataSet2 = [
-        {
-            name: "Johnson",
-            total: 25,
-            remainig: 16
-        },
-        {
-            name: "Josef",
-            total: 25,
-            remainig: 7
-        }
-    ];
 
     return (
       <div className="nciapp-fieldtrip-detail">
@@ -154,14 +143,11 @@ class NciAppFieldTripDetailContainer extends React.Component {
                             <ExcelColumn label="Gender" value="getGenderDisplay" />
                             <ExcelColumn label="Allergies" value="getAllergiesDisplay" />
                             <ExcelColumn label="Food Allergens" value="getFoodAllergensDisplay" />
+                            <ExcelColumn label="Allergies Expanded" value="allergiesExpanded" />
                             <ExcelColumn label="Dietary Needs" value="dietaryNeeds" />
                             <ExcelColumn label="Recent Trauma" value="recentTrauma" />
                             <ExcelColumn label="Dietary Caution" value="dietaryCaution" />
-                        </ExcelSheet>
-                        <ExcelSheet data={dataSet2} name="Med Log">
-                            <ExcelColumn label="Name" value="name"/>
-                            <ExcelColumn label="Total Leaves" value="total"/>
-                            <ExcelColumn label="Remaining Leaves" value="remaining"/>
+                            <ExcelColumn label="Photo Waiver" value="photoWaiver" />
                         </ExcelSheet>
                     </ExcelFile>
 
@@ -236,6 +222,7 @@ const FIELD_TRIP_DETAIL = gql`
         hasAllergies
         hasFoodAllergens
         allergenCount
+        photoWaiver
         currentSchool {
           id
           name
