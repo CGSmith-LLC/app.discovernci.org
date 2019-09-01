@@ -13,8 +13,9 @@ function info {
 info "Provision-script user: `whoami`"
 
 info "Restart web-stack"
+systemctl daemon-reload
+systemctl restart gunicorn
 service nginx restart
-service gunicorn restart
 info "Done!"
 
 info "Set EXPORT variables"
