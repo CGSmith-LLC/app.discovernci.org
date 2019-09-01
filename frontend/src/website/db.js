@@ -7,9 +7,9 @@ export const locations = [
   },
   {
     id: 1,
-    shortName: 'Ben Lomond',
-    slug: 'ben-lomond-california',
-    name: 'Ben Lomond, California'
+    shortName: 'Pescadero',
+    slug: 'pescadero-california',
+    name: 'Pescadero, California'
   },
   {
     id: 2,

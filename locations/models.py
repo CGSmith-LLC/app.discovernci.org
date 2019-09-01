@@ -113,7 +113,7 @@ class VisitSubmission(models.Model):
         (3, 'Upper Elementary (Ages 9-12)'),
         (4, 'Adolescent (Ages 12-15)'),
         (5, 'Angelus Oaks, California'),
-        (6, 'Ben Lomond, California'),
+        (6, 'Pescadero, California'),
         (7, 'Bruceville, Texas'),
         (8, 'New Ulm, Texas'),
         (9, 'Lake Geneva, Wisconsin'),
