@@ -63,6 +63,9 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 ## Versions
 We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
 
+### 1.6.2
+* Fixing active alert on field trip for portal
+
 ### 1.6.1
 * Fixed Excel issue
 * Fixing active issue on field trip

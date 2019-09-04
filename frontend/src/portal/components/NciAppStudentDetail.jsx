@@ -117,12 +117,6 @@ class NciAppStudentDetailContainer extends React.Component {
                       Add Note
                     </button> */}
 
-                    {student.isActive && (
-                      <div style={{ background: 'yellow', padding: 15, marginTop: 20 }}>
-                      STUDENT IS NOT ACTIVE. TEACHERS AND PARENTS CANNOT VIEW THIS RECORD.
-                      </div>
-                    )}
-
                   </div>
 
                   <ul className="display-list">
@@ -137,16 +131,6 @@ class NciAppStudentDetailContainer extends React.Component {
                     {student.medicalrecord
                       && <ListItem label="Gender" content={student.medicalrecord.getGenderDisplay} />
                     }
-                    <ListItem
-                      label="Active Account"
-                      content={(
-                        <input
-                          type="checkbox"
-                          onChange={() => this.handleToggleStudentActivation(student.id)}
-                          checked={!student.isActive}
-                        />
-                      )}
-                    />
                   </ul>
 
                   <div
