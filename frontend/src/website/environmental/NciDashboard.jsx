@@ -67,7 +67,7 @@ class NciDashboardContainer extends React.Component {
 
                   {' '}
 
-                  {me.accountType === 'EE_STAFF' && (
+                  {(me.accountType === 'EE_STAFF' || me.accountType === 'TEACHER') && (
                     <a href="/app" className="btn btn-default">
                       NCI App
                       {' '}
