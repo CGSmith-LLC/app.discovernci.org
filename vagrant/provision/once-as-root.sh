@@ -81,10 +81,12 @@ info "Done!"
 info "Enabling service to start"
 systemctl enable nginx
 systemctl enable gunicorn
+systemctl enable mysql
 info "Done!"
 
 info "Starting services and socket"
 systemctl start nginx
+systemctl start mysql
 systemctl start gunicorn.socket
 systemctl start gunicorn.service
 info "Done!"
