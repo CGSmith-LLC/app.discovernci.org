@@ -59,6 +59,26 @@ No matter your role; Teacher, Parent, or EE Staff, you can begin your NCI experi
 * Generate reports (e.g. Kitchen dietary restrictions, Allergen lists)
 * List upcoming field trips and their details
 
+#Starting Development
+
+Local Requirements: 
+
+* [Yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable) 1.9.4 or higher
+* [Vagrant](https://www.vagrantup.com/docs/installation/) 2.2.5 or higher
+* [Git](https://git-scm.com/) 2.9.0 or higher
+* [VirtualBox + Guest Additions](https://www.virtualbox.org/)
+
+Steps to start your development box: 
+
+1. `git clone` the repository down 
+1. In root directory and then run `vagrant up`
+1. In `/frontend` run `yarn build`
+1. Create .env files
+1. Import sql file using MySQL Workbench or similar tool to vagrant's MySQL instance
+    1. Note: vagrant username and password for ssh is `vagrant`
+1. You should be able to navigate to https://app.djnci.local and https://app.djnci.local/a
+
+
 
 ## Versions
 We use [semver 2.0.0](https://semver.org/spec/v2.0.0.html)
