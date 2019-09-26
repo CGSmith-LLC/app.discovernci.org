@@ -22,6 +22,11 @@ info "Configure timezone"
 timedatectl set-timezone ${timezone} --no-ask-password
 echo "Done!"
 
+
+info "Install MySQL"
+apt-get install -y mysql-server
+echo "Done!"
+
 info "Install Additional Software"
 apt-get install -y build-essential zlib1g-dev libssl-dev sqlite3 libsqlite3-dev nginx libmysqlclient-dev
 echo "Done!"
