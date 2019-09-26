@@ -72,12 +72,22 @@ Steps to start your development box:
 
 1. `git clone` the repository down 
 1. In root directory and then run `vagrant up`
-1. In `/frontend` run `yarn build`
-1. Create .env files
+1. In `/frontend` 
+    1. Run `yarn install` 22:20
+    1. Run `yarn build`  23:50
+1. Copy `.env_example` to `.env` in root directory 26:50
 1. Import sql file using MySQL Workbench or similar tool to vagrant's MySQL instance
-    1. Note: vagrant username and password for ssh is `vagrant`
+    1. Note: vagrant username and password for ssh is `vagrant` 30:48
+1. Run `vagrant ssh` on root folder 
+1. In the VM goto `/var/www/djnci` 43:00
+    1. Run `python3.6 manage.py collectstatic --no-input`
+1. Restart gunicorn if necessary 44:30 
+    1. `systemctl stop gunicorn.socket gunicorn`
 1. You should be able to navigate to https://app.djnci.local and https://app.djnci.local/a
 
+Login is chris@cgsmith.net password is `password1234`
+
+**Be sure to create a feature branch from master**
 
 
 ## Versions
