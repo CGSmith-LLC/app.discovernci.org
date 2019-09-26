@@ -25,6 +25,7 @@ echo "Done!"
 
 info "Install MySQL"
 apt-get install -y mysql-server
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';"
 echo "Done!"
 
 info "Install Additional Software"
