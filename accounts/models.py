@@ -13,7 +13,8 @@ from django.template.defaultfilters import slugify
 from django.utils import timezone
 
 from .managers import AccountProfileManager
-
+# from .validators import validate_file_extension
+from django.core.validators import FileExtensionValidator
 
 class AccountProfile(AbstractBaseUser, PermissionsMixin):
 
@@ -269,6 +270,29 @@ class SchoolNote(models.Model):
         if not self.guid:
             self.guid = str(uuid.uuid4())
         super(SchoolNote, self).save(*args, **kwargs)
+
+
+class SchoolFile(models.Model):
+    """File attached to a School."""
+
+    PUBLIC_CHOICES = (
+        (0, 'Private'),
+        (1, 'Public'),
+    )
+    
+    school = models.ForeignKey(School, related_name='school_files', on_delete=models.CASCADE)
+    file = models.FileField(upload_to='media/', validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
+    isPublic = models.IntegerField(blank=False, default=0, choices=PUBLIC_CHOICES)
+
+    class Meta:
+        verbose_name = _('School File')
+        verbose_name_plural = _('School Files')
+
+    def __str__(self):
+        return 'File for %s' % self.school
+
+    def save(self, *args, **kwargs):
+        super(SchoolFile, self).save(*args, **kwargs)
 
 
 class Insurance(models.Model):
