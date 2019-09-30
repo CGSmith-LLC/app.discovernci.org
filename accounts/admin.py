@@ -5,8 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from .models import (AccountProfile, AccountProfileAddress, Insurance, School,
-                     SchoolAddress, SchoolNote, SchoolFile)
-from .forms import SchoolFileUploadForm
+                     SchoolAddress, SchoolNote)
 
 
 class AccountProfileCreationForm(forms.ModelForm):
@@ -163,19 +162,6 @@ class SchoolNoteInline(admin.TabularInline):
     extra = 0
 
 
-class SchoolFileInline(admin.TabularInline):
-    model = SchoolFile
-    form = SchoolFileUploadForm
-    verbose_name_plural = "Files & correspondence"
-    # exclude = ('note_type', 'guid')
-    # readonly_fields = ('created', 'modified', 'author')
-    extra = 0
-
-
-class SchoolFileAdmin(admin.ModelAdmin):
-    list_per_page = 25
-    form = SchoolFileUploadForm
-
 class SchoolAdmin(admin.ModelAdmin):
     search_fields = (
         'name',
@@ -195,8 +181,7 @@ class SchoolAdmin(admin.ModelAdmin):
     readonly_fields = ['guid', 'created', 'modified', 'slug']
     inlines = [
         SchoolAddressInline,
-        SchoolNoteInline,
-        SchoolFileInline
+        SchoolNoteInline
     ]
     fieldsets = (
         ('Basic Information', {
@@ -283,4 +268,3 @@ class InsuranceAdmin(admin.ModelAdmin):
 admin.site.register(AccountProfile, AccountProfileAdmin)
 admin.site.register(School, SchoolAdmin),
 admin.site.register(Insurance, InsuranceAdmin)
-admin.site.register(SchoolFile, SchoolFileAdmin)
