@@ -21,7 +21,7 @@ from django.utils import timezone
 from djnci.utils import send_html_email
 from students.models import Student
 from .models import (AccountProfile, AccountProfileAddress, Insurance, School,
-                     SchoolAddress)
+                     SchoolAddress, SchoolFile)
 
 
 class AccountProfileType(DjangoObjectType):
@@ -83,6 +83,11 @@ class SchoolAddressType(DjangoObjectType):
     class Meta:
         model = SchoolAddress
 
+class SchoolFileType(DjangoObjectType):
+    id = graphene.Int()
+
+    class Meta:
+        model = SchoolFile
 
 # Mutations *******************************************************************
 
@@ -480,6 +485,8 @@ class Query(object):
         token=graphene.String(required=True),
         school=graphene.String(required=True)
     )
+    my_files = graphene.List(SchoolFileType)
+    # graphene.List(StudentType, token=graphene.String())
 
     def resolve_ncim_staff_faculty(self, info, **kwargs):
         # id = kwargs.get('id')
@@ -519,3 +526,17 @@ class Query(object):
             except AccountProfile.DoesNotExist:
                 raise Exception('Invalid token')
         raise Exception('Not authorized')
+
+    def resolve_my_files(self, info, **kwargs):
+        """Return all files from all of the schools I'm associated with.
+
+        This is most useful for Teachers that belong to multiple schools and
+        need a master list of all their Schools.
+        """
+        u = info.context.user
+        if u.is_authenticated() and (u.account_type == 'teacher'):
+            return SchoolFile.objects.filter(
+                school__in=u.assoc_school_list.all(),
+                isPublic=1
+            )
+        raise Exception('Unauthorized')
