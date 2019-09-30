@@ -199,7 +199,6 @@ class TeacherDashboard extends React.Component {
       { name: 'id', displayName: '', inputFilterable: false, sortable: false, render: this.renderViewDownload }
     ];
     
-    console.log('===== NciDashboardTeacher: this.props: ', this.props);
     return (
       <div>
         <h3>Field Trips</h3>
