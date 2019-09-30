@@ -5,7 +5,7 @@ from distutils.util import strtobool
 
 from django.conf import settings
 from django.conf.urls import include, url
-from django.conf.urls.static import static
+from django.conf.urls.static import static, serve
 from django.contrib import admin
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.generic.base import TemplateView
@@ -27,5 +27,7 @@ urlpatterns = [
     url(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=ENABLE_GRAPHIQL))),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^a/', admin.site.urls),
+    url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT,}),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT,}),
     url(r'^.*/$', template(template_name='index.html')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
