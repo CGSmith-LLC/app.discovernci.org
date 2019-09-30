@@ -122,10 +122,11 @@ class TeacherDashboard extends React.Component {
   }
 
   downloadSchoolFile = fileObj => {
-    console.log('===== fileObj: ', fileObj);
-    
-    var win = window.open(fileObj.file, '_blank');
-    win.focus();
+    const backendUrl = process.env.REACT_APP_BACKEND_SERVER_URL;
+    if (backendUrl) {
+      var win = window.open(`${backendUrl}/media/${fileObj.file}`, '_blank');
+      win.focus();  
+    }
   }
 
   renderViewDetail = props => (

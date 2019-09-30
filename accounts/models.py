@@ -281,7 +281,7 @@ class SchoolFile(models.Model):
     )
     
     school = models.ForeignKey(School, related_name='school_files', on_delete=models.CASCADE)
-    file = models.FileField(upload_to='media/', validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
+    file = models.FileField(upload_to='upload/', validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
     isPublic = models.IntegerField(blank=False, default=0, choices=PUBLIC_CHOICES)
 
     class Meta:
