@@ -70,6 +70,7 @@ class TeacherDashboard extends React.Component {
         PropTypes.shape({
           id: PropTypes.number,
           file: PropTypes.object,
+          fileName: PropTypes.string,
           isPublic: PropTypes.number,
           school: PropTypes.shape({
             id: PropTypes.number,
@@ -187,6 +188,7 @@ class TeacherDashboard extends React.Component {
     const fileModel = {
       id: null,
       file: null,
+      fileName: null,
       school: {
         id: null,
         name: null
@@ -195,7 +197,7 @@ class TeacherDashboard extends React.Component {
 
     const fileFields = [
       { name: 'school', displayName: 'School Name', inputFilterable: true, sortable: true, render: renderSchoolName },
-      { name: 'file', displayName: 'File', inputFilterable: true, sortable: true, render: renderFileName },
+      { name: 'fileName', displayName: 'File Name', inputFilterable: true, sortable: true, render: renderFileName },
       { name: 'id', displayName: '', inputFilterable: false, sortable: false, render: this.renderViewDownload }
     ];
     
@@ -415,7 +417,8 @@ const MY_FILES = gql`
     myFiles {
       id
       file
-      isPublic,
+      fileName
+      isPublic
       school {
         id
         name
