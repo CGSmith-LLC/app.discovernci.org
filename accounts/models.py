@@ -5,16 +5,19 @@ from __future__ import unicode_literals
 import uuid
 from gettext import gettext as _
 from nameparser import HumanName
+import os, time, random, string
+from uuid import uuid4
 
 import usaddress
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
+from django.core.validators import FileExtensionValidator
+from django.utils.deconstruct import deconstructible
 
 from .managers import AccountProfileManager
-# from .validators import validate_file_extension
-from django.core.validators import FileExtensionValidator
+
 
 class AccountProfile(AbstractBaseUser, PermissionsMixin):
 
@@ -272,6 +275,12 @@ class SchoolNote(models.Model):
         super(SchoolNote, self).save(*args, **kwargs)
 
 
+def path_and_rename(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = '{}-{}.{}'.format(time.strftime("%Y-%m-%d"), uuid4().hex, ext)
+    return os.path.join('upload/', filename)
+
+
 class SchoolFile(models.Model):
     """File attached to a School."""
 
@@ -279,10 +288,11 @@ class SchoolFile(models.Model):
         (0, 'Private'),
         (1, 'Public'),
     )
-    
+
     school = models.ForeignKey(School, related_name='school_files', on_delete=models.CASCADE)
-    file = models.FileField(upload_to='upload/', validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
-    isPublic = models.IntegerField(blank=False, default=0, choices=PUBLIC_CHOICES)
+    file = models.FileField(upload_to=path_and_rename, validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
+    file_name = models.CharField(max_length=140, blank=False, default='')
+    is_public = models.IntegerField(blank=False, default=0, choices=PUBLIC_CHOICES)
 
     class Meta:
         verbose_name = _('School File')
@@ -293,6 +303,7 @@ class SchoolFile(models.Model):
 
     def save(self, *args, **kwargs):
         super(SchoolFile, self).save(*args, **kwargs)
+
 
 
 class Insurance(models.Model):
