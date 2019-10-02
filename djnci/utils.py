@@ -1,4 +1,7 @@
 from datetime import timedelta
+import os
+import time
+from uuid import uuid4
 
 from django.core.mail import EmailMessage
 from django.template import loader
@@ -49,3 +52,9 @@ def week_range(date):
     end_date = start_date + timedelta(6)
 
     return (start_date, end_date)
+
+
+def path_and_rename(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = '{}-{}.{}'.format(time.strftime("%Y-%m-%d"), uuid4().hex, ext)
+    return os.path.join('upload/', filename)

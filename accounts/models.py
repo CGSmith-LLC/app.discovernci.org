@@ -5,8 +5,6 @@ from __future__ import unicode_literals
 import uuid
 from gettext import gettext as _
 from nameparser import HumanName
-import os, time, random, string
-from uuid import uuid4
 
 import usaddress
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
@@ -17,6 +15,7 @@ from django.core.validators import FileExtensionValidator
 from django.utils.deconstruct import deconstructible
 
 from .managers import AccountProfileManager
+from djnci.utils import path_and_rename
 
 
 class AccountProfile(AbstractBaseUser, PermissionsMixin):
@@ -273,12 +272,6 @@ class SchoolNote(models.Model):
         if not self.guid:
             self.guid = str(uuid.uuid4())
         super(SchoolNote, self).save(*args, **kwargs)
-
-
-def path_and_rename(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = '{}-{}.{}'.format(time.strftime("%Y-%m-%d"), uuid4().hex, ext)
-    return os.path.join('upload/', filename)
 
 
 class SchoolFile(models.Model):

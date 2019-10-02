@@ -537,6 +537,6 @@ class Query(object):
         if u.is_authenticated() and (u.account_type == 'teacher'):
             return SchoolFile.objects.filter(
                 school__in=u.assoc_school_list.all(),
-                isPublic=1
+                is_public=1
             )
         raise Exception('Unauthorized')
