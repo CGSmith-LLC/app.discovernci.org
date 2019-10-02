@@ -122,10 +122,10 @@ class TeacherDashboard extends React.Component {
     this.setState({ classroomFilter: parseInt(e.target.value, 10) });
   }
 
-  downloadSchoolFile = fileObj => {
+  downloadSchoolFile = value => {
     const backendUrl = process.env.REACT_APP_BACKEND_SERVER_URL;
     if (backendUrl) {
-      var win = window.open(`${backendUrl}/media/${fileObj.file}`, '_blank');
+      var win = window.open(`${backendUrl}/media/${value}`, '_blank');
       win.focus();  
     }
   }
@@ -139,7 +139,7 @@ class TeacherDashboard extends React.Component {
   )
 
   renderViewDownload = props => (
-    <Button bsSize="sm" onClick={() => this.downloadSchoolFile(props.record)}>
+    <Button bsSize="sm" onClick={() => this.downloadSchoolFile(props.value)}>
       <FontAwesome name="download" fixedWidth />
       {' '}
       Download
@@ -186,7 +186,7 @@ class TeacherDashboard extends React.Component {
     );
 
     const fileModel = {
-      id: null,
+      // id: null,
       file: null,
       fileName: null,
       school: {
@@ -196,9 +196,9 @@ class TeacherDashboard extends React.Component {
     }
 
     const fileFields = [
-      { name: 'school', displayName: 'School Name', inputFilterable: true, sortable: true, render: renderSchoolName },
+      { name: 'school', displayName: 'School Name', inputFilterable: false, sortable: true, render: renderSchoolName },
       { name: 'fileName', displayName: 'File Name', inputFilterable: true, sortable: true, render: renderFileName },
-      { name: 'id', displayName: '', inputFilterable: false, sortable: false, render: this.renderViewDownload }
+      { name: 'file', displayName: '', inputFilterable: false, sortable: false, render: this.renderViewDownload }
     ];
     
     return (
