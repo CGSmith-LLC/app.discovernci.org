@@ -11,8 +11,11 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils import timezone
+from django.core.validators import FileExtensionValidator
+from django.utils.deconstruct import deconstructible
 
 from .managers import AccountProfileManager
+from djnci.utils import path_and_rename
 
 
 class AccountProfile(AbstractBaseUser, PermissionsMixin):
@@ -269,6 +272,31 @@ class SchoolNote(models.Model):
         if not self.guid:
             self.guid = str(uuid.uuid4())
         super(SchoolNote, self).save(*args, **kwargs)
+
+
+class SchoolFile(models.Model):
+    """File attached to a School."""
+
+    PUBLIC_CHOICES = (
+        (0, 'Private'),
+        (1, 'Public'),
+    )
+
+    school = models.ForeignKey(School, related_name='school_files', on_delete=models.CASCADE)
+    file = models.FileField(upload_to=path_and_rename, validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
+    file_name = models.CharField(max_length=140, blank=False, default='')
+    is_public = models.IntegerField(blank=False, default=0, choices=PUBLIC_CHOICES)
+
+    class Meta:
+        verbose_name = _('School File')
+        verbose_name_plural = _('School Files')
+
+    def __str__(self):
+        return 'File for %s' % self.school
+
+    def save(self, *args, **kwargs):
+        super(SchoolFile, self).save(*args, **kwargs)
+
 
 
 class Insurance(models.Model):

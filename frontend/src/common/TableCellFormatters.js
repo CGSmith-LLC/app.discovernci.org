@@ -78,6 +78,20 @@ const renderLastUpdated = props => {
   );
 };
 
+const renderSchoolName = props => (
+  props.value && props.value.name &&
+    <span>
+      {props.value.name}
+    </span>
+);
+
+const renderFileName = props => (
+  props.value &&
+    <span>
+      {props.value}
+    </span>
+);
+
 export {
   name,
   renderPhotoWaiverCell,
@@ -87,5 +101,7 @@ export {
   renderHasFoodAllergens,
   renderLastUpdated,
   renderFirstName,
-  renderLastName
+  renderLastName,
+  renderSchoolName,
+  renderFileName
 };

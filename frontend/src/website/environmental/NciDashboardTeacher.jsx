@@ -15,7 +15,8 @@ import NciTeacherRequestFieldTripModal from './NciTeacherRequestFieldTripModal';
 import NciTeacherFieldTripDetailModal from './NciTeacherFieldTripDetailModal';
 import StudentDetailModal from './StudentDetailModal';
 import {
-  renderFirstName, renderLastName, renderDobAsAge, renderHasAllergies, renderPhotoWaiverCell, renderLastUpdated
+  renderFirstName, renderLastName, renderDobAsAge, renderHasAllergies, renderPhotoWaiverCell, renderLastUpdated,
+  renderSchoolName, renderFileName
 } from '../../common/TableCellFormatters';
 
 class TeacherDashboard extends React.Component {
@@ -63,6 +64,20 @@ class TeacherDashboard extends React.Component {
           modified: PropTypes.string
         })
       )
+    }).isRequired,
+    myFiles: PropTypes.shape({
+      myFiles: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          file: PropTypes.object,
+          fileName: PropTypes.string,
+          isPublic: PropTypes.number,
+          school: PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
+          })
+        })
+      )
     }).isRequired
   }
 
@@ -107,6 +122,14 @@ class TeacherDashboard extends React.Component {
     this.setState({ classroomFilter: parseInt(e.target.value, 10) });
   }
 
+  downloadSchoolFile = value => {
+    const backendUrl = process.env.REACT_APP_BACKEND_SERVER_URL;
+    if (backendUrl) {
+      var win = window.open(`${backendUrl}/media/${value}`, '_blank');
+      win.focus();  
+    }
+  }
+
   renderViewDetail = props => (
     <Button bsSize="sm" onClick={() => this.openStudentDetail(props.record)}>
       <FontAwesome name="search" fixedWidth />
@@ -114,6 +137,15 @@ class TeacherDashboard extends React.Component {
       View Details
     </Button>
   )
+
+  renderViewDownload = props => (
+    <Button bsSize="sm" onClick={() => this.downloadSchoolFile(props.value)}>
+      <FontAwesome name="download" fixedWidth />
+      {' '}
+      Download
+    </Button>
+  )
+
 
   render() {
     // Fields to show in the table, and what object properties in the data they bind to
@@ -153,6 +185,22 @@ class TeacherDashboard extends React.Component {
       , 'id')
     );
 
+    const fileModel = {
+      // id: null,
+      file: null,
+      fileName: null,
+      school: {
+        id: null,
+        name: null
+      }
+    }
+
+    const fileFields = [
+      { name: 'school', displayName: 'School Name', inputFilterable: false, sortable: true, render: renderSchoolName },
+      { name: 'fileName', displayName: 'File Name', inputFilterable: true, sortable: true, render: renderFileName },
+      { name: 'file', displayName: '', inputFilterable: false, sortable: false, render: this.renderViewDownload }
+    ];
+    
     return (
       <div>
         <h3>Field Trips</h3>
@@ -211,6 +259,28 @@ class TeacherDashboard extends React.Component {
 
           </tbody>
         </Table>
+
+        <h3 style={{ marginTop: 40 }}>My Files</h3>
+
+        <p style={{ fontFamily: 'Helvetica, sans-serif', fontSize: '1em' }}>This is a list of <strong>all</strong> the public files from your school.</p>
+
+        {this.props.myFiles.myFiles &&
+          <FilterableTable
+            namespace="File"
+            initialSort="school"
+            data={_.map(
+              this.props.myFiles.myFiles,
+              file => _.pick(file, _.keys(fileModel))
+            )}
+            fields={fileFields}
+            noRecordsMessage="There are no public files to display"
+            noFilteredRecordsMessage="No public files match your filters"
+            // topPagerVisible={false}
+            // headerVisible={true}
+            pagersVisible={false}
+          />
+        }
+
 
         <h3 style={{ marginTop: 40 }}>My Students</h3>
 
@@ -342,6 +412,19 @@ const MY_STUDENTS = gql`
       }
     }
   }`;
+const MY_FILES = gql`
+  query MyFilesQuery {
+    myFiles {
+      id
+      file
+      fileName
+      isPublic
+      school {
+        id
+        name
+      }
+    }
+  }`;
 
 const NciDashboardTeacher = compose(
   graphql(MY_STUDENTS, {
@@ -355,6 +438,9 @@ const NciDashboardTeacher = compose(
         timeline: 'upcoming'
       }
     }
+  }),
+  graphql(MY_FILES, {
+    name: 'myFiles',
   })
 )(TeacherDashboard);
 
