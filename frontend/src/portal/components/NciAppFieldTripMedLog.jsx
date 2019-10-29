@@ -104,7 +104,9 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                                                                                format="Do\, YYYY"/>)</p>
               </div>
               <div className="nci-navbar-header-share">
-                {/* <a href=""><FontAwesome name="share-square-o" fixedWidth /></a> */}
+                   <a href={`/app/fieldtrip/${fieldtrip.id}/medlog/table`}>
+                       <FontAwesome name="book" fixedWidth />
+                   </a>
               </div>
             </div>
 

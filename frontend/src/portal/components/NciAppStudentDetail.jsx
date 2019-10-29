@@ -246,11 +246,11 @@ class NciAppStudentDetailContainer extends React.Component {
                         <li key={med.id} className="medication-item">
 
                           <span className="pull-right">
-                            <FontAwesome name="angle-right" style={{ color: '#ababab', fontSize: '1.1em' }} />
+                            <FontAwesome name="angle-right" style={{ fontSize: '1.1em' }} />
                           </span>
 
                           {med.inPossession === true && <FontAwesome name="check-circle" fixedWidth style={{ color: '#62B664' }} />}{' '}
-                          {med.medicationName}{' '}
+                          <a href={`/app/student/${student.id}`}>{med.medicationName}</a>{' '}
                           {(_.isNil(med.getAdministrationTimesDisplay) || med.getAdministrationTimesDisplay !== 'Other...') &&
                             <span style={{ color: '#c1bdbd', fontSize: '0.87em', paddingLeft: 5 }}>{med.amount !== 0 && med.amount}{' '}{med.amount !== 0 && med.getAmountUnitDisplay} at {med.getAdministrationTimesDisplay && med.getAdministrationTimesDisplay !== 'Other...' && med.getAdministrationTimesDisplay}</span>
                           }

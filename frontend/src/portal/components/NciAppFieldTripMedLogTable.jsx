@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import Moment from 'react-moment';
-// import moment from 'moment';
 import gql from 'graphql-tag';
 import { Link } from 'react-router';
 import { graphql, compose } from 'react-apollo';
@@ -158,7 +157,6 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                         </tr>
                       ))}
                     </tbody>
-
                   </Table>
                 </span>
               ))}
@@ -185,12 +183,7 @@ const MEDICATIONS_BY_FIELD_TRIP = gql`
       inPossession
       notes
       administeredmedSet {
-        id
         created
-        medication {
-          id
-          administrationTimes
-        }
       }
       medicalRecord {
         id
