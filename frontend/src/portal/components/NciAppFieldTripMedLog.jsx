@@ -3,96 +3,105 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import Moment from 'react-moment';
-import { Table } from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 import gql from 'graphql-tag';
-import { graphql, compose } from 'react-apollo';
+import {graphql, compose} from 'react-apollo';
+
 
 const medTimeSlots = [
-  { id: 1, slug: 'breakfast', color: '#FEF396', start_hour: 6, end_hour: 10 },
-  { id: 2, slug: 'lunch', color: '#FDBC75', start_hour: 11, end_hour: 3 },
-  { id: 3, slug: 'dinner', color: '#FB8CBF', start_hour: 5, end_hour: 7 },
-  { id: 4, slug: 'bedtime', color: '#ACE6FD', start_hour: 8, end_hour: 10 },
-  { id: 5, slug: 'other', color: '#92E595' }
+    {id: 1, slug: 'breakfast', color: '#FEF396', start_hour: 6, end_hour: 10},
+    {id: 2, slug: 'lunch', color: '#FDBC75', start_hour: 11, end_hour: 3},
+    {id: 3, slug: 'dinner', color: '#FB8CBF', start_hour: 5, end_hour: 7},
+    {id: 4, slug: 'bedtime', color: '#ACE6FD', start_hour: 8, end_hour: 10},
+    {id: 5, slug: 'other', color: '#92E595'}
 ];
+
 
 class NciAppFieldTripMedLogContainer extends React.Component {
 
-  static propTypes = {
-    checkInMedication: PropTypes.func.isRequired,
-    logAdministeredMed: PropTypes.func.isRequired,
-    data: PropTypes.shape({
-      fieldtrip: PropTypes.object
-    }).isRequired
-  }
 
-  componentWillMount() {
-    document.body.style.background = '#fff';
-  }
+    static propTypes = {
+        checkInMedication: PropTypes.func.isRequired,
+        logAdministeredMed: PropTypes.func.isRequired,
+        data: PropTypes.shape({
+            fieldtrip: PropTypes.object
+        }).isRequired
+    }
 
-  handleCheckInMedication = (medicationId) => {
-    const i = this;
-    this.props.checkInMedication({
-      variables: { id: medicationId }
-    }).then(({ data }) => {
-      i.setState({
-        success: data.checkInMedication.success,
-        err: null
-      });
-    }).catch((error) => {
-      console.log('could not check-in medication: ', error);
-      // i.setState({ err: 'Error removing record' });
-    });
-  }
+    componentWillMount() {
+        document.body.style.background = '#fff';
+    }
 
-  handleCheckOutMedication = (medicationId) => {
-    const i = this;
-    this.props.checkOutMedication({
-      variables: { id: medicationId }
-    }).then(({ data }) => {
-      i.setState({
-        success: data.checkOutMedication.success,
-        err: null
-      });
-    }).catch((error) => {
-      console.log('could not check-out medication: ', error);
-      // i.setState({ err: 'Error removing record' });
-    });
-  }
+    handleCheckInMedication = (medicationId) => {
+        const i = this;
+        this.props.checkInMedication({
+            variables: {id: medicationId}
+        }).then(({data}) => {
+            i.setState({
+                success: data.checkInMedication.success,
+                err: null
+            });
+        }).catch((error) => {
+            console.log('could not check-in medication: ', error);
+            // i.setState({ err: 'Error removing record' });
+        });
+    }
 
-  handleLogAdministeredMedClick = (medicationId) => {
-    this.props.logAdministeredMed({
-      variables: {
-        medicationId,
-        fieldTripId: this.props.data.fieldtrip.id
-      }
-    }).then(({ data }) => {
-      console.log('handleClick Returned data:', data);
-    }).catch((error) => {
-      console.log('error: ', error);
-    });
-  }
+    handleCheckOutMedication = (medicationId) => {
+        const i = this;
+        this.props.checkOutMedication({
+            variables: {id: medicationId}
+        }).then(({data}) => {
+            i.setState({
+                success: data.checkOutMedication.success,
+                err: null
+            });
+        }).catch((error) => {
+            console.log('could not check-out medication: ', error);
+            // i.setState({ err: 'Error removing record' });
+        });
+    }
 
-  render() {
-    const fieldtrip = this.props.data.fieldtrip &&
-      this.props.data.fieldtrip;
+    handleLogAdministeredMedClick = (medicationId) => {
 
-    return (
-      <div className="nciapp-fieldtrip-detail">
-        {this.props.data.loading
-          ? <span>Loading field trip details...</span>
-          : <span>
+        this.props.logAdministeredMed({
+            variables: {
+                medicationId,
+                fieldTripId: this.props.data.fieldtrip.id
+            }
+        }).then(({data}) => {
+            console.log('handleClick Returned data:', data);
+            alert("Medication logged.");
+        }).catch((error) => {
+            console.log('error: ', error);
+        });
+    }
 
-            <div className="nci-navbar-header" style={{ position: 'fixed', zIndex: 999 }}>
+    render() {
+        const fieldtrip = this.props.data.fieldtrip &&
+            this.props.data.fieldtrip;
+
+        return (
+            <div className="nciapp-fieldtrip-detail">
+                {this.props.data.loading
+                    ? <span>Loading field trip details...</span>
+                    : <span>
+
+            <div className="nci-navbar-header" style={{position: 'fixed', zIndex: 999}}>
               <div className="nci-navbar-header-back">
-                <button type="button" onClick={() => { window.history.back(); }} className="btn-nostyle">
-                  <FontAwesome name="chevron-left" fixedWidth />
-                  {' '}
-                  Back
+                <button type="button" onClick={() => {
+                    window.history.back();
+                }} className="btn-nostyle">
+                  <FontAwesome name="chevron-left" fixedWidth/>
+                    {' '}
+                    Back
                 </button>
               </div>
               <div className="nci-navbar-header-title">
                 <h2>Medication Overview</h2>
-                <p>{fieldtrip.getWeekName} (<span style={{ textTransform: 'uppercase' }}><Moment date={fieldtrip.startDate} format="MMM D" /></span>-<Moment date={fieldtrip.endDate} format="Do\, YYYY" />)</p>
+                <p>{fieldtrip.getWeekName} (<span style={{textTransform: 'uppercase'}}><Moment
+                    date={fieldtrip.startDate} format="MMM D"/></span>-<Moment date={fieldtrip.endDate}
+                                                                               format="Do\, YYYY"/>)</p>
               </div>
               <div className="nci-navbar-header-share">
                 {/* <a href=""><FontAwesome name="share-square-o" fixedWidth /></a> */}
@@ -109,115 +118,115 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                   <th>OTC Med Choice</th>
                 </tr>
               </thead>
-              {_.map(_.filter(_.sortBy(fieldtrip.studentList, 'lastName')), student => (
-                <tbody className="medTableBg" key={student.id}>
-                  <tr className="medTableBgPar">
-                    <td><a href={`/app/student/${student.id}`}>{student.firstName}</a></td>
-                    <td>{student.lastName}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>{student.dob}</td>
-                    <td>{student.medicalrecord && student.medicalrecord.nonRxType > 1
-                      ? <span style={{ color: '#249f1d' }}>Yes</span>
-                      : <span style={{ color: '#de472c' }}>No</span>
-                    }</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>{student.medicalrecord && student.medicalrecord.getNonRxTypeDisplay}</td>
-                  </tr>
-                  {student.medicalrecord && student.medicalrecord.medicationSet && student.medicalrecord.medicationSet.length > 0 &&
+                {_.map(_.filter(_.sortBy(fieldtrip.studentList, 'lastName')), student => (
+                    <tbody className="medTableBg" key={student.id}>
+                    <tr className="medTableBgPar">
+                        <td><a href={`/app/student/${student.id}`}>{student.firstName}</a></td>
+                        <td>{student.lastName}</td>
+                        <td style={{whiteSpace: 'nowrap'}}>{student.dob}</td>
+                        <td>{student.medicalrecord && student.medicalrecord.nonRxType > 1
+                            ? <span style={{color: '#249f1d'}}>Yes</span>
+                            : <span style={{color: '#de472c'}}>No</span>
+                        }</td>
+                        <td style={{whiteSpace: 'nowrap'}}>{student.medicalrecord && student.medicalrecord.getNonRxTypeDisplay}</td>
+                    </tr>
+                    {student.medicalrecord && student.medicalrecord.medicationSet && student.medicalrecord.medicationSet.length > 0 &&
                     <tr className="medTableBgCell">
-                      <td colSpan={1} style={{ padding: '0 0 30px 0' }}>&nbsp;</td>
-                      <td colSpan={4} style={{ padding: '0 0 30px 0' }}>
-                        <Table hover condensed striped bordered style={{ borderLeft: '3px solid #bbbbbb', margin: 0, padding: 0, fontSize: '0.9em' }}>
-                          <thead>
-                            <tr>
-                              <th style={{ width: 70 }}>Check-in</th>
-                              <th>Medication</th>
-                              <th>Dosage</th>
-                              <th>Instructions</th>
-                              <th style={{ whiteSpace: 'nowrap', width: 80, background: '#FEF396' }}>Breakfast</th>
-                              <th style={{ whiteSpace: 'nowrap', width: 80, background: '#FDBC75' }}>Lunch</th>
-                              <th style={{ whiteSpace: 'nowrap', width: 80, background: '#FB8CBF' }}>Dinner</th>
-                              <th style={{ whiteSpace: 'nowrap', width: 80, background: '#ACE6FD' }}>Bedtime</th>
-                              <th style={{ whiteSpace: 'nowrap', width: 80, background: '#92E595' }}>Other</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {_.map(student.medicalrecord.medicationSet, med => (
-                              <tr key={med.id}>
+                        <td colSpan={1} style={{padding: '0 0 30px 0'}}>&nbsp;</td>
+                        <td colSpan={4} style={{padding: '0 0 30px 0'}}>
+                            <Table hover condensed striped bordered
+                                   style={{borderLeft: '3px solid #bbbbbb', margin: 0, padding: 0, fontSize: '0.9em'}}>
+                                <thead>
+                                <tr>
+                                    <th style={{width: 70}}>Check-in</th>
+                                    <th>Medication</th>
+                                    <th>Dosage</th>
+                                    <th>Instructions</th>
+                                    <th style={{whiteSpace: 'nowrap', width: 80, background: '#FEF396'}}>Breakfast</th>
+                                    <th style={{whiteSpace: 'nowrap', width: 80, background: '#FDBC75'}}>Lunch</th>
+                                    <th style={{whiteSpace: 'nowrap', width: 80, background: '#FB8CBF'}}>Dinner</th>
+                                    <th style={{whiteSpace: 'nowrap', width: 80, background: '#ACE6FD'}}>Bedtime</th>
+                                    <th style={{whiteSpace: 'nowrap', width: 80, background: '#92E595'}}>Other</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {_.map(student.medicalrecord.medicationSet, med => (
+                                    <tr key={med.id}>
 
-                                {med.inPossession
-                                  ? <td
-                                    onClick={() => this.handleCheckOutMedication(med.id)}
-                                    style={{ textAlign: 'center', background: '#C9E6CE' }}
-                                  >
-                                    <input type="checkbox" checked />
-                                  </td>
-                                  : <td
-                                    onClick={() => this.handleCheckInMedication(med.id)}
-                                    style={{ textAlign: 'center', background: '#FAE7E3' }}
-                                  >
-                                    <input type="checkbox" checked={false} />
-                                  </td>
-                                }
+                                        {med.inPossession
+                                            ? <td
+                                                onClick={() => this.handleCheckOutMedication(med.id)}
+                                                style={{textAlign: 'center', background: '#C9E6CE'}}
+                                            >
+                                                <input type="checkbox" checked/>
+                                            </td>
+                                            : <td
+                                                onClick={() => this.handleCheckInMedication(med.id)}
+                                                style={{textAlign: 'center', background: '#FAE7E3'}}
+                                            >
+                                                <input type="checkbox" checked={false}/>
+                                            </td>
+                                        }
 
-                                <td className="med-name" style={{ whiteSpace: 'nowrap' }}>
-                                  {med.medicationName}{' '}
-                                </td>
-                                <td className="med-amount">{med.amountHuman}</td>
-                                <td className="med-admin-times">{med.notes && med.notes}</td>
+                                        <td className="med-name" style={{whiteSpace: 'nowrap'}}>
+                                            {med.medicationName}{' '}
+                                        </td>
+                                        <td className="med-amount">{med.amountHuman}</td>
+                                        <td className="med-admin-times">{med.notes && med.notes}</td>
 
-                                {med.inPossession
-                                  ? _.map(medTimeSlots, timeSlot => (
-                                  <td key={timeSlot.id} style={{ textAlign: 'center', background: timeSlot.color }}>
-                                    {_.includes(med.administrationTimes.map(Number), timeSlot.id) &&
-                                      <span>
+                                        {med.inPossession
+                                            ? _.map(medTimeSlots, timeSlot => (
+                                                <td key={timeSlot.id}
+                                                    style={{textAlign: 'center', background: timeSlot.color}}>
+                                                    {_.includes(med.administrationTimes.map(Number), timeSlot.id) &&
+                                                    <span>
 
                                         {_.filter(med.administeredmedSet, {
-                                          medication: {
-                                            administrationTimes: [String(timeSlot.id)]  // FIXME: techdebt, should be int
-                                          }
-                                        }).length < 1
-                                          ? <input
-                                            type="checkbox"
-                                            onClick={() => this.handleLogAdministeredMedClick(med.id)}
-                                            // checked={console.log(med.administrationTimes)}
-                                            checked={
-                                              _.filter(med.administeredmedSet, {
-                                                medication: {
-                                                  administrationTimes: [String(timeSlot.id)]  // FIXME: techdebt, should be int
-                                                }
-                                              }).length > 0 && true
+                                            medication: {
+                                                administrationTimes: [String(timeSlot.id)]  // FIXME: techdebt, should be int
                                             }
-                                          />
-                                          : <FontAwesome name="check" fixedWidth style={{ color: '#0d7700', fontSize: '1.1em' }} />
+                                        }).length < 1
+                                            ? <input
+                                                type="button"
+                                                value="Administer"
+                                                onClick={() => this.handleLogAdministeredMedClick(med.id)}
+                                            />
+                                            : <FontAwesome name="check" fixedWidth
+                                                           style={{color: '#0d7700', fontSize: '1.1em'}}/>
                                         }
 
-                                        {timeSlot.id === 5 &&
-                                            <span title={med.administrationTimesOther}>
-                                              <FontAwesome name="info-circle" fixedWidth />
+                                                        {timeSlot.id === 5 &&
+                                                        <span><small>
+                                              {med.administrationTimesOther}
+                                            </small>
                                             </span>
-                                        }
+                                                        }
 
                                       </span>
-                                    }
-                                  </td>
-                                ))
-                                : <td colSpan={5} style={{ fontSize: '0.9em', fontStyle: 'italic', color: '#9a9a8c' }}><FontAwesome name="exclamation-triangle" /> Check-in medication to display schedule   </td>
-                                }
+                                                    }
+                                                </td>
+                                            ))
+                                            : <td colSpan={5}
+                                                  style={{fontSize: '0.9em', fontStyle: 'italic', color: '#9a9a8c'}}>
+                                                <FontAwesome name="exclamation-triangle"/> Check-in medication to
+                                                display schedule </td>
+                                        }
 
-                              </tr>
-                            ))}
-                          </tbody>
-                        </Table>
-                      </td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </Table>
+                        </td>
                     </tr>
-                  }
-                </tbody>
-              ))}
+                    }
+                    </tbody>
+                ))}
             </Table>
           </span>
-        }
-      </div>
-    );
-  }
+                }
+            </div>
+        );
+    }
 }
 
 const FIELD_TRIP_MED_LOG = gql`
@@ -361,17 +370,17 @@ const LOG_ADMINISTERED_MED = gql`
   }`;
 
 const NciAppFieldTripMedLog = compose(
-  graphql(FIELD_TRIP_MED_LOG, {
-    options: ownProps => ({
-      pollInterval: 1500,
-      variables: {
-        id: ownProps.params.id
-      }
-    })
-  }),
-  graphql(CHECK_IN_MEDICATION, { name: 'checkInMedication' }),
-  graphql(CHECK_OUT_MEDICATION, { name: 'checkOutMedication' }),
-  graphql(LOG_ADMINISTERED_MED, { name: 'logAdministeredMed' })
+    graphql(FIELD_TRIP_MED_LOG, {
+        options: ownProps => ({
+            pollInterval: 1500,
+            variables: {
+                id: ownProps.params.id
+            }
+        })
+    }),
+    graphql(CHECK_IN_MEDICATION, {name: 'checkInMedication'}),
+    graphql(CHECK_OUT_MEDICATION, {name: 'checkOutMedication'}),
+    graphql(LOG_ADMINISTERED_MED, {name: 'logAdministeredMed'})
 )(NciAppFieldTripMedLogContainer);
 
 export default NciAppFieldTripMedLog;
