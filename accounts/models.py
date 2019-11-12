@@ -283,7 +283,7 @@ class SchoolFile(models.Model):
     )
 
     school = models.ForeignKey(School, related_name='school_files', on_delete=models.CASCADE)
-    file = models.FileField(upload_to=path_and_rename, validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx'])])
+    file = models.FileField(upload_to=path_and_rename, validators=[FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx', 'xls', 'xlsx'])])
     file_name = models.CharField(max_length=140, blank=False, default='')
     is_public = models.IntegerField(blank=False, default=0, choices=PUBLIC_CHOICES)
 
