@@ -614,13 +614,9 @@ class UpdateAdministeredMed(graphene.Mutation):
 
     def mutate(self, info, id, notes):
         user = info.context.user
-        print('==== user: ', user)
-        print('==== info: ', info)
-        print('==== id: ', id)
         if user.is_authenticated() and (user.account_type == 'teacher' or user.account_type == 'ee-staff'):
             try:
                 administered_med = AdministeredMed.objects.get(id=id)
-                print('==== administered_med: ', administered_med)
                 administered_med.notes = notes
                 administered_med.created_by_user = user
                 administered_med.save()
