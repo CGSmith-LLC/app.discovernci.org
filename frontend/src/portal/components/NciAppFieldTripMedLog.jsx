@@ -193,6 +193,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                                                 value="Administer"
                                                 onClick={() => this.handleLogAdministeredMedClick(med.id)}
                                             />
+                                            /*<a href={`/app/fieldtrip/${fieldtrip.id}/medlog/administer/${med.id}`}>Administer</a>*/
                                             : <FontAwesome name="check" fixedWidth
                                                            style={{color: '#0d7700', fontSize: '1.1em'}}/>
                                         }

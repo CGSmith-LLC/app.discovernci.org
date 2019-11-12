@@ -40,22 +40,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
     document.body.style.background = '#fff';
   }
 
-  handleClick = (medicationId) => {
-    this.props.logAdministeredMed({
-      variables: {
-        medicationId,
-        fieldTripId: this.props.fieldTripDetails.fieldtrip.id
-      }
-    }).then(({ data }) => {
-      console.log('handleClick Returned data:', data);
-    }).catch((error) => {
-      console.log('error: ', error);
-    });
-  }
-
   render() {
-    console.log('props ', this.props);
-
     const medications = this.props.medicationsByFieldTrip.medications &&
       this.props.medicationsByFieldTrip.medications;
 
@@ -74,7 +59,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
           <span style={{ textAlign: 'center' }}>
             <h1 style={{ marginBottom: 0 }}>Field Trip Med Log Administration Table</h1>
             <h3>{fieldtrip.name}</h3>
-            <h4>Today: <Moment format="L" /></h4>
+            <h4>Generated On: <Moment format="L" /></h4>
           </span>
         }
 
@@ -94,6 +79,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                       <tr>
                         <th style={{ width: 250 }}>Medication</th>
                         <th>Dosage</th>
+                        <th>Administered</th>
                         <th style={{ whiteSpace: 'nowrap', width: 100, background: '#FEF396' }}>Breakfast</th>
                         <th style={{ whiteSpace: 'nowrap', width: 100, background: '#FDBC75' }}>Lunch</th>
                         <th style={{ whiteSpace: 'nowrap', width: 100, background: '#FB8CBF' }}>Dinner</th>
@@ -114,10 +100,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                           </td>
 
                           <td>
-                            {med.amountHuman !== ''
-                              ? `${med.amount} ${med.getAmountUnitDisplay}`
-                              : med.amountHuman
-                            }
+                            {med.amountHuman}
                             {med.notes !== '' &&
                               <div style={{ fontSize: '0.9em', borderLeft: '3px solid #2899d1', margin: '10px 10px 10px 5px', paddingLeft: 10, color: '#4a4a4a' }}>
                                 {med.notes}
@@ -125,27 +108,21 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                             }
                           </td>
 
+                          <td>
+                            {_.map(med.administeredmedSet, medLogEntry => (
+                                <li><Moment format="M/D/YY H:ma">{ medLogEntry.created }</Moment></li>
+                            ))}
+                          </td>
+
                           {_.map(medTimeSlots, timeSlot => (
                             <td style={{ textAlign: 'center', background: timeSlot.color }}>
                               {_.has(med.administrationTimes.map(Number), timeSlot.id) &&
                                 <span>
-
-                                  <input
-                                    type="checkbox"
-                                    onClick={() => this.handleClick(med.id)}
-                                    checked={_.filter(med.administeredmedSet, v => (
-                                      _.has(v.medication.administrationTimes, timeSlot.id)
-                                    ).length > 0) && true}
-                                  />{' '}
-
-                                  {_.filter(med.administeredmedSet, v => (
-                                    _.has(v.medication.administrationTimes.map(Number), 1)
-                                  )).length}
+                                  <FontAwesome name="check" />
 
                                   {timeSlot.id === 5 &&
                                     med.administrationTimesOther &&
-                                      <span title={med.administrationTimesOther}>
-                                        <FontAwesome name="info-circle" fixedWidth />
+                                      <span>{med.administrationTimesOther}
                                       </span>
                                   }
 
