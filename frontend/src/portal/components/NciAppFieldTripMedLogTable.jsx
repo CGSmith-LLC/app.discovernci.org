@@ -77,7 +77,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                   <Table bordered hover striped style={{ marginBottom: 20 }}>
                     <thead>
                       <tr>
-                        <th style={{ width: 250 }}>Medication</th>
+                        <th style={{ width: 150 }}>Medication</th>
                         <th>Dosage</th>
                         <th>Administered</th>
                         <th style={{ whiteSpace: 'nowrap', width: 100, background: '#FEF396' }}>Breakfast</th>
@@ -108,10 +108,27 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                             }
                           </td>
 
-                          <td>
-                            {_.map(med.administeredmedSet, medLogEntry => (
-                                <li><Moment format="M/D/YY h:mma">{ medLogEntry.created }</Moment></li>
-                            ))}
+                          <td style={{padding: 0}}>
+                            {(med.administeredmedSet.length > 0) &&
+                              <Table bordered hover striped style={{marginBottom: 0}}>
+                                <thead>
+                                  <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Notes</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {_.map(med.administeredmedSet, medLogEntry => (
+                                    <tr key={medLogEntry.id}>
+                                      <td><Moment format="M/D/YY H:ma">{ medLogEntry.created }</Moment> </td>
+                                      <td>{ medLogEntry.createdByUser && medLogEntry.createdByUser.name }</td>
+                                      <td>{ medLogEntry.notes }</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </Table>
+                            }
                           </td>
 
                           {_.map(medTimeSlots, timeSlot => (
@@ -160,7 +177,19 @@ const MEDICATIONS_BY_FIELD_TRIP = gql`
       inPossession
       notes
       administeredmedSet {
-        created
+        id,
+        created,
+        createdByUser {
+          id,
+          username,
+          name,
+          firstName,
+          lastName,
+          email,
+          accountType,
+          classroom
+        },
+        notes
       }
       medicalRecord {
         id
