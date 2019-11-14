@@ -110,7 +110,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
 
                           <td>
                             {_.map(med.administeredmedSet, medLogEntry => (
-                                <li><Moment format="M/D/YY H:ma">{ medLogEntry.created }</Moment></li>
+                                <li><Moment format="M/D/YY h:mma">{ medLogEntry.created }</Moment></li>
                             ))}
                           </td>
 
