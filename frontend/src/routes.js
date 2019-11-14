@@ -22,6 +22,7 @@ import {
   NciAppFieldTripMedLog,
   NciAppFieldTripDietary,
   NciAppFieldTripMedLogTable,
+  NciAppFieldTripMedLogAdminister,
   NciAppStudentDetail,
   NciAppGuardianDetail,
   NciAppStudentWaiver,
@@ -51,6 +52,7 @@ export default (
     <Route path="/app/fieldtrip/:id/medlog" component={NciAppFieldTripMedLog} onEnter={requireAuth} />
     <Route path="/app/fieldtrip/:id/dietary" component={NciAppFieldTripDietary} onEnter={requireAuth} />
     <Route path="/app/fieldtrip/:id/medlog/table" component={NciAppFieldTripMedLogTable} onEnter={requireAuth} />
+    <Route path="/app/fieldtrip/:id/medlog/administer/:med_id" component={NciAppFieldTripMedLogAdminister} onEnter={requireAuth} />
     <Route path="/app/student/:id" component={NciAppStudentDetail} onEnter={requireAuth} />
     <Route path="/app/student/:id/add-medication" component={NciAppAddMedication} onEnter={requireAuth} />
     <Route path="/app/student/:id/waiver" component={NciAppStudentWaiver} onEnter={requireAuth} />

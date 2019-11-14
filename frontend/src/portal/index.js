@@ -6,6 +6,7 @@ export { default as NciAppFieldTripDetail } from './components/NciAppFieldTripDe
 export { default as NciAppFieldTripMedLog } from './components/NciAppFieldTripMedLog';
 export { default as NciAppFieldTripDietary } from './components/NciAppFieldTripDietary';
 export { default as NciAppFieldTripMedLogTable } from './components/NciAppFieldTripMedLogTable';
+export { default as NciAppFieldTripMedLogAdminister } from './components/NciAppFieldTripMedLogAdminister';
 export { default as NciAppGuardianDetail } from './components/NciAppGuardianDetail';
 export { default as NciAppStudentDetail } from './components/NciAppStudentDetail';
 export { default as NciAppStudentWaiver } from './components/NciAppStudentWaiver';

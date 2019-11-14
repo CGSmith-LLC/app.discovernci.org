@@ -604,6 +604,26 @@ class LogAdministeredMed(graphene.Mutation):
 
         return None
 
+class UpdateAdministeredMed(graphene.Mutation):
+    success = graphene.Int()
+    administered_med = graphene.Field(AdministeredMedType)
+
+    class Arguments:
+        id = graphene.Int(required=True)
+        notes = graphene.String(required=True)
+
+    def mutate(self, info, id, notes):
+        user = info.context.user
+        if user.is_authenticated() and (user.account_type == 'teacher' or user.account_type == 'ee-staff'):
+            try:
+                administered_med = AdministeredMed.objects.get(id=id)
+                administered_med.notes = notes
+                administered_med.created_by_user = user
+                administered_med.save()
+                return UpdateAdministeredMed(success=True, administered_med=administered_med)
+            except AdministeredMed.DoesNotExist:
+                raise Exception('Invalid AdministeredMed?')
+        raise Exception('Invalid credentials')
 
 class DeleteMedication(graphene.Mutation):
     """Delete a Student's Medication."""
@@ -635,6 +655,7 @@ class Mutation(graphene.ObjectType):
     check_out_medication = CheckOutMedication.Field()
     delete_medication = DeleteMedication.Field()
     log_administered_med = LogAdministeredMed.Field()
+    update_administered_med = UpdateAdministeredMed.Field()
 
 
 # Queries *********************************************************************

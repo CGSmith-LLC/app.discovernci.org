@@ -63,7 +63,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
     }
 
     handleLogAdministeredMedClick = (medicationId) => {
-
+        const fieldtripId = this.props.data.fieldtrip.id
         this.props.logAdministeredMed({
             variables: {
                 medicationId,
@@ -71,7 +71,8 @@ class NciAppFieldTripMedLogContainer extends React.Component {
             }
         }).then(({data}) => {
             console.log('handleClick Returned data:', data);
-            alert("Medication logged.");
+            // alert("Medication logged.");
+            this.props.router.push(`/app/fieldtrip/${fieldtripId}/medlog/administer/${data.logAdministeredMed.administeredMed.id}`);
         }).catch((error) => {
             console.log('error: ', error);
         });

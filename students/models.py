@@ -358,6 +358,7 @@ class AdministeredMed(models.Model):
     field_trip = models.ForeignKey('locations.FieldTrip')
     administered_at = models.DateTimeField(blank=True, null=True)
     notes = models.TextField(blank=True)
+    created_by_user = models.ForeignKey('accounts.AccountProfile', verbose_name='Author of note', blank=True, null=True)
 
     guid = models.CharField(max_length=140)
     created = models.DateTimeField(editable=False, auto_now_add=True)
