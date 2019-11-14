@@ -121,7 +121,7 @@ class NciAppFieldTripMedLogContainer extends React.Component {
                                 <tbody>
                                   {_.map(med.administeredmedSet, medLogEntry => (
                                     <tr key={medLogEntry.id}>
-                                      <td><Moment format="M/D/YY H:ma">{ medLogEntry.created }</Moment> </td>
+                                      <td><Moment format="M/D/YY h:mma">{ medLogEntry.created }</Moment> </td>
                                       <td>{ medLogEntry.createdByUser && medLogEntry.createdByUser.name }</td>
                                       <td>{ medLogEntry.notes }</td>
                                     </tr>
