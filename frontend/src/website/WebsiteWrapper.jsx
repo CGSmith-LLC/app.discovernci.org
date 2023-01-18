@@ -12,7 +12,6 @@ export default function App({ children }) {
   return (
     <div className="website">
 
-      <MainMenuContainer />
 
       {children}
 
